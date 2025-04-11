@@ -13,6 +13,9 @@ export default {
         background: '#ffffff', // You can set any color value you want
         // Add other custom colors as needed
       },
+      fontFamily: {
+        raleway: ['var(--font-raleway)'],
+      },
     },
   },
   plugins: [],
