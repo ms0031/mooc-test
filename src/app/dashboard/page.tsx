@@ -51,7 +51,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950">
+    <div className="min-h-screen bg-slate-950 ">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-200">
@@ -127,7 +127,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          <div className="w-[1440px] h-[900px] left-0 top-0 absolute opacity-30">
+          <div className="w-[1440px] h-[900px] left-0 top-0 absolute opacity-30 pointer-events-none">
         <div className="w-[675px] h-80 left-[202px] top-[790px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
         <div className="w-[675px] h-80 left-[800px] top-[840px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
       </div>

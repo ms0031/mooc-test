@@ -9,7 +9,7 @@ interface HomeContentProps {
 export default function HomeContent({ session }: HomeContentProps) {
   return (
     <div className="w-full relative bg-slate-950 overflow-hidden">
-<div className="w-[1440px] h-[900px] left-0 top-0 absolute opacity-25">
+<div className="w-[1440px] h-[900px] left-0 top-0 absolute opacity-25 pointer-events-none">
 <div className="w-[675px] h-80 left-[202px] top-[190px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
 <div className="w-[675px] h-80 left-[577px] top-[190px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
 </div>

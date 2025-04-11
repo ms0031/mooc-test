@@ -11,7 +11,7 @@ export default function Navbar() {
 
   return (
     <nav className=" bg-slate-950 ">
-    <div className="w-[1440px] left-0 top-0 absolute opacity-30">
+    <div className="w-[1440px] left-0 top-0 absolute opacity-30 pointer-events-none">
     <div className="w-[675px] h-80 left-[202px] top-[190px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
     <div className="w-[675px] h-80 left-[800px] top-[190px] absolute bg-violet-700  rounded-full blur-[200px]"></div>
     </div>
