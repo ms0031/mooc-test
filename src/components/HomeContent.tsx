@@ -41,7 +41,7 @@ export default function HomeContent({ session }: HomeContentProps) {
                   <div className="rounded-md shadow">
                     <Link
                       href="/test/settings"
-                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-[10px] bg-teal-500 text-white hover:bg-[#0C9A85] transition-colors md:py-4 md:text-lg md:px-10"
+                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-[10px] bg-teal-500/90 text-white hover:bg-[#0C9A85] transition-colors md:py-4 md:text-lg md:px-10"
                     >
                       Take Test (Guest)
                     </Link>

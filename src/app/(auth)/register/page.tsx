@@ -130,7 +130,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="mb-2 group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-mono rounded-xl text-white bg-teal-500 hover:hover:bg-[#0C9A85] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-indigo-400"
+              className="mb-2 group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm rounded-xl text-white bg-teal-500/90 hover:hover:bg-[#0C9A85] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-indigo-400"
             >
               {isLoading ? "Creating account..." : "Create account"}
             </button>

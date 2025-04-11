@@ -19,7 +19,8 @@ export default function TestSettingsPage() {
     { id: "psychology", name: "General Psychology" },
     { id: "learning", name: "Learning Theory" },
   ]);
-  const [selectedWeek, setSelectedWeek] = useState("week1");
+  // Replace single select with multiple chips
+  const [selectedWeeks, setSelectedWeeks] = useState<string[]>([]);
   const weeks = [
     { id: "week0", name: "Week 0" },
     { id: "week1", name: "Week 1" },
@@ -60,7 +61,9 @@ export default function TestSettingsPage() {
       if (shuffleWeeks) {
         params.append("shuffleWeeks", "true");
       } else {
-        params.append("week", selectedWeek);
+        if(selectedWeeks.length > 0) {
+          params.append("weeks", selectedWeeks.join(","));
+        }
       }
     }
     
@@ -69,16 +72,20 @@ export default function TestSettingsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-md mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
-        <div className="bg-indigo-600 px-6 py-4">
-          <h1 className="text-2xl font-bold text-white">Test Settings</h1>
+    <div className="w-full h-screen relative bg-slate-950 overflow-hidden flex items-center justify-center">
+      <div className="w-[1440px] h-[900px] left-0 top-0 absolute opacity-30">
+        <div className="w-[675px] h-80 left-[202px] top-[190px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
+        <div className="w-[675px] h-80 left-[800px] top-[190px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
+      </div>
+      <div className="max-w-md mx-auto bg-white/1 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden">
+        <div className="bg-white/5 px-6 py-4">
+          <h1 className="text-2xl font-bold text-gray-200">Test Settings</h1>
         </div>
         
         <div className="p-6 space-y-6">
           {/* Guest Mode Banner */}
           {!session && (
-            <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4 mb-4">
+            <div className="bg-yellow-50 rounded-xl border-l-4 border-yellow-400 p-4 mb-4">
               <div className="flex">
                 <div className="ml-3">
                   <p className="text-sm text-yellow-700">
@@ -91,14 +98,14 @@ export default function TestSettingsPage() {
           
           {/* Category Selection */}
           <div>
-            <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="category" className="block text-sm font-medium text-gray-200 mb-2">
               Test Category
             </label>
             <select
               id="category"
               value={category}
               onChange={(e) => setCategory(e.target.value)}
-              className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              className="block w-full px-3 py-2 border bg-slate-950/50  text-gray-200 border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
             >
               {categories.map((cat) => (
                 <option key={cat.id} value={cat.id}>
@@ -111,16 +118,16 @@ export default function TestSettingsPage() {
           {/* Timer Toggle */}
           <div className="flex items-center justify-between">
             <div>
-              <label htmlFor="timer-toggle" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="timer-toggle" className="block text-sm font-medium text-gray-200">
                 Enable Timer
               </label>
-              <p className="text-xs text-gray-500">Track time during your test</p>
+              <p className="text-xs text-gray-400">Track time during your test</p>
             </div>
             <button
               type="button"
               id="timer-toggle"
               disabled={studyMode}
-              className={`${enableTimer ? 'bg-indigo-600' : 'bg-gray-200'} ${studyMode ? 'opacity-50 cursor-not-allowed' : ''} relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+              className={`${enableTimer ? 'bg-teal-500/90' : 'bg-gray-500'} ${studyMode ? 'opacity-50 cursor-not-allowed' : ''} relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
               onClick={() => !studyMode && setEnableTimer(!enableTimer)}
             >
               <span className="sr-only">Enable timer</span>
@@ -133,15 +140,15 @@ export default function TestSettingsPage() {
           {/* Randomize Answers Toggle */}
           <div className="flex items-center justify-between">
             <div>
-              <label htmlFor="randomize-toggle" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="randomize-toggle" className="block text-sm font-medium text-gray-200">
                 Randomize Answers
               </label>
-              <p className="text-xs text-gray-500">Shuffle the order of answer options</p>
+              <p className="text-xs text-gray-400">Shuffle the order of answer options</p>
             </div>
             <button
               type="button"
               id="randomize-toggle"
-              className={`${randomizeAnswers ? 'bg-indigo-600' : 'bg-gray-200'} relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+              className={`${randomizeAnswers ? 'bg-teal-500/90' : 'bg-gray-500'} relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
               onClick={() => setRandomizeAnswers(!randomizeAnswers)}
             >
               <span className="sr-only">Randomize answers</span>
@@ -157,15 +164,15 @@ export default function TestSettingsPage() {
               {/* Shuffle Weeks Toggle */}
               <div className="flex items-center justify-between">
                 <div>
-                  <label htmlFor="shuffle-weeks-toggle" className="block text-sm font-medium text-gray-700">
+                  <label htmlFor="shuffle-weeks-toggle" className="block text-sm font-medium text-gray-200">
                     Shuffle Weeks
                   </label>
-                  <p className="text-xs text-gray-500">Mix questions from all weeks</p>
+                  <p className="text-xs text-gray-400">Mix questions from all weeks</p>
                 </div>
                 <button
                   type="button"
                   id="shuffle-weeks-toggle"
-                  className={`${shuffleWeeks ? 'bg-indigo-600' : 'bg-gray-200'} relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+                  className={`${shuffleWeeks ?  'bg-teal-500/90' : 'bg-gray-500'} relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
                   onClick={() => setShuffleWeeks(!shuffleWeeks)}
                 >
                   <span className="sr-only">Shuffle weeks</span>
@@ -175,24 +182,34 @@ export default function TestSettingsPage() {
                 </button>
               </div>
               
-              {/* Week Selection (only visible when shuffle is off) */}
+              {/* Week Selection Chips (only visible when shuffle is off) */}
               {!shuffleWeeks && (
                 <div>
-                  <label htmlFor="week" className="block text-sm font-medium text-gray-700 mb-2">
-                    Select Week
+                  <label className="block text-sm font-medium text-gray-200 mb-2">
+                    Select Weeks
                   </label>
-                  <select
-                    id="week"
-                    value={selectedWeek}
-                    onChange={(e) => setSelectedWeek(e.target.value)}
-                    className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                  >
-                    {weeks.map((week) => (
-                      <option key={week.id} value={week.id}>
-                        {week.name}
-                      </option>
-                    ))}
-                  </select>
+                  <div className="flex flex-wrap gap-2">
+                    {weeks.map((week) => {
+                      const isSelected = selectedWeeks.includes(week.id);
+                      return (
+                        <button 
+                          key={week.id} 
+                          type="button" 
+                          onClick={() => {
+                            if (isSelected) {
+                              setSelectedWeeks(selectedWeeks.filter((w) => w !== week.id));
+                            } else {
+                              setSelectedWeeks([...selectedWeeks, week.id]);
+                            }
+                          }}
+                          className={`px-4 py-2 rounded-full border text-sm 
+                          ${isSelected ? 'bg-teal-500 text-white border-teal-500' : 'bg-transparent text-gray-200 border-gray-200'}`}
+                        >
+                          {week.name}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
               )}
             </>
@@ -201,15 +218,15 @@ export default function TestSettingsPage() {
           {/* Study Mode Toggle */}
           <div className="flex items-center justify-between">
             <div>
-              <label htmlFor="study-mode-toggle" className="block text-sm font-medium text-gray-700">
+              <label htmlFor="study-mode-toggle" className="block text-sm font-medium text-gray-100">
                 Study Mode
               </label>
-              <p className="text-xs text-gray-500">Practice without time pressure and see explanations</p>
+              <p className="text-xs text-gray-300">Practice without time pressure and see answers</p>
             </div>
             <button
               type="button"
               id="study-mode-toggle"
-              className={`${studyMode ? 'bg-indigo-600' : 'bg-gray-200'} relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+              className={`${studyMode ? 'bg-red-500/80' : 'bg-gray-500'} relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
               onClick={() => setStudyMode(!studyMode)}
             >
               <span className="sr-only">Enable study mode</span>
@@ -221,16 +238,10 @@ export default function TestSettingsPage() {
           
           {/* Action Buttons */}
           <div className="pt-4 flex justify-between">
-            <Button
-              variant="outline"
-              onClick={() => router.push("/")}
-            >
+            <Button variant="destructive" onClick={() => router.push("/")}>
               Cancel
             </Button>
-            <Button
-              variant="primary"
-              onClick={handleStartTest}
-            >
+            <Button variant="primary" onClick={handleStartTest}>
               Start Test
             </Button>
           </div>
