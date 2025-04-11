@@ -13,7 +13,7 @@ export default function HomeContent({ session }: HomeContentProps) {
 
   return (
       <main
-        className={`min-h-screen ${isDarkMode ? "bg-black text-white" : "bg-white text-gray-900"}`}
+        className={`min-h-screen ${isDarkMode ? "[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)] text-white" : "bg-gradient-to-t from-orange-200 to-sky-100 text-gray-900"}`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
