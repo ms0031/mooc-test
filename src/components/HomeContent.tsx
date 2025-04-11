@@ -17,7 +17,7 @@ export default function HomeContent({ session }: HomeContentProps) {
       <main className="relative min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
-            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+            <h1 className="text-4xl font-bold font-raleway tracking-tight text-white sm:text-5xl md:text-6xl">
               <span className="block">Master Your Knowledge with</span>
               <span className="block text-[#0FAE96]">Interactive Tests</span>
             </h1>

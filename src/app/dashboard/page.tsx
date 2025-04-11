@@ -51,13 +51,13 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">
+          <h1 className="text-3xl font-bold text-gray-200">
             Welcome back, {session?.user?.name}!
           </h1>
-          <p className="mt-2 text-gray-600">
+          <p className="mt-2 text-gray-400">
             Track your progress and start new tests below.
           </p>
         </div>
@@ -65,9 +65,9 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Test Options Sidebar */}
           <div className="lg:col-span-1 space-y-6">
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="bg-white/5 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden">
               <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-900 mb-4">
+                <h2 className="text-xl font-semibold text-gray-200 mb-4">
                   Start New Test
                 </h2>
                 <div className="space-y-3">
@@ -78,27 +78,13 @@ export default function Dashboard() {
                   >
                     Customize Test
                   </Button>
-                  <Button
-                    variant="primary"
-                    className="w-full"
-                    onClick={() => router.push("/test?category=psychology")}
-                  >
-                    Psychology Test
-                  </Button>
-                  <Button
-                    variant="primary"
-                    className="w-full"
-                    onClick={() => router.push("/test?category=learning")}
-                  >
-                    Learning Theory
-                  </Button>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="bg-white/5 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden">
               <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-900 mb-4">
+                <h2 className="text-xl font-semibold text-gray-200 mb-4">
                   Quick Links
                 </h2>
                 <div className="space-y-3">
@@ -110,18 +96,11 @@ export default function Dashboard() {
                     Test History
                   </Button>
                   <Button
-                    variant="outline"
+                    variant="destructive"
                     className="w-full"
                     onClick={() => router.push("/dashboard/wrong-answers")}
                   >
                     Wrong Answers
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="w-full"
-                    onClick={() => window.print()}
-                  >
-                    Export as PDF
                   </Button>
                   <Button
                     variant="outline"
@@ -148,19 +127,22 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-
+          <div className="w-[1440px] h-[900px] left-0 top-0 absolute opacity-30">
+        <div className="w-[675px] h-80 left-[202px] top-[790px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
+        <div className="w-[675px] h-80 left-[800px] top-[840px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
+      </div>
           {/* Main Content Area */}
           <div className="lg:col-span-3 space-y-6">
-            <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="bg-white/5 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden">
               <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-900 mb-6">
+                <h2 className="text-xl font-semibold text-gray-200 mb-6">
                   Your Test Statistics
                 </h2>
                 {testHistory.length > 0 ? (
                   <TestStats results={testHistory} />
                 ) : (
                   <div className="text-center py-8">
-                    <p className="text-gray-500 mb-4">
+                    <p className="text-gray-300 mb-4">
                       You haven't taken any tests yet. Start a test to see your
                       statistics.
                     </p>
@@ -174,17 +156,6 @@ export default function Dashboard() {
                 )}
               </div>
             </div>
-            
-            {testHistory.length > 0 && (
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="p-6">
-                  <h2 className="text-xl font-semibold text-gray-900 mb-6">
-                    Your Progress Over Time
-                  </h2>
-                  <ProgressCharts results={testHistory} />
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>
