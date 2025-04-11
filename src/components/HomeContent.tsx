@@ -1,41 +1,27 @@
 "use client";
 
 import Link from "next/link";
-import { useTheme } from "../components/providers/ThemeProvider";
 
 interface HomeContentProps {
-  session: any; // Adjust type based on your authOptions
+  session: any;
 }
 
 export default function HomeContent({ session }: HomeContentProps) {
-  const { theme } = useTheme();
-  const isDarkMode = theme === "dark";
-
   return (
-      <main
-        className={`min-h-screen ${isDarkMode ? "[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)] text-white" : "bg-gradient-to-t from-orange-200 to-sky-100 text-gray-900"}`}
-      >
+    <div className="w-full relative bg-slate-950 overflow-hidden">
+<div className="w-[1440px] h-[900px] left-0 top-0 absolute opacity-25">
+<div className="w-[675px] h-80 left-[202px] top-[190px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
+<div className="w-[675px] h-80 left-[577px] top-[190px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
+</div>
+      
+      <main className="relative min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
-            <h1
-              className={`text-4xl font-bold tracking-tight sm:text-5xl md:text-6xl ${
-                isDarkMode ? "text-white" : "text-gray-900"
-              }`}
-            >
+            <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
               <span className="block">Master Your Knowledge with</span>
-              <span
-                className={`block ${
-                  isDarkMode ? "text-indigo-400" : "text-indigo-600"
-                }`}
-              >
-                Interactive Tests
-              </span>
+              <span className="block text-[#0FAE96]">Interactive Tests</span>
             </h1>
-            <p
-              className={`mt-3 max-w-md mx-auto text-base sm:text-lg md:mt-5 md:text-xl md:max-w-3xl ${
-                isDarkMode ? "text-gray-300" : "text-gray-500"
-              }`}
-            >
+            <p className="mt-3 max-w-md mx-auto text-base text-gray-300 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
               Test your understanding of psychology and learning theory through
               our comprehensive question bank. Track your progress and improve
               your knowledge.
@@ -45,11 +31,7 @@ export default function HomeContent({ session }: HomeContentProps) {
                 <div className="rounded-md shadow">
                   <Link
                     href="/dashboard"
-                    className={`w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md ${
-                      isDarkMode
-                        ? "bg-indigo-500 text-white hover:bg-indigo-600"
-                        : "bg-indigo-600 text-white hover:bg-indigo-700"
-                    } md:py-4 md:text-lg md:px-10`}
+                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-[10px] bg-teal-500 text-white hover:bg-[#0C9A85] transition-colors md:py-4 md:text-lg md:px-10"
                   >
                     Go to Dashboard
                   </Link>
@@ -59,11 +41,7 @@ export default function HomeContent({ session }: HomeContentProps) {
                   <div className="rounded-md shadow">
                     <Link
                       href="/test/settings"
-                      className={`w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md ${
-                        isDarkMode
-                          ? "bg-indigo-500 text-white hover:bg-indigo-600"
-                          : "bg-indigo-600 text-white hover:bg-indigo-700"
-                      } md:py-4 md:text-lg md:px-10`}
+                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-[10px] bg-teal-500 text-white hover:bg-[#0C9A85] transition-colors md:py-4 md:text-lg md:px-10"
                     >
                       Take Test (Guest)
                     </Link>
@@ -71,11 +49,7 @@ export default function HomeContent({ session }: HomeContentProps) {
                   <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
                     <Link
                       href="/login"
-                      className={`w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md ${
-                        isDarkMode
-                          ? "bg-white text-black hover:bg-gray-300"
-                          : "bg-white text-indigo-600 hover:bg-gray-50"
-                      } md:py-4 md:text-lg md:px-10`}
+                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-[10px] bg-gray-200 text-gray-900 hover:bg-gray-100 transition-colors md:py-4 md:text-lg md:px-10"
                     >
                       Login / Sign Up
                     </Link>
@@ -84,47 +58,31 @@ export default function HomeContent({ session }: HomeContentProps) {
               )}
             </div>
           </div>
-
+              
           <div className="mt-24">
-            <h2
-              className={`text-2xl font-bold text-center ${
-                isDarkMode ? "text-white" : "text-gray-900"
-              } mb-12`}
-            >
+            <h2 className="text-2xl font-bold text-white text-center mb-12">
               Key Features
             </h2>
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              <div
-                className={`rounded-lg p-6 shadow-lg ${
-                  isDarkMode ? "bg-gray-800 text-white" : "bg-sky-100 text-gray-900"
-                }`}
-              >
-                <h3 className="text-lg font-medium mb-2">
+              <div className="self-stretch px-5 py-4 bg-white/5 rounded-2xl outline-1 backdrop-blur-[100px] outline-offset-[-1px] outline-white/5 inline-flex flex-col justify-center items-center gap-4 overflow-hidden">
+                <h3 className="text-lg font-medium text-white mb-2">
                   Comprehensive Tests
                 </h3>
-                <p className={isDarkMode ? "text-gray-300" : "text-gray-500"}>
+                <p className="text-gray-300 text-center ">
                   Access a wide range of questions covering psychology and
                   learning theory concepts.
                 </p>
               </div>
-              <div
-                className={`rounded-lg p-6 shadow-lg ${
-                  isDarkMode ? "bg-gray-800 text-white" : "bg-sky-100 text-gray-900"
-                }`}
-              >
-                <h3 className="text-lg font-medium mb-2">Study Mode</h3>
-                <p className={isDarkMode ? "text-gray-300" : "text-gray-500"}>
+              <div className="self-stretch px-5 py-4 bg-white/5 rounded-2xl outline-1 backdrop-blur-[100px] outline-offset-[-1px] outline-white/5 inline-flex flex-col justify-center items-center gap-4 overflow-hidden">
+                <h3 className="text-lg font-medium text-white mb-2">Study Mode</h3>
+                <p className="text-gray-300 text-center">
                   Practice without time pressure and get detailed explanations for
                   each answer.
                 </p>
               </div>
-              <div
-                className={`rounded-lg p-6 shadow-lg ${
-                  isDarkMode ? "bg-gray-800 text-white" : "bg-sky-100 text-gray-900"
-                }`}
-              >
-                <h3 className="text-lg font-medium mb-2">Progress Tracking</h3>
-                <p className={isDarkMode ? "text-gray-300" : "text-gray-500"}>
+              <div className="self-stretch px-5 py-4 bg-white/5 rounded-2xl outline-1 backdrop-blur-[100px] outline-offset-[-1px] outline-white/5 inline-flex flex-col justify-center items-center gap-4 overflow-hidden">
+                <h3 className="text-lg font-medium text-white mb-2">Progress Tracking</h3>
+                <p className="text-gray-300 text-center">
                   Monitor your performance and identify areas for improvement.
                 </p>
               </div>
@@ -132,5 +90,6 @@ export default function HomeContent({ session }: HomeContentProps) {
           </div>
         </div>
       </main>
+    </div>
   );
 }

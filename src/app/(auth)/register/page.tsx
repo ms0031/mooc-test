@@ -52,17 +52,21 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className={`min-h-screen flex items-center justify-center ${isDarkMode?"[background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]" : "bg-blue-100"}`}>
-      <div className={`max-w-xl w-full p-8 ${isDarkMode ? "bg-white/5 backdrop-blur-3xl border-3" : "bg-white"} rounded-4xl shadow-lg`}>
+    <div className="w-full h-screen relative bg-slate-950 overflow-hidden  flex items-center justify-center">
+    <div className="w-[1440px] h-[900px] left-0 top-0 absolute opacity-30">
+    <div className="w-[675px] h-80 left-[202px] top-[190px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
+    <div className="w-[675px] h-80 left-[800px] top-[190px] absolute bg-violet-700  rounded-full blur-[200px]"></div>
+    </div>
+      <div className="max-w-md w-full p-10 py-12 gap-4 bg-white/0 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden">
         <div>
-          <h2 className={`mt-6 text-center text-3xl font-extrabold ${isDarkMode?"text-white":"text-gray-900"}`}>
+          <h2 className={`text-center text-3xl font-bold text-gray-200`}>
             Create your account
           </h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           {error && (
-            <div className="rounded-md bg-red-50 p-4">
-              <div className="text-sm text-red-700">{error}</div>
+            <div className="rounded-2xl bg-red-200 p-4">
+              <div className="text-md text-red-700">{error}</div>
             </div>
           )}
           <div className="rounded-md shadow-sm gap-5">
@@ -75,7 +79,7 @@ export default function RegisterPage() {
                 name="name"
                 type="text"
                 required
-                className="appearance-none rounded-xl relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="relative mb-4 block bg-white/5 w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-100 rounded-2xl focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Full Name"
               />
             </div>
@@ -88,7 +92,7 @@ export default function RegisterPage() {
                 name="email"
                 type="email"
                 required
-                className="appearance-none mt-3 rounded-xl relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="relative mb-4 block bg-white/5 w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-100 rounded-2xl focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Email address"
               />
             </div>
@@ -101,7 +105,7 @@ export default function RegisterPage() {
                 name="password"
                 type="password"
                 required
-                className="appearance-none mt-3 rounded-xl relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="relative mb-4 block bg-white/5 w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-100 rounded-2xl focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
                 autoComplete="new-password"
               />
@@ -115,7 +119,7 @@ export default function RegisterPage() {
                 name="confirmPassword"
                 type="password"
                 required
-                className="appearance-none mt-3 rounded-xl relative block w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="relative mb-4 block bg-white/5 w-full px-3 py-3 border border-gray-300 placeholder-gray-500 text-gray-100 rounded-2xl focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Confirm Password"
                 autoComplete="new-password"
               />
@@ -126,7 +130,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-2xl text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-indigo-400"
+              className="mb-2 group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-mono rounded-xl text-white bg-teal-500 hover:hover:bg-[#0C9A85] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:bg-indigo-400"
             >
               {isLoading ? "Creating account..." : "Create account"}
             </button>
