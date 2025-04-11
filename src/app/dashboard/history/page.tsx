@@ -1,0 +1,162 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import Loading from "@/components/ui/Loading";
+import ErrorMessage from "@/components/ui/ErrorMessage";
+import { Button } from "@/components/ui/Button";
+import type { TestResultResponse } from "@/types";
+
+export default function TestHistoryPage() {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const [testHistory, setTestHistory] = useState<TestResultResponse[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/login");
+    } else if (status === "authenticated") {
+      fetchTestHistory();
+    }
+  }, [status, router]);
+
+  const fetchTestHistory = async () => {
+    try {
+      const response = await fetch("/api/test-results");
+      if (!response.ok) {
+        throw new Error("Failed to fetch test history");
+      }
+      const data = await response.json();
+      setTestHistory(data.results);
+    } catch (error) {
+      setError("Failed to load test history. Please try again.");
+      console.error("Error fetching test history:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString() + " " + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
+
+  const formatTime = (seconds: number) => {
+    const minutes = Math.floor(seconds / 60);
+    const remainingSeconds = seconds % 60;
+    return `${minutes}m ${remainingSeconds}s`;
+  };
+
+  if (status === "loading" || isLoading) {
+    return <Loading />;
+  }
+
+  if (error) {
+    return <ErrorMessage message={error} />;
+  }
+
+  return (
+    <div className="min-h-screen bg-gray-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="mb-8 flex justify-between items-center">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">
+              Test History
+            </h1>
+            <p className="mt-2 text-gray-600">
+              View your past test attempts and track your progress over time.
+            </p>
+          </div>
+          <div className="flex space-x-4">
+            <Button
+              variant="destructive"
+                          onClick={() => router.push("/dashboard")}
+            >
+              Back to Dashboard
+            </Button>
+            {testHistory.length > 0 && (
+              <Button
+                variant="outline"
+                onClick={() => window.print()}
+              >
+                Export as PDF
+              </Button>
+            )}
+          </div>
+        </div>
+
+        {testHistory.length === 0 ? (
+          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
+            <p className="text-gray-600 mb-4">
+              You haven't taken any tests yet. Complete some tests to see your history.
+            </p>
+            <Button
+              variant="primary"
+              onClick={() => router.push("/test?category=psychology")}
+            >
+              Take a Test
+            </Button>
+          </div>
+        ) : (
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="overflow-x-auto">
+              <table className="min-w-full divide-y divide-gray-200">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Date
+                    </th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Category
+                    </th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Score
+                    </th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Questions
+                    </th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Correct
+                    </th>
+                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                      Time Taken
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="bg-white divide-y divide-gray-200">
+                  {testHistory.map((test) => (
+                    <tr key={test._id}>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {formatDate(test.createdAt.toString())}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 capitalize">
+                        {test.category}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${test.score >= 70 ? 'bg-green-100 text-green-800' : test.score >= 40 ? 'bg-yellow-100 text-yellow-800' : 'bg-red-100 text-red-800'}`}>
+                          {test.score}%
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {test.totalQuestions}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {test.correctAnswers} / {test.totalQuestions}
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                        {formatTime(test.timeTaken)}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
