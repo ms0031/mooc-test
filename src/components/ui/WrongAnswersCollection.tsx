@@ -189,15 +189,15 @@ export default function WrongAnswersCollection({
               <h3 className="text-md font-medium text-gray-300">
                 {wrongAnswer.question}
               </h3>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-900/60 border-2 border-red-500/60 text-red-200">
-                {wrongAnswer.totalWrong}x wrong
+              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-red-900/60 border-2 border-red-500/60 text-red-200">
+                {wrongAnswer.totalWrong}x
               </span>
             </div>
             <div className="space-y-2">
               {wrongAnswer.options.map((option, optIndex) => (
                 <div
                   key={optIndex}
-                  className="flex justify-between items-center p-2 rounded-lg bg-white/5"
+                  className="flex justify-between items-center p-2 px-3 rounded-xl bg-white/5"
                 >
                   <span
                     className={
@@ -208,8 +208,8 @@ export default function WrongAnswersCollection({
                   >
                     {option}
                   </span>
-                  <span className="text-red-400 font-medium">
-                    {wrongAnswer.optionCounts[option] || 0}x
+                  <span className={`text-red-400 font-medium ${wrongAnswer.optionCounts[option]?"bg-red-900/30 border-1 border-red-500/30":""} rounded-full px-2 py-1 text-xs`}>
+                  {wrongAnswer.optionCounts[option] ? `${wrongAnswer.optionCounts[option]}x` : ""}
                   </span>
                 </div>
               ))}
