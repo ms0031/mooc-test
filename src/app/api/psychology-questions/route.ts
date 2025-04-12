@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 // Import the fixed JSON file. Adjust the relative path if necessary.
 import questionsByWeekData from "../../../../questions_psychology_of_learning.json";
 
-// Define an interface that includes an index signature.
+// Define interfaces.
 interface Question {
   question: string;
   options: string[];
@@ -19,6 +19,13 @@ const questionsByWeek = questionsByWeekData as QuestionsByWeek;
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
+
+    // If getWeeks is true, return the available week IDs.
+    if (searchParams.get("getWeeks") === "true") {
+      const weeks = Object.keys(questionsByWeek);
+      return NextResponse.json({ weeks });
+    }
+
     const shuffleWeeks = searchParams.get("shuffleWeeks") === "true";
     const weeksParam = searchParams.get("weeks");
     const week = searchParams.get("week");
