@@ -20,18 +20,18 @@ export default function TestPage() {
   const category = searchParams.get("category");
   const isStudyMode = searchParams.get("mode") === "study";
   const timerDisabled = searchParams.get("timer") === "off" || isStudyMode;
-  
-  // Default test duration: 30 minutes (1800 seconds)
   const [testDuration] = useState(1800);
-  
   const [questions, setQuestions] = useState<Question[]>([]);
-  // Answers keyed by question id
-  const [answers, setAnswers] = useState<Record<string, string>>({});
+  // Instead of a single answer per question, store all attempts in an array.
+  const [answerAttempts, setAnswerAttempts] = useState<
+    Record<string, string[]>
+  >({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
-  // Track which questions have been answered and submitted in study mode
-  const [answeredQuestions, setAnsweredQuestions] = useState<Record<string, boolean>>({});
+  const [answeredQuestions, setAnsweredQuestions] = useState<
+    Record<string, boolean>
+  >({});
   const [testStartTime, setTestStartTime] = useState<Date>(new Date());
   const [randomizeOptions, setRandomizeOptions] = useState(
     searchParams.get("randomize") === "true"
@@ -41,14 +41,12 @@ export default function TestPage() {
   );
 
   useEffect(() => {
-    // Allow guest access from home page or if in study mode
     const isGuestAccess = searchParams.get("category") !== null;
     if (status === "unauthenticated" && !isStudyMode && !isGuestAccess) {
       router.push("/login");
       return;
     }
     fetchQuestions();
-    // Set test start time
     setTestStartTime(new Date());
   }, [status, category, isStudyMode, router]);
 
@@ -61,10 +59,8 @@ export default function TestPage() {
       const weeksParam = searchParams.get("weeks");
 
       if (shuffleWeeksVal) {
-        // Display all questions of all weeks in shuffled sequence.
         queryParams.append("shuffleWeeks", "true");
       } else if (weeksParam) {
-        // Display all questions for the selected weeks.
         queryParams.append("weeks", weeksParam);
       } else {
         const week = searchParams.get("week") || "week1";
@@ -73,21 +69,18 @@ export default function TestPage() {
 
       const response = await fetch(`${apiUrl}?${queryParams.toString()}`);
       const data = await response.json();
-      console.log("Fetched questions data:", data); // Debug log
+      console.log("Fetched questions data:", data);
 
       if (!response.ok) {
         throw new Error(data.message || "Failed to fetch questions");
       }
 
-      // Get the questions from the response
       let fetchedQuestions = data.questions;
-      
-      // If randomize questions is enabled, shuffle the questions array
+
       if (randomizeQuestions) {
         fetchedQuestions = shuffleArray([...fetchedQuestions]);
       }
-      
-      // If randomize options is enabled, shuffle the options for each question
+
       if (randomizeOptions) {
         fetchedQuestions = fetchedQuestions.map((q: Question) => ({
           ...q,
@@ -95,7 +88,6 @@ export default function TestPage() {
         }));
       }
 
-      // Verify correct answer exists for each question
       fetchedQuestions.forEach((q: Question, index: number) => {
         if (!q.correctAnswer) {
           console.warn(`Question ${index + 1} is missing correctAnswer:`, q);
@@ -111,7 +103,6 @@ export default function TestPage() {
     }
   };
 
-  // Function to shuffle array (for randomizing options)
   const shuffleArray = (array: any[]) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -122,29 +113,58 @@ export default function TestPage() {
 
   const handleAnswerSelect = (questionId: string, option: string) => {
     if (submitted) return;
-    setAnswers((prev) => ({ ...prev, [questionId]: option }));
-    
-    // In study mode, immediately show the answer for this specific question after selection
+    // Accumulate attempts in an array for each question.
+    setAnswerAttempts((prev) => {
+      const prevAttempts = prev[questionId] || [];
+      return { ...prev, [questionId]: [...prevAttempts, option] };
+    });
+
+    // In study mode, mark question as answered immediately.
     if (isStudyMode) {
       setAnsweredQuestions((prev) => ({ ...prev, [questionId]: true }));
     }
   };
 
   const handleSubmit = () => {
-    // You can add a check to ensure all questions are answered
+    // Basic check: each question should have at least one attempt.
+    if (Object.keys(answerAttempts).length !== questions.length) {
+      alert("Please answer all questions before submitting.");
+      return;
+    }
     setSubmitted(true);
   };
 
   const handleFinishTest = async () => {
-    // Calculate total time (in seconds)
+    // Calculate total time taken.
     const totalTime = testStartTime
       ? Math.round((new Date().getTime() - testStartTime.getTime()) / 1000)
       : 0;
 
-    // Calculate score
-    const correctCount = questions.reduce((total, question) => {
-      return total + (answers[question._id] === question.correctAnswer ? 1 : 0);
-    }, 0);
+    // Prepare answers array for the backend.
+    let correctCount = 0;
+    const processedAnswers = questions.map((q) => {
+      const attempts = answerAttempts[q._id] || [];
+      const finalAnswer = attempts[attempts.length - 1] || "";
+      const isCorrect = finalAnswer === q.correctAnswer;
+      if (isCorrect) correctCount++;
+
+      // Calculate wrong frequencies.
+      const wrongFrequency: Record<string, number> = {};
+      attempts.forEach((option) => {
+        if (option !== q.correctAnswer) {
+          wrongFrequency[option] = (wrongFrequency[option] || 0) + 1;
+        }
+      });
+
+      return {
+        questionId: q._id, // String id; conversion happens on the server.
+        userAnswer: finalAnswer,
+        isCorrect,
+        timeSpent: 0, // Optionally track per-question time.
+        wrongFrequency,
+        correctAnswer: q.correctAnswer || "",
+      };
+    });
 
     const score = Math.round((correctCount / questions.length) * 100);
 
@@ -155,10 +175,9 @@ export default function TestPage() {
       wrongAnswers: questions.length - correctCount,
       timeTaken: totalTime,
       category: category || "general",
-      answers, // you may send detailed answers if needed
+      answers: processedAnswers,
     };
 
-    // Optionally, submit test results
     if (!isStudyMode) {
       try {
         await fetch("/api/test-results", {
@@ -227,7 +246,6 @@ export default function TestPage() {
 
   return (
     <div className="min-h-screen bg-slate-950 py-12">
-      {/* Guest Mode Banner */}
       {!session && (
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
           <div className="bg-yellow-50 border-l-8 rounded-xl border-yellow-400 p-4 ">
@@ -241,14 +259,13 @@ export default function TestPage() {
           </div>
         </div>
       )}
-      
-      {/* Timer - Only show when timer is enabled */}
+
       {!timerDisabled && !submitted && (
         <div className="max-w-3xl mx-auto px-4 sm:px-6 justify-items-start lg:px-8 mb-6">
           <div className="bg-slate-800/80 w-1/3 rounded-3xl p-4 flex justify-center">
-            <CountdownTimer 
-              duration={testDuration} 
-              onTimeUp={handleSubmit} 
+            <CountdownTimer
+              duration={testDuration}
+              onTimeUp={handleSubmit}
               className="text-2xl text-white"
             />
           </div>
@@ -257,7 +274,11 @@ export default function TestPage() {
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {questions.map((question, index) => {
-          const selected = answers[question._id];
+          const attempts = answerAttempts[question._id] || [];
+          const finalAnswer = attempts[attempts.length - 1] || "";
+          const isAnswered = isStudyMode
+            ? answeredQuestions[question._id] || submitted
+            : submitted;
           return (
             <div
               key={question._id}
@@ -268,51 +289,39 @@ export default function TestPage() {
               </h2>
               <div className="space-y-3 text-gray-100">
                 {question.options.map((option, idx) => {
-                  // Debug log when submitted
-                  if (submitted) {
-                    console.log("Question:", question.question);
-                    console.log("Correct Answer:", question.correctAnswer);
-                    console.log("Selected Answer:", selected);
-                  }
-
                   let baseClasses =
                     "w-full text-left p-4 rounded-xl border cursor-pointer";
-                  
-                  // Check if this specific question has been answered in study mode or if the entire test is submitted
-                  const isQuestionAnswered = isStudyMode ? answeredQuestions[question._id] || submitted : submitted;
-                  
-                  if (isQuestionAnswered) {
-                    // Always show the correct answer in green.
+                  if (isAnswered) {
                     if (option === question.correctAnswer) {
                       baseClasses += " bg-green-900/30 border-green-500";
                     }
-                    // If the user selected a wrong answer, show it in red.
                     if (
-                      selected === option &&
+                      finalAnswer === option &&
                       option !== question.correctAnswer
                     ) {
                       baseClasses += " bg-red-900/30 border-red-500";
                     }
-
-                    // Other options remain with a neutral border.
                     if (
                       option !== question.correctAnswer &&
-                      selected !== option
+                      finalAnswer !== option
                     ) {
                       baseClasses += " border-gray-300";
                     }
                   } else {
                     baseClasses +=
-                      selected === option
+                      finalAnswer === option
                         ? " bg-blue-900/30 border-blue-600"
                         : " border-gray-300 hover:border-indigo-500 hover:bg-teal-50/10";
                   }
-
                   return (
                     <button
                       key={idx}
                       type="button"
-                      disabled={isStudyMode ? answeredQuestions[question._id] || submitted : submitted}
+                      disabled={
+                        isStudyMode
+                          ? answeredQuestions[question._id] || submitted
+                          : submitted
+                      }
                       onClick={() => handleAnswerSelect(question._id, option)}
                       className={baseClasses}
                     >
@@ -321,15 +330,16 @@ export default function TestPage() {
                   );
                 })}
               </div>
-              {/* Display explanation in Study Mode after answering this specific question */}
-              {isStudyMode && (answeredQuestions[question._id] || submitted) && question.explanation && (
-                <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-                  <h3 className="font-medium text-blue-800 mb-2">
-                    Explanation:
-                  </h3>
-                  <p className="text-blue-700">{question.explanation}</p>
-                </div>
-              )}
+              {isStudyMode &&
+                (answeredQuestions[question._id] || submitted) &&
+                question.explanation && (
+                  <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+                    <h3 className="font-medium text-blue-800 mb-2">
+                      Explanation:
+                    </h3>
+                    <p className="text-blue-700">{question.explanation}</p>
+                  </div>
+                )}
             </div>
           );
         })}
@@ -338,14 +348,16 @@ export default function TestPage() {
           {!submitted ? (
             <div className="flex justify-between w-full">
               <button
-                onClick={() => router.push(`${session ? "/dashboard" : "/"}`)} 
+                onClick={() => router.push(`${session ? "/dashboard" : "/"}`)}
                 className="px-6 py-2 bg-red-600/90 text-gray-200 rounded-xl hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSubmit}
-                disabled={Object.keys(answers).length !== questions.length}
+                disabled={
+                  Object.keys(answerAttempts).length !== questions.length
+                }
                 className="px-6 py-2 bg-indigo-600 text-gray-200 rounded-xl hover:bg-indigo-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
               >
                 Submit Answers

@@ -1,13 +1,16 @@
-import { Schema, model, models } from "mongoose";
+import { Schema, model, models, Document } from "mongoose";
 
 export interface ITestAnswer {
-  questionId: Schema.Types.ObjectId;
+  questionId: string;
   userAnswer: string;
   isCorrect: boolean;
   timeSpent: number;
+  wrongFrequency?: Record<string, number>; // Use Record<string, number> or simple Object
+  correctAnswer: string;
 }
 
-export interface ITestResult {
+export interface ITestResult extends Document {
+  // Extend Document for Mongoose methods
   userId?: string;
   isGuest: boolean;
   category: string;
@@ -21,11 +24,44 @@ export interface ITestResult {
   updatedAt: Date;
 }
 
+// Define the schema for the answers subdocument separately for clarity
+const answerSchema = new Schema<ITestAnswer>(
+  {
+    questionId: {
+      type: String, // Expect a string ID
+      required: true,
+    },
+    userAnswer: {
+      type: String,
+      required: true,
+    },
+    isCorrect: {
+      type: Boolean,
+      required: true,
+    },
+    timeSpent: {
+      type: Number,
+      required: true,
+      min: 0,
+    },
+    wrongFrequency: {
+      type: Object, // Store as a plain JavaScript object
+      of: Number, // Values within the object should be numbers
+      default: {},
+    },
+    correctAnswer: {
+      type: String,
+      required: true,
+    },
+  },
+  { _id: false }
+); // Prevent Mongoose from creating an _id for each answer
+
 const testResultSchema = new Schema<ITestResult>(
   {
     userId: {
       type: String,
-      required: false,
+      required: false, // Allow null/undefined for guest users
       index: true,
     },
     isGuest: {
@@ -64,31 +100,10 @@ const testResultSchema = new Schema<ITestResult>(
       required: true,
       min: 0,
     },
-    answers: [
-      {
-        questionId: {
-          type: Schema.Types.ObjectId,
-          ref: "Question",
-          required: true,
-        },
-        userAnswer: {
-          type: String,
-          required: true,
-        },
-        isCorrect: {
-          type: Boolean,
-          required: true,
-        },
-        timeSpent: {
-          type: Number,
-          required: true,
-          min: 0,
-        },
-      },
-    ],
+    answers: [answerSchema], // Use the defined answer schema
   },
   {
-    timestamps: true,
+    timestamps: true, // Automatically add createdAt and updatedAt
   }
 );
 
@@ -122,6 +137,8 @@ testResultSchema.statics.getUserStats = async function (userId: string) {
   return stats[0] || null;
 };
 
-const TestResult = models.TestResult || model("TestResult", testResultSchema);
+// Prevent model recompilation in Next.js dev environment
+const TestResult =
+  models.TestResult || model<ITestResult>("TestResult", testResultSchema);
 
 export default TestResult;
