@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { formatDuration } from "@/lib/utils";
 
 interface CountdownTimerProps {
-  duration: number; // in seconds
+  duration: number; // in seconds (now used as max duration)
   onTimeUp?: () => void;
   className?: string;
 }
@@ -14,31 +14,33 @@ export default function CountdownTimer({
   onTimeUp,
   className = "",
 }: CountdownTimerProps) {
-  const [timeLeft, setTimeLeft] = useState(duration);
+  const [elapsedTime, setElapsedTime] = useState(0);
 
   useEffect(() => {
-    if (timeLeft <= 0) {
+    // Check if we've reached the maximum duration (if specified)
+    if (duration > 0 && elapsedTime >= duration) {
       onTimeUp?.();
       return;
     }
 
     const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
+      setElapsedTime((prev) => {
+        const newTime = prev + 1;
+        // If duration is specified and we've reached it, trigger onTimeUp
+        if (duration > 0 && newTime >= duration) {
           clearInterval(timer);
           onTimeUp?.();
-          return 0;
         }
-        return prev - 1;
+        return newTime;
       });
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [timeLeft, onTimeUp]);
+  }, [elapsedTime, duration, onTimeUp]);
 
   return (
-    <div className={`font-mono text-lg ${className}`}>
-      {formatDuration(timeLeft)}
+    <div className={`font-mono text-2xl ${className}`}>
+      {formatDuration(elapsedTime)}
     </div>
   );
 }

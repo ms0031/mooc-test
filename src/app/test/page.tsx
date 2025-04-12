@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import CountdownTimer from "@/components/ui/CountdownTimer";
 
 interface Question {
   _id: string;
@@ -18,7 +19,11 @@ export default function TestPage() {
   const { data: session, status } = useSession();
   const category = searchParams.get("category");
   const isStudyMode = searchParams.get("mode") === "study";
-
+  const timerDisabled = searchParams.get("timer") === "off" || isStudyMode;
+  
+  // Default test duration: 30 minutes (1800 seconds)
+  const [testDuration] = useState(1800);
+  
   const [questions, setQuestions] = useState<Question[]>([]);
   // Answers keyed by question id
   const [answers, setAnswers] = useState<Record<string, string>>({});
@@ -236,6 +241,19 @@ export default function TestPage() {
           </div>
         </div>
       )}
+      
+      {/* Timer - Only show when timer is enabled */}
+      {!timerDisabled && !submitted && (
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 justify-items-start lg:px-8 mb-6">
+          <div className="bg-slate-800/80 w-1/3 rounded-3xl p-4 flex justify-center">
+            <CountdownTimer 
+              duration={testDuration} 
+              onTimeUp={handleSubmit} 
+              className="text-2xl text-white"
+            />
+          </div>
+        </div>
+      )}
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {questions.map((question, index) => {
@@ -316,23 +334,23 @@ export default function TestPage() {
           );
         })}
 
-        <div className="">
+        <div className="flex justify-center mt-8">
           {!submitted ? (
-            <div className="flex justify-between">
+            <div className="flex justify-between w-full">
               <button
-                onClick={() => router.push(`${session ? "/dashboard" : "/"}`)}
-                className="px-6 py-2  bg-red-600/90 text-gray-200 rounded-xl hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
-            >
-              Cancel
-            </button>
-            <button
-              onClick={handleSubmit}
-              disabled={Object.keys(answers).length !== questions.length}
-              className="px-6 py-2  bg-indigo-600 text-gray-200 rounded-xl hover:bg-indigo-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
-            >
-              Submit Answers
+                onClick={() => router.push(`${session ? "/dashboard" : "/"}`)} 
+                className="px-6 py-2 bg-red-600/90 text-gray-200 rounded-xl hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
+              >
+                Cancel
               </button>
-              </div>
+              <button
+                onClick={handleSubmit}
+                disabled={Object.keys(answers).length !== questions.length}
+                className="px-6 py-2 bg-indigo-600 text-gray-200 rounded-xl hover:bg-indigo-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
+              >
+                Submit Answers
+              </button>
+            </div>
           ) : (
             <button
               onClick={handleFinishTest}
