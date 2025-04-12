@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import connectDB from "@/lib/mongodb";
-import TestResult from "@/models/TestResult"; // Import the updated model
-import { authOptions } from "../auth/[...nextauth]/route";
+import TestResult from "@/models/TestResult";
+import { authOptions } from "@/lib/auth";
 import { ITestAnswer } from "@/models/TestResult"; // Import the interface if needed
 
 export async function POST(request: Request) {
