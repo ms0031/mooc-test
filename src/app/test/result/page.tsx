@@ -58,26 +58,26 @@ export default function TestResultPage() {
   const encodedMessage = encodeURIComponent(shareMessage);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-slate-950 py-12">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white shadow-xl rounded-lg overflow-hidden">
+        <div className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] shadow-xl rounded-lg overflow-hidden">
           {/* Header */}
-          <div className="bg-indigo-600 px-6 py-4">
-            <h1 className="text-2xl font-bold text-white">Test Results</h1>
+          <div className="bg-white/5  px-6 py-4">
+            <h1 className="text-2xl font-bold text-gray-200">Test Results</h1>
           </div>
 
           {/* Result Summary */}
           <div className="p-6">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center h-24 w-24 rounded-full bg-indigo-100 mb-4">
-                <span className="text-3xl font-bold text-indigo-600">
+              <div className="inline-flex items-center justify-center h-24 w-25 rounded-full bg-indigo-100 mb-4">
+                <span className="text-3xl font-bold text-teal-600">
                   {testResult.score}%
                 </span>
               </div>
-              <h2 className="text-xl font-semibold text-gray-900">
+              <h2 className="text-xl font-semibold text-teal-500">
                 {testResult.score >= 70 ? "Great job!" : "Keep practicing!"}
               </h2>
-              <p className="text-gray-500 mt-1">
+              <p className="text-gray-300 mt-1">
                 You answered {testResult.correctAnswers} out of{" "}
                 {testResult.totalQuestions} questions correctly.
               </p>
@@ -85,69 +85,36 @@ export default function TestResultPage() {
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 gap-4 mb-8">
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h3 className="text-sm font-medium text-gray-500">Category</h3>
-                <p className="mt-1 text-lg font-semibold text-gray-900 capitalize">
+              <div className="bg-blue-500/15   p-4 rounded-lg">
+                <h3 className="text-sm font-medium text-gray-200">Category</h3>
+                <p className="mt-1 text-lg font-semibold text-blue-400 capitalize">
                   {testResult.category || "General"}
                 </p>
               </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h3 className="text-sm font-medium text-gray-500">
+              <div className="bg-blue-500/15  p-4 rounded-lg">
+                <h3 className="text-sm font-medium text-gray-200">
                   Time Taken
                 </h3>
-                <p className="mt-1 text-lg font-semibold text-gray-900">
+                <p className="mt-1 text-lg font-semibold text-blue-400">
                   {Math.floor(testResult.timeTaken / 60)}m{" "}
                   {testResult.timeTaken % 60}s
                 </p>
               </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h3 className="text-sm font-medium text-gray-500">
+              <div className="bg-green-500/20  p-4 rounded-lg">
+                <h3 className="text-sm font-medium text-gray-200">
                   Correct Answers
                 </h3>
-                <p className="mt-1 text-lg font-semibold text-gray-900">
+                <p className="mt-1 text-lg font-semibold text-green-400">
                   {testResult.correctAnswers} ({Math.round((testResult.correctAnswers / testResult.totalQuestions) * 100)}%)
                 </p>
               </div>
-              <div className="bg-gray-50 p-4 rounded-lg">
-                <h3 className="text-sm font-medium text-gray-500">
+              <div className="bg-red-500/20  p-4 rounded-lg">
+                <h3 className="text-sm font-medium text-gray-200">
                   Wrong Answers
                 </h3>
-                <p className="mt-1 text-lg font-semibold text-gray-900">
+                <p className="mt-1 text-lg font-semibold text-red-400">
                   {testResult.wrongAnswers} ({Math.round((testResult.wrongAnswers / testResult.totalQuestions) * 100)}%)
                 </p>
-              </div>
-            </div>
-
-            {/* Social Sharing */}
-            <div className="mb-8">
-              <h3 className="text-lg font-medium text-gray-900 mb-3">
-                Share Your Results
-              </h3>
-              <div className="flex space-x-3">
-                <a
-                  href={`https://twitter.com/intent/tweet?text=${encodedMessage}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#1DA1F2] hover:bg-opacity-90"
-                >
-                  Twitter
-                </a>
-                <a
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}&summary=${encodedMessage}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#0077B5] hover:bg-opacity-90"
-                >
-                  LinkedIn
-                </a>
-                <a
-                  href={`https://api.whatsapp.com/send?text=${encodedMessage}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#25D366] hover:bg-opacity-90"
-                >
-                  WhatsApp
-                </a>
               </div>
             </div>
 
@@ -182,13 +149,19 @@ export default function TestResultPage() {
             <div className="flex justify-between">
               <Button
                 variant="outline"
-                onClick={() => router.push("/")}
+                onClick={() => router.push("/dashboard")}
               >
                 Back to Home
               </Button>
               <Button
+                variant="destructive"
+                onClick={() => router.push("/dasboard")}
+              >
+                Wrong Answers
+              </Button>
+              <Button
                 variant="primary"
-                onClick={() => router.push("/test")}
+                onClick={() => router.push("/test/settings")}
               >
                 Take Another Test
               </Button>
