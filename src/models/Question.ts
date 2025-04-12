@@ -1,6 +1,7 @@
 import { Schema, model, models } from "mongoose";
 
 export interface IQuestion {
+  qid: string;
   category: string;
   question: string;
   options: string[];
@@ -14,6 +15,12 @@ export interface IQuestion {
 
 const questionSchema = new Schema<IQuestion>(
   {
+    qid: {
+      type: String,
+      required: [true, "Question ID (qid) is required"],
+      unique: true,
+      index: true,
+    },
     category: {
       type: String,
       required: [true, "Category is required"],
@@ -29,7 +36,9 @@ const questionSchema = new Schema<IQuestion>(
       type: [String],
       required: [true, "Options are required"],
       validate: {
-        validator: (options: string[]) => options.length >= 2,
+        validator: function (this: IQuestion, options: string[]) {
+          return options.length >= 2;
+        },
         message: "At least two options are required",
       },
     },
@@ -67,6 +76,7 @@ questionSchema.index({ category: 1 });
 questionSchema.index({ tags: 1 });
 questionSchema.index({ difficulty: 1 });
 
-const Question = models.Question || model("Question", questionSchema);
+const Question =
+  models.Question || model<IQuestion>("Question", questionSchema);
 
 export default Question;

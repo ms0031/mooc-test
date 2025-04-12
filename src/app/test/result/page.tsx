@@ -14,10 +14,12 @@ interface TestResult {
   timeTaken: number;
   category: string;
   answers: Array<{
-    questionId: string;
+    qid: string;
     userAnswer: string;
     isCorrect: boolean;
     timeSpent: number;
+    wrongFrequency?: Record<string, number>;
+    correctAnswer: string;
   }>;
 }
 
@@ -105,7 +107,12 @@ export default function TestResultPage() {
                   Correct Answers
                 </h3>
                 <p className="mt-1 text-lg font-semibold text-green-400">
-                  {testResult.correctAnswers} ({Math.round((testResult.correctAnswers / testResult.totalQuestions) * 100)}%)
+                  {testResult.correctAnswers} (
+                  {Math.round(
+                    (testResult.correctAnswers / testResult.totalQuestions) *
+                      100
+                  )}
+                  %)
                 </p>
               </div>
               <div className="bg-red-500/20  p-4 rounded-lg">
@@ -113,7 +120,11 @@ export default function TestResultPage() {
                   Wrong Answers
                 </h3>
                 <p className="mt-1 text-lg font-semibold text-red-400">
-                  {testResult.wrongAnswers} ({Math.round((testResult.wrongAnswers / testResult.totalQuestions) * 100)}%)
+                  {testResult.wrongAnswers} (
+                  {Math.round(
+                    (testResult.wrongAnswers / testResult.totalQuestions) * 100
+                  )}
+                  %)
                 </p>
               </div>
             </div>

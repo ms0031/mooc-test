@@ -7,9 +7,10 @@ import CountdownTimer from "@/components/ui/CountdownTimer";
 
 interface Question {
   _id: string;
+  qid: string; // Unique identifier for the question
   question: string;
   options: string[];
-  correctAnswer?: string;
+  correctAnswer: string;
   explanation?: string;
 }
 
@@ -157,7 +158,7 @@ export default function TestPage() {
       });
 
       return {
-        questionId: q._id, // String id; conversion happens on the server.
+        qid: q.qid, // Use qid instead of _id
         userAnswer: finalAnswer,
         isCorrect,
         timeSpent: 0, // Optionally track per-question time.

@@ -4,6 +4,7 @@ import questionsByWeekData from "../../../../questions_psychology_of_learning.js
 
 // Define interfaces.
 interface Question {
+  qid: string; // Add qid to interface
   question: string;
   options: string[];
   answer: string;
@@ -50,10 +51,11 @@ export async function GET(request: Request) {
       selectedQuestions = questionsByWeek["week1"] || [];
     }
 
-    // Add _id to each question and map "answer" to "correctAnswer" for frontend consistency.
+    // Add _id to each question and map "answer" to "correctAnswer" for frontend consistency
     const questionsWithIds = selectedQuestions.map((q, index) => ({
       ...q,
-      _id: `psychology_${index}`,
+      _id: `question_${index}`,
+      qid: q.qid, // Ensure qid is included
       correctAnswer: q.answer,
     }));
 

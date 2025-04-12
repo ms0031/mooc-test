@@ -1,5 +1,7 @@
 import { DefaultSession } from "next-auth";
-import { IUser, IQuestion, ITestResult, ITestAnswer } from "@/models/User";
+import { IUser } from "@/models/User";
+import { IQuestion } from "@/models/Question";
+import { ITestResult, ITestAnswer } from "@/models/TestResult";
 
 // Extend next-auth session type
 declare module "next-auth" {
@@ -54,10 +56,12 @@ export interface RegisterData extends LoginCredentials {
 
 // Test Types
 export interface TestAnswer {
-  questionId: string;
+  qid: string; // Changed from questionId to qid
   userAnswer: string;
   isCorrect: boolean;
   timeSpent: number;
+  wrongFrequency?: Record<string, number>;
+  correctAnswer: string;
 }
 
 export interface TestSubmission {

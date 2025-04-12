@@ -43,7 +43,7 @@ export async function POST(request: Request) {
 
     // Prepare answers data, ensuring structure matches the schema
     const processedAnswers: ITestAnswer[] = answers.map((ans: any) => ({
-      questionId: String(ans.questionId), // Ensure questionId is a string
+      qid: String(ans.qid), // Changed from questionId to qid
       userAnswer: String(ans.userAnswer),
       isCorrect: Boolean(ans.isCorrect),
       timeSpent: Number(ans.timeSpent) || 0,

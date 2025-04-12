@@ -1,7 +1,7 @@
 import { Schema, model, models, Document } from "mongoose";
 
 export interface ITestAnswer {
-  questionId: string;
+  qid: string; // Changed from questionId to qid
   userAnswer: string;
   isCorrect: boolean;
   timeSpent: number;
@@ -27,7 +27,8 @@ export interface ITestResult extends Document {
 // Define the schema for the answers subdocument separately for clarity
 const answerSchema = new Schema<ITestAnswer>(
   {
-    questionId: {
+    qid: {
+      // Changed from questionId to qid
       type: String, // Expect a string ID
       required: true,
     },
