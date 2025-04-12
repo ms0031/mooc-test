@@ -7,14 +7,8 @@ interface HomeContentProps {
 }
 
 export default function HomeContent({ session }: HomeContentProps) {
-  return (
-    <div className="w-full relative bg-slate-950 overflow-hidden">
-<div className="w-[1440px] h-[900px] left-0 top-0 absolute opacity-25 pointer-events-none">
-<div className="w-[675px] h-80 left-[202px] top-[190px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
-<div className="w-[675px] h-80 left-[577px] top-[190px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
-</div>
-      
-      <main className="relative min-h-screen">
+  return (   
+      <main className="relative bg-slate-950 min-h-screen">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="text-center">
             <h1 className="text-4xl font-bold font-raleway tracking-tight text-white sm:text-5xl md:text-6xl">
@@ -90,6 +84,5 @@ export default function HomeContent({ session }: HomeContentProps) {
           </div>
         </div>
       </main>
-    </div>
   );
 }
