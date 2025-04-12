@@ -1,30 +1,53 @@
 import { NextResponse } from "next/server";
-import { questionsByWeek } from "../../../../questions_psychology_of_learning";
+// Import the fixed JSON file. Adjust the relative path if necessary.
+import questionsByWeekData from "../../../../questions_psychology_of_learning.json";
+
+// Define an interface that includes an index signature.
+interface Question {
+  question: string;
+  options: string[];
+  answer: string;
+}
+
+interface QuestionsByWeek {
+  [key: string]: Question[];
+}
+
+// Explicitly cast the imported JSON to the correct type.
+const questionsByWeek = questionsByWeekData as QuestionsByWeek;
 
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
     const shuffleWeeks = searchParams.get("shuffleWeeks") === "true";
+    const weeksParam = searchParams.get("weeks");
     const week = searchParams.get("week");
-    
-    let selectedQuestions = [];
-    
+
+    let selectedQuestions: Question[] = [];
+
     if (shuffleWeeks) {
-      // Combine questions from all weeks and shuffle them
+      // Combine questions from all weeks and shuffle them.
       const allQuestions = Object.values(questionsByWeek).flat();
-      selectedQuestions = shuffleArray(allQuestions).slice(0, 10); // Get 10 random questions
+      selectedQuestions = shuffleArray(allQuestions);
+    } else if (weeksParam) {
+      // Handle multiple weeks provided as a comma‑separated list.
+      const selectedWeeks = weeksParam.split(",").map((w) => w.trim());
+      selectedQuestions = selectedWeeks.flatMap(
+        (w) => questionsByWeek[w] || []
+      );
     } else if (week && questionsByWeek[week]) {
-      // Get questions from specific week
+      // Return questions for the specific week.
       selectedQuestions = questionsByWeek[week];
     } else {
-      // Default: get questions from week1
-      selectedQuestions = questionsByWeek.week1 || [];
+      // Default to week1 questions if nothing is provided.
+      selectedQuestions = questionsByWeek["week1"] || [];
     }
-    
-    // Add _id to each question to match the expected format in the frontend
+
+    // Add _id to each question and map "answer" to "correctAnswer" for frontend consistency.
     const questionsWithIds = selectedQuestions.map((q, index) => ({
       ...q,
       _id: `psychology_${index}`,
+      correctAnswer: q.answer,
     }));
 
     return NextResponse.json({ questions: questionsWithIds });
@@ -37,8 +60,8 @@ export async function GET(request: Request) {
   }
 }
 
-// Function to shuffle array
-function shuffleArray(array: any[]) {
+// Helper function to shuffle an array.
+function shuffleArray(array: Question[]) {
   const newArray = [...array];
   for (let i = newArray.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

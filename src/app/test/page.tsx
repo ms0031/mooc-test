@@ -20,69 +20,50 @@ export default function TestPage() {
   const isStudyMode = searchParams.get("mode") === "study";
 
   const [questions, setQuestions] = useState<Question[]>([]);
-  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const [selectedAnswer, setSelectedAnswer] = useState<string>("");
-  const [isAnswerSubmitted, setIsAnswerSubmitted] = useState(false);
-  const [testStartTime, setTestStartTime] = useState<Date>();
-  const [questionStartTime, setQuestionStartTime] = useState<Date>();
-  const [answers, setAnswers] = useState<
-    Array<{
-      questionId: string;
-      userAnswer: string;
-      isCorrect: boolean;
-      timeSpent: number;
-    }>
-  >([]);
+  // Answers keyed by question id
+  const [answers, setAnswers] = useState<Record<string, string>>({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  const [showTimer, setShowTimer] = useState(searchParams.get("timer") !== "off");
-  const [randomizeOptions, setRandomizeOptions] = useState(searchParams.get("randomize") === "true");
+  const [submitted, setSubmitted] = useState(false);
+  const [testStartTime, setTestStartTime] = useState<Date>(new Date());
+  const [randomizeOptions, setRandomizeOptions] = useState(
+    searchParams.get("randomize") === "true"
+  );
 
   useEffect(() => {
     // Allow guest access from home page or if in study mode
     const isGuestAccess = searchParams.get("category") !== null;
-    
     if (status === "unauthenticated" && !isStudyMode && !isGuestAccess) {
       router.push("/login");
       return;
     }
-
     fetchQuestions();
+    // Set test start time
+    setTestStartTime(new Date());
   }, [status, category, isStudyMode, router]);
-
-  useEffect(() => {
-    if (questions.length > 0) {
-      setTestStartTime(new Date());
-      setQuestionStartTime(new Date());
-    }
-  }, [questions]);
 
   const fetchQuestions = async () => {
     try {
-      let apiUrl = "/api/questions";
-      let queryParams = new URLSearchParams();
-      
-      // Handle psychology of learning questions differently
-      if (category === "psychology_of_learning") {
-        apiUrl = "/api/psychology-questions";
-        
-        // Check if we should shuffle weeks or use a specific week
-        const shuffleWeeks = searchParams.get("shuffleWeeks") === "true";
-        if (shuffleWeeks) {
-          queryParams.append("shuffleWeeks", "true");
-        } else {
-          const week = searchParams.get("week") || "week1";
-          queryParams.append("week", week);
-        }
+      const apiUrl = "/api/psychology-questions";
+      const queryParams = new URLSearchParams();
+
+      const shuffleWeeksVal = searchParams.get("shuffleWeeks") === "true";
+      const weeksParam = searchParams.get("weeks");
+
+      if (shuffleWeeksVal) {
+        // Display all questions of all weeks in shuffled sequence.
+        queryParams.append("shuffleWeeks", "true");
+      } else if (weeksParam) {
+        // Display all questions for the selected weeks.
+        queryParams.append("weeks", weeksParam);
       } else {
-        // For other categories, use the standard API
-        if (category) {
-          queryParams.append("category", category);
-        }
+        const week = searchParams.get("week") || "week1";
+        queryParams.append("week", week);
       }
-      
+
       const response = await fetch(`${apiUrl}?${queryParams.toString()}`);
       const data = await response.json();
+      console.log("Fetched questions data:", data); // Debug log
 
       if (!response.ok) {
         throw new Error(data.message || "Failed to fetch questions");
@@ -93,9 +74,16 @@ export default function TestPage() {
       if (randomizeOptions) {
         fetchedQuestions = fetchedQuestions.map((q: Question) => ({
           ...q,
-          options: shuffleArray([...q.options])
+          options: shuffleArray([...q.options]),
         }));
       }
+
+      // Verify correct answer exists for each question
+      fetchedQuestions.forEach((q: Question, index: number) => {
+        if (!q.correctAnswer) {
+          console.warn(`Question ${index + 1} is missing correctAnswer:`, q);
+        }
+      });
 
       setQuestions(fetchedQuestions);
     } catch (error) {
@@ -115,91 +103,57 @@ export default function TestPage() {
     return array;
   };
 
-  const handleAnswerSubmit = async () => {
-    if (!selectedAnswer) return;
-
-    const currentQuestion = questions[currentQuestionIndex];
-    const isCorrect = currentQuestion.correctAnswer === selectedAnswer;
-    const timeSpent = questionStartTime
-      ? Math.round((new Date().getTime() - questionStartTime.getTime()) / 1000)
-      : 0;
-
-    const answerData = {
-      questionId: currentQuestion._id,
-      userAnswer: selectedAnswer,
-      isCorrect,
-      timeSpent,
-    };
-
-    setAnswers([...answers, answerData]);
-    setIsAnswerSubmitted(true);
-
-    if (
-      currentQuestionIndex === questions.length - 1 ||
-      (isStudyMode && isAnswerSubmitted)
-    ) {
-      // Test completed
-      const totalTime = testStartTime
-        ? Math.round((new Date().getTime() - testStartTime.getTime()) / 1000)
-        : 0;
-
-      if (!isStudyMode) {
-        // Submit test results
-        try {
-          await fetch("/api/test-results", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              category: category || "general",
-              answers: [...answers, answerData],
-              timeTaken: totalTime,
-            }),
-          });
-        } catch (error) {
-          console.error("Error submitting test results:", error);
-        }
-      }
-
-      // Prepare result data for the result page
-      const resultData = {
-        score: Math.round(
-          ((answers.filter((a) => a.isCorrect).length + (isCorrect ? 1 : 0)) /
-            questions.length) *
-            100
-        ),
-        totalQuestions: questions.length,
-        correctAnswers: answers.filter((a) => a.isCorrect).length + (isCorrect ? 1 : 0),
-        wrongAnswers: answers.filter((a) => !a.isCorrect).length + (!isCorrect ? 1 : 0),
-        timeTaken: totalTime,
-        category: category || "general",
-        answers: [...answers, answerData],
-      };
-
-      // Navigate to results page
-      router.push(
-        `/test/result?result=${encodeURIComponent(JSON.stringify(resultData))}`
-      );
-      return;
-    }
-
-    // Move to next question
-    if (isStudyMode && !isAnswerSubmitted) {
-      return; // In study mode, wait for user to proceed after seeing the answer
-    }
-
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
-    setSelectedAnswer("");
-    setIsAnswerSubmitted(false);
-    setQuestionStartTime(new Date());
+  const handleAnswerSelect = (questionId: string, option: string) => {
+    if (submitted) return;
+    setAnswers((prev) => ({ ...prev, [questionId]: option }));
   };
 
-  const handleNextQuestion = () => {
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
-    setSelectedAnswer("");
-    setIsAnswerSubmitted(false);
-    setQuestionStartTime(new Date());
+  const handleSubmit = () => {
+    // You can add a check to ensure all questions are answered
+    setSubmitted(true);
+  };
+
+  const handleFinishTest = async () => {
+    // Calculate total time (in seconds)
+    const totalTime = testStartTime
+      ? Math.round((new Date().getTime() - testStartTime.getTime()) / 1000)
+      : 0;
+
+    // Calculate score
+    const correctCount = questions.reduce((total, question) => {
+      return total + (answers[question._id] === question.correctAnswer ? 1 : 0);
+    }, 0);
+
+    const score = Math.round((correctCount / questions.length) * 100);
+
+    const resultData = {
+      score,
+      totalQuestions: questions.length,
+      correctAnswers: correctCount,
+      wrongAnswers: questions.length - correctCount,
+      timeTaken: totalTime,
+      category: category || "general",
+      answers, // you may send detailed answers if needed
+    };
+
+    // Optionally, submit test results
+    if (!isStudyMode) {
+      try {
+        await fetch("/api/test-results", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(resultData),
+        });
+      } catch (error) {
+        console.error("Error submitting test results:", error);
+      }
+    }
+
+    router.push(
+      `/test/result?result=${encodeURIComponent(JSON.stringify(resultData))}`
+    );
   };
 
   if (isLoading) {
@@ -235,7 +189,9 @@ export default function TestPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">No Questions Available</h1>
-          <p className="mb-4">There are no questions available for this category.</p>
+          <p className="mb-4">
+            There are no questions available for this category.
+          </p>
           <button
             onClick={() => router.push("/")}
             className="px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700"
@@ -246,8 +202,6 @@ export default function TestPage() {
       </div>
     );
   }
-
-  const currentQuestion = questions[currentQuestionIndex];
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
@@ -266,78 +220,98 @@ export default function TestPage() {
         </div>
       )}
 
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white shadow-xl rounded-lg overflow-hidden">
-          {/* Header with progress */}
-          <div className="bg-indigo-600 px-6 py-4 flex justify-between items-center">
-            <h1 className="text-xl font-bold text-white">
-              Question {currentQuestionIndex + 1} of {questions.length}
-            </h1>
-            {showTimer && questionStartTime && (
-              <div className="text-white font-mono">
-                Time: {Math.floor((new Date().getTime() - questionStartTime.getTime()) / 1000)}s
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        {questions.map((question, index) => {
+          const selected = answers[question._id];
+          return (
+            <div
+              key={question._id}
+              className="bg-white shadow-xl rounded-lg p-6"
+            >
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">
+                {index + 1}. {question.question}
+              </h2>
+              <div className="space-y-3">
+                {question.options.map((option, idx) => {
+                  // Debug log when submitted
+                  if (submitted) {
+                    console.log("Question:", question.question);
+                    console.log("Correct Answer:", question.correctAnswer);
+                    console.log("Selected Answer:", selected);
+                  }
+
+                  let baseClasses =
+                    "w-full text-left p-4 rounded-lg border cursor-pointer";
+                  if (submitted) {
+                    // Always show the correct answer in green.
+                    if (option === question.correctAnswer) {
+                      baseClasses += " bg-green-100 border-green-500";
+                    }
+                    // If the user selected a wrong answer, show it in red.
+                    if (
+                      selected === option &&
+                      option !== question.correctAnswer
+                    ) {
+                      baseClasses += " bg-red-100 border-red-500";
+                    }
+
+                    // Other options remain with a neutral border.
+                    if (
+                      option !== question.correctAnswer &&
+                      selected !== option
+                    ) {
+                      baseClasses += " border-gray-300";
+                    }
+                  } else {
+                    baseClasses +=
+                      selected === option
+                        ? " bg-indigo-100 border-indigo-500"
+                        : " border-gray-300 hover:border-indigo-500 hover:bg-indigo-50";
+                  }
+
+                  return (
+                    <button
+                      key={idx}
+                      type="button"
+                      disabled={submitted}
+                      onClick={() => handleAnswerSelect(question._id, option)}
+                      className={baseClasses}
+                    >
+                      {option}
+                    </button>
+                  );
+                })}
               </div>
-            )}
-          </div>
-
-          {/* Question */}
-          <div className="p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-6">
-              {currentQuestion.question}
-            </h2>
-
-            {/* Options */}
-            <div className="space-y-3">
-              {currentQuestion.options.map((option, index) => (
-                <button
-                  key={index}
-                  disabled={isAnswerSubmitted}
-                  onClick={() => setSelectedAnswer(option)}
-                  className={`w-full text-left p-4 rounded-lg border ${isAnswerSubmitted
-                    ? option === currentQuestion.correctAnswer
-                      ? "bg-green-100 border-green-500"
-                      : option === selectedAnswer
-                        ? "bg-red-100 border-red-500"
-                        : "border-gray-300"
-                    : selectedAnswer === option
-                      ? "bg-indigo-100 border-indigo-500"
-                      : "border-gray-300 hover:border-indigo-500 hover:bg-indigo-50"
-                    }`}
-                >
-                  {option}
-                </button>
-              ))}
-            </div>
-
-            {/* Explanation in Study Mode */}
-            {isStudyMode &&
-              isAnswerSubmitted &&
-              currentQuestion.explanation && (
-                <div className="mt-6 p-4 bg-blue-50 rounded-lg">
-                  <h3 className="font-medium text-blue-800 mb-2">Explanation:</h3>
-                  <p className="text-blue-700">{currentQuestion.explanation}</p>
+              {/* Display explanation in Study Mode after submission */}
+              {isStudyMode && submitted && question.explanation && (
+                <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+                  <h3 className="font-medium text-blue-800 mb-2">
+                    Explanation:
+                  </h3>
+                  <p className="text-blue-700">{question.explanation}</p>
                 </div>
               )}
-
-            {/* Action Button */}
-            <div className="mt-6 flex justify-end">
-              <button
-                onClick={
-                  isAnswerSubmitted && isStudyMode
-                    ? handleNextQuestion
-                    : handleAnswerSubmit
-                }
-                disabled={!selectedAnswer && !isAnswerSubmitted}
-                className="px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:bg-indigo-300 disabled:cursor-not-allowed"
-              >
-                {isAnswerSubmitted
-                  ? currentQuestionIndex === questions.length - 1
-                    ? "Finish Test"
-                    : "Next Question"
-                  : "Submit Answer"}
-              </button>
             </div>
-          </div>
+          );
+        })}
+
+        <div className="flex justify-end">
+          {!submitted ? (
+            <button
+              onClick={handleSubmit}
+              disabled={Object.keys(answers).length !== questions.length}
+              className="px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:bg-indigo-300 disabled:cursor-not-allowed"
+            >
+              Submit Answers
+            </button>
+          ) : (
+            <button
+              onClick={handleFinishTest}
+              className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+            >
+              Finish Test
+            </button>
+          )}
         </div>
       </div>
     </div>
