@@ -51,8 +51,8 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 ">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="min-h-screen w-full bg-slate-950 overflow-x-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-200">
             Welcome back, {session?.user?.name}!
@@ -127,10 +127,10 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          <div className="w-[1440px] h-[900px] left-0 top-0 absolute opacity-30 pointer-events-none">
-        <div className="w-[675px] h-80 left-[202px] top-[790px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
-        <div className="w-[675px] h-80 left-[800px] top-[840px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
-      </div>
+          <div className="w-screen h-screen left-0 top-0 absolute opacity-30 pointer-events-none" style={{ zIndex: 0 }}>
+  <div className="w-64 h-64 absolute bg-violet-700 rounded-full blur-[200px]" style={{ left: '100px', bottom: '0px' }}></div>
+  <div className="w-64 h-64 absolute bg-violet-700 rounded-full blur-[200px]" style={{ left: '700px', bottom: '0px' }}></div>
+</div>
           {/* Main Content Area */}
           <div className="lg:col-span-3 space-y-6">
             <div className="bg-white/5 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden">

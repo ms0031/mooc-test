@@ -10,15 +10,11 @@ export default function Navbar() {
   const router = useRouter();
 
   return (
-    <nav className="bg-slate-950 ">
-    <div className="w-screen left-0 top-0 absolute opacity-30 pointer-events-none">
-    <div className="w-screen h-80 sm:left-[50px] sm:top-[100px]
-              md:left-[202px] md:top-[190px]
-              lg:left-[300px] lg:top-[250px] realtive bg-violet-700 rounded-full blur-[200px]"></div>
-    <div className="w-screen h-80 sm:left-[100px] sm:top-[150px]
-              md:left-[800px] md:top-[190px]
-              lg:left-[900px] lg:top-[250px] relative bg-violet-700  rounded-full blur-[200px]"></div>
-    </div>
+    <nav className="bg-slate-950 relative">
+    <div className="w-full min-h-full left-0 top-0 fixed opacity-20 pointer-events-none">
+  <div className="w-[675px] h-[320px] absolute left-[-150px] top-[50px] bg-violet-700 rounded-full blur-[200px]"></div>
+  <div className="w-[675px] h-[320px] absolute right-[-150px] bottom-[-100px] bg-violet-700 rounded-full blur-[200px]"></div>
+</div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">
