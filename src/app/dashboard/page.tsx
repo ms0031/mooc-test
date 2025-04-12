@@ -73,7 +73,7 @@ export default function Dashboard() {
                 <div className="space-y-3">
                   <Button
                     variant="primary"
-                    className="w-full"
+                    className="w-full py-6 text-lg"
                     onClick={() => router.push("/test/settings")}
                   >
                     Customize Test
@@ -90,35 +90,35 @@ export default function Dashboard() {
                 <div className="space-y-3">
                   <Button
                     variant="outline"
-                    className="w-full"
+                    className="w-full py-6 text-[16px]"
                     onClick={() => router.push("/dashboard/history")}
                   >
                     Test History
                   </Button>
                   <Button
                     variant="destructive"
-                    className="w-full"
+                    className="w-full py-6 text-[16px]"
                     onClick={() => router.push("/dashboard/wrong-answers")}
                   >
                     Wrong Answers
                   </Button>
                   <Button
                     variant="outline"
-                    className="w-full"
+                    className="w-full py-6 text-[16px]"
                     onClick={() => router.push("/profile")}
                   >
                     Edit Profile
                   </Button>
                   <Button
                     variant="outline"
-                    className="w-full"
+                    className="w-full py-6 text-[16px]"
                     onClick={() => router.push("/settings")}
                   >
                     Settings
                   </Button>
                   <Button
                     variant="outline"
-                    className="w-full"
+                    className="w-full py-6 text-[16px]"
                     onClick={() => signOut({ callbackUrl: "/" })}
                   >
                     Sign Out
@@ -146,7 +146,8 @@ export default function Dashboard() {
                       You haven't taken any tests yet. Start a test to see your
                       statistics.
                     </p>
-                    <Button
+                      <Button
+                        className="py-6 text-[16px]"
                       variant="primary"
                       onClick={() => router.push("/test/settings")}
                     >

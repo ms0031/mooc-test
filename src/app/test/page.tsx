@@ -226,7 +226,7 @@ export default function TestPage() {
           return (
             <div
               key={question._id}
-              className=" bg-white/5 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden shadow-xl p-6"
+              className=" bg-white/5 rounded-2xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden shadow-xl p-6"
             >
               <h2 className="text-xl font-semibold text-gray-200 mb-4">
                 {index + 1}. {question.question}
