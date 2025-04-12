@@ -25,6 +25,8 @@ export default function TestPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  // Track which questions have been answered and submitted in study mode
+  const [answeredQuestions, setAnsweredQuestions] = useState<Record<string, boolean>>({});
   const [testStartTime, setTestStartTime] = useState<Date>(new Date());
   const [randomizeOptions, setRandomizeOptions] = useState(
     searchParams.get("randomize") === "true"
@@ -106,6 +108,11 @@ export default function TestPage() {
   const handleAnswerSelect = (questionId: string, option: string) => {
     if (submitted) return;
     setAnswers((prev) => ({ ...prev, [questionId]: option }));
+    
+    // In study mode, immediately show the answer for this specific question after selection
+    if (isStudyMode) {
+      setAnsweredQuestions((prev) => ({ ...prev, [questionId]: true }));
+    }
   };
 
   const handleSubmit = () => {
@@ -242,7 +249,11 @@ export default function TestPage() {
 
                   let baseClasses =
                     "w-full text-left p-4 rounded-xl border cursor-pointer";
-                  if (submitted) {
+                  
+                  // Check if this specific question has been answered in study mode or if the entire test is submitted
+                  const isQuestionAnswered = isStudyMode ? answeredQuestions[question._id] || submitted : submitted;
+                  
+                  if (isQuestionAnswered) {
                     // Always show the correct answer in green.
                     if (option === question.correctAnswer) {
                       baseClasses += " bg-green-900/30 border-green-500";
@@ -265,7 +276,7 @@ export default function TestPage() {
                   } else {
                     baseClasses +=
                       selected === option
-                        ? " bg-teal-900/30 border-teal-500"
+                        ? " bg-blue-900/30 border-blue-600"
                         : " border-gray-300 hover:border-indigo-500 hover:bg-teal-50/10";
                   }
 
@@ -273,7 +284,7 @@ export default function TestPage() {
                     <button
                       key={idx}
                       type="button"
-                      disabled={submitted}
+                      disabled={isStudyMode ? answeredQuestions[question._id] || submitted : submitted}
                       onClick={() => handleAnswerSelect(question._id, option)}
                       className={baseClasses}
                     >
@@ -282,8 +293,8 @@ export default function TestPage() {
                   );
                 })}
               </div>
-              {/* Display explanation in Study Mode after submission */}
-              {isStudyMode && submitted && question.explanation && (
+              {/* Display explanation in Study Mode after answering this specific question */}
+              {isStudyMode && (answeredQuestions[question._id] || submitted) && question.explanation && (
                 <div className="mt-4 p-4 bg-blue-50 rounded-lg">
                   <h3 className="font-medium text-blue-800 mb-2">
                     Explanation:
