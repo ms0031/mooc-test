@@ -36,13 +36,15 @@ export default function TestStats({ results }: TestStatsProps) {
         label: "Score (%)",
         data: lastFiveTests.map((result) => result.score),
         backgroundColor: "rgba(45, 212, 191, 0.9)",
-        borderRadius: 16,
+        borderRadius: 12,
+        maxBarThickness: 70,
       },
     ],
   };
 
   const chartOptions = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         position: "top" as const,
@@ -55,23 +57,23 @@ export default function TestStats({ results }: TestStatsProps) {
     },
     scales: {
       x: {
-        display: true, // Show x-axis labels
+        display: true,
         ticks: {
-          color: "#e5e7eb", // Set x-axis label color to grey-200
+          color: "#e5e7eb",
         },
         grid: {
-          display: false, // Keep grid lines hidden
+          display: false,
         },
       },
       y: {
         beginAtZero: true,
         max: 100,
-        display: true, // Show y-axis labels
+        display: true, 
         ticks: {
-          color: "#e5e7eb", // Set y-axis label color to grey-200
+          color: "#e5e7eb",
         },
         grid: {
-          display: false, // Keep grid lines hidden
+          display: false, 
         },
       },
     },
@@ -90,19 +92,19 @@ export default function TestStats({ results }: TestStatsProps) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-white/6 p-4 rounded-lg shadow">
+        <div className="bg-white/6 p-4 rounded-2xl shadow">
           <h3 className="text-sm font-medium text-gray-200">Tests Completed</h3>
           <p className="mt-2 text-3xl font-semibold text-gray-300">
             {results.length}
           </p>
         </div>
-        <div className="bg-white/6 p-4 rounded-lg shadow">
+        <div className="bg-white/6 p-4 rounded-2xl shadow">
           <h3 className="text-sm font-medium text-gray-200">Average Score</h3>
           <p className="mt-2 text-3xl font-semibold text-gray-300">
             {calculateAverageScore()}%
           </p>
         </div>
-        <div className="bg-white/6 p-4 rounded-lg shadow">
+        <div className="bg-white/6 p-4 rounded-2xl shadow">
           <h3 className="text-sm font-medium text-gray-200">
             Total Time Spent
           </h3>
@@ -112,13 +114,13 @@ export default function TestStats({ results }: TestStatsProps) {
         </div>
       </div>
 
-      <div className="bg-white/6 p-6 rounded-lg shadow">
+      <div className="bg-white/6 p-6 h-100 rounded-2xl shadow">
         <Bar data={chartData} options={chartOptions} />
       </div>
 
       
       
-      <div className="bg-white/6 rounded-lg shadow overflow-hidden">
+      <div className="bg-white/6 rounded-2xl shadow overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-500/50">
           <thead className="bg-white/6">
             <tr>

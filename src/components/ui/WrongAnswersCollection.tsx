@@ -77,18 +77,6 @@ export default function WrongAnswersCollection({
         });
       }
 
-      // Fetch MongoDB questions if needed
-      let mongoQuestionsMap = new Map<string, MongoQuestion>();
-      if (mongoQuestions.size > 0) {
-        const response = await fetch(
-          `/api/questions/details?ids=${Array.from(mongoQuestions).join(",")}`
-        );
-        const data = await response.json();
-        const questions = data.questions || [];
-        questions.forEach((q: MongoQuestion) =>
-          mongoQuestionsMap.set(q.qid, q)
-        );
-      }
 
       // Process wrong answers with option counts
       const wrongAnswerMap = new Map<string, WrongAnswer>();
@@ -98,7 +86,7 @@ export default function WrongAnswersCollection({
           if (!answer.isCorrect) {
             const question = answer.qid.startsWith("p_")
               ? psychologyQuestionsMap.get(answer.qid)
-              : mongoQuestionsMap.get(answer.qid);
+              : "";
 
             if (question) {
               const key = answer.qid;
@@ -120,7 +108,7 @@ export default function WrongAnswersCollection({
                   correctAnswer:
                     "answer" in question
                       ? question.answer
-                      : question.correctAnswer,
+                      : "",
                   options: question.options,
                   optionCounts,
                   totalWrong: 1,
@@ -176,7 +164,7 @@ export default function WrongAnswersCollection({
 
   return (
     <div className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden shadow rounded-2xl p-6 mb-6">
-      <h2 className="text-xl font-semibold text-gray-100 mb-4">
+      <h2 className="text-xl font-semibold text-gray-100 mb-5">
         Frequently Incorrect Answers
       </h2>
       <div className="space-y-6">
@@ -208,7 +196,7 @@ export default function WrongAnswersCollection({
                   >
                     {option}
                   </span>
-                  <span className={`text-red-400 font-medium ${wrongAnswer.optionCounts[option]?"bg-red-900/30 border-1 border-red-500/30":""} rounded-full px-2 py-1 text-xs`}>
+                  <span className={`text-red-400 font-medium ${wrongAnswer.optionCounts[option]?"bg-red-900/30 border-1 border-red-500/30":""} rounded-full px-2.5 py-1 text-xs`}>
                   {wrongAnswer.optionCounts[option] ? `${wrongAnswer.optionCounts[option]}x` : ""}
                   </span>
                 </div>
