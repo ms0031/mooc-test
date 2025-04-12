@@ -51,6 +51,7 @@ export default function TestSettingsPage() {
     }
   }, [studyMode]);
 
+  const [randomizeQuestions, setRandomizeQuestions] = useState(false);
   const handleStartTest = () => {
     // Build query parameters
     const params = new URLSearchParams();
@@ -62,6 +63,10 @@ export default function TestSettingsPage() {
 
     if (randomizeAnswers) {
       params.append("randomize", "true");
+    }
+    
+    if (randomizeQuestions) {
+      params.append("randomizeQuestions", "true");
     }
 
     if (studyMode) {
@@ -164,10 +169,10 @@ export default function TestSettingsPage() {
                 htmlFor="randomize-toggle"
                 className="block text-sm font-medium text-gray-200"
               >
-                Randomize Answers
+                Randomize Options
               </label>
               <p className="text-xs text-gray-400">
-                Shuffle the order of answer options
+                Shuffle the order of options
               </p>
             </div>
             <button
@@ -182,6 +187,36 @@ export default function TestSettingsPage() {
               <span
                 className={`${
                   randomizeAnswers ? "translate-x-5" : "translate-x-0"
+                } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
+              ></span>
+            </button>
+          </div>
+
+          {/* Randomize Questions Toggle */}
+          <div className="flex items-center justify-between">
+            <div>
+              <label
+                htmlFor="randomize-questions-toggle"
+                className="block text-sm font-medium text-gray-200"
+              >
+                Randomize Questions
+              </label>
+              <p className="text-xs text-gray-400">
+                Shuffle the order of questions
+              </p>
+            </div>
+            <button
+              type="button"
+              id="randomize-questions-toggle"
+              className={`${
+                randomizeQuestions ? "bg-teal-500/90" : "bg-gray-500"
+              } relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+              onClick={() => setRandomizeQuestions(!randomizeQuestions)}
+            >
+              <span className="sr-only">Randomize questions</span>
+              <span
+                className={`${
+                  randomizeQuestions ? "translate-x-5" : "translate-x-0"
                 } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
               ></span>
             </button>

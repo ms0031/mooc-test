@@ -31,6 +31,9 @@ export default function TestPage() {
   const [randomizeOptions, setRandomizeOptions] = useState(
     searchParams.get("randomize") === "true"
   );
+  const [randomizeQuestions, setRandomizeQuestions] = useState(
+    searchParams.get("randomizeQuestions") === "true"
+  );
 
   useEffect(() => {
     // Allow guest access from home page or if in study mode
@@ -71,8 +74,15 @@ export default function TestPage() {
         throw new Error(data.message || "Failed to fetch questions");
       }
 
-      // If randomize options is enabled, shuffle the options for each question
+      // Get the questions from the response
       let fetchedQuestions = data.questions;
+      
+      // If randomize questions is enabled, shuffle the questions array
+      if (randomizeQuestions) {
+        fetchedQuestions = shuffleArray([...fetchedQuestions]);
+      }
+      
+      // If randomize options is enabled, shuffle the options for each question
       if (randomizeOptions) {
         fetchedQuestions = fetchedQuestions.map((q: Question) => ({
           ...q,
