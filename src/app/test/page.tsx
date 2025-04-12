@@ -295,15 +295,23 @@ export default function TestPage() {
           );
         })}
 
-        <div className="flex justify-end">
+        <div className="">
           {!submitted ? (
+            <div className="flex justify-between">
+              <button
+                onClick={() => router.push(`${session ? "/dashboard" : "/"}`)}
+                className="px-6 py-2  bg-red-600/90 text-gray-200 rounded-xl hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
+            >
+              Cancel
+            </button>
             <button
               onClick={handleSubmit}
               disabled={Object.keys(answers).length !== questions.length}
-              className="px-6 py-2 bg-indigo-600 text-gray-200 rounded-md hover:bg-indigo-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
+              className="px-6 py-2  bg-indigo-600 text-gray-200 rounded-xl hover:bg-indigo-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
             >
               Submit Answers
-            </button>
+              </button>
+              </div>
           ) : (
             <button
               onClick={handleFinishTest}

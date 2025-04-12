@@ -44,8 +44,9 @@ export async function POST(request: Request) {
     );
   } catch (error) {
     console.error("Registration error:", error);
+    const errorMessage = error instanceof Error ? error.message : "Error creating user";
     return NextResponse.json(
-      { message: "Error creating user" },
+      { message: errorMessage },
       { status: 500 }
     );
   }

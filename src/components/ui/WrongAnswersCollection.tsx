@@ -98,7 +98,7 @@ export default function WrongAnswersCollection({ testResults }: WrongAnswersColl
 
   if (isLoading) {
     return (
-      <div className="bg-white shadow rounded-lg p-6 mb-6">
+      <div className="bg-slate-950 shadow rounded-lg p-6 mb-6">
         <h2 className="text-xl font-semibold text-gray-900 mb-4">
           Frequently Incorrect Answers
         </h2>
@@ -113,11 +113,11 @@ export default function WrongAnswersCollection({ testResults }: WrongAnswersColl
 
   if (wrongAnswers.length === 0) {
     return (
-      <div className="bg-white shadow rounded-lg p-6 mb-6">
-        <h2 className="text-xl font-semibold text-gray-900 mb-4">
+      <div className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden shadow rounded-2xl p-6 mb-6">
+        <h2 className="text-xl font-semibold text-gray-200 mb-4">
           Frequently Incorrect Answers
         </h2>
-        <p className="text-gray-500">
+        <p className="text-gray-300">
           No incorrect answers found. Great job!
         </p>
       </div>
@@ -125,16 +125,16 @@ export default function WrongAnswersCollection({ testResults }: WrongAnswersColl
   }
 
   return (
-    <div className="bg-white shadow rounded-lg p-6 mb-6">
-      <h2 className="text-xl font-semibold text-gray-900 mb-4">
+    <div className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden shadow rounded-2xl p-6 mb-6">
+      <h2 className="text-xl font-semibold text-gray-100 mb-4">
         Frequently Incorrect Answers
       </h2>
       <div className="space-y-4">
         {wrongAnswers.slice(0, 5).map((wrongAnswer, index) => (
           <div key={index} className="border-b border-gray-200 pb-4 last:border-0 last:pb-0">
             <div className="flex justify-between items-start">
-              <h3 className="text-md font-medium text-gray-900">{wrongAnswer.question}</h3>
-              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+              <h3 className="text-md font-medium text-gray-300">{wrongAnswer.question}</h3>
+              <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-900/60 border-2 border-red-500/60 text-red-200">
                 {wrongAnswer.frequency}x
               </span>
             </div>

@@ -155,7 +155,7 @@ export default function TestResultPage() {
               </Button>
               <Button
                 variant="destructive"
-                onClick={() => router.push("/dasboard")}
+                onClick={() => router.push("/dashboard/wrong-answers")}
               >
                 Wrong Answers
               </Button>

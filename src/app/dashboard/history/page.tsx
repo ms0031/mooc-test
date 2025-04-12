@@ -59,20 +59,20 @@ export default function TestHistoryPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8 flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-gray-200">
               Test History
             </h1>
-            <p className="mt-2 text-gray-600">
+            <p className="mt-2 text-gray-300">
               View your past test attempts and track your progress over time.
             </p>
           </div>
           <div className="flex space-x-4">
             <Button
-              variant="destructive"
+              variant="outline"
                           onClick={() => router.push("/dashboard")}
             >
               Back to Dashboard
@@ -89,13 +89,13 @@ export default function TestHistoryPage() {
         </div>
 
         {testHistory.length === 0 ? (
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <p className="text-gray-600 mb-4">
+          <div className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden rounded-2xl shadow-lg p-6 text-center">
+            <p className="text-gray-300 mb-4">
               You haven't taken any tests yet. Complete some tests to see your history.
             </p>
             <Button
               variant="primary"
-              onClick={() => router.push("/test?category=psychology")}
+              onClick={() => router.push("/test/settings")}
             >
               Take a Test
             </Button>

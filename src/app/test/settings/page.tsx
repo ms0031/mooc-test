@@ -84,12 +84,8 @@ export default function TestSettingsPage() {
   };
 
   return (
-    <div className="w-full h-screen relative bg-slate-950 overflow-hidden flex items-center justify-center">
-      <div className="w-[1440px] h-[900px] left-0 top-0 absolute opacity-30 pointer-events-none">
-        <div className="w-[675px] h-80 left-[202px] top-[190px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
-        <div className="w-[675px] h-80 left-[800px] top-[190px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
-      </div>
-      <div className="max-w-md mx-auto bg-white/1 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden">
+    <div className=" bg-slate-950 flex items-center justify-center">
+      <div className="mt-6 mb-16 max-w-md mx-auto bg-white/1 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden">
         <div className="bg-white/5 px-6 py-4">
           <h1 className="text-2xl font-bold text-gray-200">Test Settings</h1>
         </div>
@@ -97,7 +93,7 @@ export default function TestSettingsPage() {
         <div className="p-6 space-y-6">
           {/* Guest Mode Banner */}
           {!session && (
-            <div className="bg-yellow-50 rounded-xl border-l-8 border-yellow-400 p-4 mb-4">
+            <div className="bg-yellow-50 rounded-lg border-l-8 border-yellow-400 p-4 mb-4">
               <div className="flex">
                 <div className="ml-3">
                   <p className="text-sm text-yellow-700">
@@ -295,7 +291,7 @@ export default function TestSettingsPage() {
 
           {/* Action Buttons */}
           <div className="pt-4 flex justify-between">
-            <Button variant="destructive" onClick={() => router.push("/")}>
+            <Button variant="destructive" onClick={() => router.push(`${session?"/dashboard":"/"}`)}>
               Cancel
             </Button>
             <Button variant="primary" onClick={handleStartTest}>

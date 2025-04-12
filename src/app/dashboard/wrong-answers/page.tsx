@@ -49,14 +49,14 @@ export default function WrongAnswersPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8 flex justify-between items-center">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900">
+            <h1 className="text-3xl font-bold text-gray-200">
               Wrong Answers Collection
             </h1>
-            <p className="mt-2 text-gray-600">
+            <p className="mt-2 text-gray-400">
               Review your frequently incorrect answers to focus on improvement.
             </p>
           </div>
@@ -69,19 +69,19 @@ export default function WrongAnswersPage() {
         </div>
 
         {testResults.length === 0 ? (
-          <div className="bg-white rounded-lg shadow-lg p-6 text-center">
-            <p className="text-gray-600 mb-4">
+          <div className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden rounded-2xl shadow-lg p-6 text-center">
+            <p className="text-gray-300 mb-4">
               You haven't taken any tests yet. Complete some tests to see your wrong answers collection.
             </p>
             <Button
               variant="primary"
-              onClick={() => router.push("/test?category=psychology")}
+              onClick={() => router.push("/test/settings")}
             >
               Take a Test
             </Button>
           </div>
         ) : (
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div className="bg-white/0 rounded-lg shadow-lg overflow-hidden">
             <WrongAnswersCollection testResults={testResults} />
           </div>
         )}
