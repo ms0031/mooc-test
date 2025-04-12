@@ -90,7 +90,7 @@ export default function TestSettingsPage() {
 
   return (
     <div className="bg-slate-950 min-h-screen flex items-center justify-center">
-      <div className="mt-4 mb-16 lg:max-w-3xl lg:min-w-sm sm:max-w-md mx-5 bg-white/1 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden">
+      <div className="mt-4 mb-16 lg:max-w-3xl lg:min-w-sm md:max-w-2xl min-w-sm mx-5 bg-white/1 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden">
         <div className="bg-white/5 px-6 py-4">
           <h1 className="text-2xl font-bold text-gray-200">Test Settings</h1>
         </div>
@@ -299,8 +299,8 @@ export default function TestSettingsPage() {
 
             {/* Right Column: Week Selection (only displayed when shuffleWeeks is off) */}
             {category === "psychology_of_learning" && !shuffleWeeks && (
-              <div>
-                <label className="block text-sm font-medium text-gray-200 mb-2">
+              <div className="bg-white/1 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] p-4">
+                <label className="block text-sm font-medium text-gray-200 mb-3">
                   Select Weeks
                 </label>
                 <div className="flex flex-wrap gap-4">
