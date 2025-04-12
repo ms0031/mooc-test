@@ -97,7 +97,7 @@ export default function TestSettingsPage() {
         <div className="p-6 space-y-6">
           {/* Guest Mode Banner */}
           {!session && (
-            <div className="bg-yellow-50 rounded-xl border-l-4 border-yellow-400 p-4 mb-4">
+            <div className="bg-yellow-50 rounded-xl border-l-8 border-yellow-400 p-4 mb-4">
               <div className="flex">
                 <div className="ml-3">
                   <p className="text-sm text-yellow-700">

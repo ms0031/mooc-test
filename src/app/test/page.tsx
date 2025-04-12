@@ -204,14 +204,14 @@ export default function TestPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-slate-950 py-12">
       {/* Guest Mode Banner */}
       {!session && (
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-          <div className="bg-yellow-50 border-l-4 border-yellow-400 p-4">
+          <div className="bg-yellow-50 border-l-8 rounded-xl border-yellow-400 p-4 ">
             <div className="flex">
               <div className="ml-3">
-                <p className="text-sm text-yellow-700">
+                <p className="text-md text-yellow-700">
                   You're in guest mode. Log in to save your progress.
                 </p>
               </div>
@@ -226,12 +226,12 @@ export default function TestPage() {
           return (
             <div
               key={question._id}
-              className="bg-white shadow-xl rounded-lg p-6"
+              className=" bg-white/5 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden shadow-xl p-6"
             >
-              <h2 className="text-xl font-semibold text-gray-900 mb-4">
+              <h2 className="text-xl font-semibold text-gray-200 mb-4">
                 {index + 1}. {question.question}
               </h2>
-              <div className="space-y-3">
+              <div className="space-y-3 text-gray-100">
                 {question.options.map((option, idx) => {
                   // Debug log when submitted
                   if (submitted) {
@@ -241,18 +241,18 @@ export default function TestPage() {
                   }
 
                   let baseClasses =
-                    "w-full text-left p-4 rounded-lg border cursor-pointer";
+                    "w-full text-left p-4 rounded-xl border cursor-pointer";
                   if (submitted) {
                     // Always show the correct answer in green.
                     if (option === question.correctAnswer) {
-                      baseClasses += " bg-green-100 border-green-500";
+                      baseClasses += " bg-green-900/30 border-green-500";
                     }
                     // If the user selected a wrong answer, show it in red.
                     if (
                       selected === option &&
                       option !== question.correctAnswer
                     ) {
-                      baseClasses += " bg-red-100 border-red-500";
+                      baseClasses += " bg-red-900/30 border-red-500";
                     }
 
                     // Other options remain with a neutral border.
@@ -265,8 +265,8 @@ export default function TestPage() {
                   } else {
                     baseClasses +=
                       selected === option
-                        ? " bg-indigo-100 border-indigo-500"
-                        : " border-gray-300 hover:border-indigo-500 hover:bg-indigo-50";
+                        ? " bg-teal-900/30 border-teal-500"
+                        : " border-gray-300 hover:border-indigo-500 hover:bg-teal-50/10";
                   }
 
                   return (
@@ -300,14 +300,14 @@ export default function TestPage() {
             <button
               onClick={handleSubmit}
               disabled={Object.keys(answers).length !== questions.length}
-              className="px-6 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 disabled:bg-indigo-300 disabled:cursor-not-allowed"
+              className="px-6 py-2 bg-indigo-600 text-gray-200 rounded-md hover:bg-indigo-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
             >
               Submit Answers
             </button>
           ) : (
             <button
               onClick={handleFinishTest}
-              className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+              className="px-6 py-2 bg-teal-500/80 text-white rounded-xl hover:bg-green-700"
             >
               Finish Test
             </button>
