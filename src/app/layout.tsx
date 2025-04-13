@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { NextAuthProvider } from "@/components/providers/NextAuthProvider";
@@ -19,8 +20,58 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "MOOC Test Platform",
-  description:
-    "An interactive learning and testing platform for psychology and learning theory",
+  description: "An interactive learning and testing platform for nptel/mooc test",
+  keywords: ["MOOC", "psychology of learning", "sustainable development", "conservation economics","online education", "test platform"],
+  authors: [{ name: "Mayank Shekhar" }],
+  creator: "Mayank Shekhar",
+  publisher: "Mayank Shekhar",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://mooctest.vercel.app"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    title: "MOOC Test Platform",
+    description: "An interactive learning and testing platform for psychology and learning theory",
+    url: "/",
+    siteName: "MOOC Test Platform",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "MOOC Test Platform",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "MOOC Test Platform",
+    description: "An interactive learning and testing platform for psychology and learning theory",
+    images: ["/og-image.png"],
+    creator: "@mayankshekhar",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
+  verification: {
+    google: "google-site-verification-code",
+  },
 };
 
 export default function RootLayout({
