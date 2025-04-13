@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/Button";
-export const theme = {
+const theme = {
   body: "#EDF9FE",
   text: "#001C55",
   expTxtColor: "#000a12",
