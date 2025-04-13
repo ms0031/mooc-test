@@ -134,14 +134,14 @@ export default function Dashboard() {
                 </h2>
                 <div className="space-y-3">
                   <Button
-                    variant="orange"
+                    variant="primary"
                     className="w-full py-6 text-[16px]"
-                    onClick={() => router.push("/dashboard/history")}
+                    onClick={() => router.push("/buy-me-a-coffee")}
                   >
                     Buy Me a Coffee
                   </Button>
                   <Button
-                    variant="outline"
+                    variant="cyan"
                     className="w-full py-6 text-[16px]"
                     onClick={() => router.push("/dashboard/wrong-answers")}
                   >
@@ -155,14 +155,14 @@ export default function Dashboard() {
                     Edit Profile
                   </Button> */}
                   <Button
-                    variant="outline"
+                    variant="cyan"
                     className="w-full py-6 text-[16px]"
                     onClick={() => router.push("/faq")}
                   >
                     FAQ 
                   </Button>
                   <Button
-                    variant="outline"
+                    variant="destructive"
                     className="w-full py-6 text-[16px]"
                     onClick={() => router.push("/feedback")}
                   >
