@@ -54,32 +54,49 @@ export default function HomeContent({ session }: HomeContentProps) {
           </div>
               
           <div className="mt-24">
-            <h2 className="text-2xl font-bold text-white text-center mb-12">
+            <h2 className="text-2xl font-bold text-white text-center mb-8">
               Key Features
             </h2>
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              <div className="self-stretch px-5 py-4 bg-white/5 rounded-2xl outline-1 backdrop-blur-[100px] outline-offset-[-1px] outline-white/5 inline-flex flex-col justify-center items-center gap-4 overflow-hidden">
+              <div className="self-stretch px-5 py-4 bg-white/5 rounded-2xl outline-1 backdrop-blur-[100px] outline-offset-[-1px] outline-white/5 inline-flex flex-col justify-center items-center gap-2 overflow-hidden">
                 <h3 className="text-lg font-medium text-white mb-2">
-                  Comprehensive Tests
+                Error Analysis
                 </h3>
                 <p className="text-gray-300 text-center ">
-                  Access a wide range of questions covering psychology and
-                  learning theory concepts.
+                View a collection of your most frequently wrong answers to focus your revision where it matters most.
                 </p>
               </div>
-              <div className="self-stretch px-5 py-4 bg-white/5 rounded-2xl outline-1 backdrop-blur-[100px] outline-offset-[-1px] outline-white/5 inline-flex flex-col justify-center items-center gap-4 overflow-hidden">
-                <h3 className="text-lg font-medium text-white mb-2">Study Mode</h3>
+              <div className="self-stretch px-5 py-4 bg-white/5 rounded-2xl outline-1 backdrop-blur-[100px] outline-offset-[-1px] outline-white/5 inline-flex flex-col justify-center items-center gap-2 overflow-hidden">
+                <h3 className="text-lg font-medium text-white mb-2">Smart Practice Modes</h3>
                 <p className="text-gray-300 text-center">
-                  Practice without time pressure and get detailed explanations for
-                  each answer.
+                Choose between Study Mode (see answers instantly) or Test Mode. Perfect for both learning and revision.
                 </p>
               </div>
-              <div className="self-stretch px-5 py-4 bg-white/5 rounded-2xl outline-1 backdrop-blur-[100px] outline-offset-[-1px] outline-white/5 inline-flex flex-col justify-center items-center gap-4 overflow-hidden">
+              
+            <div className="self-stretch px-5 py-4 bg-white/5 rounded-2xl outline-1 backdrop-blur-[100px] outline-offset-[-1px] outline-white/5 inline-flex flex-col justify-center items-center gap-2 overflow-hidden">
+                <h3 className="text-lg font-medium text-white mb-2"> Smart Randomization</h3>
+                <p className="text-gray-300 text-center">
+                Add variety to your practice with shuffled questions from all weeks and randomized answer options for a fresh experience every time.
+                </p>
+            </div>
+            <div className="self-stretch px-5 py-4 bg-white/5 rounded-2xl outline-1 backdrop-blur-[100px] outline-offset-[-1px] outline-white/5 inline-flex flex-col justify-center items-center gap-2 overflow-hidden">
                 <h3 className="text-lg font-medium text-white mb-2">Progress Tracking</h3>
                 <p className="text-gray-300 text-center">
                   Monitor your performance and identify areas for improvement.
                 </p>
-              </div>
+            </div>
+            <div className="self-stretch px-5 py-4 bg-white/5 rounded-2xl outline-1 backdrop-blur-[100px] outline-offset-[-1px] outline-white/5 inline-flex flex-col justify-center items-center gap-2 overflow-hidden">
+                <h3 className="text-lg font-medium text-white mb-2">Tests History</h3>
+                <p className="text-gray-300 text-center">
+                Check your performance history with a clean, visual progress graph and detailed session stats.
+                </p>
+            </div>
+            <div className="self-stretch px-5 py-4 bg-white/5 rounded-2xl outline-1 backdrop-blur-[100px] outline-offset-[-1px] outline-white/5 inline-flex flex-col justify-center items-center gap-2 overflow-hidden">
+                <h3 className="text-lg font-medium text-white mb-2">Focused Week Testing</h3>
+                <p className="text-gray-300 text-center">
+                Customize your test by selecting specific weeks or topics to revise only what matters most to you.
+                </p>
+            </div>
             </div>
           </div>
         </div>

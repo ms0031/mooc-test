@@ -50,9 +50,9 @@ export default function FeedbackPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <div className="max-w-md mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white shadow-xl rounded-lg overflow-hidden">
+    <div className="min-h-screen bg-slate-950 py-12">
+      <div className="lg:max-w-md max-w-sm mx-auto mt-16 px-4 sm:px-6 lg:px-8">
+        <div className="bg-white/90 shadow-xl rounded-2xl overflow-hidden">
           <div className="bg-indigo-600 px-6 py-4">
             <h1 className="text-2xl font-bold text-white">Feedback</h1>
           </div>
@@ -106,7 +106,7 @@ export default function FeedbackPage() {
                     name="type"
                     value={formData.type}
                     onChange={handleChange}
-                    className="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md"
+                    className="mt-1 block w-full pl-3 pr-10 py-2 bg-white text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-xl"
                   >
                     <option value="bug">Report a Bug</option>
                     <option value="feature">Suggest a Feature</option>
@@ -148,7 +148,7 @@ export default function FeedbackPage() {
                       value={formData.message}
                       onChange={handleChange}
                       required
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
+                      className="shadow-sm bg-white p-2 focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-xl"
                       placeholder="Please describe your issue or suggestion in detail..."
                     />
                   </div>

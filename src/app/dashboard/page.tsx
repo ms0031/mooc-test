@@ -70,7 +70,7 @@ export default function Dashboard() {
                 <h2 className="text-xl font-semibold text-gray-200 mb-4">
                   Start New Test
                 </h2>
-                <div className="space-y-3">
+                <div className="space-y-3 lg:px-0 md:px-0 px-3">
                   <Button
                     variant="primary"
                     className="w-full py-6 text-lg"
@@ -87,7 +87,7 @@ export default function Dashboard() {
                 <h2 className="text-xl font-semibold text-gray-200 mb-4">
                   Quick Links
                 </h2>
-                <div className="space-y-3">
+                <div className="space-y-3 lg:px-0 md:px-0 px-3">
                   <Button
                     variant="cyan"
                     className="w-full py-6 text-[16px]"
@@ -207,11 +207,11 @@ export default function Dashboard() {
           </div>
 
           <div className="bg-white/5 lg:hidden rounded-3xl outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden">
-              <div className="p-6">
+              <div className="p-6 ">
                 <h2 className="text-xl font-semibold text-gray-200 mb-4">
                 Support & More
                 </h2>
-                <div className="space-y-3">
+                <div className="space-y-3 lg:px-0 md:px-0 px-3">
                   <Button
                     variant="orange"
                     className="w-full py-6 text-[16px]"
