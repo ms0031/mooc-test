@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
 import { TestResultResponse } from "@/types";
 import questionsByWeekData from "../../../questions_psychology_of_learning.json";
+import conservationEconomicsData from "../../../questions_conservation_economics.json";
 
 interface WrongAnswer {
   question: string;
@@ -14,6 +15,13 @@ interface WrongAnswer {
 }
 
 interface PsychologyQuestion {
+  qid: string;
+  question: string;
+  options: string[];
+  answer: string;
+}
+
+interface ConservationEconomicsQuestion {
   qid: string;
   question: string;
   options: string[];
@@ -50,15 +58,18 @@ export default function WrongAnswersCollection({
     try {
       const questionIds = new Set<string>();
       const psychologyQuestions = new Set<string>();
+      const conservationQuestions = new Set<string>();
       const mongoQuestions = new Set<string>();
 
-      // Sort questions into psychology (p_*) and MongoDB questions
+      // Sort questions by type
       testResults.forEach((result) => {
         result.answers.forEach((answer) => {
           if (!answer.isCorrect) {
             questionIds.add(answer.qid);
             if (answer.qid.startsWith("p_")) {
               psychologyQuestions.add(answer.qid);
+            } else if (answer.qid.startsWith("c_")) {
+              conservationQuestions.add(answer.qid);
             } else {
               mongoQuestions.add(answer.qid);
             }
@@ -66,8 +77,13 @@ export default function WrongAnswersCollection({
         });
       });
 
-      // Create a map for psychology questions
+      // Create maps for both question types
       const psychologyQuestionsMap = new Map<string, PsychologyQuestion>();
+      const conservationQuestionsMap = new Map<
+        string,
+        ConservationEconomicsQuestion
+      >();
+
       if (psychologyQuestions.size > 0) {
         const allPsychQuestions = Object.values(questionsByWeekData).flat();
         allPsychQuestions.forEach((q) => {
@@ -77,6 +93,16 @@ export default function WrongAnswersCollection({
         });
       }
 
+      if (conservationQuestions.size > 0) {
+        const allConservationQuestions = Object.values(
+          conservationEconomicsData
+        ).flat();
+        allConservationQuestions.forEach((q) => {
+          if (conservationQuestions.has(q.qid)) {
+            conservationQuestionsMap.set(q.qid, q);
+          }
+        });
+      }
 
       // Process wrong answers with option counts
       const wrongAnswerMap = new Map<string, WrongAnswer>();
@@ -86,7 +112,9 @@ export default function WrongAnswersCollection({
           if (!answer.isCorrect) {
             const question = answer.qid.startsWith("p_")
               ? psychologyQuestionsMap.get(answer.qid)
-              : "";
+              : answer.qid.startsWith("c_")
+              ? conservationQuestionsMap.get(answer.qid)
+              : null;
 
             if (question) {
               const key = answer.qid;
@@ -105,10 +133,7 @@ export default function WrongAnswersCollection({
 
                 wrongAnswerMap.set(key, {
                   question: question.question,
-                  correctAnswer:
-                    "answer" in question
-                      ? question.answer
-                      : "",
+                  correctAnswer: question.answer,
                   options: question.options,
                   optionCounts,
                   totalWrong: 1,
@@ -163,21 +188,22 @@ export default function WrongAnswersCollection({
   }
 
   return (
-    <div className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden shadow rounded-2xl p-6 mb-6">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+    <div className="">
       <h2 className="text-xl font-semibold text-gray-100 mb-5">
         Frequently Incorrect Answers
       </h2>
       <div className="space-y-6">
-        {wrongAnswers.slice(0, 5).map((wrongAnswer, index) => (
+        {wrongAnswers.map((wrongAnswer, index) => (
           <div
             key={index}
-            className="border-b border-gray-200/20 pb-6 last:border-0 last:pb-0"
+            className=" bg-white/5 outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] rounded-3xl p-4  pb-6"
           >
             <div className="flex justify-between items-start mb-4">
               <h3 className="text-md font-medium text-gray-300">
                 {wrongAnswer.question}
               </h3>
-              <span className="inline-flex items-center px-3 py-1.5 rounded-full text-xs font-medium bg-red-900/60 border-2 border-red-500/60 text-red-200">
+              <span className="inline-flex items-center ml-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-900/60 border-2 border-red-500/60 text-red-200">
                 {wrongAnswer.totalWrong}x
               </span>
             </div>
@@ -185,7 +211,7 @@ export default function WrongAnswersCollection({
               {wrongAnswer.options.map((option, optIndex) => (
                 <div
                   key={optIndex}
-                  className="flex justify-between items-center p-2 px-3 rounded-xl bg-white/5"
+                  className="flex justify-between items-center p-2 px-3 rounded-2xl bg-white/1 outline-2 outline-offset-[-1px] outline-white/3 backdrop-blur-[10px]"
                 >
                   <span
                     className={
@@ -196,8 +222,16 @@ export default function WrongAnswersCollection({
                   >
                     {option}
                   </span>
-                  <span className={`text-red-400 font-medium ${wrongAnswer.optionCounts[option]?"bg-red-900/30 border-1 border-red-500/30":""} rounded-full px-2.5 py-1 text-xs`}>
-                  {wrongAnswer.optionCounts[option] ? `${wrongAnswer.optionCounts[option]}x` : ""}
+                  <span
+                    className={`text-red-400 font-medium ${
+                      wrongAnswer.optionCounts[option]
+                        ? "bg-red-900/30 border-1 border-red-500/30"
+                        : ""
+                    } rounded-full px-2.5 py-1 text-xs`}
+                  >
+                    {wrongAnswer.optionCounts[option]
+                      ? `${wrongAnswer.optionCounts[option]}x`
+                      : ""}
                   </span>
                 </div>
               ))}
@@ -205,6 +239,7 @@ export default function WrongAnswersCollection({
           </div>
         ))}
       </div>
-    </div>
+      </div>
+      </div>
   );
 }
