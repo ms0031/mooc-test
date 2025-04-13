@@ -58,6 +58,13 @@ export default function TestHistoryPage() {
     return <ErrorMessage message={error} />;
   }
 
+  function formatCategoryWithSpaces(category: string): string {
+    return category
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
+  
   return (
     <div className="min-h-screen bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -125,7 +132,7 @@ export default function TestHistoryPage() {
                         {formatDate(test.createdAt.toString())}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300 capitalize">
-                        {test.category}
+                        {formatCategoryWithSpaces(test.category)}
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                         <span className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${test.score >= 70 ? 'bg-green-900/30 text-green-400' : test.score >= 40 ? 'bg-yellow-900/30 text-yellow-400' : 'bg-red-900/30 text-red-400'}`}>

@@ -53,7 +53,13 @@ export default function TestPage() {
 
   const fetchQuestions = async () => {
     try {
-      const apiUrl = "/api/psychology-questions";
+      let apiUrl = "/api/psychology-questions";
+        if (category === "conservation_economics") {
+          apiUrl = "/api/conservation-economics-questions";
+        }
+        else if (category === "psychology_of_learning") {
+          apiUrl = "/api/psychology-questions";
+        }
       const queryParams = new URLSearchParams();
 
       const shuffleWeeksVal = searchParams.get("shuffleWeeks") === "true";
@@ -350,7 +356,7 @@ export default function TestPage() {
             <div className="flex justify-between w-full">
               <button
                 onClick={() => router.push(`${session ? "/dashboard" : "/"}`)}
-                className="px-6 py-2 bg-red-600/90 text-gray-200 rounded-xl hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
+                className="px-6 py-2 bg-red-500/80 text-gray-200 rounded-xl hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
               >
                 Cancel
               </button>
@@ -359,7 +365,7 @@ export default function TestPage() {
                 disabled={
                   Object.keys(answerAttempts).length !== questions.length
                 }
-                className="px-6 py-2 bg-indigo-600 text-gray-200 rounded-xl hover:bg-indigo-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
+                className="px-6 py-2 bg-indigo-500/95 text-gray-100 rounded-xl hover:bg-indigo-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
               >
                 Submit Answers
               </button>

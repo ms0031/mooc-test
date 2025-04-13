@@ -61,6 +61,13 @@ export default function TestResultPage() {
   const shareMessage = `I scored ${testResult.score}% on the MOOC Test App!`;
   const encodedMessage = encodeURIComponent(shareMessage);
 
+  function formatCategoryWithSpaces(category: string): string {
+    return category
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
+
   return (
     <div className="min-h-screen bg-slate-950 py-12">
       {isPerfectScore && (
@@ -149,7 +156,7 @@ export default function TestResultPage() {
               <div className="bg-blue-500/15   p-4 rounded-2xl">
                 <h3 className="text-sm font-medium text-gray-200">Category</h3>
                 <p className="mt-1 text-lg font-semibold text-blue-400 capitalize">
-                  {testResult.category || "General"}
+                  {formatCategoryWithSpaces(testResult.category) || "General"}
                 </p>
               </div>
               <div className="bg-blue-500/15  p-4 rounded-2xl">
@@ -191,7 +198,7 @@ export default function TestResultPage() {
             {/* Guest Prompt */}
             {!session && (
               <div className="bg-indigo-50/75 p-4 rounded-2xl border border-indigo-100 mb-8">
-                <h3 className="text-lg font-medium text-indigo-800 mb-2">
+                <h3 className="text-lg font-medium text-indigo-700 mb-2">
                   Save Your Progress
                 </h3>
                 <p className="text-indigo-600 mb-4">

@@ -88,6 +88,13 @@ export default function TestStats({ results }: TestStatsProps) {
   const calculateTotalTestsTime = () => {
     return results.reduce((sum, result) => sum + result.timeTaken, 0);
   };
+  
+  function formatCategoryWithSpaces(category: string): string {
+    return category
+      .split('_')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(' ');
+  }
 
   return (
     <div className="space-y-6">
@@ -160,9 +167,9 @@ export default function TestStats({ results }: TestStatsProps) {
             {results.slice(0, 10).map((result, index) => (
               <tr key={result._id}>
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-300">
-                  {result.category}
+                  {formatCategoryWithSpaces(result.category)}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">
+                <td className={`px-2 my-4 inline-flex text-sm rounded-full ${result.score >= 70 ? 'bg-green-900/30 text-green-400' : result.score >= 40 ? 'bg-yellow-900/30 text-yellow-400' : 'bg-red-900/30 text-red-400'}`}>
                   {result.score}%
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-200">

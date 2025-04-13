@@ -16,6 +16,7 @@ export default function TestSettingsPage() {
   const [studyMode, setStudyMode] = useState(false);
   const [categories, setCategories] = useState([
     { id: "psychology_of_learning", name: "Psychology of Learning" },
+    { id: "conservation_economics", name: "Conservation Economics" },
   ]);
   const [selectedWeeks, setSelectedWeeks] = useState<string[]>([]);
   // Dynamic weeks state – will be fetched from the API.
@@ -26,7 +27,14 @@ export default function TestSettingsPage() {
   useEffect(() => {
     async function fetchWeeks() {
       try {
-        const res = await fetch("/api/psychology-questions?getWeeks=true");
+        let apiUrl = "/api/psychology-questions?getWeeks=true";
+        if (category === "conservation_economics") {
+          apiUrl = "/api/conservation-economics-questions?getWeeks=true";
+        }
+        else if (category === "psychology_of_learning") {
+          apiUrl = "/api/psychology-questions?getWeeks=true";
+        }
+        const res = await fetch(apiUrl);
         const data = await res.json();
         // Expecting an object like { weeks: ["week0", "week1", ...] }
         if (data.weeks) {
@@ -40,9 +48,7 @@ export default function TestSettingsPage() {
         console.error("Error fetching weeks:", error);
       }
     }
-    if (category === "psychology_of_learning") {
       fetchWeeks();
-    }
   }, [category]);
 
   // Toggle study mode disables timer
@@ -74,7 +80,6 @@ export default function TestSettingsPage() {
     }
 
     // Add psychology of learning specific parameters
-    if (category === "psychology_of_learning") {
       if (shuffleWeeks) {
         params.append("shuffleWeeks", "true");
       } else {
@@ -82,7 +87,6 @@ export default function TestSettingsPage() {
           params.append("weeks", selectedWeeks.join(","));
         }
       }
-    }
 
     // Navigate to test page with settings
     router.push(`/test?${params.toString()}`);
@@ -101,7 +105,7 @@ export default function TestSettingsPage() {
             {/* Left Column */}
             <div
               className={`space-y-6 ${
-                category === "psychology_of_learning" && shuffleWeeks
+                category && shuffleWeeks
                   ? "lg:col-span-2"
                   : ""
               }`}
@@ -252,7 +256,7 @@ export default function TestSettingsPage() {
               </div>
 
               {/* Shuffle Weeks Toggle */}
-              {category === "psychology_of_learning" && (
+              {category && (
                 <div className="flex items-center justify-between">
                   <div>
                     <label
@@ -298,7 +302,7 @@ export default function TestSettingsPage() {
             </div>
 
             {/* Right Column: Week Selection (only displayed when shuffleWeeks is off) */}
-            {category === "psychology_of_learning" && !shuffleWeeks && (
+            {category && !shuffleWeeks && (
               <div className="bg-white/1 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] p-4">
                 <label className="block text-sm font-medium text-gray-200 mb-3">
                   Select Weeks
