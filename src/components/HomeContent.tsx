@@ -22,7 +22,7 @@ export default function HomeContent({ session }: HomeContentProps) {
             </p>
             <div className="mt-10 max-w-md mx-auto sm:flex sm:justify-center md:mt-12">
               {session ? (
-                <div className="rounded-md shadow">
+                <div className="rounded-md lg:px-0 md:px-0 px-3 shadow">
                   <Link
                     href="/dashboard"
                     className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-[10px] bg-teal-500 text-white hover:bg-[#0C9A85] transition-colors md:py-4 md:text-lg md:px-10"
