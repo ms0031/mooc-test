@@ -7,10 +7,10 @@ import { ITestAnswer } from "@/models/TestResult"; // Import the interface if ne
 
 export async function POST(request: Request) {
   try {
-    console.log("Received POST request for test results");
+    //console.log("Received POST request for test results");
     const session = await getServerSession(authOptions);
     const payload = await request.json();
-    console.log("Payload received:", payload);
+    //console.log("Payload received:", payload);
 
     // Destructure all expected fields from the payload
     const {
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
     }
 
     await connectDB();
-    console.log("Connected to DB.");
+    //console.log("Connected to DB.");
 
     // Prepare answers data, ensuring structure matches the schema
     const processedAnswers: ITestAnswer[] = answers.map((ans: any) => ({
@@ -62,24 +62,18 @@ export async function POST(request: Request) {
       userId: session?.user?.id || null,
       isGuest: !session?.user?.id,
       category: String(category),
-      // Use values directly from payload if they are pre-calculated client-side
       score: Number(score),
       totalQuestions: Number(totalQuestions),
       correctAnswers: Number(correctAnswers),
       wrongAnswers: Number(wrongAnswers),
-      // Or recalculate server-side if needed (more robust)
-      // totalQuestions: processedAnswers.length,
-      // correctAnswers: processedAnswers.filter(a => a.isCorrect).length,
-      // wrongAnswers: processedAnswers.filter(a => !a.isCorrect).length,
-      // score: Math.round((processedAnswers.filter(a => a.isCorrect).length / processedAnswers.length) * 100),
       timeTaken: Number(timeTaken),
       answers: processedAnswers,
     };
 
-    console.log("Data being sent to TestResult.create:", testResultData);
+    //console.log("Data being sent to TestResult.create:", testResultData);
 
     const testResult = await TestResult.create(testResultData);
-    console.log("Test result saved successfully:", testResult._id); // Log the ID of the saved doc
+    //console.log("Test result saved successfully:", testResult._id); // Log the ID of the saved doc
 
     return NextResponse.json(
       { success: true, testResultId: testResult._id },
@@ -104,7 +98,6 @@ export async function POST(request: Request) {
 // --- GET Request Handler (keep as is or update if needed) ---
 export async function GET(request: Request) {
   try {
-    console.log("Received GET request for test results");
     const session = await getServerSession(authOptions);
 
     if (!session?.user?.id) {
@@ -117,7 +110,6 @@ export async function GET(request: Request) {
     }
 
     await connectDB();
-    console.log("Connected to DB for GET.");
 
     const results = await TestResult.find({ userId: session.user.id })
       .sort({ createdAt: -1 }) // Sort by newest first

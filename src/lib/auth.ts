@@ -29,28 +29,17 @@ export const authOptions: NextAuthOptions = {
           throw new Error("No user found with this email");
         }
 
-        // Debug logging for password comparison
-        console.log("Login attempt for:", credentials.email);
-        console.log("Stored password hash:", user.password);
-        console.log("Provided password:", credentials.password);
-
         // Compare passwords with detailed logging
         const isPasswordValid = await bcrypt.compare(
           credentials.password,
           user.password
         );
-        console.log("Password valid:", isPasswordValid);
-        console.log(
-          "Bcrypt comparison result:",
-          await bcrypt.compare(credentials.password, user.password)
-        );
+       
 
-        // Also log the User model's comparePassword method result
         const modelCompareResult = await user.comparePassword(
           credentials.password
         );
-        console.log("Model comparePassword result:", modelCompareResult);
-
+      
         if (!isPasswordValid) {
           throw new Error("Incorrect password");
         }
