@@ -261,7 +261,7 @@ export default function TestPage() {
         </div>
       )}
 
-      {!timerDisabled && !submitted && (
+      {/* {!timerDisabled && !submitted && (
         <div className="max-w-3xl mx-auto px-4 sm:px-6 justify-items-start lg:px-8 mb-6">
           <div className="bg-slate-800/80 w-1/3 rounded-3xl p-4 flex justify-center">
             <CountdownTimer
@@ -271,7 +271,7 @@ export default function TestPage() {
             />
           </div>
         </div>
-      )}
+      )} */}
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         {questions.map((question, index) => {

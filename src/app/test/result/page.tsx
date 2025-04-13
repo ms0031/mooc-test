@@ -62,7 +62,7 @@ export default function TestResultPage() {
   return (
     <div className="min-h-screen bg-slate-950 py-12">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] shadow-xl rounded-lg overflow-hidden">
+        <div className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] shadow-xl rounded-2xl overflow-hidden">
           {/* Header */}
           <div className="bg-white/5  px-6 py-4">
             <h1 className="text-2xl font-bold text-gray-200">Test Results</h1>
@@ -72,7 +72,7 @@ export default function TestResultPage() {
           <div className="p-6">
             <div className="text-center mb-8">
               <div className="inline-flex items-center justify-center h-24 w-25 rounded-full bg-indigo-100 mb-4">
-                <span className="text-3xl font-bold text-teal-600">
+                <span className="text-3xl font-bold text-slate-700">
                   {testResult.score}%
                 </span>
               </div>
@@ -87,13 +87,13 @@ export default function TestResultPage() {
 
             {/* Stats Grid */}
             <div className="grid grid-cols-2 gap-4 mb-8">
-              <div className="bg-blue-500/15   p-4 rounded-lg">
+              <div className="bg-blue-500/15   p-4 rounded-2xl">
                 <h3 className="text-sm font-medium text-gray-200">Category</h3>
                 <p className="mt-1 text-lg font-semibold text-blue-400 capitalize">
                   {testResult.category || "General"}
                 </p>
               </div>
-              <div className="bg-blue-500/15  p-4 rounded-lg">
+              <div className="bg-blue-500/15  p-4 rounded-2xl">
                 <h3 className="text-sm font-medium text-gray-200">
                   Time Taken
                 </h3>
@@ -102,7 +102,7 @@ export default function TestResultPage() {
                   {testResult.timeTaken % 60}s
                 </p>
               </div>
-              <div className="bg-green-500/20  p-4 rounded-lg">
+              <div className="bg-green-500/20  p-4 rounded-2xl">
                 <h3 className="text-sm font-medium text-gray-200">
                   Correct Answers
                 </h3>
@@ -115,7 +115,7 @@ export default function TestResultPage() {
                   %)
                 </p>
               </div>
-              <div className="bg-red-500/20  p-4 rounded-lg">
+              <div className="bg-red-500/20  p-4 rounded-2xl">
                 <h3 className="text-sm font-medium text-gray-200">
                   Wrong Answers
                 </h3>
@@ -164,12 +164,12 @@ export default function TestResultPage() {
               >
                 Back to Home
               </Button>
-              <Button
+              {/* <Button
                 variant="destructive"
                 onClick={() => router.push("/dashboard/wrong-answers")}
               >
                 Wrong Answers
-              </Button>
+              </Button> */}
               <Button
                 variant="primary"
                 onClick={() => router.push("/test/settings")}

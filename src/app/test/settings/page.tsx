@@ -128,7 +128,7 @@ export default function TestSettingsPage() {
                 </select>
               </div>
 
-              {/* Timer Toggle */}
+              {/* Timer Toggle
               <div className="flex items-center justify-between">
                 <div>
                   <label
@@ -159,7 +159,7 @@ export default function TestSettingsPage() {
                     } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
                   ></span>
                 </button>
-              </div>
+              </div> */}
 
               {/* Randomize Answers Toggle */}
               <div className="flex items-center justify-between">
