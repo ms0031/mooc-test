@@ -16,8 +16,8 @@ export default function HomeContent({ session }: HomeContentProps) {
               <span className="block text-[#0FAE96]">Interactive Tests</span>
             </h1>
             <p className="mt-3 max-w-md mx-auto text-base text-gray-300 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-              Test your understanding of psychology and learning theory through
-              our comprehensive question bank. Track your progress and improve
+              Test your understanding of Conservation Economics and Psychology of Learning through
+              our comprehensive tests. Track your progress and improve
               your knowledge.
             </p>
             <div className="mt-10 max-w-md mx-auto sm:flex sm:justify-center md:mt-12">
