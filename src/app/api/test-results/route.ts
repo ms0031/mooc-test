@@ -54,7 +54,7 @@ export async function POST(request: Request) {
           : {},
       correctAnswer: String(ans.correctAnswer),
     }));
-    console.log("Processed answers for DB:", processedAnswers);
+    //console.log("Processed answers for DB:", processedAnswers);
 
     // Create the TestResult document
     const testResultData = {
@@ -111,12 +111,10 @@ export async function GET(request: Request) {
 
     await connectDB();
 
-    const results = await TestResult.find({ userId: session.user.id })
-      .sort({ createdAt: -1 }) // Sort by newest first
-      .limit(10); // Limit to the last 10 results
-    console.log(
-      `Fetched ${results.length} results for user ${session.user.id}`
-    );
+    const results = await TestResult.find({ userId: session.user.id }).sort({ createdAt: -1 })
+    // console.log(
+    //   `Fetched ${results.length} results for user ${session.user.id}`
+    // );
 
     return NextResponse.json({ results });
   } catch (error: any) {

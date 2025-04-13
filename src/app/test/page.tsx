@@ -77,7 +77,7 @@ export default function TestPage() {
 
       const response = await fetch(`${apiUrl}?${queryParams.toString()}`);
       const data = await response.json();
-      console.log("Fetched questions data:", data);
+      //console.log("Fetched questions data:", data);
 
       if (!response.ok) {
         throw new Error(data.message || "Failed to fetch questions");
