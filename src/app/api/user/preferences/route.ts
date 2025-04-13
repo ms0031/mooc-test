@@ -15,7 +15,6 @@ export async function POST(request: Request) {
     const { theme } = await request.json();
     await connectDB();
 
-    // Update user preferences
     await User.findByIdAndUpdate(
       session.user.id,
       { $set: { "preferences.theme": theme } },

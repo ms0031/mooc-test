@@ -4,9 +4,9 @@ import "./globals.css";
 import { NextAuthProvider } from "@/components/providers/NextAuthProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
-import { Analytics } from "@/components/Analytics";
+import { Analyticsdb } from "@/components/Analytics";
 import Navbar from "@/components/ui/Navbar";
-
+import { Analytics } from "@vercel/analytics/react"
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -41,6 +41,7 @@ export default function RootLayout({
                 {children}
               </main>
               <Analytics />
+              <Analyticsdb />
             </ThemeProvider>
           </NextAuthProvider>
         </ErrorBoundary>

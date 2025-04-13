@@ -32,7 +32,7 @@ export default function HomeContent({ session }: HomeContentProps) {
                 </div>
               ) : (
                 <>
-                  <div className="rounded-md shadow">
+                  <div className="rounded-md lg:px-0 md:px-0 px-3 shadow">
                     <Link
                       href="/test/settings"
                       className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-[10px] bg-teal-500/90 text-white hover:bg-[#0C9A85] transition-colors md:py-4 md:text-lg md:px-10"
@@ -40,7 +40,7 @@ export default function HomeContent({ session }: HomeContentProps) {
                       Take Test (Guest)
                     </Link>
                   </div>
-                  <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+                  <div className="mt-3 lg:px-0 md:px-0 px-3 rounded-md shadow sm:mt-0 sm:ml-3">
                     <Link
                       href="/login"
                       className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-[10px] bg-gray-200 text-gray-900 hover:bg-gray-100 transition-colors md:py-4 md:text-lg md:px-10"

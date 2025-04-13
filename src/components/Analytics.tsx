@@ -22,7 +22,6 @@ function AnalyticsContent() {
           }),
         });
       } catch (error) {
-        // Silently fail analytics
         console.error("Analytics error:", error);
       }
     };
@@ -33,7 +32,7 @@ function AnalyticsContent() {
   return null;
 }
 
-export function Analytics() {
+export function Analyticsdb() {
   return (
     <Suspense fallback={null}>
       <AnalyticsContent />

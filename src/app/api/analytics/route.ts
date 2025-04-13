@@ -4,7 +4,6 @@ import { authOptions } from "@/lib/auth";
 import connectDB from "@/lib/mongodb";
 import mongoose from "mongoose";
 
-// Create analytics schema
 const analyticsSchema = new mongoose.Schema({
   userId: String,
   path: String,
@@ -13,7 +12,6 @@ const analyticsSchema = new mongoose.Schema({
   userAgent: String,
 });
 
-// Get the model, creating it if it doesn't exist
 const Analytics =
   mongoose.models.Analytics || mongoose.model("Analytics", analyticsSchema);
 
@@ -36,7 +34,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Analytics error:", error);
-    // Return success anyway to avoid disrupting user experience
     return NextResponse.json({ success: true });
   }
 }

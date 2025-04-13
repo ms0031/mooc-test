@@ -56,7 +56,7 @@ export interface RegisterData extends LoginCredentials {
 
 // Test Types
 export interface TestAnswer {
-  qid: string; // Changed from questionId to qid
+  qid: string;
   userAnswer: string;
   isCorrect: boolean;
   timeSpent: number;

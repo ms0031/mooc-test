@@ -25,7 +25,7 @@ export async function GET(request: Request) {
     await connectDB();
 
     const questionIds = ids.split(",").map((id) => id.trim());
-    const questions = await Question.find({ qid: { $in: questionIds } }); // Changed from _id to qid
+    const questions = await Question.find({ qid: { $in: questionIds } });
 
     return NextResponse.json({ questions });
   } catch (error) {
