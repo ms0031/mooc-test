@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 import { Analyticsdb } from "@/components/Analytics";
 import Navbar from "@/components/ui/Navbar";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -37,9 +37,10 @@ export default function RootLayout({
           <NextAuthProvider>
             <ThemeProvider>
               <Navbar />
-              <main>
-                {children}
-              </main>
+              <main>{children}</main>
+              <footer className="text-center py-4 text-gray-200 text-sm bg-slate-950">
+                <p>&copy; Mayank Shekhar</p>
+              </footer>
               <Analytics />
               <Analyticsdb />
             </ThemeProvider>
