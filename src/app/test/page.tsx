@@ -355,7 +355,7 @@ export default function TestPage() {
           {!submitted ? (
             <div className="flex justify-between w-full">
               <button
-                onClick={() => router.push(`${session ? "/dashboard" : "/"}`)}
+                onClick={() => router.push("/test/settings")}
                 className="px-6 py-2 bg-red-500/80 text-gray-200 rounded-xl hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
               >
                 Cancel

@@ -15,13 +15,13 @@ export default function TestSettingsPage() {
   const [shuffleWeeks, setShuffleWeeks] = useState(false);
   const [studyMode, setStudyMode] = useState(false);
   const [categories, setCategories] = useState([
-    { id: "psychology_of_learning", name: "Psychology of Learning" },
     { id: "conservation_economics", name: "Conservation Economics" },
+    { id: "psychology_of_learning", name: "Psychology of Learning" },
   ]);
   const [selectedWeeks, setSelectedWeeks] = useState<string[]>([]);
   // Dynamic weeks state – will be fetched from the API.
   const [weeks, setWeeks] = useState<{ id: string; name: string }[]>([]);
-  const [randomizeQuestions, setRandomizeQuestions] = useState(false);
+  const [randomizeQuestions, setRandomizeQuestions] = useState(true);
 
   // Fetch available weeks dynamically when the category is psychology_of_learning.
   useEffect(() => {
