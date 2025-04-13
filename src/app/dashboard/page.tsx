@@ -143,7 +143,7 @@ export default function Dashboard() {
                   <Button
                     variant="cyan"
                     className="w-full py-6 text-[16px]"
-                    onClick={() => router.push("/dashboard/wrong-answers")}
+                    onClick={() => router.push("/about")}
                   >
                     About 
                   </Button>
@@ -215,14 +215,14 @@ export default function Dashboard() {
                   <Button
                     variant="orange"
                     className="w-full py-6 text-[16px]"
-                    onClick={() => router.push("/dashboard/history")}
+                    onClick={() => router.push("/buy-me-a-coffee")}
                   >
                     Buy Me a Coffee
                   </Button>
                   <Button
-                    variant="outline"
+                    variant="cyan"
                     className="w-full py-6 text-[16px]"
-                    onClick={() => router.push("/dashboard/wrong-answers")}
+                    onClick={() => router.push("/about")}
                   >
                     About 
                   </Button>
@@ -234,14 +234,14 @@ export default function Dashboard() {
                     Edit Profile
                   </Button> */}
                   <Button
-                    variant="outline"
+                    variant="cyan"
                     className="w-full py-6 text-[16px]"
                     onClick={() => router.push("/faq")}
                   >
                     FAQ 
                   </Button>
                   <Button
-                    variant="outline"
+                    variant="destructive"
                     className="w-full py-6 text-[16px]"
                     onClick={() => router.push("/feedback")}
                   >
