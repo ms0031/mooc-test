@@ -10,6 +10,7 @@
     "seed": "node scripts/seed-db.js"
   },
   "dependencies": {
+    "@fireworks-js/react": "^2.10.8",
     "@heroicons/react": "^2.2.0",
     "@types/bcrypt": "^5.0.2",
     "@vercel/analytics": "^1.5.0",

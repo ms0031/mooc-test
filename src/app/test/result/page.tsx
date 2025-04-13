@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import { Button } from "@/components/ui/Button";
+import { Fireworks } from "@fireworks-js/react";
 
 interface TestResult {
   score: number;
@@ -28,6 +29,7 @@ export default function TestResultPage() {
   const router = useRouter();
   const { data: session, status } = useSession();
   const [testResult, setTestResult] = useState<TestResult | null>(null);
+  const isPerfectScore = testResult?.score === 100;
 
   useEffect(() => {
     // Get test result from URL params
@@ -61,8 +63,65 @@ export default function TestResultPage() {
 
   return (
     <div className="min-h-screen bg-slate-950 py-12">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] shadow-xl rounded-2xl overflow-hidden">
+      {isPerfectScore && (
+        <Fireworks
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            zIndex: 1,
+            pointerEvents: "none",
+          }}
+          options={{
+            autoresize: true,
+            opacity: 1,
+            acceleration: 1.02,
+            friction: 0.97,
+            gravity: 1.5,
+            particles: 60,
+            traceLength: 1,
+            traceSpeed: 2,
+            explosion: 5,
+            intensity: 30,
+            flickering: 50,
+            lineStyle: "round",
+            hue: {
+              min: 0,
+              max: 360,
+            },
+            delay: {
+              min: 30,
+              max: 60,
+            },
+            rocketsPoint: {
+              min: 50,
+              max: 50,
+            },
+            lineWidth: {
+              explosion: {
+                min: 1,
+                max: 10,
+              },
+              trace: {
+                min: 1,
+                max: 2,
+              },
+            },
+            brightness: {
+              min: 50,
+              max: 100,
+            },
+            decay: {
+              min: 0.015,
+              max: 0.03,
+            },
+          }}
+        />
+      )}
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[15px] shadow-xl rounded-2xl overflow-hidden">
           {/* Header */}
           <div className="bg-white/5  px-6 py-4">
             <h1 className="text-2xl font-bold text-gray-200">Test Results</h1>
@@ -131,7 +190,7 @@ export default function TestResultPage() {
 
             {/* Guest Prompt */}
             {!session && (
-              <div className="bg-indigo-50 p-4 rounded-lg border border-indigo-100 mb-8">
+              <div className="bg-indigo-50/75 p-4 rounded-2xl border border-indigo-100 mb-8">
                 <h3 className="text-lg font-medium text-indigo-800 mb-2">
                   Save Your Progress
                 </h3>
@@ -160,7 +219,7 @@ export default function TestResultPage() {
             <div className="flex justify-between">
               <Button
                 variant="outline"
-                onClick={() => router.push("/dashboard")}
+                onClick={() => router.push(`${session ? "/dashboard" : "/"}`)}
               >
                 Back to Home
               </Button>
