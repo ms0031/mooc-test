@@ -9,7 +9,7 @@ export default function TestSettingsPage() {
   const router = useRouter();
   const { data: session } = useSession();
 
-  const [category, setCategory] = useState("psychology_of_learning");
+  const [category, setCategory] = useState("conservation_economics");
   const [enableTimer, setEnableTimer] = useState(true);
   const [randomizeAnswers, setRandomizeAnswers] = useState(true);
   const [shuffleWeeks, setShuffleWeeks] = useState(false);
@@ -235,7 +235,7 @@ export default function TestSettingsPage() {
                     Study Mode
                   </label>
                   <p className="text-xs text-gray-300">
-                    Practice without time pressure and see answers
+                    See answers immediately
                   </p>
                 </div>
                 <button
