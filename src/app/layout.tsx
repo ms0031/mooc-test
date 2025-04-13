@@ -20,7 +20,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "MOOC Test Platform",
-  description: "An interactive learning and testing platform for nptel/mooc test",
+  description: "An interactive testing platform for nptel/mooc test",
   keywords: ["MOOC", "psychology of learning", "sustainable development", "conservation economics","online education", "test platform"],
   authors: [{ name: "Mayank Shekhar" }],
   creator: "Mayank Shekhar",
@@ -31,25 +31,18 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "MOOC Test Platform",
-    description: "An interactive learning and testing platform for psychology and learning theory",
+    description: "An interactive testing platform for nptel/mooc test",
     url: "/",
     siteName: "MOOC Test Platform",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "MOOC Test Platform",
-      },
-    ],
+    images: ["/og-image.png"],
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
     title: "MOOC Test Platform",
-    description: "An interactive learning and testing platform for psychology and learning theory",
-    images: ["/og-image.png"],
+    description: "An interactive testing platform for nptel/mooc test",
+    images: ['/og-image.png'],
     creator: "@mayankshekhar",
   },
   robots: {

@@ -318,8 +318,8 @@ export default function TestPage() {
                   } else {
                     baseClasses +=
                       finalAnswer === option
-                        ? " bg-blue-900/30 border-blue-600"
-                        : " border-gray-300 hover:border-indigo-500 hover:bg-teal-50/10";
+                        ? " bg-fuchsia-900/30 border-fuchsia-600"
+                        : " border-gray-300 hover:border-purple-500 hover:bg-fuchsia-50/10";
                   }
                   return (
                     <button

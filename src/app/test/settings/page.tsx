@@ -234,7 +234,7 @@ export default function TestSettingsPage() {
                   >
                     Study Mode
                   </label>
-                  <p className="text-xs text-gray-300">
+                  <p className="text-xs text-gray-400">
                     See answers immediately
                   </p>
                 </div>
