@@ -1,49 +1,67 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/Button';
+import { useState } from "react";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/Button";
 
 export default function FeedbackPage() {
   const { data: session } = useSession();
   const router = useRouter();
-  
+
   const [formData, setFormData] = useState({
-    type: 'bug',
+    type: "bug",
     rating: 3,
-    message: '',
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: name === 'rating' ? parseInt(value) : value
+      [name]: name === "rating" ? parseInt(value) : value,
     }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setError('');
+    setError("");
 
     try {
-      // In a real app, this would send data to an API endpoint
-      // For now, we'll simulate a successful submission
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      const response = await fetch("/api/feedback", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || "Failed to submit feedback");
+      }
+
       setSubmitSuccess(true);
       setFormData({
-        type: 'bug',
+        type: "bug",
         rating: 3,
-        message: '',
+        message: "",
       });
     } catch (err) {
-      setError('Failed to submit feedback. Please try again.');
+      setError(
+        err instanceof Error
+          ? err.message
+          : "Failed to submit feedback. Please try again."
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -56,7 +74,7 @@ export default function FeedbackPage() {
           <div className="bg-indigo-600 px-6 py-4">
             <h1 className="text-2xl font-bold text-white">Feedback</h1>
           </div>
-          
+
           <div className="p-6">
             {submitSuccess ? (
               <div className="text-center py-8">
@@ -81,10 +99,7 @@ export default function FeedbackPage() {
                   Your input helps us improve the app for everyone.
                 </p>
                 <div className="mt-6">
-                  <Button
-                    variant="primary"
-                    onClick={() => router.push('/')}
-                  >
+                  <Button variant="primary" onClick={() => router.push("/")}>
                     Return to Home
                   </Button>
                 </div>
@@ -96,9 +111,12 @@ export default function FeedbackPage() {
                     <div className="text-sm text-red-700">{error}</div>
                   </div>
                 )}
-                
+
                 <div>
-                  <label htmlFor="type" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="type"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Feedback Type
                   </label>
                   <select
@@ -114,7 +132,7 @@ export default function FeedbackPage() {
                     <option value="other">Other</option>
                   </select>
                 </div>
-                
+
                 <div>
                   <label className="block text-sm font-medium text-gray-700">
                     Rate Your Experience (1-5)
@@ -135,9 +153,12 @@ export default function FeedbackPage() {
                     ))}
                   </div>
                 </div>
-                
+
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-gray-700"
+                  >
                     Your Feedback
                   </label>
                   <div className="mt-1">
@@ -153,12 +174,12 @@ export default function FeedbackPage() {
                     />
                   </div>
                 </div>
-                
+
                 <div className="flex justify-end">
                   <Button
                     type="button"
                     variant="outline"
-                    onClick={() => router.push('/')}
+                    onClick={() => router.push("/")}
                     className="mr-3"
                   >
                     Cancel
@@ -168,7 +189,7 @@ export default function FeedbackPage() {
                     variant="primary"
                     disabled={isSubmitting || !formData.message}
                   >
-                    {isSubmitting ? 'Submitting...' : 'Submit Feedback'}
+                    {isSubmitting ? "Submitting..." : "Submit Feedback"}
                   </Button>
                 </div>
               </form>
