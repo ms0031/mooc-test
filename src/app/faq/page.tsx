@@ -18,7 +18,7 @@ export default function FAQPage() {
   const faqItems: FAQItem[] = [
     {
       question: "How do I reset my password?",
-      answer: "To reset your password, click on the 'Forgot Password' link on the login page. You'll receive an email with instructions to create a new password."
+      answer: "Current there is no password reset option. If you forget your password, please contact support for assistance."
     },
     {
       question: "Can I take tests without creating an account?",
@@ -26,7 +26,7 @@ export default function FAQPage() {
     },
     {
       question: "What is Study Mode?",
-      answer: "Study Mode is a pressure-free way to review questions. In this mode, there's no timer, and you can see explanations for each answer. It's perfect for learning rather than testing yourself."
+      answer: "Study Mode is a pressure-free way to review questions. In this mode, there's no timer, and you can see answer for each questions as soon you select any option. It's perfect for learning rather than testing yourself."
     },
     {
       question: "How is my score calculated?",
@@ -46,11 +46,7 @@ export default function FAQPage() {
     },
     {
       question: "How do I switch between light and dark mode?",
-      answer: "You can toggle between light and dark mode by clicking the theme icon in the header. Your preference will be saved for future visits."
-    },
-    {
-      question: "Can I export my test history?",
-      answer: "Yes, logged-in users can export their test history as a PDF from the dashboard. Look for the 'Export Data' button in the test history section."
+      answer: "Currently, there is no option to switch between light and dark mode. The app uses a dark theme by default for better readability in low-light conditions."
     },
     {
       question: "How do I report a bug or suggest a feature?",
@@ -59,11 +55,11 @@ export default function FAQPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
+    <div className="min-h-screen bg-slate-950 py-12">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white shadow-xl rounded-lg overflow-hidden">
-          <div className="bg-indigo-600 px-6 py-4">
-            <h1 className="text-2xl font-bold text-white">Frequently Asked Questions</h1>
+        <div className="bg-white/5 rounded-2xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden shadow-xl p-2">
+          <div className="px-6 py-4">
+            <h1 className="text-2xl font-bold text-gray-300">Frequently Asked Questions</h1>
           </div>
           
           <div className="p-6">
@@ -74,7 +70,7 @@ export default function FAQPage() {
                     className="flex justify-between items-center w-full text-left focus:outline-none"
                     onClick={() => toggleItem(index)}
                   >
-                    <h3 className="text-lg font-medium text-gray-900">{item.question}</h3>
+                    <h3 className="text-lg font-medium text-gray-300">{item.question}</h3>
                     <span className="ml-6 flex-shrink-0">
                       {openItem === index ? (
                         <svg className="h-5 w-5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -88,19 +84,19 @@ export default function FAQPage() {
                     </span>
                   </button>
                   {openItem === index && (
-                    <div className="mt-2 pr-12">
-                      <p className="text-gray-600">{item.answer}</p>
+                    <div className="mt-2 pr-6">
+                      <p className="text-gray-400">{item.answer}</p>
                     </div>
                   )}
                 </div>
               ))}
             </div>
             
-            <div className="mt-8 text-center">
-              <p className="text-gray-600">Still have questions?</p>
+            <div className="mt-6 text-center">
+              <p className="text-gray-400">Still have questions?</p>
               <Link 
                 href="/feedback" 
-                className="mt-2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+                className="mt-2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-2xl text-white bg-indigo-600 hover:bg-indigo-700"
               >
                 Contact Support
               </Link>
