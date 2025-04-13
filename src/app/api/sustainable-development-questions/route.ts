@@ -1,8 +1,9 @@
 import { NextResponse } from "next/server";
-import questionsByWeekData from "../../../../questions_psychology_of_learning.json";
+import questionsByWeekData from "../../../../questions_sustainable_development.json";
+
 
 interface Question {
-  qid: string; 
+  qid: string;
   question: string;
   options: string[];
   answer: string;
@@ -59,9 +60,9 @@ export async function GET(request: Request) {
 
     return NextResponse.json({ questions: questionsWithIds });
   } catch (error) {
-    console.error("Error fetching psychology questions:", error);
+    console.error("Error fetching Sustainable Development questions:", error);
     return NextResponse.json(
-      { message: "Error fetching psychology questions" },
+      { message: "Error fetching Sustainable Development questions" },
       { status: 500 }
     );
   }

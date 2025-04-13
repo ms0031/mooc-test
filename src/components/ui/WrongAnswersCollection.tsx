@@ -5,6 +5,7 @@ import { useSession } from "next-auth/react";
 import { TestResultResponse } from "@/types";
 import questionsByWeekData from "../../../questions_psychology_of_learning.json";
 import conservationEconomicsData from "../../../questions_conservation_economics.json";
+import sustainableDevData from "../../../questions_sustainable_development.json";
 
 interface WrongAnswer {
   question: string;
@@ -22,6 +23,13 @@ interface PsychologyQuestion {
 }
 
 interface ConservationEconomicsQuestion {
+  qid: string;
+  question: string;
+  options: string[];
+  answer: string;
+}
+
+interface SustainableDevelopmentQuestion {
   qid: string;
   question: string;
   options: string[];
@@ -59,6 +67,7 @@ export default function WrongAnswersCollection({
       const questionIds = new Set<string>();
       const psychologyQuestions = new Set<string>();
       const conservationQuestions = new Set<string>();
+      const sustainableDevQuestions = new Set<string>();
       const mongoQuestions = new Set<string>();
 
       // Sort questions by type
@@ -70,6 +79,8 @@ export default function WrongAnswersCollection({
               psychologyQuestions.add(answer.qid);
             } else if (answer.qid.startsWith("c_")) {
               conservationQuestions.add(answer.qid);
+            } else if (answer.qid.startsWith("s_")) {
+              sustainableDevQuestions.add(answer.qid);
             } else {
               mongoQuestions.add(answer.qid);
             }
@@ -82,6 +93,10 @@ export default function WrongAnswersCollection({
       const conservationQuestionsMap = new Map<
         string,
         ConservationEconomicsQuestion
+      >();
+      const sustainableDevQuestionsMap = new Map<
+        string,
+        SustainableDevelopmentQuestion
       >();
 
       if (psychologyQuestions.size > 0) {
@@ -104,17 +119,31 @@ export default function WrongAnswersCollection({
         });
       }
 
+      if (sustainableDevQuestions.size > 0) {
+        const allSustainableDevQuestions = Object.values(
+          sustainableDevData as Record<string, SustainableDevelopmentQuestion[]>
+        ).flat();
+        allSustainableDevQuestions.forEach((q) => {
+          if (sustainableDevQuestions.has(q.qid)) {
+            sustainableDevQuestionsMap.set(q.qid, q);
+          }
+        });
+      }
+
       // Process wrong answers with option counts
       const wrongAnswerMap = new Map<string, WrongAnswer>();
 
       testResults.forEach((result) => {
         result.answers.forEach((answer) => {
           if (!answer.isCorrect) {
-            const question = answer.qid.startsWith("p_")
-              ? psychologyQuestionsMap.get(answer.qid)
-              : answer.qid.startsWith("c_")
-              ? conservationQuestionsMap.get(answer.qid)
-              : null;
+            let question;
+            if (answer.qid.startsWith("p_")) {
+              question = psychologyQuestionsMap.get(answer.qid);
+            } else if (answer.qid.startsWith("c_")) {
+              question = conservationQuestionsMap.get(answer.qid);
+            } else if (answer.qid.startsWith("s_")) {
+              question = sustainableDevQuestionsMap.get(answer.qid);
+            }
 
             if (question) {
               const key = answer.qid;
@@ -189,57 +218,57 @@ export default function WrongAnswersCollection({
 
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
-    <div className="">
-      <h2 className="text-xl font-semibold text-gray-100 mb-5">
-        Frequently Incorrect Answers
-      </h2>
-      <div className="space-y-6">
-        {wrongAnswers.map((wrongAnswer, index) => (
-          <div
-            key={index}
-            className=" bg-white/5 outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] rounded-3xl p-4  pb-6"
-          >
-            <div className="flex justify-between items-start mb-4">
-              <h3 className="text-md font-medium text-gray-300">
-                {wrongAnswer.question}
-              </h3>
-              <span className="inline-flex items-center ml-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-900/60 border-2 border-red-500/60 text-red-200">
-                {wrongAnswer.totalWrong}x
-              </span>
-            </div>
-            <div className="space-y-2">
-              {wrongAnswer.options.map((option, optIndex) => (
-                <div
-                  key={optIndex}
-                  className="flex justify-between items-center p-2 px-3 rounded-2xl bg-white/1 outline-2 outline-offset-[-1px] outline-white/3 backdrop-blur-[10px]"
-                >
-                  <span
-                    className={
-                      option === wrongAnswer.correctAnswer
-                        ? "text-green-400"
-                        : "text-gray-300"
-                    }
+      <div className="">
+        <h2 className="text-xl font-semibold text-gray-100 mb-5">
+          Frequently Incorrect Answers
+        </h2>
+        <div className="space-y-6">
+          {wrongAnswers.map((wrongAnswer, index) => (
+            <div
+              key={index}
+              className=" bg-white/5 outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] rounded-3xl p-4  pb-6"
+            >
+              <div className="flex justify-between items-start mb-4">
+                <h3 className="text-md font-medium text-gray-300">
+                  {wrongAnswer.question}
+                </h3>
+                <span className="inline-flex items-center ml-2 px-3 py-1.5 rounded-full text-xs font-medium bg-red-900/60 border-2 border-red-500/60 text-red-200">
+                  {wrongAnswer.totalWrong}x
+                </span>
+              </div>
+              <div className="space-y-2">
+                {wrongAnswer.options.map((option, optIndex) => (
+                  <div
+                    key={optIndex}
+                    className="flex justify-between items-center p-2 px-3 rounded-2xl bg-white/1 outline-2 outline-offset-[-1px] outline-white/3 backdrop-blur-[10px]"
                   >
-                    {option}
-                  </span>
-                  <span
-                    className={`text-red-400 font-medium ${
-                      wrongAnswer.optionCounts[option]
-                        ? "bg-red-900/30 border-1 border-red-500/30"
-                        : ""
-                    } rounded-full px-2.5 py-1 text-xs`}
-                  >
-                    {wrongAnswer.optionCounts[option]
-                      ? `${wrongAnswer.optionCounts[option]}x`
-                      : ""}
-                  </span>
-                </div>
-              ))}
+                    <span
+                      className={
+                        option === wrongAnswer.correctAnswer
+                          ? "text-green-400"
+                          : "text-gray-300"
+                      }
+                    >
+                      {option}
+                    </span>
+                    <span
+                      className={`text-red-400 font-medium ${
+                        wrongAnswer.optionCounts[option]
+                          ? "bg-red-900/30 border-1 border-red-500/30"
+                          : ""
+                      } rounded-full px-2.5 py-1 text-xs`}
+                    >
+                      {wrongAnswer.optionCounts[option]
+                        ? `${wrongAnswer.optionCounts[option]}x`
+                        : ""}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      </div>
-      </div>
+    </div>
   );
 }

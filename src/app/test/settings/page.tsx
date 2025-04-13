@@ -17,6 +17,7 @@ export default function TestSettingsPage() {
   const [categories, setCategories] = useState([
     { id: "conservation_economics", name: "Conservation Economics" },
     { id: "psychology_of_learning", name: "Psychology of Learning" },
+    { id: "sustainable_development", name: "Sustainable Development" },
   ]);
   const [selectedWeeks, setSelectedWeeks] = useState<string[]>([]);
   // Dynamic weeks state – will be fetched from the API.
@@ -30,9 +31,10 @@ export default function TestSettingsPage() {
         let apiUrl = "/api/psychology-questions?getWeeks=true";
         if (category === "conservation_economics") {
           apiUrl = "/api/conservation-economics-questions?getWeeks=true";
-        }
-        else if (category === "psychology_of_learning") {
+        } else if (category === "psychology_of_learning") {
           apiUrl = "/api/psychology-questions?getWeeks=true";
+        } else if (category === "sustainable_development") {
+          apiUrl = "/api/sustainable-development-questions?getWeeks=true";
         }
         const res = await fetch(apiUrl);
         const data = await res.json();
@@ -48,7 +50,7 @@ export default function TestSettingsPage() {
         console.error("Error fetching weeks:", error);
       }
     }
-      fetchWeeks();
+    fetchWeeks();
   }, [category]);
 
   // Toggle study mode disables timer
@@ -80,13 +82,13 @@ export default function TestSettingsPage() {
     }
 
     // Add psychology of learning specific parameters
-      if (shuffleWeeks) {
-        params.append("shuffleWeeks", "true");
-      } else {
-        if (selectedWeeks.length > 0) {
-          params.append("weeks", selectedWeeks.join(","));
-        }
+    if (shuffleWeeks) {
+      params.append("shuffleWeeks", "true");
+    } else {
+      if (selectedWeeks.length > 0) {
+        params.append("weeks", selectedWeeks.join(","));
       }
+    }
 
     // Navigate to test page with settings
     router.push(`/test?${params.toString()}`);
@@ -105,9 +107,7 @@ export default function TestSettingsPage() {
             {/* Left Column */}
             <div
               className={`space-y-6 ${
-                category && shuffleWeeks
-                  ? "lg:col-span-2"
-                  : ""
+                category && shuffleWeeks ? "lg:col-span-2" : ""
               }`}
             >
               {/* Category Selection */}

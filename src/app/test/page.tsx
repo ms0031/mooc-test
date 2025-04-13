@@ -54,12 +54,13 @@ export default function TestPage() {
   const fetchQuestions = async () => {
     try {
       let apiUrl = "/api/psychology-questions";
-        if (category === "conservation_economics") {
-          apiUrl = "/api/conservation-economics-questions";
-        }
-        else if (category === "psychology_of_learning") {
-          apiUrl = "/api/psychology-questions";
-        }
+      if (category === "conservation_economics") {
+        apiUrl = "/api/conservation-economics-questions";
+      } else if (category === "psychology_of_learning") {
+        apiUrl = "/api/psychology-questions";
+      } else if (category === "sustainable_development") {
+        apiUrl = "/api/sustainable-development-questions";
+      }
       const queryParams = new URLSearchParams();
 
       const shuffleWeeksVal = searchParams.get("shuffleWeeks") === "true";
