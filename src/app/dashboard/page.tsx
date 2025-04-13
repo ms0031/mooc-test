@@ -89,7 +89,7 @@ export default function Dashboard() {
                 </h2>
                 <div className="space-y-3">
                   <Button
-                    variant="outline"
+                    variant="cyan"
                     className="w-full py-6 text-[16px]"
                     onClick={() => router.push("/dashboard/history")}
                   >
@@ -102,22 +102,22 @@ export default function Dashboard() {
                   >
                     Wrong Answers
                   </Button>
-                  <Button
+                  {/* <Button
                     variant="outline"
                     className="w-full py-6 text-[16px]"
                     onClick={() => router.push("/profile")}
                   >
                     Edit Profile
-                  </Button>
-                  <Button
+                  </Button> */}
+                  {/* <Button
                     variant="outline"
                     className="w-full py-6 text-[16px]"
                     onClick={() => router.push("/settings")}
                   >
                     Settings
-                  </Button>
+                  </Button> */}
                   <Button
-                    variant="outline"
+                    variant="orange"
                     className="w-full py-6 text-[16px]"
                     onClick={() => signOut({ callbackUrl: "/" })}
                   >
@@ -126,11 +126,58 @@ export default function Dashboard() {
                 </div>
               </div>
             </div>
+
+            <div className="bg-white/5 lg:block hidden rounded-3xl outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden">
+              <div className="p-6">
+                <h2 className="text-xl font-semibold text-gray-200 mb-4">
+                Support & More
+                </h2>
+                <div className="space-y-3">
+                  <Button
+                    variant="orange"
+                    className="w-full py-6 text-[16px]"
+                    onClick={() => router.push("/dashboard/history")}
+                  >
+                    Buy Me a Coffee
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full py-6 text-[16px]"
+                    onClick={() => router.push("/dashboard/wrong-answers")}
+                  >
+                    About 
+                  </Button>
+                  {/* <Button
+                    variant="outline"
+                    className="w-full py-6 text-[16px]"
+                    onClick={() => router.push("/profile")}
+                  >
+                    Edit Profile
+                  </Button> */}
+                  <Button
+                    variant="outline"
+                    className="w-full py-6 text-[16px]"
+                    onClick={() => router.push("/faq")}
+                  >
+                    FAQ 
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full py-6 text-[16px]"
+                    onClick={() => router.push("/feedback")}
+                  >
+                    Report an Issue/Bug
+                  </Button>
+                </div>
+              </div>
+            </div>
+
+
           </div>
           <div className="w-screen h-screen left-0 top-0 absolute opacity-30 pointer-events-none" style={{ zIndex: 0 }}>
-  <div className="w-64 h-64 absolute bg-violet-700 rounded-full blur-[200px]" style={{ left: '100px', bottom: '0px' }}></div>
-  <div className="w-64 h-64 absolute bg-violet-700 rounded-full blur-[200px]" style={{ left: '700px', bottom: '0px' }}></div>
-</div>
+          <div className="w-64 h-64 absolute bg-violet-700 rounded-full blur-[200px]" style={{ left: '100px', bottom: '0px' }}></div>
+          <div className="w-64 h-64 absolute bg-violet-700 rounded-full blur-[200px]" style={{ left: '700px', bottom: '0px' }}></div>
+          </div>
           {/* Main Content Area */}
           <div className="lg:col-span-3 space-y-6">
             <div className="bg-white/5 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden">
@@ -158,6 +205,52 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
+
+          <div className="bg-white/5 lg:hidden rounded-3xl outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden">
+              <div className="p-6">
+                <h2 className="text-xl font-semibold text-gray-200 mb-4">
+                Support & More
+                </h2>
+                <div className="space-y-3">
+                  <Button
+                    variant="orange"
+                    className="w-full py-6 text-[16px]"
+                    onClick={() => router.push("/dashboard/history")}
+                  >
+                    Buy Me a Coffee
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full py-6 text-[16px]"
+                    onClick={() => router.push("/dashboard/wrong-answers")}
+                  >
+                    About 
+                  </Button>
+                  {/* <Button
+                    variant="outline"
+                    className="w-full py-6 text-[16px]"
+                    onClick={() => router.push("/profile")}
+                  >
+                    Edit Profile
+                  </Button> */}
+                  <Button
+                    variant="outline"
+                    className="w-full py-6 text-[16px]"
+                    onClick={() => router.push("/faq")}
+                  >
+                    FAQ 
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full py-6 text-[16px]"
+                    onClick={() => router.push("/feedback")}
+                  >
+                    Report an Issue/Bug
+                  </Button>
+                </div>
+              </div>
+          </div>
+          
         </div>
       </div>
     </div>
