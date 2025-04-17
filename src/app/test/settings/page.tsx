@@ -128,7 +128,7 @@ export default function TestSettingsPage() {
                   id="category"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="block w-full px-3 py-2 border bg-slate-950/50 text-gray-200 border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  className="block w-full px-3 py-2.5 border bg-slate-950/50 text-gray-200 border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                 >
                   {categories.map((cat) => (
                     <option key={cat.id} value={cat.id}>
