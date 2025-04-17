@@ -138,8 +138,31 @@ export default function TestResultPage() {
           {/* Result Summary */}
           <div className="p-6">
             <div className="text-center mb-8">
-              <div className="inline-flex items-center justify-center h-24 w-25 rounded-full bg-indigo-500/15 mb-4">
-                <span className="text-3xl font-bold text-slate-400">
+              <div className="inline-flex items-center justify-center h-24 w-24 rounded-full bg-indigo-500/15 mb-5 mt-1 relative">
+                <svg width="150" height="150" viewBox="0 0 96 96" className="absolute" style={{zIndex:2}}>
+                  <circle
+                    cx="48"
+                    cy="48"
+                    r="35"
+                    stroke="#312e81"
+                    strokeWidth="8"
+                    fill="none"
+                    opacity="0.25"
+                  />
+                  <circle
+                    cx="48"
+                    cy="48"
+                    r="35"
+                    stroke="#6366f1"
+                    strokeWidth="8"
+                    fill="none"
+                    strokeDasharray={2 * Math.PI * 38}
+                    strokeDashoffset={(1 - testResult.score / 100) * 2 * Math.PI * 38}
+                    strokeLinecap="round"
+                    style={{transition: 'stroke-dashoffset 0.7s cubic-bezier(.4,2,.6,1)'}}
+                  />
+                </svg>
+                <span className="text-3xl font-bold text-slate-400 z-10">
                   {testResult.score}%
                 </span>
               </div>
@@ -198,7 +221,7 @@ export default function TestResultPage() {
 
             {/* Wrong Answers Dropdown */}
             <div className="mb-8">
-              <details className="bg-purple-500/15 p-4 rounded-2xl">
+              <details className="bg-purple-500/12 p-4 rounded-2xl">
                 <summary className="text-lg font-medium text-gray-200 cursor-pointer flex items-center justify-between">
                   <span>Wrong Answers</span>
                   <div className="flex items-center">
@@ -214,7 +237,7 @@ export default function TestResultPage() {
                 {session ? (
                   <div className="mt-4 space-y-4">
                     {testResult.answers.filter(answer => !answer.isCorrect).map((answer, index) => (
-                      <div key={index} className="bg-white/4 outline-2 outline-offset-[-1px] outline-white/5 p-4 rounded-xl">
+                      <div key={index} className="bg-white/4 p-4 rounded-xl">
                         <p className="text-gray-300 mb-2 font-medium">Question {index + 1}</p>
                         {answer.question && (
                           <p className="text-gray-200 mb-3 border-l-2 border-purple-400 pl-3">{answer.question}</p>
