@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 
 const analyticsSchema = new mongoose.Schema({
   userId: String,
+  username: String,
   path: String,
   params: Object,
   timestamp: Date,
@@ -25,6 +26,7 @@ export async function POST(request: Request) {
 
     await Analytics.create({
       userId: session?.user?.id || "anonymous",
+      username: session?.user?.name || "anonymous",
       path: data.path,
       params: data.params,
       timestamp: new Date(data.timestamp),
