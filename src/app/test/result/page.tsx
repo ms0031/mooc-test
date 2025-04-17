@@ -16,6 +16,7 @@ interface TestResult {
   category: string;
   answers: Array<{
     qid: string;
+    question?: string; // Added question field
     userAnswer: string;
     isCorrect: boolean;
     timeSpent: number;
@@ -193,6 +194,59 @@ export default function TestResultPage() {
                   %)
                 </p>
               </div>
+            </div>
+
+            {/* Wrong Answers Dropdown */}
+            <div className="mb-8">
+              <details className="bg-purple-500/10 p-4 rounded-2xl">
+                <summary className="text-lg font-medium text-gray-200 cursor-pointer flex items-center justify-between">
+                  <span>Wrong Answers</span>
+                  <span className="text-sm bg-red-500/30 px-2 py-1 rounded-lg">
+                    {testResult.wrongAnswers} Questions
+                  </span>
+                </summary>
+                
+                {session ? (
+                  <div className="mt-4 space-y-4">
+                    {testResult.answers.filter(answer => !answer.isCorrect).map((answer, index) => (
+                      <div key={index} className="bg-white/4 outline-2 outline-offset-[-1px] outline-white/5 p-4 rounded-xl">
+                        <p className="text-gray-300 mb-2 font-medium">Question {index + 1}</p>
+                        {answer.question && (
+                          <p className="text-gray-200 mb-3 border-l-2 border-purple-400 pl-3">{answer.question}</p>
+                        )}
+                        <div className="mb-3">
+                          <div className="flex items-start mb-2">
+                            <span className="bg-red-500/20 text-red-400 px-2 py-1 rounded mr-2 text-xs">Your Answer</span>
+                            <p className="text-red-300">{answer.userAnswer}</p>
+                          </div>
+                          <div className="flex items-start">
+                            <span className="bg-green-500/20 text-green-400 px-2 py-1 rounded mr-2 text-xs">Correct Answer</span>
+                            <p className="text-green-300">{answer.correctAnswer}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="mt-4 bg-indigo-900/30 p-4 rounded-2xl text-center">
+                    <p className="text-indigo-300 mb-3">Sign in to view your wrong answers.</p>
+                    {/* <div className="flex space-x-3 justify-center">
+                      <Link
+                        href="/register"
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+                      >
+                        Sign Up
+                      </Link>
+                      <Link
+                        href="/login"
+                        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"
+                      >
+                        Log In
+                      </Link>
+                    </div> */}
+                  </div>
+                )}
+              </details>
             </div>
 
             {/* Guest Prompt */}

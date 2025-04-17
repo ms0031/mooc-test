@@ -166,6 +166,7 @@ export default function TestPage() {
 
       return {
         qid: q.qid, // Use qid instead of _id
+        question: q.question, // Include the question text
         userAnswer: finalAnswer,
         isCorrect,
         timeSpent: 0, // Optionally track per-question time.
