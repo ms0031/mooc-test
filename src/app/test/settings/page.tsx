@@ -60,6 +60,13 @@ export default function TestSettingsPage() {
     }
   }, [studyMode]);
 
+  // Ensure randomizeQuestions is always true when shuffleWeeks is enabled
+  useEffect(() => {
+    if (shuffleWeeks && !randomizeQuestions) {
+      setRandomizeQuestions(true);
+    }
+  }, [shuffleWeeks]);
+
   const handleStartTest = () => {
     // Build query parameters
     const params = new URLSearchParams();
@@ -81,7 +88,6 @@ export default function TestSettingsPage() {
       params.append("mode", "study");
     }
 
-    // Add psychology of learning specific parameters
     if (shuffleWeeks) {
       params.append("shuffleWeeks", "true");
     } else {
@@ -114,7 +120,7 @@ export default function TestSettingsPage() {
               <div>
                 <label
                   htmlFor="category"
-                  className="block text-sm font-medium text-gray-200 mb-2"
+                  className="block font-medium text-gray-200 mb-2"
                 >
                   Test Category
                 </label>
@@ -170,11 +176,11 @@ export default function TestSettingsPage() {
                 <div>
                   <label
                     htmlFor="randomize-toggle"
-                    className="block text-sm font-medium text-gray-200"
+                    className="block font-medium text-gray-200"
                   >
                     Randomize Options
                   </label>
-                  <p className="text-xs text-gray-400">
+                  <p className=" text-gray-400">
                     Shuffle the order of options
                   </p>
                 </div>
@@ -200,21 +206,22 @@ export default function TestSettingsPage() {
                 <div>
                   <label
                     htmlFor="randomize-questions-toggle"
-                    className="block text-sm font-medium text-gray-200"
+                    className="block font-medium text-gray-200"
                   >
                     Randomize Questions
                   </label>
-                  <p className="text-xs text-gray-400">
+                  <p className=" text-gray-400">
                     Shuffle the order of questions
                   </p>
                 </div>
                 <button
                   type="button"
                   id="randomize-questions-toggle"
+                  disabled={shuffleWeeks}
                   className={`${
-                    randomizeQuestions ? "bg-teal-500/90" : "bg-gray-500"
+                    randomizeQuestions && shuffleWeeks ? "bg-teal-500/30" : randomizeQuestions ? "bg-teal-500/90" : "bg-gray-500"
                   } relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
-                  onClick={() => setRandomizeQuestions(!randomizeQuestions)}
+                  onClick={() => !shuffleWeeks && setRandomizeQuestions(!randomizeQuestions)}
                 >
                   <span className="sr-only">Randomize questions</span>
                   <span
@@ -230,11 +237,11 @@ export default function TestSettingsPage() {
                 <div>
                   <label
                     htmlFor="study-mode-toggle"
-                    className="block text-sm font-medium text-gray-100"
+                    className="block font-medium text-gray-200"
                   >
                     Study Mode
                   </label>
-                  <p className="text-xs text-gray-400">
+                  <p className=" text-gray-400">
                     See answers immediately
                   </p>
                 </div>
@@ -261,11 +268,11 @@ export default function TestSettingsPage() {
                   <div>
                     <label
                       htmlFor="shuffle-weeks-toggle"
-                      className="block text-sm font-medium text-gray-200"
+                      className="block font-medium text-gray-200"
                     >
                       Shuffle Weeks
                     </label>
-                    <p className="text-xs text-gray-400">
+                    <p className=" text-gray-400">
                       Mix questions from all weeks
                     </p>
                   </div>
@@ -304,7 +311,7 @@ export default function TestSettingsPage() {
             {/* Right Column: Week Selection (only displayed when shuffleWeeks is off) */}
             {category && !shuffleWeeks && (
               <div className="bg-white/1 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] p-4">
-                <label className="block text-sm font-medium text-gray-200 mb-3">
+                <label className="block font-medium text-gray-200 mb-3">
                   Select Weeks
                 </label>
                 <div className="flex flex-wrap gap-4">
@@ -326,7 +333,7 @@ export default function TestSettingsPage() {
                         className={`px-4 py-2 rounded-full border text-sm 
                           ${
                             isSelected
-                              ? "bg-teal-500 text-white border-teal-500"
+                              ? "bg-teal-500/80 text-white border-teal-500"
                               : "bg-transparent text-gray-200 border-gray-200"
                           }`}
                       >
