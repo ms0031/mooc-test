@@ -721,6 +721,128 @@
         "answer": "marginal product of labour"
       }
     ],
-    "week11": [],
-    "week12": []
+    "week11": [
+      {
+          "qid": "c_week11_0",
+          "question": "“an action taken by an uninformed party to induce an informed party to reveal information” is known as",
+          "options": ["signalling", "screening", "informing", "heuristics"],
+          "answer": "screening"
+      },
+      {
+          "qid": "c_week11_1",
+          "question": "“the part of actual resources that can be developed profitably in the future” are",
+          "options": ["potential resources", "actual resources", "reserve resources", "stock resources"],
+          "answer": "reserve resources"
+      },
+      {
+          "qid": "c_week11_2",
+          "question": "“the limit on the consumption bundles that a consumer can afford” is known as",
+          "options": ["consumption constraint", "budget constraint", "bundle constraint", "affordability constraint"],
+          "answer": "budget constraint"
+      },
+      {
+          "qid": "c_week11_3",
+          "question": "“mental short cut using emotion (gut feeling) to influence the decision” is",
+          "options": ["affect heuristic", "availability heuristic", "effort heuristic", "familiarity heuristic"],
+          "answer": "affect heuristic"
+      },
+      {
+          "qid": "c_week11_4",
+          "question": "“those resources that are currently being used after surveying, quantification and qualification” are",
+          "options": ["potential resources", "actual resources", "reserve resources", "stock resources"],
+          "answer": "actual resources"
+      },
+      {
+          "qid": "c_week11_5",
+          "question": "“the change in consumption that results when a price change moves the consumer along a given indifference curve to a point with a new marginal rate of substitution” is known as",
+          "options": ["income effect", "substitution effect", "indifference effect", "budget effect"],
+          "answer": "substitution effect"
+      },
+      {
+          "qid": "c_week11_6",
+          "question": "An inferior good whose demand increases with price is called as",
+          "options": ["Normal good", "Veblen good", "Giffen good", "Demand good"],
+          "answer": "Giffen good"
+      },
+      {
+          "qid": "c_week11_7",
+          "question": "Which of these is not a property of indifference curves?",
+          "options": ["Higher indifference curves are preferred to lower ones", "Indifference curves are downward-sloping", "Indifference curves cross at right angles", "Indifference curves are bowed inwards"],
+          "answer": "Indifference curves cross at right angles"
+      },
+      {
+          "qid": "c_week11_8",
+          "question": "“an action taken by an informed party to reveal private information to an uninformed party” is known as",
+          "options": ["signalling", "screening", "informing", "heuristics"],
+          "answer": "signalling"
+      },
+      {
+          "qid": "c_week11_9",
+          "question": "“simple strategies or mental processes used to quickly form judgments, make decisions, and find solutions to complex problems” is known as",
+          "options": ["signalling", "screening", "informing", "heuristics"],
+          "answer": "heuristics"
+      }
+  ],
+    "week12": [
+      {
+          "qid": "c_week12_0",
+          "question": "As per Wildlife Protection Act 1972 (WPA 1972), wild life includes any animal, aquatic or land vegetation which forms part of any",
+          "options": ["ecosystem", "state", "country", "habitat"],
+          "answer": "habitat"
+      },
+      {
+          "qid": "c_week12_1",
+          "question": "The tiger has a home range of several square kilometres, regulates the ecosystem through controlling herbivore populations and trophic cascades, and people come to tiger reserves to watch tigers. Thus, the tiger can be called as",
+          "options": ["umbrella species", "keystone species", "flagship species", "all of the above"],
+          "answer": "all of the above"
+      },
+      {
+          "qid": "c_week12_2",
+          "question": "Soil formation is an example of",
+          "options": ["provisioning service", "regulating service", "supporting service", "cultural service"],
+          "answer": "supporting service"
+      },
+      {
+          "qid": "c_week12_3",
+          "question": "Zoo is an example of",
+          "options": ["in-situ conservation", "ex-situ conservation", "in-situ preservation", "ex-situ preservation"],
+          "answer": "ex-situ conservation"
+      },
+      {
+          "qid": "c_week12_4",
+          "question": "The fig tree bears fruits in times when animals do not have much access to food. In this context, it would be a good example of",
+          "options": ["least concern species", "keystone species", "flagship species", "extinct species"],
+          "answer": "keystone species"
+      },
+      {
+          "qid": "c_week12_5",
+          "question": "Nutrient cycling is an example of",
+          "options": ["provisioning service", "regulating service", "supporting service", "cultural service"],
+          "answer": "supporting service"
+      },
+      {
+          "qid": "c_week12_6",
+          "question": "People come to Sessa orchid sanctuary in Arunachal Pradesh to witness orchids, which in this context would be classified as",
+          "options": ["umbrella species", "keystone species", "flagship species", "extinct species"],
+          "answer": "flagship species"
+      },
+      {
+          "qid": "c_week12_7",
+          "question": "We prefer those areas for the creation of a conservation reserve where the level of threat is",
+          "options": ["very high", "medium", "very low", "non-existent"],
+          "answer": "medium"
+      },
+      {
+          "qid": "c_week12_8",
+          "question": "The elephant has a home range of several square kilometres, regulates the ecosystem by its habit of destructive feeding, and people can relate to this animal which is important for conservation. Given this background, the elephant can be called as",
+          "options": ["umbrella species", "keystone species", "flagship species", "all of the above"],
+          "answer": "all of the above"
+      },
+      {
+          "qid": "c_week12_9",
+          "question": "Biological control of pest populations is an example of",
+          "options": ["provisioning service", "regulating service", "supporting service", "cultural service"],
+          "answer": "regulating service"
+      }
+  ]
   }
