@@ -209,9 +209,16 @@ export default function TestPage() {
       category: category || "general",
     };
 
-    router.push(
-      `/test/result?result=${encodeURIComponent(JSON.stringify(urlResultData))}`
+    const searchParamsForResult = new URLSearchParams();
+    searchParamsForResult.append(
+      "result",
+      encodeURIComponent(JSON.stringify(urlResultData))
     );
+    if (isStudyMode) {
+      searchParamsForResult.append("mode", "study");
+    }
+
+    router.push(`/test/result?${searchParamsForResult.toString()}`);
   };
 
   if (isLoading) {

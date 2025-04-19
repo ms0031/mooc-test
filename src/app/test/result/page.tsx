@@ -324,7 +324,13 @@ export default function TestResultPage() {
                   </div>
                 </summary>
 
-                {session ? (
+                {searchParams.get('mode') === 'study' ? (
+                  <div className="mt-4 bg-indigo-900/30 p-4 rounded-2xl text-center">
+                    <p className="text-indigo-300">
+                      This feature is not available in study mode.
+                    </p>
+                  </div>
+                ) :session ? (
                   <div className="mt-4 space-y-4">
                     {wrongAnswers.map((answer, index) => (
                       <div key={index} className="bg-white/4 p-4 rounded-xl">
