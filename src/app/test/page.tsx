@@ -143,12 +143,12 @@ export default function TestPage() {
   };
 
   const handleFinishTest = async () => {
-    // Calculate total time taken.
+    // Calculate total time taken
     const totalTime = testStartTime
       ? Math.round((new Date().getTime() - testStartTime.getTime()) / 1000)
       : 0;
 
-    // Prepare answers array for the backend.
+    // Prepare answers array for the backend
     let correctCount = 0;
     const processedAnswers = questions.map((q) => {
       const attempts = answerAttempts[q._id] || [];
@@ -156,7 +156,6 @@ export default function TestPage() {
       const isCorrect = finalAnswer === q.correctAnswer;
       if (isCorrect) correctCount++;
 
-      // Calculate wrong frequencies.
       const wrongFrequency: Record<string, number> = {};
       attempts.forEach((option) => {
         if (option !== q.correctAnswer) {
@@ -165,11 +164,11 @@ export default function TestPage() {
       });
 
       return {
-        qid: q.qid, // Use qid instead of _id
-        question: q.question, // Include the question text
+        qid: q.qid,
+        question: q.question,
         userAnswer: finalAnswer,
         isCorrect,
-        timeSpent: 0, // Optionally track per-question time.
+        timeSpent: 0,
         wrongFrequency,
         correctAnswer: q.correctAnswer || "",
       };
@@ -177,16 +176,7 @@ export default function TestPage() {
 
     const score = Math.round((correctCount / questions.length) * 100);
 
-    const resultData = {
-      score,
-      totalQuestions: questions.length,
-      correctAnswers: correctCount,
-      wrongAnswers: questions.length - correctCount,
-      timeTaken: totalTime,
-      category: category || "general",
-      answers: processedAnswers,
-    };
-
+    // Save full result data to database
     if (!isStudyMode) {
       try {
         await fetch("/api/test-results", {
@@ -194,15 +184,33 @@ export default function TestPage() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(resultData),
+          body: JSON.stringify({
+            score,
+            totalQuestions: questions.length,
+            correctAnswers: correctCount,
+            wrongAnswers: questions.length - correctCount,
+            timeTaken: totalTime,
+            category: category || "general",
+            answers: processedAnswers,
+          }),
         });
       } catch (error) {
         console.error("Error submitting test results:", error);
       }
     }
 
+    // Only pass essential data in URL
+    const urlResultData = {
+      score,
+      totalQuestions: questions.length,
+      correctAnswers: correctCount,
+      wrongAnswers: questions.length - correctCount,
+      timeTaken: totalTime,
+      category: category || "general",
+    };
+
     router.push(
-      `/test/result?result=${encodeURIComponent(JSON.stringify(resultData))}`
+      `/test/result?result=${encodeURIComponent(JSON.stringify(urlResultData))}`
     );
   };
 
