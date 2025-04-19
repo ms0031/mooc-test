@@ -154,7 +154,7 @@ export default function TestResultPage() {
             gravity: 1.5,
             particles: 60,
             traceLength: 1,
-            traceSpeed: 2,
+            traceSpeed: 10,
             explosion: 5,
             intensity: 30,
             flickering: 50,
@@ -164,12 +164,12 @@ export default function TestResultPage() {
               max: 360,
             },
             delay: {
-              min: 30,
+              min: 20,
               max: 60,
             },
             rocketsPoint: {
-              min: 50,
-              max: 50,
+              min: 0,
+              max: 100,
             },
             lineWidth: {
               explosion: {
