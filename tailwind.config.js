@@ -16,6 +16,20 @@ export default {
       fontFamily: {
         raleway: ['var(--font-raleway)'],
       },
+      keyframes: {
+        'pulse-subtle': {
+          '0%, 100%': { opacity: 1 },
+          '50%': { opacity: 0.85 }
+        }
+      },
+      animation: {
+        'pulse-subtle': 'pulse-subtle 2s ease-in-out infinite'
+      },
+      scale: {
+        '105': '1.05',
+        '108': '1.08',
+        '110': '1.10',
+      }
     },
   },
   plugins: [],

@@ -102,7 +102,7 @@ export default function TestSettingsPage() {
 
   return (
     <div className="bg-slate-950 min-h-screen flex items-center justify-center">
-      <div className="mt-4 mb-16 lg:max-w-3xl lg:min-w-sm md:max-w-2xl min-w-sm mx-5 bg-white/1 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden">
+      <div className="mt-4 mb-16 lg:max-w-3xl lg:min-w-sm md:max-w-2xl min-w-9/10 mx-5 bg-white/1 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden">
         <div className="bg-white/5 px-6 py-4">
           <h1 className="text-2xl font-bold text-gray-200">Test Settings</h1>
         </div>
@@ -330,11 +330,12 @@ export default function TestSettingsPage() {
                             setSelectedWeeks([...selectedWeeks, week.id]);
                           }
                         }}
-                        className={`px-4 py-2 rounded-full border text-sm 
+                        className={`px-4 py-3.5 font-medium rounded-3xl border text-sm 
+                          transition-all duration-300 ease-in-out transform
                           ${
                             isSelected
-                              ? "bg-teal-500/80 text-white border-teal-500"
-                              : "bg-transparent text-gray-200 border-gray-200"
+                              ? "bg-teal-500/80 text-white scale-110 border-teal-500/0 shadow-md animate-pulse-subtle"
+                              : "bg-transparent text-gray-300 border-gray-200 hover:border-teal-300"
                           }`}
                       >
                         {week.name}
