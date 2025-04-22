@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
 import { Analyticsdb } from "@/components/Analytics";
 import Navbar from "@/components/ui/Navbar";
-import { Analytics } from "@vercel/analytics/react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -21,11 +21,20 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "MOOC Test Platform",
   description: "An interactive testing platform for NPTEL/MOOC assessments.",
-  keywords: ["MOOC", "psychology of learning", "sustainable development", "conservation economics","online education", "test platform"],
+  keywords: [
+    "MOOC",
+    "psychology of learning",
+    "sustainable development",
+    "conservation economics",
+    "online education",
+    "test platform",
+  ],
   authors: [{ name: "Mayank Shekhar" }],
   creator: "Mayank Shekhar",
   publisher: "Mayank Shekhar",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL || "https://mooctest.vercel.app"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_APP_URL || "https://mooctest.vercel.app"
+  ),
   alternates: {
     canonical: "/",
   },
@@ -42,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MOOC Test Platform",
     description: "An interactive testing platform for NPTEL/MOOC assessments.",
-    images: ['/og-image.png'],
+    images: ["/og-image.png"],
     creator: "@mayankshekhar",
   },
   robots: {
@@ -85,7 +94,7 @@ export default function RootLayout({
               <footer className="text-center py-4 text-gray-200 text-sm bg-slate-950">
                 <p>&copy; Mayank Shekhar</p>
               </footer>
-              <Analytics />
+              <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
               <Analyticsdb />
             </ThemeProvider>
           </NextAuthProvider>

@@ -314,7 +314,7 @@ export default function TestPage() {
               <div className="space-y-3 text-gray-100">
                 {question.options.map((option, idx) => {
                   let baseClasses =
-                    "w-full text-left p-4 rounded-xl border cursor-pointer";
+                    "w-full text-left p-4 rounded-2xl border cursor-pointer";
                   if (isAnswered) {
                     if (option === question.correctAnswer) {
                       baseClasses += " bg-green-900/30 border-green-500";
@@ -334,7 +334,7 @@ export default function TestPage() {
                   } else {
                     baseClasses +=
                       finalAnswer === option
-                        ? " bg-fuchsia-900/30 border-fuchsia-600"
+                        ? " bg-purple-900/30 border-purple-500 scale-101 shadow-[0_0_15px_10px_rgba(192,132,252,0.1)] "
                         : " border-gray-300 hover:border-purple-500 hover:bg-fuchsia-50/10";
                   }
                   return (
