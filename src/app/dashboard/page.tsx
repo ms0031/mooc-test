@@ -78,6 +78,13 @@ export default function Dashboard() {
                   >
                     Customize Test
                   </Button>
+                  <Button
+                    variant="cyan"
+                    className="w-full py-6 text-lg"
+                    onClick={() => router.push("/test/real-test")}
+                  >
+                   Exam Mode
+                  </Button>
                 </div>
               </div>
             </div>
