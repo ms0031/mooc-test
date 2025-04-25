@@ -88,6 +88,13 @@ export default function Dashboard() {
                   Quick Links
                 </h2>
                 <div className="space-y-3 lg:px-0 md:px-0 px-3">
+                <Button
+                    variant="primary"
+                    className="w-full py-6 text-[16px]"
+                    onClick={() => router.push("/dashboard/study")}
+                  >
+                    Study Materials
+                  </Button>
                   <Button
                     variant="cyan"
                     className="w-full py-6 text-[16px]"
@@ -102,6 +109,7 @@ export default function Dashboard() {
                   >
                     Wrong Answers
                   </Button>
+                  
                   {/* <Button
                     variant="outline"
                     className="w-full py-6 text-[16px]"
