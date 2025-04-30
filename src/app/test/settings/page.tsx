@@ -116,9 +116,8 @@ export default function TestSettingsPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Left Column */}
             <div
-              className={`space-y-6 ${
-                category && shuffleWeeks ? "lg:col-span-2" : ""
-              }`}
+              className={`space-y-6 ${category && shuffleWeeks ? "lg:col-span-2" : ""
+                }`}
             >
               {/* Category Selection */}
               <div>
@@ -191,16 +190,14 @@ export default function TestSettingsPage() {
                 <button
                   type="button"
                   id="randomize-toggle"
-                  className={`${
-                    randomizeAnswers ? "bg-teal-500/90" : "bg-gray-500"
-                  } relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+                  className={`${randomizeAnswers ? "bg-teal-500/90" : "bg-gray-500"
+                    } relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
                   onClick={() => setRandomizeAnswers(!randomizeAnswers)}
                 >
                   <span className="sr-only">Randomize answers</span>
                   <span
-                    className={`${
-                      randomizeAnswers ? "translate-x-5" : "translate-x-0"
-                    } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
+                    className={`${randomizeAnswers ? "translate-x-5" : "translate-x-0"
+                      } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
                   ></span>
                 </button>
               </div>
@@ -222,16 +219,14 @@ export default function TestSettingsPage() {
                   type="button"
                   id="randomize-questions-toggle"
                   disabled={shuffleWeeks}
-                  className={`${
-                    randomizeQuestions && shuffleWeeks ? "bg-teal-500/30" : randomizeQuestions ? "bg-teal-500/90" : "bg-gray-500"
-                  } relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+                  className={`${randomizeQuestions && shuffleWeeks ? "bg-teal-500/30" : randomizeQuestions ? "bg-teal-500/90" : "bg-gray-500"
+                    } relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
                   onClick={() => !shuffleWeeks && setRandomizeQuestions(!randomizeQuestions)}
                 >
                   <span className="sr-only">Randomize questions</span>
                   <span
-                    className={`${
-                      randomizeQuestions ? "translate-x-5" : "translate-x-0"
-                    } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
+                    className={`${randomizeQuestions ? "translate-x-5" : "translate-x-0"
+                      } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
                   ></span>
                 </button>
               </div>
@@ -252,16 +247,14 @@ export default function TestSettingsPage() {
                 <button
                   type="button"
                   id="study-mode-toggle"
-                  className={`${
-                    studyMode ? "bg-red-500/80" : "bg-gray-500"
-                  } relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+                  className={`${studyMode ? "bg-red-500/80" : "bg-gray-500"
+                    } relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
                   onClick={() => setStudyMode(!studyMode)}
                 >
                   <span className="sr-only">Enable study mode</span>
                   <span
-                    className={`${
-                      studyMode ? "translate-x-5" : "translate-x-0"
-                    } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
+                    className={`${studyMode ? "translate-x-5" : "translate-x-0"
+                      } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
                   ></span>
                 </button>
               </div>
@@ -283,16 +276,14 @@ export default function TestSettingsPage() {
                   <button
                     type="button"
                     id="shuffle-weeks-toggle"
-                    className={`${
-                      shuffleWeeks ? "bg-teal-500/90" : "bg-gray-500"
-                    } relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+                    className={`${shuffleWeeks ? "bg-teal-500/90" : "bg-gray-500"
+                      } relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
                     onClick={() => setShuffleWeeks(!shuffleWeeks)}
                   >
                     <span className="sr-only">Shuffle weeks</span>
                     <span
-                      className={`${
-                        shuffleWeeks ? "translate-x-5" : "translate-x-0"
-                      } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
+                      className={`${shuffleWeeks ? "translate-x-5" : "translate-x-0"
+                        } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
                     ></span>
                   </button>
                 </div>
@@ -320,9 +311,35 @@ export default function TestSettingsPage() {
             {/* Right Column: Week Selection (only displayed when shuffleWeeks is off) */}
             {category && !shuffleWeeks && (
               <div className="bg-white/1 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] p-4">
-                <label className="block font-medium text-gray-200 mb-3">
-                  Select Weeks
-                </label>
+                <div className="flex items-center justify-between mb-3">
+                  <label className="block font-medium text-gray-200">
+                    Select Weeks
+                  </label>
+                  <div className="flex">
+                    <button
+                      type="button"
+                      onClick={() => setSelectedWeeks(weeks.map(w => w.id))}
+                      className="p-2 text-gray-300 hover:text-teal-400 transition-colors"
+                      title="Select All Weeks"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="10"  fill="none" stroke="#4CAF50" strokeOpacity="0.8" strokeWidth="2" />
+                        <path d="M8 12l3 3 6-6" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setSelectedWeeks([])}
+                      className="p-2 text-gray-300 hover:text-red-400 transition-colors"
+                      title="Clear All Weeks"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <circle cx="12" cy="12" r="10" fill="none" stroke="#F44336" strokeOpacity="0.8" strokeWidth="2"/>
+                        <path d="M16 8l-8 8m0-8l8 8" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
                 <div className="flex flex-wrap gap-4">
                   {weeks.map((week) => {
                     const isSelected = selectedWeeks.includes(week.id);
@@ -341,10 +358,9 @@ export default function TestSettingsPage() {
                         }}
                         className={`px-4 py-3.5 font-medium rounded-3xl border text-sm 
                           transition-all duration-300 ease-in-out transform
-                          ${
-                            isSelected
-                              ? "bg-teal-500/80 text-white scale-110 border-teal-500/0 shadow-md animate-pulse-subtle"
-                              : "bg-transparent text-gray-300 border-gray-200 hover:border-teal-300"
+                          ${isSelected
+                            ? "bg-teal-500/80 text-white scale-110 border-teal-500/0 shadow-md animate-pulse-subtle"
+                            : "bg-transparent text-gray-300 border-gray-200 hover:border-teal-300"
                           }`}
                       >
                         {week.name}
@@ -357,6 +373,6 @@ export default function TestSettingsPage() {
           </div>
         </div>
       </div>
-      </div>
+    </div>
   );
 }
