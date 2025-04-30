@@ -193,7 +193,7 @@ export default function Dashboard() {
                     onClick={(e) => {
                       e.preventDefault()
                       router.push("/about", {
-                        onTransitionReady: () => pageAnimation('right'),
+                        onTransitionReady: () => pageAnimation('left'),
                       })
                     }}
                   >
@@ -274,17 +274,22 @@ export default function Dashboard() {
                 Support & More
                 </h2>
                 <div className="space-y-3 lg:px-0 md:px-0 px-3">
-                  <Button
+                  {/* <Button
                     variant="orange"
                     className="w-full py-6 text-[16px]"
                     onClick={() => router.push("/buy-me-a-coffee")}
                   >
                     Buy Me a Coffee
-                  </Button>
+                  </Button> */}
                   <Button
                     variant="cyan"
                     className="w-full py-6 text-[16px]"
-                    onClick={() => router.push("/about")}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push("/about", {
+                        onTransitionReady: () => pageAnimation('left'),
+                      })
+                    }}
                   >
                     About 
                   </Button>
@@ -298,14 +303,24 @@ export default function Dashboard() {
                   <Button
                     variant="cyan"
                     className="w-full py-6 text-[16px]"
-                    onClick={() => router.push("/faq")}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push("/faq", {
+                        onTransitionReady: () => pageAnimation('left'),
+                      })
+                    }}
                   >
                     FAQ 
                   </Button>
                   <Button
                     variant="destructive"
                     className="w-full py-6 text-[16px]"
-                    onClick={() => router.push("/feedback")}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push("/feedback", {
+                        onTransitionReady: () => pageAnimation('left'),
+                      })
+                    }}
                   >
                     Report an Issue/Bug
                   </Button>
