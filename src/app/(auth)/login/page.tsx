@@ -1,13 +1,13 @@
 "use client";
-
+import { useTransitionRouter } from "next-view-transitions";
+import { pageAnimation } from "@/utils/animations";
 import { signIn } from "next-auth/react";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import GoogleSignInButton from "@/components/ui/GoogleSignInButton";
 
 export default function LoginPage() {
-  const router = useRouter();
+  const router = useTransitionRouter();
   const [error, setError] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -124,6 +124,12 @@ export default function LoginPage() {
           <Link
             href="/register"
             className="text-[16px] text-blue-500 hover:text-indigo-500"
+            onClick={(e) => {
+              e.preventDefault()
+              router.push('register', {
+                onTransitionReady: () => pageAnimation('up'),
+              })
+            }}
           >
             Don&apos;t have an account? Sign up
           </Link>
