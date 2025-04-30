@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import TestStats from "@/components/ui/TestStats";
 import Loading from "@/components/ui/Loading";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { Button } from "@/components/ui/Button";
@@ -106,10 +106,11 @@ export default function TestHistoryPage() {
             </Button>
           </div>
         ) : (
-          <div className="bg-white/5 rounded-lg shadow-lg overflow-hidden">
-            <div className="overflow-x-auto">
+          <div className="p-2 overflow-hidden">
+              <TestStats statsDisplay={false} results={testHistory} />
+            <div className="my-8 rounded-2xl overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200/70">
-                <thead className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px]">
+                <thead className="bg-white/5  outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px]">
                   <tr>
                     <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-200 uppercase tracking-wider">
                       Date

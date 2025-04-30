@@ -57,7 +57,7 @@ export default function Dashboard() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-200">
-            Welcome back, {session?.user?.name}!
+            Welcome back, <span className="text-teal-500">{session?.user?.name}!</span>
           </h1>
           <p className="mt-2 text-gray-400">
             Track your progress and start new tests below.
@@ -248,7 +248,7 @@ export default function Dashboard() {
                   Your Test Statistics
                 </h2>
                 {testHistory.length > 0 ? (
-                  <TestStats results={testHistory} />
+                  <TestStats statsDisplay={true} results={testHistory} />
                 ) : (
                   <div className="text-center py-8">
                     <p className="text-gray-300 mb-4">
