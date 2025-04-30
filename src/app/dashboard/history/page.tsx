@@ -7,10 +7,11 @@ import Loading from "@/components/ui/Loading";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { Button } from "@/components/ui/Button";
 import type { TestResultResponse } from "@/types";
-
+import { useTransitionRouter } from "next-view-transitions";
+import { pageAnimation } from "@/utils/animations";
 export default function TestHistoryPage() {
   const { data: session, status } = useSession();
-  const router = useRouter();
+  const router = useTransitionRouter();
   const [testHistory, setTestHistory] = useState<TestResultResponse[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -80,7 +81,12 @@ export default function TestHistoryPage() {
           <div className="flex space-x-4">
             <Button
               variant="outline"
-                          onClick={() => router.push("/dashboard")}
+              onClick={(e) => {
+                e.preventDefault()
+                router.push('/dashboard', {
+                  onTransitionReady: () => pageAnimation('left'),
+                })
+              }}
             >
               Back to Dashboard
             </Button>

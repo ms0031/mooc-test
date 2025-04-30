@@ -9,7 +9,8 @@ import { Fireworks } from "@fireworks-js/react";
 import questionsByWeekData from "@/../questions_psychology_of_learning.json";
 import conservationEconomicsData from "@/../questions_conservation_economics.json";
 import sustainableDevData from "@/../questions_sustainable_development.json";
-
+import { useTransitionRouter } from "next-view-transitions";
+import { pageAnimation } from "@/utils/animations";
 interface TestAnswer {
   qid: string;
   question?: string;
@@ -47,7 +48,7 @@ interface QuestionsByWeek {
 
 export default function TestResultPage() {
   const searchParams = useSearchParams();
-  const router = useRouter();
+  const router = useTransitionRouter();
   const { data: session, status } = useSession();
   const [testResult, setTestResult] = useState<TestResult | null>(null);
   const [wrongAnswers, setWrongAnswers] = useState<EnhancedTestAnswer[]>([]);
@@ -69,7 +70,9 @@ export default function TestResultPage() {
         console.error("Error parsing test result:", error);
       }
     } else {
-      router.push("/");
+      router.push("/", {
+        onTransitionReady: () => pageAnimation('left'),
+      });
     }
   }, [searchParams, router, session]);
 
@@ -368,13 +371,25 @@ export default function TestResultPage() {
                     </p>
                     <div className="flex space-x-3 justify-center">
                       <Link
-                        href="/register"
+                            href="/register"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              router.push('/register', {
+                                onTransitionReady: () => pageAnimation('up'),
+                              })
+                            }}
                         className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
                       >
                         Sign Up
                       </Link>
                       <Link
-                        href="/login"
+                            href="/login"
+                            onClick={(e) => {
+                              e.preventDefault()
+                              router.push('/login', {
+                                onTransitionReady: () => pageAnimation('up'),
+                              })
+                            }}
                         className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"
                       >
                         Log In
@@ -398,12 +413,24 @@ export default function TestResultPage() {
                 <div className="flex space-x-3">
                   <Link
                     href="/register"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push('/register', {
+                        onTransitionReady: () => pageAnimation('up'),
+                      })
+                    }}
                     className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
                   >
                     Sign Up
                   </Link>
                   <Link
                     href="/login"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push('/login', {
+                        onTransitionReady: () => pageAnimation('up'),
+                      })
+                    }}
                     className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50"
                   >
                     Log In
@@ -416,13 +443,23 @@ export default function TestResultPage() {
             <div className="flex justify-between">
               <Button
                 variant="outline"
-                onClick={() => router.push(`${session ? "/dashboard" : "/"}`)}
+                onClick={(e) => {
+                  e.preventDefault()
+                  router.push(`${session ? "/dashboard" : "/"}`, {
+                    onTransitionReady: () => pageAnimation('right'),
+                  })
+                }}
               >
                 Back to Home
               </Button>
               <Button
                 variant="primary"
-                onClick={() => router.push("/test/settings")}
+                onClick={(e) => {
+                  e.preventDefault()
+                  router.push("/test/settings", {
+                    onTransitionReady: () => pageAnimation('left'),
+                  })
+                }}
               >
                 Take Another Test
               </Button>

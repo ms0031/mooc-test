@@ -9,11 +9,13 @@ import ProgressCharts from "@/components/ui/ProgressCharts";
 import Loading from "@/components/ui/Loading";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import { Button } from "@/components/ui/Button";
+import { useTransitionRouter } from "next-view-transitions";
+import { pageAnimation } from "@/utils/animations";
 import type { TestResultResponse } from "@/types";
 
 export default function Dashboard() {
   const { data: session, status } = useSession();
-  const router = useRouter();
+  const router = useTransitionRouter();
   const [testHistory, setTestHistory] = useState<TestResultResponse[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -74,14 +76,24 @@ export default function Dashboard() {
                   <Button
                     variant="primary"
                     className="w-full py-6 text-lg"
-                    onClick={() => router.push("/test/settings")}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push('/test/settings', {
+                        onTransitionReady: () => pageAnimation('up'),
+                      })
+                    }}
                   >
                     Customize Test
                   </Button>
                   <Button
                     variant="cyan"
                     className="w-full py-6 text-lg"
-                    onClick={() => router.push("/test/real-test")}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push("/test/real-test", {
+                        onTransitionReady: () => pageAnimation('up'),
+                      })
+                    }}
                   >
                    Exam Mode
                   </Button>
@@ -98,21 +110,36 @@ export default function Dashboard() {
                 <Button
                     variant="primary"
                     className="w-full py-6 text-[16px]"
-                    onClick={() => router.push("/dashboard/study")}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push("/dashboard/study", {
+                        onTransitionReady: () => pageAnimation('up'),
+                      })
+                    }}
                   >
                     Study Materials
                   </Button>
                   <Button
                     variant="cyan"
                     className="w-full py-6 text-[16px]"
-                    onClick={() => router.push("/dashboard/history")}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push("/dashboard/history", {
+                        onTransitionReady: () => pageAnimation('up'),
+                      })
+                    }}
                   >
                     Test History
                   </Button>
                   <Button
                     variant="destructive"
                     className="w-full py-6 text-[16px]"
-                    onClick={() => router.push("/dashboard/wrong-answers")}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push("/dashboard/wrong-answers", {
+                        onTransitionReady: () => pageAnimation('up'),
+                      })
+                    }}
                   >
                     Wrong Answers
                   </Button>
@@ -148,17 +175,27 @@ export default function Dashboard() {
                 Support & More
                 </h2>
                 <div className="space-y-3">
-                  <Button
+                  {/* <Button
                     variant="primary"
                     className="w-full py-6 text-[16px]"
-                    onClick={() => router.push("/buy-me-a-coffee")}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push("/buy-me-a-coffee", {
+                        onTransitionReady: () => pageAnimation('left'),
+                      })
+                    }}
                   >
                     Buy Me a Coffee
-                  </Button>
+                  </Button> */}
                   <Button
                     variant="cyan"
                     className="w-full py-6 text-[16px]"
-                    onClick={() => router.push("/about")}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push("/about", {
+                        onTransitionReady: () => pageAnimation('right'),
+                      })
+                    }}
                   >
                     About 
                   </Button>
@@ -172,14 +209,24 @@ export default function Dashboard() {
                   <Button
                     variant="cyan"
                     className="w-full py-6 text-[16px]"
-                    onClick={() => router.push("/faq")}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push("/faq", {
+                        onTransitionReady: () => pageAnimation('left'),
+                      })
+                    }}
                   >
                     FAQ 
                   </Button>
                   <Button
                     variant="destructive"
                     className="w-full py-6 text-[16px]"
-                    onClick={() => router.push("/feedback")}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push("/feedback", {
+                        onTransitionReady: () => pageAnimation('left'),
+                      })
+                    }}
                   >
                     Report an Issue/Bug
                   </Button>

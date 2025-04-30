@@ -220,9 +220,7 @@ export default function TestPage() {
       searchParamsForResult.append("mode", "study");
     }
 
-    router.push(`/test/result?${searchParamsForResult.toString()}`, {
-      onTransitionReady: () => pageAnimation('up'),
-    });
+    router.push(`/test/result?${searchParamsForResult.toString()}`);
   };
 
   if (isLoading) {
