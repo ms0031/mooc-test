@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import CountdownTimer from "@/components/ui/CountdownTimer";
+import { useTransitionRouter } from "next-view-transitions";
+import { pageAnimation } from "@/utils/animations";
 
 interface Question {
   _id: string;
@@ -16,7 +18,7 @@ interface Question {
 
 export default function TestPage() {
   const searchParams = useSearchParams();
-  const router = useRouter();
+  const router = useTransitionRouter();
   const { data: session, status } = useSession();
   const category = searchParams.get("category");
   const isStudyMode = searchParams.get("mode") === "study";
@@ -218,15 +220,17 @@ export default function TestPage() {
       searchParamsForResult.append("mode", "study");
     }
 
-    router.push(`/test/result?${searchParamsForResult.toString()}`);
+    router.push(`/test/result?${searchParamsForResult.toString()}`, {
+      onTransitionReady: () => pageAnimation('up'),
+    });
   };
 
   if (isLoading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Loading Questions...</h1>
-          <p>Please wait while we prepare your test.</p>
+          <h1 className="text-2xl text-white font-bold mb-4">Loading Questions...</h1>
+          <p className="text-white">Please wait while we prepare your test.</p>
         </div>
       </div>
     );
@@ -372,16 +376,18 @@ export default function TestPage() {
           {!submitted ? (
             <div className="flex justify-between w-full">
               <button
-                onClick={() => router.push("/test/settings")}
+                onClick={(e) => {
+                  e.preventDefault()
+                  router.push("/test/settings", {
+                    onTransitionReady: () => pageAnimation('right'),
+                  })
+                }}
                 className="px-6 py-2 bg-red-500/80 text-gray-200 rounded-xl hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSubmit}
-                disabled={
-                  Object.keys(answerAttempts).length !== questions.length
-                }
                 className="px-6 py-2 bg-indigo-500/95 text-gray-100 rounded-xl hover:bg-indigo-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
               >
                 Submit Answers

@@ -4,9 +4,11 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/Button";
+import { useTransitionRouter } from "next-view-transitions";
+import { pageAnimation } from "@/utils/animations";
 
 export default function TestSettingsPage() {
-  const router = useRouter();
+  const router = useTransitionRouter();
   const { data: session } = useSession();
 
   const [category, setCategory] = useState("conservation_economics");
@@ -97,7 +99,9 @@ export default function TestSettingsPage() {
     }
 
     // Navigate to test page with settings
-    router.push(`/test?${params.toString()}`);
+    router.push(`/test?${params.toString()}`, {
+      onTransitionReady: () => pageAnimation('left'),
+    });
   };
 
   return (
@@ -298,7 +302,12 @@ export default function TestSettingsPage() {
               <div className="pt-4 flex justify-between">
                 <Button
                   variant="destructive"
-                  onClick={() => router.push(`${session ? "/dashboard" : "/"}`)}
+                  onClick={(e) => {
+                    e.preventDefault()
+                    router.push(`${session ? "/dashboard" : "/"}`, {
+                      onTransitionReady: () => pageAnimation('right'),
+                    })
+                  }}
                 >
                   Cancel
                 </Button>
