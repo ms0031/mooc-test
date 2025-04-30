@@ -1,5 +1,6 @@
 "use client";
-
+import { pageAnimation } from "@/utils/animations";
+import { useTransitionRouter } from "next-view-transitions";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
@@ -7,7 +8,7 @@ import { Button } from "./Button";
 
 export default function Navbar() {
   const { data: session, status } = useSession();
-  const router = useRouter();
+  const router = useTransitionRouter();
   const pathname = usePathname();
   const isOnDashboard = pathname === "/dashboard";
 
@@ -23,6 +24,12 @@ export default function Navbar() {
             <div className="flex-shrink-0 flex items-center">
               <Link
                 href="/"
+                onClick={(e) => {
+                  e.preventDefault()
+                  router.push('/', {
+                    onTransitionReady: () => pageAnimation('down'),
+                  })
+                }}
                 className="text-xl font-bold text-indigo-600 dark:text-indigo-400"
               >
                 <div className="justify-start">
@@ -43,7 +50,12 @@ export default function Navbar() {
                 {!isOnDashboard && (
                   <Button
                     variant="primary"
-                    onClick={() => router.push("/dashboard")}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push('/dashboard', {
+                        onTransitionReady: () => pageAnimation('down'),
+                      })
+                    }}
                     className="text-sm"
                   >
                     Dashboard
@@ -80,7 +92,12 @@ export default function Navbar() {
             ) : (
               <Button
                 variant="primary"
-                onClick={() => router.push("/login")}
+                onClick={(e) => {
+                  e.preventDefault()
+                  router.push('/login', {
+                    onTransitionReady: () => pageAnimation('down'),
+                  })
+                }}
                 className="text-sm"
               >
                 Login

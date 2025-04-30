@@ -1,52 +1,13 @@
 "use client";
 import { useTransitionRouter } from "next-view-transitions";
 import Link from "next/link";
+import { pageAnimation } from "@/utils/animations";
+
 interface HomeContentProps {
   session: any;
 }
 
-const pageAnimation = () => {
-  document.documentElement.animate(
-    [
-      {
-        opacity: 1,
-        scale: 1,
-        //filter: "blur(0px)",
-        transform: "translateY(0)",
-      },
-      {
-        opacity: 0.2,
-        scale: 1,
-        //filter: "blur(10px)",
-        transform: "translateY(0) ",
-      },
-    ],
-    {
-      duration: 400, // Reduced from 800ms
-      easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-      fill: "forwards",
-      pseudoElement: "::view-transition-old(root)",
-    }
-  );
 
-  document.documentElement.animate(
-    [
-      { 
-        transform: "translateY(100%)",
-      },
-      {
-        transform: "translateY(0) ",
-      },
-    ],
-    {
-      duration: 500,
-      easing: "cubic-bezier(0.4, 0, 0.2, 1)",
-      fill: "forwards",
-      pseudoElement: "::view-transition-new(root)",
-    }
-  );
-  
-}
 export default function HomeContent({ session }: HomeContentProps) {
   const router = useTransitionRouter();
   return (
@@ -68,6 +29,12 @@ export default function HomeContent({ session }: HomeContentProps) {
                 <Link
                   href="/dashboard"
                   className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-[10px] bg-teal-500 text-white hover:bg-[#0C9A85] transition-colors md:py-4 md:text-lg md:px-10"
+                  onClick={(e) => {
+                    e.preventDefault()
+                    router.push('/dashboard', {
+                      onTransitionReady: () => pageAnimation('up'),
+                    })
+                  }}
                 >
                   Go to Dashboard
                 </Link>
@@ -81,7 +48,7 @@ export default function HomeContent({ session }: HomeContentProps) {
                     onClick={(e) => {
                       e.preventDefault()
                       router.push('/test/settings', {
-                        onTransitionReady: pageAnimation,
+                        onTransitionReady: () => pageAnimation('up'),
                       })
                     }}
                   >
@@ -91,7 +58,13 @@ export default function HomeContent({ session }: HomeContentProps) {
                 <div className="mt-3 lg:px-0 md:px-0 px-3 rounded-md shadow sm:mt-0 sm:ml-3">
                   <Link
                     href="/login"
-                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-[10px] bg-gray-200 text-gray-900 hover:bg-gray-100 transition-colors md:py-4 md:text-lg md:px-10"
+                      className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-[10px] bg-gray-200 text-gray-900 hover:bg-gray-100 transition-colors md:py-4 md:text-lg md:px-10"
+                      onClick={(e) => {
+                        e.preventDefault()
+                        router.push('/login', {
+                          onTransitionReady: () => pageAnimation('up'),
+                        })
+                      }}
                   >
                     Login / Sign Up
                   </Link>

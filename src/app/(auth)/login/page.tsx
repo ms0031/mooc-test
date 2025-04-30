@@ -41,12 +41,12 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="w-full h-screen relative bg-slate-950 overflow-hidden flex items-center justify-center">
-      <div className="w-[1440px] h-[900px] left-0 top-0 absolute opacity-30">
+    <div className="bg-slate-950 overflow-hidden flex items-center justify-center">
+      {/* <div className="w-[1440px] h-[900px] left-0 top-0 absolute opacity-30">
         <div className="w-[675px] h-80 left-[202px] top-[190px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
         <div className="w-[675px] h-80 left-[800px] top-[190px] absolute bg-violet-700 rounded-full blur-[200px]"></div>
-      </div>
-      <div className="max-w-md lg:w-full md:w-full w-100 lg:px-10 md:px-10 px-6 pb-10 pt-6 gap-4 bg-white/0 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden">
+      </div> */}
+      <div className="mt-20 max-w-md lg:w-full md:w-full w-100 lg:px-10 md:px-10 px-6 pb-10 pt-6 gap-4 bg-white/0 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden">
         <div className="flex justify-center items-center my-6">
         <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" fill="#e5e7eb" className="bi bi-person-circle" viewBox="0 0 16 16">
           <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0"/>
