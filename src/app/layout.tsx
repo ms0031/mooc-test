@@ -9,6 +9,7 @@ import { Analyticsdb } from "@/components/Analytics";
 import Navbar from "@/components/ui/Navbar";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
+import { ViewTransitions } from 'next-view-transitions'
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -83,6 +84,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ViewTransitions>
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -110,6 +112,7 @@ export default function RootLayout({
           </NextAuthProvider>
         </ErrorBoundary>
       </body>
-    </html>
+      </html>
+    </ViewTransitions>
   );
 }
