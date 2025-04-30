@@ -132,7 +132,7 @@ export default function StudyPage() {
         </p>
 
         {/* Category Selection */}
-        <div className="mb-8">
+        <div className="mb-8 px-2">
           <label htmlFor="category" className="block text-sm font-medium text-gray-300 mb-2">
             Category
           </label>
@@ -156,7 +156,7 @@ export default function StudyPage() {
             ))}
           </div>
         ) : weeks.length > 0 ? (
-          <div className="space-y-4">
+          <div className="space-y-4 px-2">
             {weeks.map((week) => {
               const isExpanded = expandedWeeks[week] || false;
               const weekQuestionsData = weekQuestions[week] || [];
@@ -183,12 +183,12 @@ export default function StudyPage() {
                   
                   {/* Questions - Only shown when expanded */}
                   {isExpanded && (
-                    <div className="pb-6 space-y-6">
+                    <div className="pb-6 space-y-6 px-4">
                       {weekQuestionsData.length > 0 ? (
                         weekQuestionsData.map((question, index) => (
                           <div
                             key={question.qid}
-                            className="bg-white/3 rounded-3xl outline-1 outline-offset-[-1px] backdrop-blur-[100px] outline-white/5 overflow-hidden shadow-md p-6 mt-4"
+                            className="bg-white/3 rounded-3xl outline-1 outline-offset-[-1px] backdrop-blur-[100px] outline-white/5 overflow-hidden shadow-md p-5 mt-4"
                           >
                             <h3 className="text-lg font-semibold text-gray-200 mb-4">
                               {index + 1}. {question.question}
@@ -196,7 +196,7 @@ export default function StudyPage() {
                             <div className="space-y-3 text-gray-100">
                               {question.options.map((option, idx) => {
                                 const isCorrect = option === question.answer;
-                                const baseClasses = "w-full text-left p-4 rounded-3xl";
+                                const baseClasses = "w-full text-left px-4 py-3 rounded-2xl";
                                 const statusClasses = isCorrect
                                   ? " bg-green-900/30 border border-green-500"
                                   : "outline-2 outline-offset-[-1px] outline-white/30 backdrop-blur-[2px]";
