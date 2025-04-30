@@ -308,7 +308,7 @@ export default function TestPage() {
           return (
             <div
               key={question._id}
-              className=" bg-white/5 rounded-2xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden shadow-xl p-6"
+              className="mx-5 bg-white/5 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden shadow-xl p-6"
             >
               <h2 className="text-xl font-semibold text-gray-200 mb-4">
                 {index + 1}. {question.question}
@@ -316,7 +316,7 @@ export default function TestPage() {
               <div className="space-y-3 text-gray-100">
                 {question.options.map((option, idx) => {
                   let baseClasses =
-                    "w-full text-left p-4 rounded-2xl border cursor-pointer";
+                    "w-full text-left px-4 py-3 rounded-2xl border cursor-pointer";
                   if (isAnswered) {
                     if (option === question.correctAnswer) {
                       baseClasses += " bg-green-900/30 border-green-500";
