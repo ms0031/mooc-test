@@ -19,11 +19,21 @@ interface TestResult {
   normalizedScore: number;
 }
 
+interface TestAnswer {
+  qid: string;
+  question: string;
+  userAnswer: string;
+  isCorrect: boolean;
+  timeSpent: number;
+  correctAnswer: string;
+}
+
 export default function RealTestResultPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { data: session, status } = useSession();
   const [testResult, setTestResult] = useState<TestResult | null>(null);
+  const [wrongAnswers, setWrongAnswers] = useState<TestAnswer[]>([]);
 
   const isPerfectScore = testResult?.score === 100;
 
@@ -34,6 +44,9 @@ export default function RealTestResultPage() {
       try {
         const parsedResult = JSON.parse(decodeURIComponent(resultData));
         setTestResult(parsedResult);
+
+        // Get wrong answers from cookies
+        getWrongAnswersFromCookies();
       } catch (error) {
         console.error("Error parsing test result:", error);
         router.push("/");
@@ -42,6 +55,19 @@ export default function RealTestResultPage() {
       router.push("/");
     }
   }, [searchParams, router]);
+
+  // Function to get wrong answers from cookies
+  const getWrongAnswersFromCookies = () => {
+    try {
+      const wrongAnswersCookie = localStorage.getItem('realTestWrongAnswers');
+      if (wrongAnswersCookie) {
+        const parsedWrongAnswers = JSON.parse(wrongAnswersCookie);
+        setWrongAnswers(parsedWrongAnswers);
+      }
+    } catch (error) {
+      console.error("Error retrieving wrong answers from cookies:", error);
+    }
+  };
 
   function formatTime(seconds: number): string {
     const minutes = Math.floor(seconds / 60);
@@ -208,36 +234,91 @@ export default function RealTestResultPage() {
                 </div>
               </div>
             </div>
-          </div>
-          </div>
 
-          {/* Actions */}
-          <div className="p-6 flex flex-wrap gap-4 justify-center items-center">
-            <div className="flex flex-wrap gap-3">
-              <Button
-                variant="outline"
-                onClick={() => router.push("/test/real-test")}
-              >
-                Take Another Real Test
-              </Button>
-              <Button
-                variant="primary"
-                onClick={() => router.push("/dashboard")}
-              >
-                Back to Dashboard
-              </Button>
-            </div>
-          </div>
-
-          {/* Note about results not being saved */}
-          <div className="p-6 border-t border-gray-700 bg-yellow-900/10">
-            <p className="text-amber-300 text-sm">
-              <strong>Note:</strong> Results from this real test are not saved to your history.
-              This is a practice simulation only.
-            </p>
+            {/* Wrong Answers Section */}
+            {wrongAnswers.length > 0 && (
+              <div className="mt-8">
+                <details className="bg-purple-500/12 p-4 rounded-2xl">
+                  <summary className="text-lg font-medium text-gray-200 cursor-pointer flex items-center justify-between">
+                    <span>Wrong Answers</span>
+                    <div className="flex items-center">
+                      <span className="text-sm bg-red-500/30 px-2 py-1 rounded-lg mr-2">
+                        {wrongAnswers.length} Questions
+                      </span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5 text-gray-400"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M19 9l-7 7-7-7"
+                        />
+                      </svg>
+                    </div>
+                  </summary>
+                  <div className="mt-4 space-y-4">
+                    {wrongAnswers.map((answer, index) => (
+                      <div key={index} className="bg-white/4 p-4 rounded-xl">
+                        <p className="text-gray-300 mb-2 font-medium">
+                          Question {index + 1}
+                        </p>
+                        <p className="text-gray-200 mb-3 border-l-2 border-purple-400 pl-3">
+                          {answer.question}
+                        </p>
+                        <div className="mb-3">
+                          <div className="flex items-start mb-2">
+                            <span className="bg-red-500/10 text-red-400 px-2 py-1 rounded mr-2 text-xs">
+                              Your Answer
+                            </span>
+                            <p className="text-red-400">{answer.userAnswer}</p>
+                          </div>
+                          <div className="flex items-start">
+                            <span className="bg-green-500/10 text-green-400 px-2 py-1 rounded mr-2 text-xs">
+                              Correct Answer
+                            </span>
+                            <p className="text-green-400">{answer.correctAnswer}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </details>
+              </div>
+            )}
           </div>
         </div>
+
+        {/* Actions */}
+        <div className="p-6 flex flex-wrap gap-4 justify-center items-center">
+          <div className="flex flex-wrap gap-3">
+            <Button
+              variant="outline"
+              onClick={() => router.push("/test/real-test")}
+            >
+              Take Another Real Test
+            </Button>
+            <Button
+              variant="primary"
+              onClick={() => router.push("/dashboard")}
+            >
+              Back to Dashboard
+            </Button>
+          </div>
+        </div>
+
+        {/* Note about results not being saved */}
+        <div className="p-6 border-t border-gray-700 bg-yellow-900/10">
+          <p className="text-amber-300 text-sm">
+            <strong>Note:</strong> Results from this real test are not saved to your history.
+            This is a practice simulation only.
+          </p>
+        </div>
       </div>
-    //</div>
+    </div>
   );
 }

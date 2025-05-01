@@ -52,19 +52,19 @@ export default function RealTestPage() {
         categoryQuestions = Object.values(questionsByWeekData as QuestionsByWeek).flat();
       } else if (selectedCategory === 'conservation_economics') {
         categoryQuestions = Object.values(conservationEconomicsData as QuestionsByWeek).flat();
-      } else{
+      } else {
         categoryQuestions = Object.values(sustainableDevData as QuestionsByWeek).flat();
       }
-      
+
       // Shuffle and select 50 questions from selected category
       const shuffledQuestions = shuffleArray([...categoryQuestions]).slice(0, 50);
-      
+
       // Shuffle options for each question
       const questionsWithShuffledOptions = shuffledQuestions.map(q => ({
         ...q,
         options: shuffleArray([...q.options])
       }));
-      
+
       setQuestions(questionsWithShuffledOptions);
       setIsLoading(false);
     } catch (error) {
@@ -101,14 +101,14 @@ export default function RealTestPage() {
   const calculateResults = () => {
     // Calculate total time taken
     const totalTime = Math.round((new Date().getTime() - testStartTime.getTime()) / 1000);
-    
+
     // Calculate score
     let correctCount = 0;
     const processedAnswers = questions.map(q => {
       const userAnswer = userAnswers[q.qid] || "";
       const isCorrect = userAnswer === q.answer;
       if (isCorrect) correctCount++;
-      
+
       return {
         qid: q.qid,
         question: q.question,
@@ -118,16 +118,24 @@ export default function RealTestPage() {
         correctAnswer: q.answer
       };
     });
-    
+
     const score = Math.round((correctCount / questions.length) * 100);
-    const marksScored = correctCount * 2; 
+    const marksScored = correctCount * 2;
     const totalMarks = questions.length * 2;
-    
+
     // Calculate normalized score (75% test + 25% assignment with full marks)
     const testContribution = (marksScored / totalMarks) * 0.75;
     const assignmentContribution = 0.25; // Assuming full marks
     const normalizedScore = Math.round((testContribution + assignmentContribution) * 100);
-    
+
+    // Save wrong answers to local storage
+    const wrongAnswers = processedAnswers.filter(answer => !answer.isCorrect);
+    try {
+      localStorage.setItem('realTestWrongAnswers', JSON.stringify(wrongAnswers));
+    } catch (error) {
+      console.error("Error saving wrong answers to local storage:", error);
+    }
+
     // Prepare result data
     const resultData = {
       score,
@@ -141,7 +149,7 @@ export default function RealTestPage() {
       totalMarks,
       normalizedScore
     };
-    
+
     // Navigate to result page with only statistics
     const { answers, ...stats } = resultData;
     router.push(`/test/real-test/result?result=${encodeURIComponent(JSON.stringify(stats))}`);
@@ -168,9 +176,9 @@ export default function RealTestPage() {
             <h1 className="text-2xl font-bold text-gray-200">⚔️ Final Boss</h1>
             <div className="flex items-center space-x-4">
               <div className="text-gray-300">
-                <CountdownTimer 
-                  duration={timeRemaining} 
-                  onTimeUp={handleTimeUp} 
+                <CountdownTimer
+                  duration={timeRemaining}
+                  onTimeUp={handleTimeUp}
                 />
               </div>
               <Button
@@ -194,10 +202,10 @@ export default function RealTestPage() {
                   value={selectedCategory}
                   onChange={(e) => {
                     setSelectedCategory(e.target.value);
-            
+
                   }}
                   className="w-full bg-white/50 border border-gray-700 rounded-xl py-2 px-3 text-slate-950 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  disabled={submitted || isLoading }
+                  disabled={submitted || isLoading}
                 >
                   <option value="psychology_of_learning">Psychology of Learning</option>
                   <option value="conservation_economics">Conservation Economics</option>
@@ -215,8 +223,8 @@ export default function RealTestPage() {
 
             <div className="space-y-8">
               {questions.map((question, index) => (
-                <div 
-                  key={question.qid} 
+                <div
+                  key={question.qid}
                   className="bg-white/5 rounded-xl p-5"
                 >
                   <h3 className="text-lg font-medium text-gray-200 mb-4">
@@ -224,7 +232,7 @@ export default function RealTestPage() {
                   </h3>
                   <div className="space-y-3">
                     {question.options.map((option, optIndex) => (
-                      <div 
+                      <div
                         key={optIndex}
                         className={`p-3 rounded-xl cursor-pointer transition-colors ${userAnswers[question.qid] === option ? 'bg-indigo-600/30 border border-indigo-500' : 'bg-white/5 hover:bg-white/10 border border-transparent'}`}
                         onClick={() => handleAnswerSelect(question.qid, option)}
