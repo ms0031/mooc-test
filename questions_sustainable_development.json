@@ -345,7 +345,7 @@
     "week3": [
       {
         "qid": "s_week3_0",
-        "question": "Global citizenship refers to the belief that individuals are members of:",
+        "question": "Global citizenship refers to the belief that individuals are members of: ___",
         "options": [
           "Single networks",
           "Isolated societies",
@@ -367,7 +367,7 @@
       },
       {
         "qid": "s_week3_2",
-        "question": "The domains of GCED emphasize:",
+        "question": "The domains of GCED emphasize: ___",
         "options": [
           "Knowledge, empathy, and action",
           "Memory, logic, and reasoning",
@@ -411,7 +411,7 @@
       },
       {
         "qid": "s_week3_6",
-        "question": "TVET stands for: ---------",
+        "question": "TVET stands for: ___",
         "options": [
           "Technical and Vocational Education and Training",
           "Technological Values in Educational Training",
@@ -422,7 +422,7 @@
       },
       {
         "qid": "s_week3_7",
-        "question": "Global citizenship helps students develop an awareness of:----------------",
+        "question": "Global citizenship helps students develop an awareness of: ___",
         "options": [
           "Independence from global systems",
           "Active collaboration and interdependence",
@@ -433,7 +433,7 @@
       },
       {
         "qid": "s_week3_8",
-        "question": "Cultural and natural heritage serve to: ----------------",
+        "question": "Cultural and natural heritage serve to: ___",
         "options": [
           "Hinder economic development",
           "Isolate communities",
@@ -479,7 +479,7 @@
       },
       {
         "qid": "s_week4_2",
-        "question": "The International Framework for Greening TVET for a Green Society is a: ---------",
+        "question": "The International Framework for Greening TVET for a Green Society is a: ___",
         "options": [
           "Three-tier approach",
           "Two-stage approach",
@@ -490,7 +490,7 @@
       },
       {
         "qid": "s_week4_3",
-        "question": "A holistic framework for TVET institutions is required to support: -----------",
+        "question": "A holistic framework for TVET institutions is required to support: ___",
         "options": [
           "Green society only",
           "Green economy only",
@@ -501,7 +501,7 @@
       },
       {
         "qid": "s_week4_4",
-        "question": "The National Green Growth Policy focuses on: ----------------",
+        "question": "The National Green Growth Policy focuses on: ___",
         "options": [
           "Green occupations",
           "Climate change",
@@ -563,7 +563,7 @@
           "both A & B",
           "None of the above"
         ],
-        "answer": "Both A & B"
+        "answer": "both A & B"
       }
     ],
     "week5": [
@@ -927,7 +927,7 @@
       },
       {
         "qid": "s_week8_2",
-        "question": "The ___ model structures sustainability competencies into cognitive, affective-motivational and behavioral goal dimensions .",
+        "question": "The ___ model structures sustainability competencies into cognitive, affective-motivational and behavioral goal dimensions.",
         "options": [
           "canvas",
           "picture",
@@ -938,7 +938,7 @@
       },
       {
         "qid": "s_week8_3",
-        "question": "An affective goal commitment or a _ of actions, is the core of any motivation.",
+        "question": "An affective goal commitment or a ___ of actions, is the core of any motivation.",
         "options": [
           "never assessed sequence",
           "positively assessed sequence",
@@ -1239,7 +1239,7 @@
     "week11": [
       {
         "qid": "s_week11_0",
-        "question": "_________ leadership style entails transcending self-interest to serve the needs of others.",
+        "question": "___ leadership style entails transcending self-interest to serve the needs of others.",
         "options": [
           "Servant",
           "radical",
@@ -1314,7 +1314,7 @@
       },
       {
         "qid": "s_week11_7",
-        "question": "Accurately sensing the feelings an individual has about himself or others is known as __________.",
+        "question": "Accurately sensing the feelings an individual has about himself or others is known as ___.",
         "options": [
           "unconditional positive regard",
           "empathetic sensing",
@@ -1325,10 +1325,10 @@
       },
       {
         "qid": "s_week11_8",
-        "question": "___________ technology is a key factor helping foster more sustainable urban development.",
+        "question": "___ technology is a key factor helping foster more sustainable urban development.",
         "options": [
           "blue",
-          "Green",
+          "green",
           "red",
           "white"
         ],
@@ -1349,7 +1349,7 @@
     "week12": [
       {
         "qid": "s_week12_0",
-        "question": "Natural resources are those that exist in the __ of human intervention.",
+        "question": "Natural resources are those that exist in the ___ of human intervention.",
         "options": [
           "absence",
           "presence",
