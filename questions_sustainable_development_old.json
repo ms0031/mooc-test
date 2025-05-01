@@ -1,0 +1,1512 @@
+{
+    "week0": [
+      {
+        "qid": "s_week0_0",
+        "question": "The full form of SDGs is ____",
+        "options": [
+          "Sustainable Development Guide",
+          "Sensitive Development Guide",
+          "Sustainable Driving Goals",
+          "Sustainable Development Goals"
+        ],
+        "answer": "Sustainable Development Goals"
+      },
+      {
+        "qid": "s_week0_1",
+        "question": "The SDGs have been adopted by ____ member states",
+        "options": [
+          "United Kingdom",
+          "South African",
+          "Asian",
+          "United Nations",
+          "Parliamentary"
+        ],
+        "answer": "United Nations"
+      },
+      {
+        "qid": "s_week0_2",
+        "question": "SDGs consist of ____ number of goals",
+        "options": [
+          "30",
+          "15",
+          "13",
+          "17",
+          "21"
+        ],
+        "answer": "17"
+      },
+      {
+        "qid": "s_week0_3",
+        "question": "SDGs are at the heart of the ____ agenda for sustainable development.",
+        "options": [
+          "2020",
+          "2035",
+          "2030",
+          "2015",
+          "2024"
+        ],
+        "answer": "2030"
+      },
+      {
+        "qid": "s_week0_4",
+        "question": "SDGs are also known as ____",
+        "options": [
+          "Generational goals",
+          "Sensible goals",
+          "Global goals",
+          "Holistic goals",
+          "None of the above"
+        ],
+        "answer": "Global goals"
+      },
+      {
+        "qid": "s_week0_5",
+        "question": "All the SDGs are ____",
+        "options": [
+          "Unrelated",
+          "False",
+          "Only for one country",
+          "Interconnected",
+          "None of the above"
+        ],
+        "answer": "Interconnected"
+      },
+      {
+        "qid": "s_week0_6",
+        "question": "MDGs stand for ____",
+        "options": [
+          "Motivational Development Goals",
+          "Macro Development Goals",
+          "Millennium Development Goals",
+          "Micro Development Goals"
+        ],
+        "answer": "Millennium Development Goals"
+      },
+      {
+        "qid": "s_week0_7",
+        "question": "The Agenda ____ was adopted at the Earth Summit",
+        "options": [
+          "12",
+          "30",
+          "35",
+          "40",
+          "21"
+        ],
+        "answer": "21"
+      },
+      {
+        "qid": "s_week0_8",
+        "question": "There were ____ number of MDGs given, which were later replaced by the SDGs",
+        "options": [
+          "17",
+          "8",
+          "18",
+          "10"
+        ],
+        "answer": "8"
+      },
+      {
+        "qid": "s_week0_9",
+        "question": "The 'D' in DSDG stands for ____",
+        "options": [
+          "Department",
+          "Division",
+          "Distance",
+          "Diversity",
+          "None of the above"
+        ],
+        "answer": "Division"
+      }
+    ],
+    "week1": [
+      {
+        "qid": "s_week1_0",
+        "question": "In June 1992, at the Earth Summit in ____, more than 178 countries adopted Agenda 21",
+        "options": [
+          "India",
+          "China",
+          "South Africa",
+          "Australia",
+          "Brazil"
+        ],
+        "answer": "Brazil"
+      },
+      {
+        "qid": "s_week1_1",
+        "question": "The Brundtland Report published in 1987 is also known as ____",
+        "options": [
+          "No Common Future",
+          "All Common Future",
+          "All Collective Future",
+          "Our Collective Future",
+          "Our Common Future"
+        ],
+        "answer": "Our Common Future"
+      },
+      {
+        "qid": "s_week1_2",
+        "question": "Multidimensional poverty measures reveal the following except",
+        "options": [
+          "range of different disadvantages experienced by the poor",
+          "poverty level in different subgroups of people",
+          "types of property owned by people in a country",
+          "poverty level in different areas of a country"
+        ],
+        "answer": "types of property owned by people in a country"
+      },
+      {
+        "qid": "s_week1_3",
+        "question": "The Indian government's ____ program prioritizes national wellbeing and is leading change towards SDG 3",
+        "options": [
+          "International Rural Scheme",
+          "National Health Scheme",
+          "National Health Mission",
+          "National Wellbeing Scheme",
+          "National Change Mission"
+        ],
+        "answer": "National Health Mission"
+      },
+      {
+        "qid": "s_week1_4",
+        "question": "Quality education entails issues such as ____",
+        "options": [
+          "Scholarships",
+          "Gender parity",
+          "Appropriate skills development",
+          "Provision of relevant infrastructure for education",
+          "All of the above"
+        ],
+        "answer": "All of the above"
+      },
+      {
+        "qid": "s_week1_5",
+        "question": "As per Ministry of Housing and Urban Affairs of India, ____ litre per capita per day (lpcd) has been suggested as the benchmark for urban water supply.",
+        "options": [
+          "5",
+          "15",
+          "720",
+          "135",
+          "380"
+        ],
+        "answer": "135"
+      },
+      {
+        "qid": "s_week1_6",
+        "question": "SDG 8 aims to ____",
+        "options": [
+          "Ensure access to affordable, reliable, sustainable and modern energy for all",
+          "Ensure availability and sustainable management of water and sanitation for all",
+          "Build resilient infrastructure, promote inclusive and sustainable industrialization, and foster innovation",
+          "Promote sustained inclusive and sustainable economic growth, full and productive employment and decent work for all"
+        ],
+        "answer": "Promote sustained inclusive and sustainable economic growth, full and productive employment and decent work for all"
+      },
+      {
+        "qid": "s_week1_7",
+        "question": "Which of the following is used as a factor or measure of inequality?",
+        "options": [
+          "Income",
+          "Age",
+          "Sexual orientation",
+          "Disability",
+          "All of the above"
+        ],
+        "answer": "All of the above"
+      },
+      {
+        "qid": "s_week1_8",
+        "question": "____ means that our food practices meet the dietary needs of today in terms of nutrition and satiation, without compromising the needs of future generations (especially regarding ecological concerns).",
+        "options": [
+          "Sustainable food",
+          "Sustainable shopping",
+          "Sustainable consumption",
+          "Sustainable dieting",
+          "None of the above"
+        ],
+        "answer": "Sustainable consumption"
+      },
+      {
+        "qid": "s_week1_9",
+        "question": "SDG ____ highlights that we cannot hope for sustainable development without peace, stability, human rights and effective governance",
+        "options": [
+          "9",
+          "15",
+          "16",
+          "17",
+          "11"
+        ],
+        "answer": "16"
+      }
+    ],
+      "week2": [
+      {
+        "qid": "s_week2_0",
+        "question": "An essential characteristic of ESD is that it engages ___ education.",
+        "options": [
+          "formal",
+          "non-formal",
+          "informal",
+          "all of the above"
+        ],
+        "answer": "all of the above"
+      },
+      {
+        "qid": "s_week2_1",
+        "question": "Which of the following is not a characteristic of ESD?",
+        "options": [
+          "It is based on principles and values of sustainable development",
+          "It addresses content taking into account the context, global issues and local priorities",
+          "It accommodates the stagnant and fixed nature of the concept of sustainability",
+          "It promotes lifelong learning",
+          "It uses a variety of pedagogical techniques"
+        ],
+        "answer": "It accommodates the stagnant and fixed nature of the concept of sustainability"
+      },
+      {
+        "qid": "s_week2_2",
+        "question": "The ___ stated that everyone is entitled to participate in, contribute to, and enjoy economic, social, cultural and political development.",
+        "options": [
+          "Declaration on the Right to Advantage",
+          "Declaration on the Right to Enjoyment",
+          "Declaration on the Right to Happiness",
+          "Declaration on the Right to Development",
+          "Declaration on the Right to Prosperity"
+        ],
+        "answer": "Declaration on the Right to Development"
+      },
+      {
+        "qid": "s_week2_3",
+        "question": "Text-based methods of assessing ESD penetration into programs of study can be improved by using ___.",
+        "options": [
+          "International technologies",
+          "Interactional technologies",
+          "Interdisciplinary technologies",
+          "Interpretive technologies",
+          "None of the above"
+        ],
+        "answer": "Interpretive technologies"
+      },
+      {
+        "qid": "s_week2_4",
+        "question": "While MDGs apply to ___ countries, SDGs are applied to ___ countries",
+        "options": [
+          "all, all",
+          "asian, all",
+          "african, asian",
+          "all, developing",
+          "developing, all"
+        ],
+        "answer": "developing, all"
+      },
+      {
+        "qid": "s_week2_5",
+        "question": "The following characteristics apply to the 2030 Agenda except",
+        "options": [
+          "It is universal",
+          "It is people-centred",
+          "It is transformative",
+          "It is exclusive"
+        ],
+        "answer": "It is exclusive"
+      },
+      {
+        "qid": "s_week2_6",
+        "question": "HRE, a tool for building peaceful and just societies, stands for ___",
+        "options": [
+          "Holistic Rights for Economics",
+          "Human Rights for Exclusivity",
+          "Human Rights Education",
+          "Holistic Rights Education",
+          "None of the above"
+        ],
+        "answer": "Human Rights Education"
+      },
+      {
+        "qid": "s_week2_7",
+        "question": "ESD builds civil capacity for ___",
+        "options": [
+          "Social tolerance",
+          "Community based decision making",
+          "Environmental stewardship",
+          "All of the above"
+        ],
+        "answer": "All of the above"
+      },
+      {
+        "qid": "s_week2_8",
+        "question": "Creating a world culture of peace requires the involvement of all the following parties except ___",
+        "options": [
+          "Politicians",
+          "Scientists",
+          "Media",
+          "Parents",
+          "None of the above"
+        ],
+        "answer": "None of the above"
+      },
+      {
+        "qid": "s_week2_9",
+        "question": "Which international organization has highlighted a policy focusing on education and engagement for indigenous people?",
+        "options": [
+          "WWF",
+          "WTO",
+          "UNDP",
+          "WIPO",
+          "UNESCO"
+        ],
+        "answer": "UNESCO"
+      }
+    ],
+    "week3": [
+      {
+        "qid": "s_week3_0",
+        "question": "The term ‘global citizenship’ refers to the belief that individuals are members of ___ networks. Which of the following options is not an appropriate option to complete the sentence?",
+        "options": [
+          "multiple",
+          "single",
+          "diverse",
+          "local",
+          "non-local"
+        ],
+        "answer": "single"
+      },
+      {
+        "qid": "s_week3_1",
+        "question": "Which of the following is false about global citizenship?",
+        "options": [
+          "It is about the belief that we can all make a difference",
+          "A global citizen is someone is aware of and understands the wider role",
+          "Global citizens take a passive role in their community to make our planet more sustainable.",
+          "Global citizenship is all about encouraging young people to develop characteristics they need to engage with the world."
+        ],
+        "answer": "Global citizens take a passive role in their community to make our planet more sustainable."
+      },
+      {
+        "qid": "s_week3_2",
+        "question": "UNESCO’s work in the field of global citizenship is guided primarily by ___",
+        "options": [
+          "SDG 3",
+          "SDG 2",
+          "SDG 4",
+          "SDG 11",
+          "SDG 10"
+        ],
+        "answer": "SDG 4"
+      },
+      {
+        "qid": "s_week3_3",
+        "question": "Global citizenship ___",
+        "options": [
+          "stimulates unhealthy and toxic arguments",
+          "lowers creative problem-solving",
+          "instills the confidence that people cannot do much to change the world",
+          "encourages people to challenge equality",
+          "teaches learners to have their voices heard"
+        ],
+        "answer": "teaches learners to have their voices heard"
+      },
+      {
+        "qid": "s_week3_4",
+        "question": "Which of the following is untrue about global citizens?",
+        "options": [
+          "they apply knowledge and empathy to real-life problems",
+          "they actively collaborate with diverse people",
+          "they see the interdependence of globalization",
+          "they generally know how the world works",
+          "none of the above"
+        ],
+        "answer": "none of the above"
+      },
+      {
+        "qid": "s_week3_5",
+        "question": "GCED is based on three domains of learning. Which of the following is not one of them?",
+        "options": [
+          "cognitive",
+          "biological",
+          "behavioral",
+          "socio-emotional"
+        ],
+        "answer": "biological"
+      },
+      {
+        "qid": "s_week3_6",
+        "question": "UNESCO-MGIEP has called for integrating ___ in education systems.",
+        "options": [
+          "physical exercise",
+          "cultural activities",
+          "biological learning",
+          "behavioral learning",
+          "social and emotional learning"
+        ],
+        "answer": "social and emotional learning"
+      },
+      {
+        "qid": "s_week3_7",
+        "question": "___ is an under-recognized resource for sustainable development that defines citizens’ shared identity.",
+        "options": [
+          "natural heritage",
+          "man-made heritage",
+          "climatic heritage",
+          "emotional heritage",
+          "cultural heritage"
+        ],
+        "answer": "cultural heritage"
+      },
+      {
+        "qid": "s_week3_8",
+        "question": "TVET stands for ____",
+        "options": [
+          "Teaching and Vocational Education and Training",
+          "Teaching for Vulnerability Education and Training",
+          "Technical Variety of Education and Training",
+          "Technical and Vocational Education and Training"
+        ],
+        "answer": "Technical and Vocational Education and Training"
+      },
+      {
+        "qid": "s_week3_9",
+        "question": "A green economy has four interconnected and mutually dependent goals. Which of the following is not one of them?",
+        "options": [
+          "increasing economic growth",
+          "alleviating poverty by reducing unemployment",
+          "reducing greenhouse gas emissions",
+          "increasing social exclusion and equity"
+        ],
+        "answer": "increasing social exclusion and equity"
+      }
+    ],
+      "week4": [
+      {
+        "qid": "s_week4_0",
+        "question": "The classification of ___ refers to the creation of new work or occupation and work requirements that may be born out of occupations that already exist.",
+        "options": [
+          "GESO",
+          "GIDO",
+          "GNEO",
+          "none of the above"
+        ],
+        "answer": "GNEO"
+      },
+      {
+        "qid": "s_week4_1",
+        "question": "The International Framework for greening TVET for green society gives a ___-tier approach.",
+        "options": [
+          "five",
+          "six",
+          "two",
+          "three",
+          "seven"
+        ],
+        "answer": "three"
+      },
+      {
+        "qid": "s_week4_2",
+        "question": "The five dimensions or criteria of greening TVET include the following except ___",
+        "options": [
+          "Green campus",
+          "Green curriculum",
+          "Green discipline",
+          "Green research",
+          "Green community"
+        ],
+        "answer": "Green discipline"
+      },
+      {
+        "qid": "s_week4_3",
+        "question": "Which of the following is not an indicator of green culture?",
+        "options": [
+          "innovative programs",
+          "values and practices",
+          "participation and involvement",
+          "research programs in sustainable development"
+        ],
+        "answer": "research programs in sustainable development"
+      },
+      {
+        "qid": "s_week4_4",
+        "question": "___ as an umbrella term often includes social entrepreneurship, eco-preneurship and intra-preneurship",
+        "options": [
+          "Societal entrepreneurship",
+          "Educational entrepreneurship",
+          "Economic entrepreneurship",
+          "Sustainable entrepreneurship",
+          "None of the above"
+        ],
+        "answer": "Sustainable entrepreneurship"
+      },
+      {
+        "qid": "s_week4_5",
+        "question": "The definition most commonly used to understand a sustainable healthcare system is given by ___.",
+        "options": [
+          "ESD",
+          "WHO",
+          "WOH",
+          "ILO",
+          "none of the above"
+        ],
+        "answer": "WHO"
+      },
+      {
+        "qid": "s_week4_6",
+        "question": "A genuinely sustainable healthcare system has the following characteristics except ___",
+        "options": [
+          "promotes population health with minimal financial costs",
+          "safeguards health of future generations",
+          "conserves natural resources",
+          "minimizes ecological damage",
+          "focuses only on meeting healthcare needs"
+        ],
+        "answer": "focuses only on meeting healthcare needs"
+      },
+      {
+        "qid": "s_week4_7",
+        "question": "There are ___ number of accelerator themes under the Global Action Plan for Healthy Lives and Wellbeing",
+        "options": [
+          "3",
+          "4",
+          "5",
+          "6",
+          "7"
+        ],
+        "answer": "7"
+      },
+      {
+        "qid": "s_week4_8",
+        "question": "Which of the following is not one of the accelerator themes under the Global Action Plan for Healthy Lives and Wellbeing?",
+        "options": [
+          "Determinants of health",
+          "Data and digital health",
+          "Sustainable financing for health",
+          "Knowledge of health"
+        ],
+        "answer": "Knowledge of health"
+      },
+      {
+        "qid": "s_week4_9",
+        "question": "Which of the following is not a dimension of health?",
+        "options": [
+          "physical",
+          "social",
+          "mental",
+          "technical"
+        ],
+        "answer": "technical"
+      }
+    ],
+    "week5": [
+      {
+        "qid": "s_week5_0",
+        "question": "Which of the following is an existing problem of healthcare infrastructure in India?",
+        "options": [
+          "Overabundance of staff and equipment",
+          "Healthcare infrastructure heavily skewed in favor of women",
+          "Too many regulatory mechanisms",
+          "Inter-state and Intra-state variations",
+          "None of the above"
+        ],
+        "answer": "Inter-state and Intra-state variations"
+      },
+      {
+        "qid": "s_week5_1",
+        "question": "WHO’s framework of health system building blocks include the following except ___",
+        "options": [
+          "financing",
+          "service delivery",
+          "governance",
+          "access to essential customers",
+          "health workforce"
+        ],
+        "answer": "access to essential customers"
+      },
+      {
+        "qid": "s_week5_2",
+        "question": "Sustainability of a healthcare system depends on ___ number of major factors which include internal and external factors",
+        "options": [
+          "Five",
+          "Ten",
+          "Four",
+          "Seven",
+          "Nine"
+        ],
+        "answer": "Seven"
+      },
+      {
+        "qid": "s_week5_3",
+        "question": "Costs related to value in healthcare include ___",
+        "options": [
+          "economic or financial costs",
+          "environmental costs or impacts",
+          "social costs or impacts",
+          "all of the above"
+        ],
+        "answer": "all of the above"
+      },
+      {
+        "qid": "s_week5_4",
+        "question": "The ___ is India’s flagship programme to improve nutritional outcomes for children, pregnant women and lactating mothers",
+        "options": [
+          "Pradhan Mantri Matru Vandana Yojana",
+          "National Digital Health Mission",
+          "POSHAN Abhiyan",
+          "None of the above"
+        ],
+        "answer": "POSHAN Abhiyan"
+      },
+      {
+        "qid": "s_week5_5",
+        "question": "Which of the following is not one of the four stages for Sustainable Quality Improvement (Sus-QI)",
+        "options": [
+          "Study the system",
+          "Violate the system",
+          "Measure impacts",
+          "Set goals",
+          "Design the improvement effort"
+        ],
+        "answer": "Violate the system"
+      },
+      {
+        "qid": "s_week5_6",
+        "question": "Sus-QI extends the scope of QI by including the following except ___",
+        "options": [
+          "long term perspective",
+          "adding social value",
+          "ecological sustainability",
+          "economic sustainability"
+        ],
+        "answer": "economic sustainability"
+      },
+      {
+        "qid": "s_week5_7",
+        "question": "Ideally, when considering the environmental impacts of a system, one would calculate total ___ instead of just estimating greenhouse gas emissions",
+        "options": [
+          "QI",
+          "Carbon footprint",
+          "Economic footprint",
+          "Ecological footprint"
+        ],
+        "answer": "Ecological footprint"
+      },
+      {
+        "qid": "s_week5_8",
+        "question": "A ___ has been defined as an environment in which data of medical interest can be stired and made easily available to different actors in the healthcare system.",
+        "options": [
+          "health matrix",
+          "quality improvement",
+          "triple bottom line",
+          "health grid",
+          "none of the above"
+        ],
+        "answer": "health grid"
+      },
+      {
+        "qid": "s_week5_9",
+        "question": "With respect to value in healthcare, outcomes refer to ___",
+        "options": [
+          "individual patients",
+          "population outcomes",
+          "neither a nor b",
+          "both a and b"
+        ],
+        "answer": "both A and B"
+      }
+    ],
+    "week6": [
+      {
+        "qid": "s_week6_0",
+        "question": "Which of the following is a cause of hunger?",
+        "options": [
+          "poor infrastructure",
+          "poverty due to job instability",
+          "war and conflict",
+          "all of the above"
+        ],
+        "answer": "all of the above"
+      },
+      {
+        "qid": "s_week6_1",
+        "question": "Hidden hunger as a form of malnutrition has to do with ___ of food more than the ___",
+        "options": [
+          "quality, source",
+          "quantity, quality",
+          "source, quantity",
+          "quality, quantity"
+        ],
+        "answer": "quality, quantity"
+      },
+      {
+        "qid": "s_week6_2",
+        "question": "Desertification typically is a result of the following except ___",
+        "options": [
+          "drought",
+          "inappropriate agriculture",
+          "flood",
+          "deforestation"
+        ],
+        "answer": "flood"
+      },
+      {
+        "qid": "s_week6_3",
+        "question": "Which of the following is a sustainable agriculture practice?",
+        "options": [
+          "using biofertilizers",
+          "limiting the use of pesticides",
+          "integrated pest management",
+          "crop rotation",
+          "all of the above"
+        ],
+        "answer": "all of the above"
+      },
+      {
+        "qid": "s_week6_4",
+        "question": "Which of the following policy changes are essential to improve India’s hunger situation?",
+        "options": [
+          "Restrict medical aid",
+          "Lower the minimum wage",
+          "Support pay equity",
+          "Decrease the earned income tax credit for childless workers"
+        ],
+        "answer": "Support pay equity"
+      },
+      {
+        "qid": "s_week6_5",
+        "question": "___ crops can handle temperature and precipitation variation and precipitation fluctuations.",
+        "options": [
+          "water resistant",
+          "weather volatile",
+          "climate resilient",
+          "none of the above"
+        ],
+        "answer": "climate resilient"
+      },
+      {
+        "qid": "s_week6_6",
+        "question": "India will probably suffer with wheat production due to global warming. Wheat productivity is dependent on ___",
+        "options": [
+          "extra precipitation",
+          "rainy night precipitation",
+          "droughts",
+          "cold night temperatures"
+        ],
+        "answer": "cold night temperatures"
+      },
+      {
+        "qid": "s_week6_7",
+        "question": "Bringing forgotten and neglected foods like millets and yam into cultivation and onto the market is known as ___",
+        "options": [
+          "wheat displacement",
+          "agricultural displacement",
+          "diversification of food basket",
+          "discrimination of food basket"
+        ],
+        "answer": "diversification of food basket"
+      },
+      {
+        "qid": "s_week6_8",
+        "question": "Which of the following is a type of electric vehicle?",
+        "options": [
+          "BEV",
+          "PEV",
+          "ZEV",
+          "all of the above"
+        ],
+        "answer": "all of the above"
+      },
+      {
+        "qid": "s_week6_9",
+        "question": "___ won the Peace Nobel in 2007, an acknowledgment of its efforts in creating awareness for the fight against climate change",
+        "options": [
+          "UNFCCC",
+          "COP 16",
+          "GEF",
+          "IPCC"
+        ],
+        "answer": "IPCC"
+      }
+    ],
+      "week7": [
+      {
+        "qid": "s_week7_0",
+        "question": "IPCC by the United Nations categorised key drivers, opportunities and benefits of renewable energy into some categories. IPCC stands for ___.",
+        "options": [
+          "International Policy for Climate Care",
+          "Interactional Program for Climate Change",
+          "Intergovernmental Panel on Climate Change",
+          "Intergovernmental Practical for Climate and Culture"
+        ],
+        "answer": "Intergovernmental Panel on Climate Change"
+      },
+      {
+        "qid": "s_week7_1",
+        "question": "The greatest contributor to outdoor air pollution in India is ___.",
+        "options": [
+          "Burning of coal",
+          "Burning of solid biomass for cooking and heating",
+          "Road transport",
+          "Factories",
+          "None of the above"
+        ],
+        "answer": "Burning of solid biomass for cooking and heating"
+      },
+      {
+        "qid": "s_week7_2",
+        "question": "The term ___ grew out of the climate justice movement, and is grounded on the basic understanding that “the decisions that shape our lives should be established jointly and without regard to the principle of profit.",
+        "options": [
+          "Renewable reliability",
+          "Renewable resilience",
+          "Energy democracy",
+          "Energy equality"
+        ],
+        "answer": "Energy democracy"
+      },
+      {
+        "qid": "s_week7_3",
+        "question": "Increased deployment of renewable energy has been shown to improve energy security in the EU, where renewable’s substitution for natural gas accounted for 30% of the estimated reduction in fossil fuel demand during 2013. This is an example of ___ impact of renewable energy.",
+        "options": [
+          "Environmental",
+          "Economic",
+          "Social",
+          "Political and Security",
+          "None of the above"
+        ],
+        "answer": "Political and Security"
+      },
+      {
+        "qid": "s_week7_4",
+        "question": "___ is now recognized as a promising and attractive energy carrier to decarbonize the sectors responsible for global warming, such as electricity production, industry, and transportation",
+        "options": [
+          "Helium",
+          "Sodium",
+          "Oxygen",
+          "Hydrogen"
+        ],
+        "answer": "Hydrogen"
+      },
+      {
+        "qid": "s_week7_5",
+        "question": "___ was the first state in India to introduce a comprehensive EV policy and has emerged as an integral hotspot for EV businesses in the country.",
+        "options": [
+          "Delhi",
+          "Bangalore",
+          "Bihar",
+          "Karnataka"
+        ],
+        "answer": "Karnataka"
+      },
+      {
+        "qid": "s_week7_6",
+        "question": "With the Paris Agreement, countries established ___, under which, starting in 2024, countries will report transparently on actions taken and progress in climate change mitigation, adaptation measures and support provided or received",
+        "options": [
+          "COP",
+          "ETF",
+          "ETG",
+          "None of the above"
+        ],
+        "answer": "ETF"
+      },
+      {
+        "qid": "s_week7_7",
+        "question": "The Government of India launched the National Action Plan on Climate Change in 2008 outlining ___ number of National Missions.",
+        "options": [
+          "5",
+          "6",
+          "7",
+          "8"
+        ],
+        "answer": "8"
+      },
+      {
+        "qid": "s_week7_8",
+        "question": "Which of the following is not one of the missions given by National Action Plan on Climate Change in 2008?",
+        "options": [
+          "National Solar Mission",
+          "National Water Mission",
+          "National Mission for a Green India",
+          "National Air Mission"
+        ],
+        "answer": "National Air Mission"
+      },
+      {
+        "qid": "s_week7_9",
+        "question": "There are three major means of implementation of SDG 4. Which of the following is not one of them?",
+        "options": [
+          "Effective learning environments",
+          "Scholarships",
+          "Teachers and educators",
+          "AC classrooms"
+        ],
+        "answer": "AC classrooms"
+      }
+    ],
+    "week8": [
+      {
+        "qid": "s_week8_0",
+        "question": "Which of the following is not one of the four policy support mechanisms for the Okayama Commitment by Japan (2014)?",
+        "options": [
+          "Providing resources",
+          "Networking",
+          "Infrastructure development",
+          "Capacity building"
+        ],
+        "answer": "Infrastructure development"
+      },
+      {
+        "qid": "s_week8_1",
+        "question": "The Frame model gives three goal dimensions (GD). Which of the following is not one of them?",
+        "options": [
+          "Behavioral",
+          "Biological",
+          "Cognitive",
+          "Affective-motivational"
+        ],
+        "answer": "Biological"
+      },
+      {
+        "qid": "s_week8_2",
+        "question": "Value and attitudes come under the ___ facets of sustainable competencies.",
+        "options": [
+          "Physical",
+          "Affective-motivational",
+          "Biological",
+          "Behavioral"
+        ],
+        "answer": "Affective-motivational"
+      },
+      {
+        "qid": "s_week8_3",
+        "question": "Which of the following statements is false regarding perspectives of sustainable development?",
+        "options": [
+          "Women play a vital role in environmental management and development",
+          "Countries should promote appropriate demographic policies",
+          "Peace, development and environmental protection are independent of each other",
+          "A systems thinking approach is important"
+        ],
+        "answer": "Peace, development and environmental protection are independent of each other"
+      },
+      {
+        "qid": "s_week8_4",
+        "question": "GAP for ESD stands for ___",
+        "options": [
+          "Global Action Policy",
+          "Growth and Activity Programme",
+          "Global Action Plan",
+          "Global Action Programme"
+        ],
+        "answer": "Global Action Programme"
+      },
+      {
+        "qid": "s_week8_5",
+        "question": "___ competency is the ability to collectively develop and implement innovative actions that further sustainability at the local level and further a field.",
+        "options": [
+          "Normative",
+          "Collaborative",
+          "Strategic",
+          "None of the above"
+        ],
+        "answer": "Strategic"
+      },
+      {
+        "qid": "s_week8_6",
+        "question": "___ competency refers to the ability to understand and evaluate multiple futures – possible, probable and desirable – and to create one’s own visions for the future",
+        "options": [
+          "Anticipatory",
+          "Affirmative",
+          "Normative",
+          "Self awareness"
+        ],
+        "answer": "Anticipatory"
+      },
+      {
+        "qid": "s_week8_7",
+        "question": "In the ___ approaches, the process is organized in a manner that enable all stakeholders to jointly develop a vision and plan to implement ESD.",
+        "options": [
+          "Stakeholder",
+          "Complete",
+          "Whole country",
+          "Whole institution"
+        ],
+        "answer": "Whole institution"
+      },
+      {
+        "qid": "s_week8_8",
+        "question": "Which of the following is not true regarding the learner centered approach to ESD?",
+        "options": [
+          "sees students as autonomous learners",
+          "emphasizes the active development of knowledge",
+          "requires learners to reflect on their own knowledge and learning process",
+          "change the role of an educator from that of a facilitator to an expert who transfers structured knowledge"
+        ],
+        "answer": "change the role of an educator from that of a facilitator to an expert who transfers structured knowledge"
+      },
+      {
+        "qid": "s_week8_9",
+        "question": "Action-learning draws on Kolb’s learning cycle of ___ learning.",
+        "options": [
+          "emotional",
+          "social",
+          "experiential",
+          "passive"
+        ],
+        "answer": "experiential"
+      }
+    ],
+    "week9": [
+      {
+        "qid": "s_week9_0",
+        "question": "Which of the following is not an example of vision building exercises that are used as a key method in ESD?",
+        "options": [
+          "Future workshops",
+          "Scenario analysis",
+          "Dystopian storytelling",
+          "Fish bowl discussions",
+          "Science fiction thinking"
+        ],
+        "answer": "Fish bowl discussions"
+      },
+      {
+        "qid": "s_week9_1",
+        "question": "Communication skills, empathy, compassion and leadership are examples of which of the key competency area proposed for the assessment of ESD?",
+        "options": [
+          "Intrapersonal",
+          "Systems thinking",
+          "Interpersonal",
+          "Strategic",
+          "Future thinking"
+        ],
+        "answer": "Interpersonal"
+      },
+      {
+        "qid": "s_week9_2",
+        "question": "___ is the ability to stay present to your internal environment at the same time as engaging with your external environment",
+        "options": [
+          "Future thinking",
+          "Vision building",
+          "Presencing",
+          "Presenting",
+          "None of the above"
+        ],
+        "answer": "Presencing"
+      },
+      {
+        "qid": "s_week9_3",
+        "question": "Which of the following is not one of the intelligences proposed by Gardner in the model of multiple intelligences?",
+        "options": [
+          "Interpersonal",
+          "Intrapersonal",
+          "Linguistic",
+          "Acoustic",
+          "Spatial"
+        ],
+        "answer": "Acoustic"
+      },
+      {
+        "qid": "s_week9_4",
+        "question": "The idea of ___ implies changes in individual action intertwined with reorganization of societal structures.",
+        "options": [
+          "Small transaction",
+          "Big transaction",
+          "Small transformation",
+          "Big transformation"
+        ],
+        "answer": "Big transformation"
+      },
+      {
+        "qid": "s_week9_5",
+        "question": "Which of the following is false about transformative learning?",
+        "options": [
+          "involves a fundamental change in our perspectives",
+          "learners started to question all the things they knew to make room for new insights and information",
+          "has two major focuses: Instrumental learning and Communicative learning",
+          "None of the above"
+        ],
+        "answer": "None of the above"
+      },
+      {
+        "qid": "s_week9_6",
+        "question": "Which of the following is not one of the phases given in Mezirow’s 10 phases of transformative learning?",
+        "options": [
+          "Regulation",
+          "Reintegration",
+          "Recognition",
+          "Disorienting dilemma"
+        ],
+        "answer": "Regulation"
+      },
+      {
+        "qid": "s_week9_7",
+        "question": "Need to know why, Self-Concept, Role of experience, Readiness to learn, Orientation to learning and Motivation are six assumptions often stated as principles of ___",
+        "options": [
+          "Formal education",
+          "Rural education",
+          "Adult education",
+          "None of the above"
+        ],
+        "answer": "Adult education"
+      },
+      {
+        "qid": "s_week9_8",
+        "question": "In the sustainable education model in the Indian context by Mohanty(2019), the role of driver 1 of profit is played by ___",
+        "options": [
+          "Indian education system",
+          "Human resources",
+          "MHRD, Government of India",
+          "None of the above"
+        ],
+        "answer": "MHRD, Government of India"
+      },
+      {
+        "qid": "s_week9_9",
+        "question": "TPACK in the context of ESD and transformative learning stands for ___",
+        "options": [
+          "Technical personal and content knowledge",
+          "Technological proactive consumptive knowledge",
+          "Technological pedagogical and content knowledge",
+          "Transformative pedagogical contextual knowledge"
+        ],
+        "answer": "Technological pedagogical and content knowledge"
+      }
+    ],
+    "week10": [
+      {
+        "qid": "s_week10_0",
+        "question": "Which of the following is false about sustainable leaders?",
+        "options": [
+          "Look beyond immediate gains",
+          "See the role their organization plays in a larger context",
+          "Aim to work to meet the triple bottom line",
+          "Focus only on the environment while ignoring the financial performance"
+        ],
+        "answer": "Focus only on the environment while ignoring the financial performance"
+      },
+      {
+        "qid": "s_week10_1",
+        "question": "The triple bottom line approach focuses on the three ___",
+        "options": [
+          "A’s",
+          "M’s",
+          "K’s",
+          "P’s",
+          "D’s"
+        ],
+        "answer": "P’s"
+      },
+      {
+        "qid": "s_week10_2",
+        "question": "Which of the following is a behavior of sustainable leaders?",
+        "options": [
+          "Promoting company’s vision",
+          "Operationalizing CSR",
+          "Engaging diverse stakeholders",
+          "Measuring performance",
+          "All of the above"
+        ],
+        "answer": "All of the above"
+      },
+      {
+        "qid": "s_week10_3",
+        "question": "A ___ is a strong interior sense of purpose combined with a long term orientation and an inherent motivation to meet the triple bottom line",
+        "options": [
+          "Systems thinking",
+          "Positive mindset",
+          "Sustainable mindset",
+          "Systems mindset",
+          "None of the above"
+        ],
+        "answer": "Sustainable mindset"
+      },
+      {
+        "qid": "s_week10_4",
+        "question": "Which of the following is not a sustainable leadership practice?",
+        "options": [
+          "Taking responsibility",
+          "Looking for holistic interconnections",
+          "Embracing creative tension",
+          "Ignoring social change dynamics"
+        ],
+        "answer": "Ignoring social change dynamics"
+      },
+      {
+        "qid": "s_week10_5",
+        "question": "Which of the following is not a component of the 360 degree sustainable leadership?",
+        "options": [
+          "Wellbeing of communities",
+          "Individual wellbeing",
+          "Wellbeing of nature",
+          "Profitable business",
+          "Resource exploitation"
+        ],
+        "answer": "Resource exploitation"
+      },
+      {
+        "qid": "s_week10_6",
+        "question": "Which of the following statements is false?",
+        "options": [
+          "Sustainable leadership sustains the leadership of others",
+          "Sustainable leadership ignores issues of social justice and only focuses on climate issues",
+          "Sustainable leadership develops human and material resources",
+          "Sustainable leadership develops environmental diversity"
+        ],
+        "answer": "Sustainable leadership ignores issues of social justice and only focuses on climate issues"
+      },
+      {
+        "qid": "s_week10_7",
+        "question": "Working style of sustainable leaders is ___",
+        "options": [
+          "Exclusive",
+          "Selfish",
+          "Radical",
+          "Repetitive or non-creative"
+        ],
+        "answer": "Radical"
+      },
+      {
+        "qid": "s_week10_8",
+        "question": "Which of the following is not one of the basic principles of lean leadership?",
+        "options": [
+          "Identify core performers",
+          "Learn from data",
+          "Maintain a trimmed management system",
+          "Ignore the innovations and punish lack of it",
+          "Direct the route"
+        ],
+        "answer": "Ignore the innovations and punish lack of it"
+      },
+      {
+        "qid": "s_week10_9",
+        "question": "Which of the following is not one of the higher level practices in the sustainable leadership pyramid?",
+        "options": [
+          "Enabling culture",
+          "Trust",
+          "Financial performance",
+          "Team orientation"
+        ],
+        "answer": "Financial performance"
+      }
+    ],
+      "week11": [
+          {
+              "qid": "s_week11_0",
+              "question": "Which is not a sustainable leadership principle?",
+              "options": [
+                  "Deep purpose",
+                  "Values driven",
+                  "Community oriented",
+                  "Profit focused"
+              ],
+              "answer": "Profit focused"
+          },
+          {
+              "qid": "s_week11_1",
+              "question": "What is the 'triple bottom line' in sustainable leadership?",
+              "options": [
+                  "People, Planet, Profit",
+                  "Process, Product, People",
+                  "Planning, Performance, Profit",
+                  "Policy, Practice, Planet"
+              ],
+              "answer": "People, Planet, Profit"
+          },
+          {
+              "qid": "s_week11_2",
+              "question": "Sustainable cities aim to improve quality of life without degrading the _.",
+              "options": [
+                  "economy",
+                  "infrastructure",
+                  "environment",
+                  "community"
+              ],
+              "answer": "environment"
+          },
+          {
+              "qid": "s_week11_3",
+              "question": "Which SDG focuses specifically on Sustainable Cities and Communities?",
+              "options": [
+                  "SDG 7",
+                  "SDG 9",
+                  "SDG 11",
+                  "SDG 13"
+              ],
+              "answer": "SDG 11"
+          },
+          {
+              "qid": "s_week11_4",
+              "question": "Key features of sustainable cities include all except:",
+              "options": [
+                  "Efficient public transport",
+                  "Green building standards",
+                  "Increased private vehicle use",
+                  "Waste reduction and recycling"
+              ],
+              "answer": "Increased private vehicle use"
+          },
+          {
+              "qid": "s_week11_5",
+              "question": "What is a major challenge for creating sustainable cities?",
+              "options": [
+                  "Urban sprawl",
+                  "Resource management",
+                  "Social equity",
+                  "Infrastructure development",
+                  "All of the above"
+              ],
+              "answer": "All of the above"
+          },
+          {
+              "qid": "s_week11_6",
+              "question": "Which initiative promotes sustainable urban development globally?",
+              "options": [
+                  "WHO",
+                  "WTO",
+                  "IMF",
+                  "UN-Habitat"
+              ],
+              "answer": "UN-Habitat"
+          },
+          {
+              "qid": "s_week11_7",
+              "question": "Community engagement in sustainable cities involves:",
+              "options": [
+                  "Top-down decision making",
+                  "Ignoring local needs",
+                  "Participatory planning",
+                  "Excluding minority groups"
+              ],
+              "answer": "Participatory planning"
+          },
+          {
+              "qid": "s_week11_8",
+              "question": "Green spaces in cities contribute to:",
+              "options": [
+                  "Increased pollution",
+                  "Higher temperatures",
+                  "Reduced biodiversity",
+                  "Improved air quality and wellbeing"
+              ],
+              "answer": "Improved air quality and wellbeing"
+          },
+          {
+              "qid": "s_week11_9",
+              "question": "Which technology supports sustainable city management?",
+              "options": [
+                  "Outdated infrastructure",
+                  "Manual data collection",
+                  "Smart city technologies (IoT)",
+                  "Inefficient energy systems",
+                  "Limited communication networks"
+              ],
+              "answer": "Smart city technologies (IoT)"
+          }
+      ],
+      "week12": [
+          {
+              "qid": "s_week12_0",
+              "question": "Sustainable consumption and production (SCP) aims to:",
+              "options": [
+                  "Maximize resource use",
+                  "Increase waste generation",
+                  "Do more and better with less",
+                  "Promote inefficient processes"
+              ],
+              "answer": "Do more and better with less"
+          },
+          {
+              "qid": "s_week12_1",
+              "question": "Which SDG specifically targets Responsible Consumption and Production?",
+              "options": [
+                  "SDG 6",
+                  "SDG 8",
+                  "SDG 12",
+                  "SDG 14"
+              ],
+              "answer": "SDG 12"
+          },
+          {
+              "qid": "s_week12_2",
+              "question": "The concept of a 'circular economy' is closely related to:",
+              "options": [
+                  "Linear resource flow (take-make-dispose)",
+                  "Maximizing waste",
+                  "Sustainable consumption and production",
+                  "Single-use products"
+              ],
+              "answer": "Sustainable consumption and production"
+          },
+          {
+              "qid": "s_week12_3",
+              "question": "Life Cycle Assessment (LCA) is a tool used to:",
+              "options": [
+                  "Assess only the end-of-life impact",
+                  "Evaluate the environmental impacts of a product throughout its life",
+                  "Focus solely on economic costs",
+                  "Ignore social impacts"
+              ],
+              "answer": "Evaluate the environmental impacts of a product throughout its life"
+          },
+          {
+              "qid": "s_week12_4",
+              "question": "Which of the following is NOT a principle of sustainable consumption?",
+              "options": [
+                  "Reducing resource use",
+                  "Minimizing waste",
+                  "Meeting basic needs",
+                  "Promoting throwaway culture",
+                  "Improving quality of life"
+              ],
+              "answer": "Promoting throwaway culture"
+          },
+          {
+              "qid": "s_week12_5",
+              "question": "Global partnerships for sustainable development (SDG 17) emphasize:",
+              "options": [
+                  "Isolationist policies",
+                  "Competition over cooperation",
+                  "Collaboration across sectors and borders",
+                  "Ignoring developing countries"
+              ],
+              "answer": "Collaboration across sectors and borders"
+          },
+          {
+              "qid": "s_week12_6",
+              "question": "Key areas for global partnerships include:",
+              "options": [
+                  "Finance",
+                  "Technology",
+                  "Capacity building",
+                  "All of the above"
+              ],
+              "answer": "All of the above"
+          },
+          {
+              "qid": "s_week12_7",
+              "question": "Sustainable happiness connects personal well-being with:",
+              "options": [
+                  "Material wealth only",
+                  "Individual success at any cost",
+                  "The well-being of others and the planet",
+                  "Short-term pleasure"
+              ],
+              "answer": "The well-being of others and the planet"
+          },
+          {
+              "qid": "s_week12_8",
+              "question": "Factors contributing to sustainable happiness include all except:",
+              "options": [
+                  "Strong social connections",
+                  "Meaningful activities",
+                  "Excessive consumerism",
+                  "Connection with nature"
+              ],
+              "answer": "Excessive consumerism"
+          },
+          {
+              "qid": "s_week12_9",
+              "question": "Education for Sustainable Development (ESD) plays a role in fostering:",
+              "options": [
+                  "Unsustainable practices",
+                  "Global citizenship and responsibility",
+                  "Apathy towards environmental issues",
+                  "Individualism over community"
+              ],
+              "answer": "Global citizenship and responsibility"
+          }
+      ]
+  }
