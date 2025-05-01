@@ -11,7 +11,7 @@ export default function TestSettingsPage() {
   const router = useTransitionRouter();
   const { data: session } = useSession();
 
-  const [category, setCategory] = useState("conservation_economics");
+  const [category, setCategory] = useState("sustainable_development");
   const [enableTimer, setEnableTimer] = useState(true);
   const [randomizeAnswers, setRandomizeAnswers] = useState(true);
   const [shuffleWeeks, setShuffleWeeks] = useState(false);

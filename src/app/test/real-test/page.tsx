@@ -32,7 +32,7 @@ export default function RealTestPage() {
   const [submitted, setSubmitted] = useState(false);
   const [testStartTime] = useState<Date>(new Date());
   const [timeRemaining, setTimeRemaining] = useState(3600); // 60 minutes for real test
-  const [selectedCategory, setSelectedCategory] = useState<string>("conservation_economics");
+  const [selectedCategory, setSelectedCategory] = useState<string>("sustainable_development");
 
   useEffect(() => {
     if (status === "unauthenticated") {

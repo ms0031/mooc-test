@@ -22,7 +22,7 @@ interface QuestionsByWeek {
 export default function StudyPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const [selectedCategory, setSelectedCategory] = useState<string>("conservation_economics");
+  const [selectedCategory, setSelectedCategory] = useState<string>("sustainable_development");
   const [expandedWeeks, setExpandedWeeks] = useState<Record<string, boolean>>({});
   const [weekQuestions, setWeekQuestions] = useState<Record<string, Question[]>>({});
   const [isLoading, setIsLoading] = useState<boolean>(true);
