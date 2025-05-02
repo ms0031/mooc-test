@@ -75,6 +75,16 @@ export default function RealTestResultPage() {
     return `${minutes}m ${remainingSeconds}s`;
   }
 
+  function getGrade(normalizedScore: number): string {
+    if (normalizedScore >= 90) return "A+";
+    if (normalizedScore >= 80) return "A";
+    if (normalizedScore >= 70) return "B";
+    if (normalizedScore >= 60) return "C";
+    if (normalizedScore >= 50) return "D";
+    if (normalizedScore >= 40) return "E";
+    return "F";
+  }
+
   if (!testResult) {
     return (
       <div className="min-h-screen bg-slate-950 flex items-center justify-center">
@@ -153,7 +163,7 @@ export default function RealTestResultPage() {
           <div className="p-6 border-b border-gray-700">
             <div className="text-center">
               <div className="text-6xl font-bold text-indigo-500 mb-2">
-                {testResult.score}
+                {getGrade(testResult.normalizedScore)}
               </div>
               <p className="text-gray-400 text-sm">
                 Total Score ({testResult.marksScored}/{testResult.totalMarks} marks)
