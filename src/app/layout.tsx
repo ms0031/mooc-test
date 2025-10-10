@@ -103,7 +103,7 @@ export default function RootLayout({
                   })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID}");
                 `}
         </Script>
-              <footer className="text-center py-4 text-gray-200 text-sm bg-slate-950">
+              <footer className="text-center py-4 text-gray-200 text-sm">
                 <p>&copy; Mayank Shekhar</p>
               </footer>
               <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
