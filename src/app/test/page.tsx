@@ -6,6 +6,9 @@ import { useSession } from "next-auth/react";
 import CountdownTimer from "@/components/ui/CountdownTimer";
 import { useTransitionRouter } from "next-view-transitions";
 import { pageAnimation } from "@/utils/animations";
+import { Button } from "@/components/ui/Button";
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+import TestNavbar from "@/components/ui/TestNavbar";
 
 interface Question {
   _id: string;
@@ -271,10 +274,29 @@ export default function TestPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 py-12">
+    <main className="min-h-screen relative">
+          <BackgroundGradientAnimation 
+                  gradientBackgroundStart="rgb(2, 6, 23)" 
+                  gradientBackgroundEnd="rgb(2, 6, 23)" 
+                  firstColor="20, 90, 100"       // Darkest Teal
+                  secondColor="50, 40, 130"      // Deep Indigo
+                  thirdColor="80, 60, 110"       // Muted Purple
+                  fourthColor="30, 80, 70"       // Forest Green
+                  fifthColor="120, 80, 40"       // Muted Amber
+                  interactive={false}
+                  containerClassName="fixed inset-0 -z-10"
+      />
+      <TestNavbar 
+        answeredQuestions={Object.keys(answerAttempts).length} 
+        totalQuestions={questions.length} 
+      />
+    <div className="relative z-10">
+    <div className="min-h-screenpy-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="bg-white/5 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden">
       {!session && (
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
-          <div className="bg-yellow-50 border-l-8 rounded-xl border-yellow-400 p-4 ">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 mt-6 mb-2">
+          <div className="bg-yellow-50/90 border-l-8 rounded-xl border-yellow-400 p-4 ">
             <div className="flex">
               <div className="ml-3">
                 <p className="text-md text-yellow-700">
@@ -286,86 +308,86 @@ export default function TestPage() {
         </div>
       )}
 
-      {/* {!timerDisabled && !submitted && (
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 justify-items-start lg:px-8 mb-6">
-          <div className="bg-slate-800/80 w-1/3 rounded-3xl p-4 flex justify-center">
-            <CountdownTimer
-              duration={testDuration}
-              onTimeUp={handleSubmit}
-              className="text-2xl text-white"
-            />
-          </div>
-        </div>
-      )} */}
-
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <div className="space-y-3 p-5">
         {questions.map((question, index) => {
           const attempts = answerAttempts[question._id] || [];
           const finalAnswer = attempts[attempts.length - 1] || "";
           const isAnswered = isStudyMode
             ? answeredQuestions[question._id] || submitted
             : submitted;
+
           return (
             <div
               key={question._id}
-              className="mx-5 bg-white/5 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden shadow-xl p-6"
+              className="bg-white/5 rounded-3xl p-4 border border-white/10 shadow-lg"
             >
-              <h2 className="text-xl font-semibold text-gray-200 mb-4">
+              <h3 className="text-lg font-medium text-white mb-2">
                 {index + 1}. {question.question}
-              </h2>
-              <div className="space-y-3 text-gray-100">
+              </h3>
+              <div className="space-y-2 text-gray-100">
                 {question.options.map((option, idx) => {
-                  let baseClasses =
-                    "w-full text-left px-4 py-3 rounded-2xl border cursor-pointer";
+                  // Determine the state of the option for styling
+                  const isSelected = finalAnswer === option;
+                  const isCorrect = option === question.correctAnswer;
+                  
+                  let state: 'correct' | 'incorrect' | 'selected' | 'default' = 'default';
                   if (isAnswered) {
-                    if (option === question.correctAnswer) {
-                      baseClasses += " bg-green-900/30 border-green-500";
-                    }
-                    if (
-                      finalAnswer === option &&
-                      option !== question.correctAnswer
-                    ) {
-                      baseClasses += " bg-red-900/30 border-red-500";
-                    }
-                    if (
-                      option !== question.correctAnswer &&
-                      finalAnswer !== option
-                    ) {
-                      baseClasses += " border-gray-300";
-                    }
-                  } else {
-                    baseClasses +=
-                      finalAnswer === option
-                        ? " bg-purple-900/30 border-purple-500 scale-101 shadow-[0_0_15px_10px_rgba(192,132,252,0.1)] "
-                        : " border-gray-300 hover:border-purple-500 hover:bg-fuchsia-50/10";
+                    if (isCorrect) state = 'correct';
+                    else if (isSelected) state = 'incorrect';
+                  } else if (isSelected) {
+                    state = 'selected';
                   }
+
+                  // Define classes based on the state
+                  const containerClasses = {
+                    correct: 'bg-green-900/30 border-green-500',
+                    incorrect: 'bg-red-900/30 border-red-500',
+                    selected: 'bg-indigo-600/30 border-indigo-500',
+                    default: 'bg-white/5 hover:bg-white/10 border-transparent',
+                  };
+
+                  const radioClasses = {
+                      correct: 'border-green-500 bg-green-500/50',
+                      incorrect: 'border-red-500 bg-red-500/50',
+                      selected: 'border-indigo-500 bg-indigo-500',
+                      default: 'border-gray-400',
+                  };
+
                   return (
                     <button
                       key={idx}
                       type="button"
-                      disabled={
-                        isStudyMode
-                          ? answeredQuestions[question._id] || submitted
-                          : submitted
-                      }
+                      disabled={isAnswered}
                       onClick={() => handleAnswerSelect(question._id, option)}
-                      className={baseClasses}
+                      className={`w-full p-2 px-3 rounded-2xl cursor-pointer transition-colors flex items-start text-left border ${containerClasses[state]} ${!isAnswered ? '' : 'cursor-default'}`}
                     >
-                      {option}
+                      <div className={`flex-shrink-0 h-5 w-5 rounded-full border-2 ${radioClasses[state]} flex items-center justify-center mr-4 mt-0.5 transition-colors`}>
+                        {/* Inner dot for 'selected' state */}
+                        {state === 'selected' && (
+                          <div className="h-2 w-2 rounded-full bg-white"></div>
+                        )}
+                        {/* Checkmark for 'correct' state */}
+                        {state === 'correct' && (
+                          <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}><path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" /></svg>
+                        )}
+                        {/* X mark for 'incorrect' state */}
+                        {state === 'incorrect' && (
+                          <svg className="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={4}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+                        )}
+                      </div>
+                      <span className="text-gray-100">{option}</span>
                     </button>
                   );
                 })}
               </div>
-              {isStudyMode &&
-                (answeredQuestions[question._id] || submitted) &&
-                question.explanation && (
-                  <div className="mt-4 p-4 bg-blue-50 rounded-lg">
-                    <h3 className="font-medium text-blue-800 mb-2">
-                      Explanation:
-                    </h3>
-                    <p className="text-blue-700">{question.explanation}</p>
-                  </div>
-                )}
+              
+              {/* Explanation Box - Restyled for dark mode */}
+              {isStudyMode && isAnswered && question.explanation && (
+                <div className="mt-5 p-4 bg-blue-900/20 border border-blue-800/30 rounded-lg">
+                  <h3 className="font-medium text-blue-400 mb-2">Explanation:</h3>
+                  <p className="text-blue-300">{question.explanation}</p>
+                </div>
+              )}
             </div>
           );
         })}
@@ -373,34 +395,35 @@ export default function TestPage() {
         <div className="flex justify-center mt-8">
           {!submitted ? (
             <div className="flex justify-between w-full">
-              <button
+              <Button variant="glassRed"
                 onClick={(e) => {
                   e.preventDefault()
                   router.push("/test/settings", {
                     onTransitionReady: () => pageAnimation('right'),
                   })
                 }}
-                className="px-6 py-2 bg-red-500/80 text-gray-200 rounded-xl hover:bg-red-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
-              >
+                size={"lg"}>
                 Cancel
-              </button>
-              <button
+              </Button>
+              <Button variant="glassTeal"
                 onClick={handleSubmit}
-                className="px-6 py-2 bg-indigo-500/95 text-gray-100 rounded-xl hover:bg-indigo-700 disabled:bg-gray-600 disabled:cursor-not-allowed"
-              >
-                Submit Answers
-              </button>
+                size={"lg"}>
+                Submit
+              </Button>
             </div>
           ) : (
-            <button
-              onClick={handleFinishTest}
-              className="px-6 py-2 bg-teal-500/80 text-white rounded-xl hover:bg-green-700"
-            >
-              Finish Test
-            </button>
+              <Button variant="glassTeal"
+                onClick={handleFinishTest}
+                size={"lg"}>
+                Finish Test
+              </Button>
           )}
         </div>
       </div>
-    </div>
+      </div>
+      </div>
+      </div>
+      </div>
+    </main>
   );
 }
