@@ -6,6 +6,8 @@ import { useSession } from "next-auth/react";
 import { Button } from "@/components/ui/Button";
 import { useTransitionRouter } from "next-view-transitions";
 import { pageAnimation } from "@/utils/animations";
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+import ToggleSwitch from '@/components/ui/ToggleSwitch';
 
 export default function TestSettingsPage() {
   const router = useTransitionRouter();
@@ -25,7 +27,7 @@ export default function TestSettingsPage() {
   // Dynamic weeks state – will be fetched from the API.
   const [weeks, setWeeks] = useState<{ id: string; name: string }[]>([]);
   const [randomizeQuestions, setRandomizeQuestions] = useState(true);
-
+  const [isCategorySelectorOpen, setIsCategorySelectorOpen] = useState(false);
   // Fetch available weeks dynamically when the category is psychology_of_learning.
   useEffect(() => {
     async function fetchWeeks() {
@@ -105,11 +107,25 @@ export default function TestSettingsPage() {
   };
 
   return (
-    <div className="bg-slate-950 min-h-screen flex items-center justify-center">
-      <div className="mt-4 mb-16 lg:max-w-3xl lg:min-w-sm md:max-w-2xl min-w-9/10 mx-5 bg-white/1 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden">
-        <div className="bg-white/5 px-6 py-4">
-          <h1 className="text-2xl font-bold text-gray-200">Test Settings</h1>
+    <main className="min-h-screen relative">
+      <BackgroundGradientAnimation 
+              gradientBackgroundStart="rgb(2, 6, 23)" 
+              gradientBackgroundEnd="rgb(2, 6, 23)" 
+              firstColor="20, 90, 100"       // Darkest Teal
+              secondColor="50, 40, 130"      // Deep Indigo
+              thirdColor="80, 60, 110"       // Muted Purple
+              fourthColor="30, 80, 70"       // Forest Green
+              fifthColor="120, 80, 40"       // Muted Amber
+              interactive={false}
+              containerClassName="fixed inset-0 -z-10"
+        />
+    <div className="relative z-10">
+    <div className=" min-h-screen flex items-center justify-center">
+      <div className="mt-4 mb-16 lg:max-w-3xl lg:min-w-sm md:max-w-2xl min-w-9/10 mx-5 bg-white/1 rounded-4xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden">
+        <div className="px-6 py-4">
+          <h1 className="text-center text-2xl font-bold text-gray-200">Test Settings</h1>
         </div>
+        <div className=" h-0.5 w-20 bg-white/20 rounded-3xl mb-4 mx-auto"></div>
 
         {/* Two-column layout on large screens */}
         <div className="p-6">
@@ -119,260 +135,156 @@ export default function TestSettingsPage() {
               className={`space-y-6 ${category && shuffleWeeks ? "lg:col-span-2" : ""
                 }`}
             >
-              {/* Category Selection */}
+              {/* UPDATED: Category Selection */}
               <div>
-                <label
-                  htmlFor="category"
-                  className="block font-medium text-gray-200 mb-2"
-                >
-                  Test Category
-                </label>
-                <select
-                  id="category"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                  className="block w-full px-3 py-2.5 border bg-slate-950/50 text-gray-200 border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-                >
-                  {categories.map((cat) => (
-                    <option key={cat.id} value={cat.id}>
-                      {cat.name}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Timer Toggle
-              <div className="flex items-center justify-between">
-                <div>
-                  <label
-                    htmlFor="timer-toggle"
-                    className="block text-sm font-medium text-gray-200"
-                  >
-                    Enable Timer
-                  </label>
-                  <p className="text-xs text-gray-400">
-                    Track time during your test
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  id="timer-toggle"
-                  disabled={studyMode}
-                  className={`${
-                    enableTimer ? "bg-teal-500/90" : "bg-gray-500"
-                  } ${
-                    studyMode ? "opacity-50 cursor-not-allowed" : ""
-                  } relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
-                  onClick={() => !studyMode && setEnableTimer(!enableTimer)}
-                >
-                  <span className="sr-only">Enable timer</span>
-                  <span
-                    className={`${
-                      enableTimer ? "translate-x-5" : "translate-x-0"
-                    } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
-                  ></span>
-                </button>
-              </div> */}
-
-              {/* Randomize Answers Toggle */}
-              <div className="flex items-center justify-between">
-                <div>
-                  <label
-                    htmlFor="randomize-toggle"
-                    className="block font-medium text-gray-200"
-                  >
-                    Randomize Options
-                  </label>
-                  <p className=" text-gray-400">
-                    Shuffle the order of options
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  id="randomize-toggle"
-                  className={`${randomizeAnswers ? "bg-teal-500/90" : "bg-gray-500"
-                    } relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
-                  onClick={() => setRandomizeAnswers(!randomizeAnswers)}
-                >
-                  <span className="sr-only">Randomize answers</span>
-                  <span
-                    className={`${randomizeAnswers ? "translate-x-5" : "translate-x-0"
-                      } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
-                  ></span>
-                </button>
-              </div>
-
-              {/* Randomize Questions Toggle */}
-              <div className="flex items-center justify-between">
-                <div>
-                  <label
-                    htmlFor="randomize-questions-toggle"
-                    className="block font-medium text-gray-200"
-                  >
-                    Randomize Questions
-                  </label>
-                  <p className=" text-gray-400">
-                    Shuffle the order of questions
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  id="randomize-questions-toggle"
-                  disabled={shuffleWeeks}
-                  className={`${randomizeQuestions && shuffleWeeks ? "bg-teal-500/30" : randomizeQuestions ? "bg-teal-500/90" : "bg-gray-500"
-                    } relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
-                  onClick={() => !shuffleWeeks && setRandomizeQuestions(!randomizeQuestions)}
-                >
-                  <span className="sr-only">Randomize questions</span>
-                  <span
-                    className={`${randomizeQuestions ? "translate-x-5" : "translate-x-0"
-                      } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
-                  ></span>
-                </button>
-              </div>
-
-              {/* Study Mode Toggle */}
-              <div className="flex items-center justify-between">
-                <div>
-                  <label
-                    htmlFor="study-mode-toggle"
-                    className="block font-medium text-gray-200"
-                  >
-                    Study Mode
-                  </label>
-                  <p className=" text-gray-400">
-                    See answers immediately
-                  </p>
-                </div>
-                <button
-                  type="button"
-                  id="study-mode-toggle"
-                  className={`${studyMode ? "bg-red-500/80" : "bg-gray-500"
-                    } relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
-                  onClick={() => setStudyMode(!studyMode)}
-                >
-                  <span className="sr-only">Enable study mode</span>
-                  <span
-                    className={`${studyMode ? "translate-x-5" : "translate-x-0"
-                      } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
-                  ></span>
-                </button>
-              </div>
-
-              {/* Shuffle Weeks Toggle */}
-              {category && (
-                <div className="flex items-center justify-between">
-                  <div>
-                    <label
-                      htmlFor="shuffle-weeks-toggle"
-                      className="block font-medium text-gray-200"
-                    >
-                      Shuffle Weeks
-                    </label>
-                    <p className=" text-gray-400">
-                      Mix questions from all weeks
-                    </p>
-                  </div>
+                <div className="relative">
+                  {/* Trigger button showing the selected category */}
                   <button
-                    type="button"
-                    id="shuffle-weeks-toggle"
-                    className={`${shuffleWeeks ? "bg-teal-500/90" : "bg-gray-500"
-                      } relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
-                    onClick={() => setShuffleWeeks(!shuffleWeeks)}
+                    id="category"
+                    onClick={() => setIsCategorySelectorOpen(!isCategorySelectorOpen)}
+                    className="w-full flex items-center justify-between rounded-full bg-white/5 p-2 pl-4 backdrop-blur-md border border-white/15"
                   >
-                    <span className="sr-only">Shuffle weeks</span>
-                    <span
-                      className={`${shuffleWeeks ? "translate-x-5" : "translate-x-0"
-                        } pointer-events-none relative inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200`}
-                    ></span>
+                    <span className="mr-2 text-white font-semibold">
+                      {categories.find(c => c.id === category)?.name}
+                    </span>
+                    <div className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-gray-200">
+                        Change
+                      <svg
+                        className={`w-5 h-5 transition-transform ${isCategorySelectorOpen ? 'rotate-180' : ''}`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </div>
                   </button>
-                </div>
-              )}
 
+                  {/* Dropdown panel that appears on click */}
+                  {isCategorySelectorOpen && (
+                    <div className="absolute z-20 mt-2 w-full bg-slate-900 backdrop-blur-xl border border-white/15 rounded-3xl p-2 shadow-lg">
+                      {categories.map((cat) => (
+                        <button
+                          key={cat.id}
+                          onClick={() => {
+                            setCategory(cat.id);
+                            setIsCategorySelectorOpen(false); // Close panel on selection
+                          }}
+                          className={`w-full text-left rounded-2xl p-3 hover:bg-white/10 transition-colors ${
+                            category === cat.id ? 'bg-white/10 text-white' : 'text-gray-200'
+                          }`}
+                        >
+                          {cat.name}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="space-y-2 bg-white/5 p-5 rounded-3xl border border-white/10">
+                <ToggleSwitch
+                  label="Study Mode"
+                  description="See answers immediately"
+                  isEnabled={studyMode}
+                  isRed={true}
+                  onToggle={() => setStudyMode(!studyMode)}
+                    />
+                <div className=" h-0.5 w-40 bg-white/20 rounded-3xl mx-auto"></div>
+                <ToggleSwitch
+                  label="Randomize Options"
+                  description="Shuffle the order of options"
+                  isEnabled={randomizeAnswers}
+                  onToggle={() => setRandomizeAnswers(!randomizeAnswers)}
+                />
+                <ToggleSwitch
+                  label="Randomize Questions"
+                  description="Shuffle the order of questions"
+                  isEnabled={randomizeQuestions}
+                  onToggle={() => setRandomizeQuestions(!randomizeQuestions)}
+                  isDisabled={shuffleWeeks} // This toggle is disabled when "Shuffle Weeks" is on
+                />
+                {/* <ToggleSwitch
+                  label="Shuffle Weeks"
+                  description="Mix questions from all weeks"
+                  isEnabled={shuffleWeeks}
+                  onToggle={() => setShuffleWeeks(!shuffleWeeks)}
+                /> */}
+              </div>
+                  
               {/* Action Buttons */}
-              <div className="pt-4 flex justify-between">
-                <Button
-                  variant="destructive"
-                  onClick={(e) => {
-                    e.preventDefault()
-                    router.push(`${session ? "/dashboard" : "/"}`, {
-                      onTransitionReady: () => pageAnimation('right'),
-                    })
-                  }}
-                >
-                  Cancel
-                </Button>
-                <Button variant="primary" onClick={handleStartTest}>
+              <div className="flex justify-center">
+                    <Button variant="glassTeal"
+                      onClick={handleStartTest}
+                      size={"lg"}>
                   Start Test
                 </Button>
               </div>
             </div>
-
+                
+            
             {/* Right Column: Week Selection (only displayed when shuffleWeeks is off) */}
             {category && !shuffleWeeks && (
-              <div className="bg-white/1 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] p-4">
-                <div className="flex items-center justify-between mb-3">
+              <div className="bg-white/3 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] p-4">
+                <div className="flex items-center justify-center mb-2">
                   <label className="block font-medium text-gray-200">
                     Select Weeks
                   </label>
-                  <div className="flex">
-                    <button
-                      type="button"
-                      onClick={() => setSelectedWeeks(weeks.map(w => w.id))}
-                      className="p-2 text-gray-300 hover:text-teal-400 transition-colors"
-                      title="Select All Weeks"
+                    </div>
+                <div className=" h-0.5 w-20 bg-white/20 rounded-3xl mx-auto mb-3"></div>
+                <div className="grid grid-cols-3 gap-4">
+                {weeks.map((week) => {
+                  const isSelected = selectedWeeks.includes(week.id);
+                  return (
+                    <label
+                      key={week.id}
+                      className={`relative flex items-center justify-center py-2 rounded-3xl border-2 transition-all duration-200 cursor-pointer 
+                        ${isSelected 
+                          ? 'border-teal-500/50 bg-teal-500/20 text-white' 
+                          : 'border-white/20 bg-white/5 text-gray-300 hover:border-white/50 hover:bg-white/10'
+                        }`}
                     >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="12" r="10"  fill="none" stroke="#4CAF50" strokeOpacity="0.8" strokeWidth="2" />
-                        <path d="M8 12l3 3 6-6" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setSelectedWeeks([])}
-                      className="p-2 text-gray-300 hover:text-red-400 transition-colors"
-                      title="Clear All Weeks"
-                    >
-                      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                        <circle cx="12" cy="12" r="10" fill="none" stroke="#F44336" strokeOpacity="0.8" strokeWidth="2"/>
-                        <path d="M16 8l-8 8m0-8l8 8" stroke="#FFFFFF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-                <div className="flex flex-wrap gap-4">
-                  {weeks.map((week) => {
-                    const isSelected = selectedWeeks.includes(week.id);
-                    return (
-                      <button
-                        key={week.id}
-                        type="button"
-                        onClick={() => {
+                      {/* Hidden checkbox to manage state */}
+                      <input
+                        type="checkbox"
+                        checked={isSelected}
+                        onChange={() => {
                           if (isSelected) {
-                            setSelectedWeeks(
-                              selectedWeeks.filter((w) => w !== week.id)
-                            );
+                            setSelectedWeeks(selectedWeeks.filter((w) => w !== week.id));
                           } else {
                             setSelectedWeeks([...selectedWeeks, week.id]);
                           }
                         }}
-                        className={`px-4 py-3.5 font-medium rounded-3xl border text-sm 
-                          transition-all duration-300 ease-in-out transform
-                          ${isSelected
-                            ? "bg-teal-500/80 text-white scale-110 border-teal-500/0 shadow-md animate-pulse-subtle"
-                            : "bg-transparent text-gray-300 border-gray-200 hover:border-teal-300"
-                          }`}
-                      >
-                        {week.name}
-                      </button>
-                    );
-                  })}
-                </div>
+                        className="sr-only" // Visually hide the default checkbox
+                      />
+                      <span className="font-medium text-sm">{week.name}</span>
+                    </label>
+                  );
+                })}
+                    </div>
+                    <div className=" h-0.5 w-40 bg-white/20 rounded-3xl mt-4 mx-auto"></div>
+                    <div className="flex justify-between mt-4">
+                        <Button variant="glassTeal"
+                          onClick={() => setSelectedWeeks(weeks.map(w => w.id))}
+                          className="p-2 px-3 text-gray-300 "
+                          size={"round"}>
+                          Select All
+                        </Button>
+                        <Button variant="glassRed"
+                          onClick={() => setSelectedWeeks([])}
+                          className="p-2 px-3 text-gray-300 "
+                          size={"round"}>
+                          Clear All
+                        </Button>
+                      </div>
               </div>
-            )}
+                )}
+                
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      </div>
+    </main>
   );
 }
