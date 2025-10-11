@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import questionsByWeekData from "@/../questions_psychology_of_learning.json";
 import conservationEconomicsData from "@/../questions_conservation_economics.json";
 import sustainableDevData from "@/../questions_sustainable_development.json";
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 
 interface Question {
   qid: string;
@@ -19,6 +20,12 @@ interface QuestionsByWeek {
   [week: string]: Question[];
 }
 
+const categories = [
+    { id: "sustainable_development", label: "Sustainable Development" },
+    { id: "psychology_of_learning", label: "Psychology of Learning" },
+    { id: "conservation_economics", label: "Conservation Economics" },
+];
+
 export default function StudyPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -27,7 +34,7 @@ export default function StudyPage() {
   const [weekQuestions, setWeekQuestions] = useState<Record<string, Question[]>>({});
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [weeks, setWeeks] = useState<string[]>([]);
-
+  const [isCategorySelectorOpen, setIsCategorySelectorOpen] = useState(false);
   // Redirect if not authenticated
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -124,28 +131,87 @@ export default function StudyPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 py-12">
+    <main className="min-h-screen relative">
+          <BackgroundGradientAnimation 
+                  gradientBackgroundStart="rgb(2, 6, 23)" 
+                  gradientBackgroundEnd="rgb(2, 6, 23)" 
+                  firstColor="20, 90, 100"       // Darkest Teal
+                  secondColor="50, 40, 130"      // Deep Indigo
+                  thirdColor="80, 60, 110"       // Muted Purple
+                  fourthColor="30, 80, 70"       // Forest Green
+                  fifthColor="120, 80, 40"       // Muted Amber
+                  interactive={false}
+                  containerClassName="fixed inset-0 -z-10"
+            />
+    <div className="relative z-10">
+    <div className="min-h-screen py-12">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl font-bold text-gray-100 mb-2">Study Materials</h1>
-        <p className="text-gray-300 mb-8">
-          Select a category to study the questions and answers.
+        <h1 className="text-center text-3xl font-bold text-gray-100 mb-2">Study Materials</h1>
+        <div className=" h-0.5 w-20 bg-white/20 rounded-3xl mb-4 mx-auto"></div>
+        <p className="text-center text-gray-300 mb-8">
+          Choose a category to start studying.
         </p>
 
-        {/* Category Selection */}
+        {/* REPLACED: Native select with custom responsive tabs component */}
         <div className="mb-8 px-2">
-          <label htmlFor="category" className="block text-sm font-medium text-gray-300 mb-2">
-            Category
-          </label>
-          <select
-            id="category"
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full md:w-1/2 bg-white/5 border border-gray-700 rounded-3xl py-3 px-4 text-gray-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          >
-            <option value="psychology_of_learning">Psychology of Learning</option>
-            <option value="conservation_economics">Conservation Economics</option>
-            <option value="sustainable_development">Sustainable Development</option>
-          </select>
+          {/* Desktop View (sm screens and up) 🖥️ */}
+          <div className="hidden sm:flex flex-col sm:flex-row items-center gap-2 rounded-full bg-white/5 p-2 backdrop-blur-md border border-white/15">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`flex-1 rounded-full px-4 sm:px-6 py-3  transition-colors text-sm sm:text-base ${
+                  selectedCategory === category.id
+                    ? 'bg-white/10 backdrop-blur-lg text-white font-semibold'
+                    : 'text-gray-300 hover:bg-white/5'
+                }`}
+              >
+                {category.label}
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile View (extra small screens) 📱 */}
+          <div className="relative sm:hidden">
+            {/* Trigger button showing only the selected category */}
+            <button
+              onClick={() => setIsCategorySelectorOpen(!isCategorySelectorOpen)}
+              className="w-full flex items-center justify-between rounded-full bg-white/5 p-2 pl-4 backdrop-blur-md border border-white/15"
+            >
+              <span className="text-white font-semibold">
+                {categories.find(c => c.id === selectedCategory)?.label}
+              </span>
+              <div className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-gray-200">
+                Change
+                <svg
+                  className={`w-4 h-4 transition-transform ${isCategorySelectorOpen ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </button>
+
+            {/* Dropdown panel that appears on click */}
+            {isCategorySelectorOpen && (
+              <div className="absolute z-20 mt-2 w-full bg-white/5 backdrop-blur-xl border border-white/15 rounded-3xl p-2 shadow-lg">
+                {categories.map((category) => (
+                  <button
+                    key={category.id}
+                    onClick={() => {
+                      setSelectedCategory(category.id);
+                      setIsCategorySelectorOpen(false); // Close panel on selection
+                    }}
+                    className="w-full text-left rounded-lg p-3 hover:bg-white/10 text-white"
+                  >
+                    {category.label}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         {/* Weeks and Questions Display */}
@@ -162,13 +228,13 @@ export default function StudyPage() {
               const weekQuestionsData = weekQuestions[week] || [];
               
               return (
-                <div key={week} className="bg-purple-700/5 outline-2 outline-offset-[-1px] outline-white/5 rounded-3xl overflow-hidden shadow-lg">
+                <div key={week} className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5 rounded-3xl overflow-hidden shadow-lg">
                   {/* Week Header - Clickable to expand/collapse */}
                   <button
                     onClick={() => toggleWeekExpansion(week)}
-                    className="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-white/10 transition-colors"
+                    className="w-full px-6 py-3 text-left flex justify-between items-center hover:bg-white/5 transition-colors"
                   >
-                    <h2 className="text-xl font-semibold text-gray-200">
+                    <h2 className="text-lg font-semibold text-gray-200">
                       {formatWeekLabel(week)}
                     </h2>
                     <svg
@@ -188,7 +254,7 @@ export default function StudyPage() {
                         weekQuestionsData.map((question, index) => (
                           <div
                             key={question.qid}
-                            className="bg-white/3 rounded-3xl outline-1 outline-offset-[-1px] backdrop-blur-[100px] outline-white/5 overflow-hidden shadow-md p-5 mt-4"
+                            className="bg-white/2 rounded-3xl outline-1 outline-offset-[-1px] backdrop-blur-[100px] outline-white/5 overflow-hidden shadow-md p-5 mt-4"
                           >
                             <h3 className="text-lg font-semibold text-gray-200 mb-4">
                               {index + 1}. {question.question}
@@ -243,6 +309,8 @@ export default function StudyPage() {
           </div>
         )}
       </div>
-    </div>
+        </div>
+      </div>
+    </main>
   );
 }
