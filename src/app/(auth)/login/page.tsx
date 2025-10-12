@@ -140,6 +140,9 @@ export default function LoginPage() {
               </Button>
             </div>
           </form>
+          <div className="mb-4 flex items-center">
+              <div className="w-full border-t border-white/20"></div>
+            </div>
           <div className="text-center">
             <Button
               variant="glass"
