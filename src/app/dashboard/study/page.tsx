@@ -109,24 +109,41 @@ export default function StudyPage() {
 
   if (status === "loading") {
     return (
-      <div className="min-h-screen bg-slate-950 py-12">
+      <main className="min-h-screen relative">
+      <BackgroundGradientAnimation 
+        gradientBackgroundStart="rgb(2, 6, 23)" 
+        gradientBackgroundEnd="rgb(2, 6, 23)" 
+        firstColor="20, 90, 100"
+        secondColor="50, 40, 130"
+        thirdColor="80, 60, 110"
+        fourthColor="30, 80, 70"
+        fifthColor="120, 80, 40"
+        interactive={false}
+        containerClassName="fixed inset-0 -z-10"
+      />
+      <div className="relative z-10 min-h-screen py-12">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="animate-pulse">
-            <div className="h-8 bg-gray-200/20 rounded w-1/4 mb-6"></div>
-            <div className="h-4 bg-gray-200/20 rounded w-3/4 mb-4"></div>
-            <div className="h-4 bg-gray-200/20 rounded w-1/2 mb-8"></div>
-            <div className="grid grid-cols-2 gap-4 mb-8">
-              <div className="h-12 bg-gray-200/20 rounded"></div>
-              <div className="h-12 bg-gray-200/20 rounded"></div>
+              {/* Header Skeleton */}
+              <div className="px-14">
+            <div className="h-9 w-full bg-white/10 rounded-lg mb-8"></div>
+            <div className="h-5 w-full bg-white/10 rounded-lg mb-10"></div>
             </div>
-            <div className="space-y-4">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div key={i} className="h-32 bg-gray-200/20 rounded"></div>
+            {/* Category Selector Skeleton */}
+            <div className="mb-8 px-2">
+                <div className="h-14 w-full bg-white/5 rounded-full p-2 border border-white/15"></div>
+            </div>
+
+            {/* Accordion List Skeleton */}
+            <div className="space-y-4 px-2">
+              {[1, 2, 3, 4,5].map((i) => (
+                <div key={i} className="h-14 bg-white/5 rounded-full border border-white/15"></div>
               ))}
             </div>
           </div>
         </div>
       </div>
+    </main>
     );
   }
 
