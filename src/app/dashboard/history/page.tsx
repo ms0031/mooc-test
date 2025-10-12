@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/Button";
 import type { TestResultResponse } from "@/types";
 import { useTransitionRouter } from "next-view-transitions";
 import { pageAnimation } from "@/utils/animations";
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+
 export default function TestHistoryPage() {
   const { data: session, status } = useSession();
   const router = useTransitionRouter();
@@ -67,40 +69,40 @@ export default function TestHistoryPage() {
   }
   
   return (
-    <div className="min-h-screen bg-slate-950">
+    <main className="min-h-screen relative">
+          <BackgroundGradientAnimation 
+                  gradientBackgroundStart="rgb(2, 6, 23)" 
+                  gradientBackgroundEnd="rgb(2, 6, 23)" 
+                  firstColor="20, 90, 100"       // Darkest Teal
+                  secondColor="50, 40, 130"      // Deep Indigo
+                  thirdColor="80, 60, 110"       // Muted Purple
+                  fourthColor="30, 80, 70"       // Forest Green
+                  fifthColor="120, 80, 40"       // Muted Amber
+                  interactive={false}
+                  containerClassName="fixed inset-0 -z-10"
+            />
+    <div className="relative z-10">
+    <div className="min-h-screen">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <div className="mb-8 flex justify-between items-center">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-200">
+        <div className="mb-8 flex flex-col justify-center items-center">
+            <h1 className="text-3xl font-bold text-gray-200 mb-4">
               Test History
-            </h1>
-            <p className="mt-2 text-gray-300">
+              </h1>
+              <div className=" h-0.5 w-20 bg-white/20 rounded-3xl mb-4 mx-auto"></div>
+            <p className="text-center text-gray-300">
               View your past test attempts and track your progress over time.
             </p>
-          </div>
-          <div className="flex space-x-4">
-            <Button
-              variant="outline"
-              onClick={(e) => {
-                e.preventDefault()
-                router.push('/dashboard', {
-                  onTransitionReady: () => pageAnimation('left'),
-                })
-              }}
-            >
-              Back to Dashboard
-            </Button>
-          </div>
         </div>
 
         {testHistory.length === 0 ? (
-          <div className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden rounded-2xl shadow-lg p-6 text-center">
+          <div className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden rounded-3xl shadow-lg p-6 text-center">
             <p className="text-gray-300 mb-4">
               You haven't taken any tests yet. Complete some tests to see your history.
             </p>
             <Button
-              variant="primary"
-              onClick={() => router.push("/test/settings")}
+              variant="glass"
+                  onClick={() => router.push("/test/settings")}
+                  size={"round"}
             >
               Take a Test
             </Button>
@@ -132,7 +134,7 @@ export default function TestHistoryPage() {
                     </th>
                   </tr>
                 </thead>
-                <tbody className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5  x] divide-y divide-gray-200/30">
+                <tbody className="bg-white/5 outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] divide-y divide-gray-200/30">
                   {testHistory.map((test) => (
                     <tr key={test._id}>
                       <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-300">
@@ -163,6 +165,8 @@ export default function TestHistoryPage() {
           </div>
         )}
       </div>
-    </div>
+        </div>
+        </div>
+    </main>
   );
 }
