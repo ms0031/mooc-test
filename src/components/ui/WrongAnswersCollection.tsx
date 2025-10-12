@@ -191,18 +191,7 @@ export default function WrongAnswersCollection({
   }
 
   if (isLoading) {
-    return (
-      <div className="bg-slate-950 shadow rounded-lg p-6 mb-6">
-        <h2 className="text-xl font-semibold text-gray-100 mb-4">
-          Frequently Incorrect Answers
-        </h2>
-        <div className="animate-pulse">
-          <div className="h-4 bg-gray-200/20 rounded w-3/4 mb-4"></div>
-          <div className="h-4 bg-gray-200/20 rounded w-full mb-4"></div>
-          <div className="h-4 bg-gray-200/20 rounded w-5/6 mb-4"></div>
-        </div>
-      </div>
-    );
+    return null;
   }
 
   if (wrongAnswers.length === 0) {
@@ -219,7 +208,7 @@ export default function WrongAnswersCollection({
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
       <div className="">
-        <h2 className="text-xl font-semibold text-gray-100 mb-5">
+        <h2 className="text-center text-xl font-semibold text-gray-100 mb-5">
           Frequently Incorrect Answers
         </h2>
         <div className="space-y-6">
