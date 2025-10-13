@@ -94,7 +94,7 @@ export default function WrongAnswersPage() {
             </Button>
           </div>
         ) : (
-          <div className="bg-white/0 rounded-lg shadow-lg overflow-hidden">
+          <div className="bg-white/0 rounded-lg overflow-hidden">
             <WrongAnswersCollection testResults={testResults} />
           </div>
         )}
