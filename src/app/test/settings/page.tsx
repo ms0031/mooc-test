@@ -225,7 +225,7 @@ export default function TestSettingsPage() {
             
             {/* Right Column: Week Selection (only displayed when shuffleWeeks is off) */}
             {category && !shuffleWeeks && (
-              <div className="bg-white/3 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] p-4">
+              <div className="bg-white/3 rounded-3xl border border-white/15 backdrop-blur-[100px] p-4">
                 <div className="flex items-center justify-center mb-2">
                   <label className="block font-medium text-gray-200">
                     Select Weeks
