@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/Button";
 import { useTransitionRouter } from "next-view-transitions";
 import { pageAnimation } from "@/utils/animations";
 import type { TestResultResponse } from "@/types";
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 
 export default function Dashboard() {
   const { data: session, status } = useSession();
@@ -53,7 +54,20 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-slate-950 overflow-x-hidden">
+    <main className="min-h-screen relative">
+      <BackgroundGradientAnimation 
+              gradientBackgroundStart="rgb(2, 6, 23)" 
+              gradientBackgroundEnd="rgb(2, 6, 23)" 
+              firstColor="20, 90, 100"       // Darkest Teal
+              secondColor="50, 40, 130"      // Deep Indigo
+              thirdColor="80, 60, 110"       // Muted Purple
+              fourthColor="30, 80, 70"       // Forest Green
+              fifthColor="120, 80, 40"       // Muted Amber
+              interactive={false}
+              containerClassName="fixed inset-0 -z-10"
+        />
+    <div className="relative z-10">
+    <div className="min-h-screen w-full overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-200">
@@ -67,33 +81,36 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Test Options Sidebar */}
           <div className="lg:col-span-1 space-y-6">
-            <div className="bg-white/5 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden">
+            <div className="w-11/12 mx-auto bg-white/2 rounded-4xl backdrop-blur-3xl border border-white/15 overflow-hidden">
               <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-200 mb-4">
+                <h2 className="text-center text-xl font-semibold text-gray-200 mb-2">
                   Start New Test
-                </h2>
-                <div className="space-y-3 lg:px-0 md:px-0 px-3">
+                    </h2>
+                    <div className=" h-0.5 w-20 bg-white/20 rounded-3xl mb-4 mx-auto"></div>
+                <div className="space-y-3 flex flex-col items-center">
                   <Button
-                    variant="primary"
-                    className="w-full py-6 text-lg"
+                    variant="glass"
+                    className="py-6 px-10 text-lg"
                     onClick={(e) => {
                       e.preventDefault()
                       router.push('/test/settings', {
                         onTransitionReady: () => pageAnimation('up'),
                       })
-                    }}
+                        }}
+                    size={"round"}
                   >
                     Customize Test
                   </Button>
                   <Button
-                    variant="cyan"
-                    className="w-full py-6 text-lg"
+                    variant="glass"
+                    className="py-6 px-10 text-lg"
                     onClick={(e) => {
                       e.preventDefault()
                       router.push("/test/real-test", {
                         onTransitionReady: () => pageAnimation('up'),
                       })
-                    }}
+                        }}  
+                    size={"round"}
                   >
                    Exam Mode
                   </Button>
@@ -101,45 +118,49 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <div className="bg-white/5 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden">
+            <div className="w-11/12 mx-auto bg-white/2 rounded-4xl backdrop-blur-3xl border border-white/15 overflow-hidden">
               <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-200 mb-4">
+                <h2 className="text-center text-xl font-semibold text-gray-200 mb-2">
                   Quick Links
-                </h2>
-                <div className="space-y-3 lg:px-0 md:px-0 px-3">
+                    </h2>
+                    <div className="h-0.5 w-20 bg-white/20 rounded-3xl mb-4 mx-auto"></div>
+                <div className="space-y-3 flex flex-col items-center">
                 <Button
-                    variant="primary"
-                    className="w-full py-6 text-[16px]"
+                    variant="glass"
+                    className="py-6 px-10 text-[16px]"
                     onClick={(e) => {
                       e.preventDefault()
                       router.push("/dashboard/study", {
                         onTransitionReady: () => pageAnimation('up'),
                       })
-                    }}
+                        }}
+                        size={"round"}
                   >
                     Study Materials
                   </Button>
                   <Button
-                    variant="cyan"
-                    className="w-full py-6 text-[16px]"
+                    variant="glassTeal"
+                    className="py-6 px-10 text-[16px]"
                     onClick={(e) => {
                       e.preventDefault()
                       router.push("/dashboard/history", {
                         onTransitionReady: () => pageAnimation('up'),
                       })
-                    }}
+                        }}
+                        size={"round"}
                   >
                     Test History
                   </Button>
                   <Button
-                    variant="destructive"
-                    className="w-full py-6 text-[16px]"
+                    variant="glassRed"
+                    className="py-6 px-10 text-[16px]"
                     onClick={(e) => {
                       e.preventDefault()
                       router.push("/dashboard/wrong-answers", {
                         onTransitionReady: () => pageAnimation('up'),
                       })
-                    }}
+                        }}
+                        size={"round"}
                   >
                     Wrong Answers
                   </Button>
@@ -158,23 +179,24 @@ export default function Dashboard() {
                   >
                     Settings
                   </Button> */}
-                  <Button
+                  {/* <Button
                     variant="orange"
                     className="w-full py-6 text-[16px]"
                     onClick={() => signOut({ callbackUrl: "/" })}
                   >
                     Sign Out
-                  </Button>
+                  </Button> */}
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/5 lg:block hidden rounded-3xl outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden">
+            <div className="w-11/12 mx-auto bg-white/2 lg:block hidden rounded-4xl backdrop-blur-3xl border border-white/15 overflow-hidden">
               <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-200 mb-4">
+                <h2 className="text-center text-xl font-semibold text-gray-200 mb-2">
                 Support & More
-                </h2>
-                <div className="space-y-3">
+                    </h2>
+                <div className=" h-0.5 w-20 bg-white/20 rounded-3xl mb-4 mx-auto"></div>
+                <div className="space-y-3 flex flex-col items-center">
                   {/* <Button
                     variant="primary"
                     className="w-full py-6 text-[16px]"
@@ -188,14 +210,15 @@ export default function Dashboard() {
                     Buy Me a Coffee
                   </Button> */}
                   <Button
-                    variant="cyan"
-                    className="w-full py-6 text-[16px]"
+                    variant="glass"
+                    className="py-6 px-10 text-[16px]"
                     onClick={(e) => {
                       e.preventDefault()
                       router.push("/about", {
                         onTransitionReady: () => pageAnimation('left'),
                       })
-                    }}
+                        }}
+                        size={"round"}
                   >
                     About 
                   </Button>
@@ -207,46 +230,53 @@ export default function Dashboard() {
                     Edit Profile
                   </Button> */}
                   <Button
-                    variant="cyan"
-                    className="w-full py-6 text-[16px]"
+                    variant="glass"
+                    className="py-6 px-10 text-[16px]"
                     onClick={(e) => {
                       e.preventDefault()
                       router.push("/faq", {
                         onTransitionReady: () => pageAnimation('left'),
                       })
-                    }}
+                        }}
+                        size={"round"}
                   >
                     FAQ 
                   </Button>
                   <Button
-                    variant="destructive"
-                    className="w-full py-6 text-[16px]"
+                    variant="glassRed"
+                    className="py-6 px-10 text-[16px]"
                     onClick={(e) => {
-                      e.preventDefault()
+                      e.preventDefault();
                       router.push("/feedback", {
-                        onTransitionReady: () => pageAnimation('left'),
-                      })
+                      onTransitionReady: () => pageAnimation('left'),
+                      });
                     }}
+                    size={"round"}
                   >
-                    Report an Issue/Bug
-                  </Button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-bug mr-2"
+                    viewBox="0 0 16 16"
+                  >
+                  <path d="M4.355.522a.5.5 0 0 1 .623.333l.291.956A5 5 0 0 1 8 1c1.007 0 1.946.298 2.731.811l.29-.956a.5.5 0 1 1 .957.29l-.41 1.352A5 5 0 0 1 13 6h.5a.5.5 0 0 0 .5-.5V5a.5.5 0 0 1 1 0v.5A1.5 1.5 0 0 1 13.5 7H13v1h1.5a.5.5 0 0 1 0 1H13v1h.5a1.5 1.5 0 0 1 1.5 1.5v.5a.5.5 0 1 1-1 0v-.5a.5.5 0 0 0-.5-.5H13a5 5 0 0 1-10 0h-.5a.5.5 0 0 0-.5.5v.5a.5.5 0 1 1-1 0v-.5A1.5 1.5 0 0 1 2.5 10H3V9H1.5a.5.5 0 0 1 0-1H3V7h-.5A1.5 1.5 0 0 1 1 5.5V5a.5.5 0 0 1 1 0v.5a.5.5 0 0 0 .5.5H3c0-1.364.547-2.601 1.432-3.503l-.41-1.352a.5.5 0 0 1 .333-.623M4 7v4a4 4 0 0 0 3.5 3.97V7zm4.5 0v7.97A4 4 0 0 0 12 11V7zM12 6a4 4 0 0 0-1.334-2.982A3.98 3.98 0 0 0 8 2a3.98 3.98 0 0 0-2.667 1.018A4 4 0 0 0 4 6z"/>
+                  </svg>
+                Report Bug
+              </Button>
                 </div>
               </div>
             </div>
-
-
-          </div>
-          <div className="w-screen h-screen left-0 top-0 absolute opacity-30 pointer-events-none" style={{ zIndex: 0 }}>
-          <div className="w-64 h-64 absolute bg-violet-700 rounded-full blur-[200px]" style={{ left: '100px', bottom: '0px' }}></div>
-          <div className="w-64 h-64 absolute bg-violet-700 rounded-full blur-[200px]" style={{ left: '700px', bottom: '0px' }}></div>
           </div>
           {/* Main Content Area */}
           <div className="lg:col-span-3 space-y-6">
-            <div className="bg-white/5 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden">
+            <div className="bg-white/2 rounded-4xl backdrop-blur-3xl border border-white/15 overflow-hidden">
               <div className="p-6">
-                <h2 className="text-xl font-semibold text-gray-200 mb-6">
+                <h2 className="text-center text-xl font-semibold text-gray-200 mb-2">
                   Your Test Statistics
-                </h2>
+                    </h2>
+                <div className=" h-0.5 w-20 bg-white/20 rounded-3xl mb-6 mx-auto"></div>
                 {testHistory.length > 0 ? (
                   <TestStats statsDisplay={true} results={testHistory} />
                 ) : (
@@ -257,8 +287,9 @@ export default function Dashboard() {
                     </p>
                       <Button
                         className="py-6 text-[16px]"
-                      variant="primary"
-                      onClick={() => router.push("/test/settings")}
+                        variant="glassTeal"
+                        onClick={() => router.push("/test/settings")}
+                        size={"round"}
                     >
                       Take Your First Test
                     </Button>
@@ -268,12 +299,13 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="bg-white/5 lg:hidden rounded-3xl outline-2 outline-offset-[-1px] outline-white/5  backdrop-blur-[100px] overflow-hidden">
+          <div className="w-11/12 mx-auto bg-white/2 lg:hidden rounded-4xl backdrop-blur-3xl border border-white/15 overflow-hidden">
               <div className="p-6 ">
-                <h2 className="text-xl font-semibold text-gray-200 mb-4">
+                <h2 className="text-center text-xl font-semibold text-gray-200 mb-2">
                 Support & More
-                </h2>
-                <div className="space-y-3 lg:px-0 md:px-0 px-3">
+                  </h2>
+                <div className=" h-0.5 w-20 bg-white/20 rounded-3xl mb-4 mx-auto"></div>
+                <div className="space-y-3 flex flex-col items-center">
                   {/* <Button
                     variant="orange"
                     className="w-full py-6 text-[16px]"
@@ -282,14 +314,15 @@ export default function Dashboard() {
                     Buy Me a Coffee
                   </Button> */}
                   <Button
-                    variant="cyan"
-                    className="w-full py-6 text-[16px]"
+                    variant="glass"
+                    className="py-6 px-10 text-[16px]"
                     onClick={(e) => {
                       e.preventDefault()
                       router.push("/about", {
                         onTransitionReady: () => pageAnimation('left'),
                       })
-                    }}
+                      }}
+                    size={"round"}
                   >
                     About 
                   </Button>
@@ -301,35 +334,49 @@ export default function Dashboard() {
                     Edit Profile
                   </Button> */}
                   <Button
-                    variant="cyan"
-                    className="w-full py-6 text-[16px]"
+                    variant="glass"
+                    className="py-6 px-10 text-[16px]"
                     onClick={(e) => {
                       e.preventDefault()
                       router.push("/faq", {
                         onTransitionReady: () => pageAnimation('left'),
                       })
-                    }}
+                      }}
+                    size={"round"}
                   >
                     FAQ 
                   </Button>
                   <Button
-                    variant="destructive"
-                    className="w-full py-6 text-[16px]"
+                    variant="glassRed"
+                    className="py-6 px-10 text-[16px]"
                     onClick={(e) => {
-                      e.preventDefault()
+                      e.preventDefault();
                       router.push("/feedback", {
-                        onTransitionReady: () => pageAnimation('left'),
-                      })
+                      onTransitionReady: () => pageAnimation('left'),
+                      });
                     }}
+                    size={"round"}
                   >
-                    Report an Issue/Bug
-                  </Button>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-bug mr-2"
+                    viewBox="0 0 16 16"
+                  >
+                  <path d="M4.355.522a.5.5 0 0 1 .623.333l.291.956A5 5 0 0 1 8 1c1.007 0 1.946.298 2.731.811l.29-.956a.5.5 0 1 1 .957.29l-.41 1.352A5 5 0 0 1 13 6h.5a.5.5 0 0 0 .5-.5V5a.5.5 0 0 1 1 0v.5A1.5 1.5 0 0 1 13.5 7H13v1h1.5a.5.5 0 0 1 0 1H13v1h.5a1.5 1.5 0 0 1 1.5 1.5v.5a.5.5 0 1 1-1 0v-.5a.5.5 0 0 0-.5-.5H13a5 5 0 0 1-10 0h-.5a.5.5 0 0 0-.5.5v.5a.5.5 0 1 1-1 0v-.5A1.5 1.5 0 0 1 2.5 10H3V9H1.5a.5.5 0 0 1 0-1H3V7h-.5A1.5 1.5 0 0 1 1 5.5V5a.5.5 0 0 1 1 0v.5a.5.5 0 0 0 .5.5H3c0-1.364.547-2.601 1.432-3.503l-.41-1.352a.5.5 0 0 1 .333-.623M4 7v4a4 4 0 0 0 3.5 3.97V7zm4.5 0v7.97A4 4 0 0 0 12 11V7zM12 6a4 4 0 0 0-1.334-2.982A3.98 3.98 0 0 0 8 2a3.98 3.98 0 0 0-2.667 1.018A4 4 0 0 0 4 6z"/>
+                  </svg>
+                Report Bug
+              </Button>
                 </div>
               </div>
           </div>
           
         </div>
       </div>
-    </div>
+      </div>
+      </div>
+      </main>
   );
 }

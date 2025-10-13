@@ -115,29 +115,32 @@ export default function TestStats({ results, statsDisplay }: TestStatsProps) {
   return (
     <div className="space-y-6">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="bg-white/6 p-4 rounded-2xl shadow">
-          <h3 className="text-sm font-medium text-gray-200">Tests Completed</h3>
-          <p className="mt-2 text-3xl font-semibold text-gray-300">
+        <div className="bg-white/6 p-4 rounded-3xl backdrop-blur-sm shadow">
+          <h3 className="text-center text-sm font-medium text-gray-200">Tests Completed</h3>
+          <div className=" h-0.5 w-10 bg-white/20 rounded-3xl my-2 mx-auto"></div>
+          <p className="text-center mt-2 text-3xl font-semibold text-gray-300">
             {results.length}
           </p>
         </div>
-        <div className="bg-white/6 p-4 rounded-2xl shadow">
-          <h3 className="text-sm font-medium text-gray-200">Average Score</h3>
-          <p className="mt-2 text-3xl font-semibold text-gray-300">
+        <div className="bg-white/6 p-4 rounded-3xl backdrop-blur-sm shadow">
+          <h3 className="text-center text-sm font-medium text-gray-200">Average Score</h3>
+          <div className=" h-0.5 w-10 bg-white/20 rounded-3xl my-2 mx-auto"></div>
+          <p className="text-center mt-2 text-3xl font-semibold text-gray-300">
             {calculateAverageScore()}%
           </p>
         </div>
-        <div className="bg-white/6 p-4 rounded-2xl shadow">
-          <h3 className="text-sm font-medium text-gray-200">
+        <div className="bg-white/6 p-4 rounded-3xl backdrop-blur-sm shadow">
+          <h3 className="text-center text-sm font-medium text-gray-200">
             Total Time Spent
           </h3>
-          <p className="mt-2 text-3xl font-semibold text-gray-300">
+          <div className=" h-0.5 w-10 bg-white/20 rounded-3xl  my-2 mx-auto"></div>
+          <p className="text-center mt-2 text-3xl font-semibold text-gray-300">
             {Math.round(calculateTotalTestsTime() / 60)} mins
           </p>
         </div>
       </div>
 
-      <div className="bg-white/6 p-3 h-100 rounded-2xl shadow">
+      <div className="bg-white/6 p-3 h-100 backdrop-blur-sm rounded-3xl shadow">
         <Line data={chartData} options={chartOptions} />
       </div>
 
