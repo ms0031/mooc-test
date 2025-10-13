@@ -6,6 +6,7 @@ import { TestResultResponse } from "@/types";
 import questionsByWeekData from "../../../questions_psychology_of_learning.json";
 import conservationEconomicsData from "../../../questions_conservation_economics.json";
 import sustainableDevData from "../../../questions_sustainable_development.json";
+import Loading from "@/components/ui/Loading";
 
 interface WrongAnswer {
   question: string;
@@ -191,7 +192,9 @@ export default function WrongAnswersCollection({
   }
 
   if (isLoading) {
-    return null;
+    return (
+      <Loading />
+    );
   }
 
   if (wrongAnswers.length === 0) {

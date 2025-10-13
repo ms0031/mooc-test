@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
-import CountdownTimer from "@/components/ui/CountdownTimer";
+import Loading from "@/components/ui/Loading";
 import { useTransitionRouter } from "next-view-transitions";
 import { pageAnimation } from "@/utils/animations";
 import { Button } from "@/components/ui/Button";
@@ -227,7 +227,9 @@ export default function TestPage() {
   };
 
   if (isLoading) {
-    return null;
+    return (
+      <Loading />
+    );
   }
 
   if (error) {
