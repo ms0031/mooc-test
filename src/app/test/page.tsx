@@ -227,14 +227,7 @@ export default function TestPage() {
   };
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl text-white font-bold mb-4">Loading Questions...</h1>
-          <p className="text-white">Please wait while we prepare your test.</p>
-        </div>
-      </div>
-    );
+    return null;
   }
 
   if (error) {
