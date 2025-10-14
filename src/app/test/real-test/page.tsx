@@ -10,6 +10,8 @@ import { Button } from "@/components/ui/Button";
 import questionsByWeekData from "@/../questions_psychology_of_learning.json";
 import conservationEconomicsData from "@/../questions_conservation_economics.json";
 import sustainableDevData from "@/../questions_sustainable_development.json";
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
+import TestNavbar from "@/components/ui/TestNavbar";
 
 interface Question {
   qid: string;
@@ -33,7 +35,12 @@ export default function RealTestPage() {
   const [testStartTime] = useState<Date>(new Date());
   const [timeRemaining, setTimeRemaining] = useState(3600); // 60 minutes for real test
   const [selectedCategory, setSelectedCategory] = useState<string>("sustainable_development");
-
+  const [isCategorySelectorOpen, setIsCategorySelectorOpen] = useState(false);
+  const categories = [
+    { id: 'psychology_of_learning', label: 'Psychology of Learning' },
+    { id: 'conservation_economics', label: 'Conservation Economics' },
+    { id: 'sustainable_development', label: 'Sustainable Development' },
+  ];
   useEffect(() => {
     if (status === "unauthenticated") {
       router.push("/login");
@@ -167,74 +174,73 @@ export default function RealTestPage() {
   if (error) {
     return <ErrorMessage message={error} />;
   }
-
+  const selectedCategoryLabel = categories.find(c => c.id === selectedCategory)?.label || "Select Category";
   return (
-    <div className="min-h-screen bg-slate-950 py-8">
+    <main className="min-h-screen relative">
+      <BackgroundGradientAnimation 
+              gradientBackgroundStart="rgb(2, 6, 23)" 
+              gradientBackgroundEnd="rgb(2, 6, 23)" 
+              firstColor="20, 90, 100"       // Darkest Teal
+              secondColor="50, 40, 130"      // Deep Indigo
+              thirdColor="80, 60, 110"       // Muted Purple
+              fourthColor="30, 80, 70"       // Forest Green
+              fifthColor="120, 80, 40"       // Muted Amber
+              interactive={false}
+              containerClassName="fixed inset-0 -z-10"
+      />
+      <TestNavbar 
+        answeredQuestions={Object.keys(userAnswers).length} 
+        totalQuestions={questions.length} 
+      />
+    <div className="relative z-10">
+    <div className="min-h-screen py-6">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-white/5 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[15px] overflow-hidden">
-          <div className="p-6 border-b border-gray-700 flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-gray-200">⚔️ Final Boss</h1>
-            <div className="flex items-center space-x-4">
-              <div className="text-gray-300">
-                <CountdownTimer
-                  duration={timeRemaining}
-                  onTimeUp={handleTimeUp}
-                />
-              </div>
-              <Button
-                variant="destructive"
-                onClick={handleSubmit}
-                disabled={submitted}
-              >
-                {submitted ? "Submitting..." : "Submit Test"}
-              </Button>
-            </div>
-          </div>
-
+        <div className="bg-white/5 rounded-4xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[15px] overflow-hidden">
           <div className="p-5">
-            <div className="mb-6">
-              <div className="mb-4">
-                <label htmlFor="category" className="block text-sm font-medium text-gray-300 mb-2">
-                  Select Category
-                </label>
-                <select
-                  id="category"
-                  value={selectedCategory}
-                  onChange={(e) => {
-                    setSelectedCategory(e.target.value);
-
-                  }}
-                  className="w-full bg-white/50 border border-gray-700 rounded-xl py-2 px-3 text-slate-950 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                  disabled={submitted || isLoading}
-                >
-                  <option value="psychology_of_learning">Psychology of Learning</option>
-                  <option value="conservation_economics">Conservation Economics</option>
-                  <option value="sustainable_development">Sustainable Development</option>
-                </select>
-              </div>
-              <p className="text-gray-300 mb-2">
-                This is a simulated real test with 50 randomly selected questions from {selectedCategory.split('_').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}.
-                You have 60 minutes to complete the test.
-              </p>
-              <p className="text-gray-300">
-                Each correct answer is worth 2 marks. Total marks: 100
-              </p>
+            <div className="mb-6 p-6 bg-black/20 rounded-4xl border border-white/10">
+                <div className="mb-4">
+                  <div className="relative">
+                    <button
+                      onClick={() => !submitted && !isLoading && setIsCategorySelectorOpen(!isCategorySelectorOpen)}
+                      disabled={submitted || isLoading}
+                      className="w-full flex items-center justify-between rounded-full bg-black/20 p-2 pl-4 border border-white/15 focus:outline-none focus:ring-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                      <span className="text-white font-semibold">{selectedCategoryLabel}</span>
+                      <div className="flex items-center gap-2 rounded-full bg-white/10 px-4 py-2 text-sm text-gray-200">
+                        Change
+                        <svg className={`w-4 h-4 transition-transform ${isCategorySelectorOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" /></svg>
+                      </div>
+                    </button>
+                    {isCategorySelectorOpen && (
+                      <div className="absolute z-20 mt-2 w-full bg-slate-900 text-white backdrop-blur-xl border border-white/15 rounded-2xl p-2 shadow-lg">
+                        {categories.map((cat) => (
+                          <button key={cat.id} type="button" onClick={() => { setSelectedCategory(cat.id); setIsCategorySelectorOpen(false); }} className={`w-full text-left mb-1 rounded-xl p-3 py-2 hover:bg-white/10 transition-colors ${selectedCategory === cat.id ? 'bg-white/10' : ''}`}>
+                            {cat.label}
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <p className="text-gray-300 text-sm">
+                    This is a simulated test with <strong>50 random questions</strong>. You have <strong>60 minutes</strong>. Each correct answer is worth <strong>2 marks</strong>.
+                </p>
             </div>
 
-            <div className="space-y-8">
+            <div className="space-y-4">
               {questions.map((question, index) => (
                 <div
                   key={question.qid}
-                  className="bg-white/5 rounded-xl p-5"
+                  className="bg-white/5 rounded-3xl p-5 py-4"
                 >
                   <h3 className="text-lg font-medium text-gray-200 mb-4">
                     {index + 1}. {question.question}
                   </h3>
-                  <div className="space-y-3">
+                  <div className="space-y-2">
                     {question.options.map((option, optIndex) => (
                       <div
                         key={optIndex}
-                        className={`p-3 rounded-xl cursor-pointer transition-colors ${userAnswers[question.qid] === option ? 'bg-indigo-600/30 border border-indigo-500' : 'bg-white/5 hover:bg-white/10 border border-transparent'}`}
+                        className={`px-3 py-2 rounded-xl cursor-pointer transition-colors ${userAnswers[question.qid] === option ? 'bg-indigo-600/30 border border-indigo-500' : 'bg-white/5 hover:bg-white/10 border border-transparent'}`}
                         onClick={() => handleAnswerSelect(question.qid, option)}
                       >
                         <div className="flex items-start">
@@ -252,9 +258,9 @@ export default function RealTestPage() {
               ))}
             </div>
 
-            <div className="mt-8 flex justify-end">
+            <div className="mt-8 flex justify-center">
               <Button
-                variant="primary"
+                variant="glassTeal"
                 size="lg"
                 onClick={handleSubmit}
                 disabled={submitted}
@@ -265,6 +271,8 @@ export default function RealTestPage() {
           </div>
         </div>
       </div>
-    </div>
+      </div>
+      </div>
+    </main>
   );
 }
