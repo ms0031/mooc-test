@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 
 interface FAQItem {
   question: string;
@@ -55,7 +56,20 @@ export default function FAQPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-950 py-12">
+    <main className="min-h-screen relative">
+    <BackgroundGradientAnimation 
+              gradientBackgroundStart="rgb(2, 6, 23)" 
+              gradientBackgroundEnd="rgb(2, 6, 23)" 
+              firstColor="20, 90, 100"       // Darkest Teal
+              secondColor="50, 40, 130"      // Deep Indigo
+              thirdColor="80, 60, 110"       // Muted Purple
+              fourthColor="30, 80, 70"       // Forest Green
+              fifthColor="120, 80, 40"       // Muted Amber
+              interactive={false}
+              containerClassName="fixed inset-0 -z-10"
+        />
+    <div className="relative z-10">
+    <div className="min-h-screen py-12">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white/5 rounded-2xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden shadow-xl p-2">
           <div className="px-6 py-4">
@@ -96,7 +110,7 @@ export default function FAQPage() {
               <p className="text-gray-400">Still have questions?</p>
               <Link 
                 href="/feedback" 
-                className="mt-2 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-2xl text-white bg-indigo-600 hover:bg-indigo-700"
+                className="mt-2 inline-flex items-center px-4 py-2 text-sm font-medium rounded-2xl text-white bg-indigo-600/5 border border-white/20 hover:bg-indigo-700"
               >
                 Contact Support
               </Link>
@@ -105,5 +119,7 @@ export default function FAQPage() {
         </div>
       </div>
     </div>
+    </div>
+    </main>
   );
 }

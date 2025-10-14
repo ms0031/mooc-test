@@ -3,6 +3,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
+  // Base styles for all buttons
   "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none",
   {
     variants: {
@@ -16,11 +17,20 @@ const buttonVariants = cva(
         link: "bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-100",
         cyan: "bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-cyan-600/90 dark:hover:bg-cyan-800",
         orange: "bg-indigo-600 text-white hover:bg-indigo-700 dark:bg-orange-500/70 dark:hover:bg-orange-800",
+        
+        // ✨ New "glass" variant added here
+        glass: "bg-white/5 text-white border border-white/20 backdrop-blur-sm hover:bg-white/10",
+        glassRed: "bg-red-500/25 text-white border border-white/20 backdrop-blur-sm hover:bg-red-500/10",
+        glassTeal: "bg-teal-500/25 text-white border border-white/20 backdrop-blur-sm hover:bg-teal-500/10",
+        glassYellow: "bg-yellow-500/15 text-white border border-yellow-100/20 backdrop-blur-sm hover:bg-yellow-500/10",
       },
       size: {
         default: "h-10 rounded-xl py-2 px-4",
         sm: "h-9 px-3 rounded-3xl",
         lg: "h-11 px-8 rounded-3xl",
+        round: "h-10 rounded-3xl py-2 px-4",
+        // Added a new size to match the card's padding
+        card: "px-6 py-8 rounded-3xl",
       },
     },
     defaultVariants: {

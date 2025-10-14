@@ -13,11 +13,7 @@ export default function Navbar() {
   const isOnDashboard = pathname === "/dashboard";
 
   return (
-    <nav className="bg-slate-950 relative">
-      <div className="w-full min-h-full left-0 top-0 fixed opacity-20 pointer-events-none">
-        <div className="w-[675px] h-[320px] absolute left-[-150px] top-[50px] bg-violet-700 rounded-full blur-[200px]"></div>
-        <div className="w-[675px] h-[320px] absolute right-[-150px] bottom-[-100px] bg-violet-700 rounded-full blur-[200px]"></div>
-      </div>
+    <nav className="sticky top-0 z-50 w-full bg-slate-950/30 backdrop-blur-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">
@@ -49,7 +45,7 @@ export default function Navbar() {
               <div className="flex items-center space-x-4">
                 {!isOnDashboard && (
                   <Button
-                    variant="primary"
+                    variant="glass"
                     onClick={(e) => {
                       e.preventDefault()
                       router.push('/dashboard', {
@@ -63,7 +59,7 @@ export default function Navbar() {
                 )}
                 {isOnDashboard && (
                   <Button
-                  variant="subtle"
+                  variant="glass"
                   onClick={() => window.location.href = "https://github.com/ms0031/"}
                   className="text-sm py-3 px-2 flex rounded-3xl items-center gap-2"
                   aria-label="Navigate to dashboard"
@@ -82,23 +78,25 @@ export default function Navbar() {
                 </Button>
                 )}
                 <Button
-                  variant="destructive"
+                  variant="glass"
                   onClick={() => signOut({ callbackUrl: "/" })}
                   className="text-sm"
+                  size="round"
                 >
                   Sign Out
                 </Button>
               </div>
             ) : (
               <Button
-                variant="primary"
+                variant="glassTeal"
                 onClick={(e) => {
                   e.preventDefault()
                   router.push('/login', {
                     onTransitionReady: () => pageAnimation('down'),
                   })
                 }}
-                className="text-sm"
+                  className="text-sm"
+                  size={"round"}
               >
                 Login
               </Button>

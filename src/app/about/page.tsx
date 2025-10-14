@@ -1,5 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/Button";
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 const theme = {
   body: "#EDF9FE",
   text: "#001C55",
@@ -15,7 +16,20 @@ const theme = {
 };
 export default function FAQPage() {
   return (
-    <div className="bg-slate-950 min-h-screen flex items-center justify-center p-4">
+    <main className="min-h-screen relative">
+      <BackgroundGradientAnimation 
+                    gradientBackgroundStart="rgb(2, 6, 23)" 
+                    gradientBackgroundEnd="rgb(2, 6, 23)" 
+                    firstColor="20, 90, 100"       // Darkest Teal
+                    secondColor="50, 40, 130"      // Deep Indigo
+                    thirdColor="80, 60, 110"       // Muted Purple
+                    fourthColor="30, 80, 70"       // Forest Green
+                    fifthColor="120, 80, 40"       // Muted Amber
+                    interactive={false}
+                    containerClassName="fixed inset-0 -z-10"
+      />
+    <div className="relative z-10">
+    <div className="min-h-screen flex items-center justify-center p-4">
       <div className="w-full md:w-11/12">
         <div className="w-full md:w-11/12 mx-auto py-5 px-2.5">
           <div className="flex flex-col lg:flex-row items-center gap-8">
@@ -38,12 +52,13 @@ export default function FAQPage() {
                 </p>
                 <div className="flex flex-wrap justify-center lg:justify-start gap-4">
                   <Button
-                    variant="subtle"
+                    variant="glass"
                     onClick={() =>
                       (window.location.href = "https://www.linkedin.com/in/ms0031/")
                     }
                     className="text-lg py-3 px-2 w-36 h-14 flex rounded-3xl items-center gap-2"
-                    aria-label="Navigate to dashboard"
+                        aria-label="Navigate to dashboard"
+                        size={"round"}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -65,12 +80,13 @@ export default function FAQPage() {
                     LinkedIn
                   </Button>
                   <Button
-                    variant="subtle"
+                    variant="glass"
                     onClick={() =>
                       (window.location.href = "https://github.com/ms0031/")
                     }
                     className="text-lg py-3 px-2 w-34 h-14 flex rounded-3xl items-center gap-3"
-                    aria-label="Navigate to dashboard"
+                        aria-label="Navigate to dashboard"
+                        size={"round"}
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -455,6 +471,8 @@ export default function FAQPage() {
           </div>
         </div>
       </div>
-    </div>
+        </div>
+        </div>
+      </main>
   );
 }

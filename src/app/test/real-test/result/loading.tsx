@@ -1,6 +1,5 @@
 import Loading from "@/components/ui/Loading";
-
-export default function DashboardLoading() {
+export default function ResultLoading() {
   return (
     <Loading />
   );

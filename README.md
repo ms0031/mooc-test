@@ -36,7 +36,7 @@ A comprehensive online testing platform for MOOCs (Massive Open Online Courses) 
 - **bcrypt** - Password hashing
 
 ### DevOps & Analytics
-- **Vercel Analytics** - Usage tracking
+- **Google Analytics** - Usage tracking
 - **Turbopack** - Fast development builds
 
 ## 📁 Project Structure
@@ -67,6 +67,35 @@ A comprehensive online testing platform for MOOCs (Massive Open Online Courses) 
 │   └── utils/              # Utility functions
 └── tailwind.config.js      # TailwindCSS configuration
 ```
+## Changelog
+### v-[0.2.0] - 2025-10-14
+This is a major release focused on a complete visual and user experience overhaul. The entire application has been redesigned with a modern, consistent "glassmorphism" aesthetic, and numerous components have been rebuilt to be more interactive and beautiful.
+
+### ✨ Features
+- **New "Real Test" Mode**: Introduced a simulated exam environment (/test/real-test) that pulls 50 random questions from a selected category under a 60-minute time limit.
+
+- **Sticky Test Header**: Implemented a new sticky navigation bar on the test-taking pages that displays a live countdown timer and a real-time counter for answered questions.
+
+- **Custom Form Components**: Replaced all native browser form elements across the application to align with the new design language.
+
+- New responsive, custom dropdown component for category selection on the Study and Test Settings pages.
+
+- New beautiful, animated star rating system for the Feedback page.
+
+- New reusable, themed ToggleSwitch component for all boolean settings.
+
+### 🎨 UI/UX Improvements
+- **Complete Redesign**: Overhauled the entire application with a modern "glassmorphism" design, featuring semi-transparent cards, backdrop-blur effects, and consistent borders for a cohesive user experience.
+
+- **Dynamic Animated Backgrounds**: Integrated the BackgroundGradientAnimation component across all pages, creating a beautiful and immersive aurora-like visual theme.
+
+- **Enhanced Loading Experience**: Replaced all basic loading states with themed skeletons that mimic the final UI layout.
+
+- **Redesigned Auth Pages**: The Login and Register pages have been completely revamped with a centered "glass" card layout, themed inputs, and improved spacing.
+
+- **Polished Test Results Page**: The results page has been significantly upgraded with a new animated circular progress bar for the overall grade and redesigned statistic cards that are easier to read and more visually appealing.
+
+- **Improved Component Styling**: Refined the styling for buttons, accordions, and cards across the application to improve interactivity and visual consistency. The details element for wrong answers has been replaced with a custom, animated accordion.
 
 ## 🔄 Application Flow
 
