@@ -9,7 +9,8 @@ import { Analyticsdb } from "@/components/Analytics";
 import Navbar from "@/components/ui/Navbar";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
-import { ViewTransitions } from 'next-view-transitions'
+import { Toaster } from "react-hot-toast";
+import { ViewTransitions } from "next-view-transitions";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -85,33 +86,34 @@ export default function RootLayout({
 }>) {
   return (
     <ViewTransitions>
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ErrorBoundary>
-          <NextAuthProvider>
-            <ThemeProvider>
-              <Navbar />
-              <main>{children}</main>
-              <Script id="clarity-script" strategy="afterInteractive">
-                {`
+      <html lang="en">
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        >
+          <ErrorBoundary>
+            <NextAuthProvider>
+              <ThemeProvider>
+                <Navbar />
+                <Toaster position="bottom-center" />
+                <main>{children}</main>
+                <Script id="clarity-script" strategy="afterInteractive">
+                  {`
                   (function(c,l,a,r,i,t,y){
                       c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
                       t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
                       y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
                   })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID}");
                 `}
-        </Script>
-              <footer className="text-center py-4 text-gray-200 text-sm">
-                <p>&copy; Mayank Shekhar</p>
-              </footer>
-              <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
-              <Analyticsdb />
-            </ThemeProvider>
-          </NextAuthProvider>
-        </ErrorBoundary>
-      </body>
+                </Script>
+                <footer className="text-center py-4 text-gray-200 text-sm">
+                  <p>&copy; Mayank Shekhar</p>
+                </footer>
+                <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
+                <Analyticsdb />
+              </ThemeProvider>
+            </NextAuthProvider>
+          </ErrorBoundary>
+        </body>
       </html>
     </ViewTransitions>
   );
