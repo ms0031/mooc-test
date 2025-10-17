@@ -10,6 +10,7 @@ import ErrorMessage from "@/components/ui/ErrorMessage";
 import psychologyData from "../../../../questions_psychology_of_learning.json";
 import conservationData from "../../../../questions_conservation_economics.json";
 import sustainableDevData from "../../../../questions_sustainable_development.json";
+import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 
 interface Question {
   qid: string;
@@ -89,24 +90,38 @@ export default function BookmarksPage() {
   }
 
   return (
-    <div className="min-h-screen w-full bg-slate-950 overflow-x-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 relative">
+    <main className="min-h-screen relative">
+          <BackgroundGradientAnimation 
+                  gradientBackgroundStart="rgb(2, 6, 23)" 
+                  gradientBackgroundEnd="rgb(2, 6, 23)" 
+                  firstColor="20, 90, 100"       // Darkest Teal
+                  secondColor="50, 40, 130"      // Deep Indigo
+                  thirdColor="80, 60, 110"       // Muted Purple
+                  fourthColor="30, 80, 70"       // Forest Green
+                  fifthColor="120, 80, 40"       // Muted Amber
+                  interactive={false}
+                  containerClassName="fixed inset-0 -z-10"
+            />
+    <div className="relative z-10">
+    <div className="min-h-screen">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-200">
+          <h1 className="text-center text-3xl font-bold text-gray-200">
             Bookmarked Questions
-          </h1>
-          <p className="mt-2 text-gray-400">
+              </h1>
+            <div className=" h-0.5 w-20 bg-white/20 rounded-3xl my-2 mx-auto"></div>
+          <p className="text-center mt-2 text-gray-400">
             Your saved questions for future reference.
           </p>
         </div>
 
-        <div className="bg-white/5 rounded-3xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-[100px] overflow-hidden p-6">
+        <div className="bg-white/5 rounded-4xl outline-2 outline-offset-[-1px] outline-white/5 backdrop-blur-2xl overflow-hidden p-6">
           {bookmarkedQuestions.length === 0 ? (
             <div className="text-center py-12">
               <p className="text-gray-400 text-lg">You have no saved questions.</p>
               <button 
-                onClick={() => router.push("/study")}
-                className="mt-4 px-6 py-2 bg-indigo-500/80 text-white rounded-xl hover:bg-indigo-700 transition-colors"
+                onClick={() => router.push("/dashboard/study")}
+                className="mt-4 px-6 py-2 bg-indigo-500/5 border border-white/20 text-white rounded-3xl hover:bg-indigo-700 transition-colors"
               >
                 Browse Questions
               </button>
@@ -116,7 +131,7 @@ export default function BookmarksPage() {
               {bookmarkedQuestions.map((question) => (
                 <div 
                   key={question.qid}
-                  className="bg-white/3 rounded-3xl outline-1 outline-offset-[-1px] backdrop-blur-[100px] outline-white/5 overflow-hidden shadow-md p-5"
+                  className="bg-white/3 rounded-3xl outline-1 outline-offset-[-1px] outline-white/5 overflow-hidden shadow-md p-5"
                 >
                   <div className="flex justify-between items-start mb-4">
                     <h3 className="text-lg font-semibold text-gray-200 flex-1 pr-4">
@@ -131,7 +146,7 @@ export default function BookmarksPage() {
                       return (
                         <div 
                           key={idx}
-                          className={`p-3 rounded-xl ${
+                          className={`p-3 rounded-2xl ${
                             isCorrect 
                               ? "bg-green-500/20 border border-green-500/30" 
                               : "bg-white/5 border border-white/10"
@@ -151,6 +166,8 @@ export default function BookmarksPage() {
           )}
         </div>
       </div>
-    </div>
+        </div>
+        </div>
+    </main>
   );
 }
