@@ -9,6 +9,7 @@ import { pageAnimation } from "@/utils/animations";
 import { Button } from "@/components/ui/Button";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import TestNavbar from "@/components/ui/TestNavbar";
+import BookmarkButton from "@/components/ui/BookmarkButton";
 
 interface Question {
   _id: string;
@@ -316,9 +317,12 @@ export default function TestPage() {
               key={question._id}
               className="bg-white/5 rounded-3xl p-4 border border-white/10 shadow-lg"
             >
-              <h3 className="text-lg font-medium text-white mb-2">
-                {index + 1}. {question.question}
-              </h3>
+              <div className="flex justify-between items-start">
+                <h3 className="text-lg font-medium text-white mb-2">
+                  {index + 1}. {question.question}
+                </h3>
+                {(submitted) && <BookmarkButton qid={question._id} />}
+              </div>
               <div className="space-y-2 text-gray-100">
                 {question.options.map((option, idx) => {
                   // Determine the state of the option for styling
