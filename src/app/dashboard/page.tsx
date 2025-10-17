@@ -137,6 +137,19 @@ export default function Dashboard() {
                         size={"round"}
                   >
                     Study Materials
+                      </Button>
+                      <Button
+                    variant="glass"
+                    className="px-10 py-6 text-[16px]"
+                    onClick={(e) => {
+                      e.preventDefault()
+                      router.push("/dashboard/bookmarks", {
+                        onTransitionReady: () => pageAnimation('up'),
+                      })
+                        }}
+                         size={"round"}
+                  >
+                    Bookmarks
                   </Button>
                   <Button
                     variant="glassTeal"
