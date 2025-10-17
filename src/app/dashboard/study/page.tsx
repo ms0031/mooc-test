@@ -7,7 +7,7 @@ import questionsByWeekData from "@/../questions_psychology_of_learning.json";
 import conservationEconomicsData from "@/../questions_conservation_economics.json";
 import sustainableDevData from "@/../questions_sustainable_development.json";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
-
+import BookmarkButton from "@/components/ui/BookmarkButton";
 interface Question {
   qid: string;
   question: string;
@@ -271,11 +271,14 @@ export default function StudyPage() {
                         weekQuestionsData.map((question, index) => (
                           <div
                             key={question.qid}
-                            className="bg-white/2 rounded-3xl outline-1 outline-offset-[-1px] backdrop-blur-[100px] outline-white/5 overflow-hidden shadow-md p-5 mt-4"
+                            className="relative bg-white/2 rounded-3xl outline-1 outline-offset-[-1px] backdrop-blur-[100px] outline-white/5 overflow-hidden shadow-md p-5 mt-4"
                           >
-                            <h3 className="text-lg font-semibold text-gray-200 mb-4">
-                              {index + 1}. {question.question}
-                            </h3>
+                            <div className="flex justify-between items-start mb-4">
+                              <h3 className="text-lg font-semibold text-gray-200">
+                                {index + 1}. {question.question}
+                              </h3>
+                              <BookmarkButton qid={question.qid} />
+                            </div>
                             <div className="space-y-3 text-gray-100">
                               {question.options.map((option, idx) => {
                                 const isCorrect = option === question.answer;
