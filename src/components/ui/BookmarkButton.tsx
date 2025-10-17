@@ -45,6 +45,7 @@ export default function BookmarkButton({ qid }: BookmarkButtonProps) {
             backdropFilter: "blur(10px)",
             color: "#f1f5f9",
             border: "1px solid rgba(255, 255, 255, 0.15)",
+            borderRadius: '9999px',
           },
           icon: "🗑️",
         });
@@ -56,6 +57,7 @@ export default function BookmarkButton({ qid }: BookmarkButtonProps) {
             backdropFilter: "blur(10px)",
             color: "#f1f5f9",
             border: "1px solid rgba(255, 255, 255, 0.15)",
+            borderRadius: '9999px',
           },
           icon: "⭐",
         });
