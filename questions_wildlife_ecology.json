@@ -1,4 +1,451 @@
-{
+{ "week0": [
+    {
+      "qid": "w_week0_0",
+      "question": "Transplantation experiments are used to find",
+      "options": [
+        "potential range",
+        "effective range",
+        "actual range",
+        "economic range"
+      ],
+      "answer": "potential range"
+    },
+    {
+      "qid": "w_week0_1",
+      "question": "Which of these is not a characteristic of fitness?",
+      "options": [
+        "Fitness is environment-specific.",
+        "Fitness is species-specific.",
+        "Higher reproductive rate means higher fitness.",
+        "Fitness should be measured across several generations."
+      ],
+      "answer": "Higher reproductive rate means higher fitness."
+    },
+    {
+      "qid": "w_week0_2",
+      "question": "The hierarchical system was given by",
+      "options": [
+        "Simon",
+        "Watson",
+        "Hutchinson",
+        "Humboldt"
+      ],
+      "answer": "Simon"
+    },
+    {
+      "qid": "w_week0_3",
+      "question": "Hamilton's rule can be stated as",
+      "options": [
+        "rB < C",
+        "rB > C",
+        "rB = C",
+        "rB + C = 0"
+      ],
+      "answer": "rB > C"
+    },
+    {
+      "qid": "w_week0_4",
+      "question": "Consider the food chain: Grass → Grasshopper → Frog → Snake → Hawk. As we move up the food chain,",
+      "options": [
+        "available energy decreases",
+        "available energy increases",
+        "available energy remains same",
+        "available energy is zero everywhere"
+      ],
+      "answer": "available energy decreases"
+    },
+    {
+      "qid": "w_week0_5",
+      "question": "The logistic growth equation, when plotted, appears",
+      "options": [
+        "I shaped",
+        "J shaped",
+        "S shaped",
+        "O shaped"
+      ],
+      "answer": "S shaped"
+    },
+    {
+      "qid": "w_week0_6",
+      "question": "The climax near Tindni village is being controlled by disturbance by cattle. This is an example of",
+      "options": [
+        "climatic climax",
+        "edaphic climax",
+        "disclimax",
+        "catastrophic climax"
+      ],
+      "answer": "disclimax"
+    },
+    {
+      "qid": "w_week0_7",
+      "question": "\"Quick movement over large distances, often across unsuitable terrain\" is a description of",
+      "options": [
+        "diffusion",
+        "secular dispersal",
+        "jump dispersal",
+        "drifting"
+      ],
+      "answer": "jump dispersal"
+    },
+    {
+      "qid": "w_week0_8",
+      "question": "Captive breeding is an example of",
+      "options": [
+        "in-situ conservation",
+        "ex-situ conservation",
+        "in-situ preservation",
+        "ex-situ preservation"
+      ],
+      "answer": "ex-situ conservation"
+    },
+    {
+      "qid": "w_week0_9",
+      "question": "The demographic transition sees a society move from",
+      "options": [
+        "high birth rate, low death rate to low birth rate, low death rate",
+        "low birth rate, high death rate to low birth rate, low death rate",
+        "high birth rate, high death rate to low birth rate, low death rate",
+        "high birth rate, high death rate to low birth rate, high death rate"
+      ],
+      "answer": "high birth rate, high death rate to low birth rate, low death rate"
+    }
+  ],
+  "week1": [
+    {
+      "qid": "w_week1_0",
+      "question": "Which of these is not a characteristic of fitness?",
+      "options": [
+        "Fitness is environment-specific.",
+        "Fitness is species-specific.",
+        "Higher reproductive rate means higher fitness.",
+        "Fitness should be measured across several generations."
+      ],
+      "answer": "Higher reproductive rate means higher fitness."
+    },
+    {
+      "qid": "w_week1_1",
+      "question": "Who amongst these is considered the father of Biogeography?",
+      "options": [
+        "Theophrastus",
+        "Linnaeus",
+        "Malthus",
+        "Humboldt"
+      ],
+      "answer": "Humboldt"
+    },
+    {
+      "qid": "w_week1_2",
+      "question": "In the Greek word root of Ecology, Oikos refers to",
+      "options": [
+        "household",
+        "preservation",
+        "environment",
+        "study"
+      ],
+      "answer": "household"
+    },
+    {
+      "qid": "w_week1_3",
+      "question": "In the Greek word root of Ecology, logos refers to",
+      "options": [
+        "household",
+        "preservation",
+        "environment",
+        "study"
+      ],
+      "answer": "study"
+    },
+    {
+      "qid": "w_week1_4",
+      "question": "Which of these is not a step in natural selection?",
+      "options": [
+        "variation",
+        "underpopulation",
+        "struggle for existence",
+        "survival of the fittest"
+      ],
+      "answer": "underpopulation"
+    },
+    {
+      "qid": "w_week1_5",
+      "question": "Ecology is the scientific study of ______ that determine the distribution and abundance of organisms. (Fill in the blanks)",
+      "options": [
+        "statics",
+        "interactions",
+        "dynamics",
+        "habitat"
+      ],
+      "answer": "interactions"
+    },
+    {
+      "qid": "w_week1_6",
+      "question": "Which of these is not a characteristic of fitness?",
+      "options": [
+        "Fitness is environment-specific.",
+        "Fitness is species-specific.",
+        "Fitness works on traits such as size and speed.",
+        "Fitness should be measured across several generations."
+      ],
+      "answer": "Fitness works on traits such as size and speed."
+    },
+    {
+      "qid": "w_week1_7",
+      "question": "Ecology is the scientific study of interactions among organisms and their ______. (Fill in the blanks)",
+      "options": [
+        "habitat",
+        "niche",
+        "environment",
+        "population"
+      ],
+      "answer": "environment"
+    },
+    {
+      "qid": "w_week1_8",
+      "question": "\"Enquiry into plants\" is a book written by",
+      "options": [
+        "Theophrastus",
+        "Linnaeus",
+        "Malthus",
+        "Humboldt"
+      ],
+      "answer": "Theophrastus"
+    },
+    {
+      "qid": "w_week1_9",
+      "question": "Which of these is not a kind of selection",
+      "options": [
+        "directional",
+        "stochastic",
+        "disruptive",
+        "stabilising"
+      ],
+      "answer": "stochastic"
+    }
+  ],
+  "week2": [
+    {
+      "qid": "w_week2_0",
+      "question": "Hierarchy emerges almost inevitably through a wide variety of evolutionary processes, for the simple reason that hierarchical structures are ______.",
+      "options": [
+        "perfect",
+        "imperfect",
+        "stable",
+        "unstable"
+      ],
+      "answer": "stable"
+    },
+    {
+      "qid": "w_week2_1",
+      "question": "The hierarchical system was given by",
+      "options": [
+        "Simon",
+        "Watson",
+        "Hutchinson",
+        "Humboldt"
+      ],
+      "answer": "Simon"
+    },
+    {
+      "qid": "w_week2_2",
+      "question": "The emergent principle can be stated as",
+      "options": [
+        "Whole = sum of parts",
+        "Whole < sum of parts",
+        "Whole > sum of parts",
+        "None of these"
+      ],
+      "answer": "Whole > sum of parts"
+    },
+    {
+      "qid": "w_week2_3",
+      "question": "\"the diversity that exists within an ecosystem\" is",
+      "options": [
+        "alpha (α) biodiversity",
+        "beta (β) biodiversity",
+        "gamma (γ) biodiversity",
+        "delta (δ) biodiversity"
+      ],
+      "answer": "alpha (α) biodiversity"
+    },
+    {
+      "qid": "w_week2_4",
+      "question": "The mitochondrion is a / an",
+      "options": [
+        "Sub-cellular organelle",
+        "Cell",
+        "Tissue",
+        "Organ"
+      ],
+      "answer": "Sub-cellular organelle"
+    },
+    {
+      "qid": "w_week2_5",
+      "question": "For more biodiversity, the level of disturbance should be",
+      "options": [
+        "less",
+        "intermediate",
+        "more",
+        "none of these"
+      ],
+      "answer": "intermediate"
+    },
+    {
+      "qid": "w_week2_6",
+      "question": "There is more biodiversity in areas with",
+      "options": [
+        "less competition, less predation",
+        "less competition, more predation",
+        "more competition, more predation",
+        "more competition, less predation"
+      ],
+      "answer": "more competition, more predation"
+    },
+    {
+      "qid": "w_week2_7",
+      "question": "\"the diversity that exists among different geographies\" is",
+      "options": [
+        "alpha (α) biodiversity",
+        "beta (β) biodiversity",
+        "gamma (γ) biodiversity",
+        "delta (δ) biodiversity"
+      ],
+      "answer": "gamma (γ) biodiversity"
+    },
+    {
+      "qid": "w_week2_8",
+      "question": "The laboratory approach to Ecology uses",
+      "options": [
+        "equations",
+        "models",
+        "observations",
+        "experiments"
+      ],
+      "answer": "experiments"
+    },
+    {
+      "qid": "w_week2_9",
+      "question": "\"groups of actually or potentially interbreeding natural populations, which are reproductively isolated from other such groups\" is a definition of",
+      "options": [
+        "cells",
+        "species",
+        "ecosystems",
+        "biomes"
+      ],
+      "answer": "species"
+    }
+  ],
+  "week3": [
+    {
+      "qid": "w_week3_0",
+      "question": "I observe a monkey take a tick out of another monkey's head and eat it. In the social context, this behaviour would be called",
+      "options": [
+        "tick hunting",
+        "auto grooming",
+        "allo grooming",
+        "foraging"
+      ],
+      "answer": "allo grooming"
+    },
+    {
+      "qid": "w_week3_1",
+      "question": "The scientific study of animal behaviour is called",
+      "options": [
+        "behaviourism",
+        "ecology",
+        "ethology",
+        "prey-predator dynamics"
+      ],
+      "answer": "ethology"
+    },
+    {
+      "qid": "w_week3_2",
+      "question": "Hamilton's rule can be stated as",
+      "options": [
+        "rB < C",
+        "rB > C",
+        "rB = C",
+        "rB + C = 0"
+      ],
+      "answer": "rB > C"
+    },
+    {
+      "qid": "w_week3_3",
+      "question": "Harmonious interactions occur where",
+      "options": [
+        "at least one participant is benefited",
+        "at least one participant is unharmed",
+        "both participants are benefitted",
+        "both participants are unharmed"
+      ],
+      "answer": "both participants are unharmed"
+    },
+    {
+      "qid": "w_week3_4",
+      "question": "The interaction between exotic shrubs and trees through the action of seed predators is an example of",
+      "options": [
+        "infraspecific competition",
+        "apparent competition",
+        "disguised competition",
+        "harmonious competition"
+      ],
+      "answer": "apparent competition"
+    },
+    {
+      "qid": "w_week3_5",
+      "question": "An inventory of behaviours exhibited by an animal during a behaviour exercise is called",
+      "options": [
+        "ecogram",
+        "ethogram",
+        "behaviourogram",
+        "animalogram"
+      ],
+      "answer": "ethogram"
+    },
+    {
+      "qid": "w_week3_6",
+      "question": "Trampling of grass due to the movement of animals is an example of",
+      "options": [
+        "mutualism",
+        "amensalism",
+        "commensalism",
+        "protocooperation"
+      ],
+      "answer": "amensalism"
+    },
+    {
+      "qid": "w_week3_7",
+      "question": "I observe a bird take a tick out of another bird's head and eat it. In the social context, this behaviour would be called",
+      "options": [
+        "tick hunting",
+        "auto grooming",
+        "allo grooming",
+        "foraging"
+      ],
+      "answer": "allo grooming"
+    },
+    {
+      "qid": "w_week3_8",
+      "question": "Birds on giraffe are an example of",
+      "options": [
+        "colony",
+        "commensalism",
+        "protocooperation",
+        "allelopathy"
+      ],
+      "answer": "protocooperation"
+    },
+    {
+      "qid": "w_week3_9",
+      "question": "Egrets with buffaloes are an example of",
+      "options": [
+        "colony",
+        "commensalism",
+        "protocooperation",
+        "allelopathy"
+      ],
+      "answer": "commensalism"
+    }
+  ],
   "week4": [
     {
       "qid": "w_week4_0",
@@ -9,7 +456,7 @@
         "trophic cascade",
         "biodiversity"
       ],
-      "answer": "biodiversity"
+      "answer": "10% rule"
     },
     {
       "qid": "w_week4_1",
@@ -20,7 +467,7 @@
         "APAR - LUE",
         "APAR / LUE"
       ],
-      "answer": "APAR / LUE"
+      "answer": "APAR × LUE"
     },
     {
       "qid": "w_week4_2",
@@ -31,7 +478,7 @@
         "spindle pyramid of numbers",
         "dumb-bell pyramid of numbers"
       ],
-      "answer": "dumb-bell pyramid of numbers"
+      "answer": "inverted pyramid of numbers"
     },
     {
       "qid": "w_week4_3",
@@ -108,7 +555,7 @@
         "spindle pyramid of numbers",
         "dumb-bell pyramid of numbers"
       ],
-      "answer": "inverted pyramid of numbers"
+      "answer": "spindle pyramid of numbers"
     }
   ],
   "week5": [
@@ -121,7 +568,7 @@
         "Physiological longevity < Ecological longevity",
         "a or b"
       ],
-      "answer": "Physiological longevity < Ecological longevity"
+      "answer": "a or b"
     },
     {
       "qid": "w_week5_1",
@@ -143,11 +590,11 @@
         "large mammals",
         "carnivores"
       ],
-      "answer": "fishes"
+      "answer": "herpetofauna"
     },
     {
       "qid": "w_week5_3",
-      "question": "___ is how close the measured values are to the correct value.",
+      "question": "______ is how close the measured values are to the correct value.",
       "options": [
         "Accuracy",
         "Precision",
@@ -191,7 +638,7 @@
     },
     {
       "qid": "w_week5_7",
-      "question": "___ employs a simple rule of selecting every kth unit starting with a number chosen at random from 1 to k as the random start.",
+      "question": "______ employs a simple rule of selecting every kth unit starting with a number chosen at random from 1 to k as the random start.",
       "options": [
         "Simple random sampling",
         "Systematic sampling",
@@ -209,7 +656,7 @@
         "non-pollinator insects",
         "pollinator insects"
       ],
-      "answer": "bees"
+      "answer": "pollinator insects"
     },
     {
       "qid": "w_week5_9",
@@ -226,14 +673,14 @@
   "week6": [
     {
       "qid": "w_week6_0",
-      "question": "Which of these is correct?",
+      "question": "Which of these is correct?a. b. c. d.",
       "options": [
         "Fundamental niche > Realised niche",
         "Fundamental niche = Realised niche",
         "Fundamental niche < Realised niche",
         "a or b"
       ],
-      "answer": "Fundamental niche > Realised niche"
+      "answer": "a or b"
     },
     {
       "qid": "w_week6_1",
@@ -501,7 +948,7 @@
         "very low",
         "non-existent"
       ],
-      "answer": "very high"
+      "answer": "medium"
     },
     {
       "qid": "w_week8_5",
@@ -523,7 +970,7 @@
         "cattle",
         "sickle"
       ],
-      "answer": "gun"
+      "answer": "sickle"
     },
     {
       "qid": "w_week8_7",
@@ -569,11 +1016,11 @@
         "celibacy",
         "moral restraint"
       ],
-      "answer": "moral restraint"
+      "answer": "war"
     },
     {
       "qid": "w_week9_1",
-      "question": "___ determines which projects or developments require a full or partial impact assessment study. (Fill in the blank)",
+      "question": "______ determines which projects or developments require a full or partial impact assessment study. (Fill in the blank)",
       "options": [
         "screening",
         "scoping",
@@ -639,7 +1086,7 @@
     },
     {
       "qid": "w_week9_7",
-      "question": "___ is used to identify which potential impacts are relevant to assess. (Fill in the blank)",
+      "question": "______ is used to identify which potential impacts are relevant to assess. (Fill in the blank)",
       "options": [
         "screening",
         "scoping",
@@ -689,7 +1136,9 @@
       "options": [
         "adaptive response",
         "adaptive capacity",
-        "mitigative response"
+        "mitigative response",
+        "mitigative capacity"
+        
       ],
       "answer": "adaptive capacity"
     },
@@ -721,7 +1170,8 @@
       "options": [
         "adaptation",
         "mitigation",
-        "maladaptation"
+        "maladaptation",
+        "malmitigation"
       ],
       "answer": "maladaptation"
     },
@@ -753,7 +1203,8 @@
       "options": [
         "adaptation",
         "mitigation",
-        "deceleration"
+        "deceleration",
+        "maladaptation"
       ],
       "answer": "adaptation"
     },
@@ -774,7 +1225,8 @@
       "options": [
         "adaptation",
         "mitigation",
-        "deceleration"
+        "deceleration",
+        "maladaptation"
       ],
       "answer": "mitigation"
     }
@@ -873,9 +1325,10 @@
       "options": [
         "recovery",
         "restoration",
-        "enhancement"
+        "enhancement",
+        "replacement"
       ],
-      "answer": "enhancement"
+      "answer": "replacement"
     },
     {
       "qid": "w_week11_9",
@@ -886,7 +1339,7 @@
         "R + F = M + G",
         "R + G + M + F = 0"
       ],
-      "answer": "R + M = G + F"
+      "answer": "R + G = M + F"
     }
   ],
   "week12": [
@@ -920,7 +1373,7 @@
         "Hutchinson",
         "Humboldt"
       ],
-      "answer": "Humboldt"
+      "answer": "Simon"
     },
     {
       "qid": "w_week12_3",
@@ -986,7 +1439,7 @@
         "Higher reproductive rate means higher fitness.",
         "Fitness should be measured across several generations."
       ],
-      "answer": "Fitness is species-specific."
+      "answer": "Higher reproductive rate means higher fitness."
     },
     {
       "qid": "w_week12_9",
