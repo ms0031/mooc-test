@@ -80,7 +80,7 @@ export default function WrongAnswersCollection({
               psychologyQuestions.add(answer.qid);
             } else if (answer.qid.startsWith("c_")) {
               conservationQuestions.add(answer.qid);
-            } else if (answer.qid.startsWith("s_")) {
+            } else if (answer.qid.startsWith("w_")) {
               wildlifeEcologyQuestions.add(answer.qid);
             } else {
               mongoQuestions.add(answer.qid);
