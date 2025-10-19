@@ -8,6 +8,7 @@ import { useTransitionRouter } from "next-view-transitions";
 import { pageAnimation } from "@/utils/animations";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import ToggleSwitch from '@/components/ui/ToggleSwitch';
+import { triggerHapticFeedback, HapticFeedbackType } from "@/utils/haptics";
 
 export default function TestSettingsPage() {
   const router = useTransitionRouter();
@@ -238,7 +239,7 @@ export default function TestSettingsPage() {
                   return (
                     <label
                       key={week.id}
-                      className={`relative flex items-center justify-center py-2 rounded-3xl border-2 transition-all duration-200 cursor-pointer 
+                      className={`relative flex items-center justify-center py-2.5 rounded-3xl border-2 transition-all duration-200 cursor-pointer 
                         ${isSelected 
                           ? 'border-teal-500/50 bg-teal-500/20 text-white' 
                           : 'border-white/20 bg-white/5 text-gray-300 hover:border-white/50 hover:bg-white/10'
@@ -249,6 +250,7 @@ export default function TestSettingsPage() {
                         type="checkbox"
                         checked={isSelected}
                         onChange={() => {
+                          triggerHapticFeedback(HapticFeedbackType.Medium);
                           if (isSelected) {
                             setSelectedWeeks(selectedWeeks.filter((w) => w !== week.id));
                           } else {
