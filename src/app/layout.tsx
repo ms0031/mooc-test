@@ -5,7 +5,7 @@ import "./globals.css";
 import { NextAuthProvider } from "@/components/providers/NextAuthProvider";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { ErrorBoundary } from "@/components/ui/ErrorBoundary";
-import { Analyticsdb } from "@/components/Analytics";
+
 import Navbar from "@/components/ui/Navbar";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Script from "next/script";
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   keywords: [
     "MOOC",
     "psychology of learning",
-    "sustainable development",
+    "wildlife ecology",
     "conservation economics",
     "online education",
     "test platform",
@@ -109,7 +109,6 @@ export default function RootLayout({
                   <p>&copy; Mayank Shekhar</p>
                 </footer>
                 <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GA_ID!} />
-                <Analyticsdb />
               </ThemeProvider>
             </NextAuthProvider>
           </ErrorBoundary>
