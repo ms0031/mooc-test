@@ -9,7 +9,7 @@ import Loading from "@/components/ui/Loading";
 import ErrorMessage from "@/components/ui/ErrorMessage";
 import psychologyData from "../../../../questions_psychology_of_learning.json";
 import conservationData from "../../../../questions_conservation_economics.json";
-import sustainableDevData from "../../../../questions_sustainable_development.json";
+import wildlifeEcologyData from "../../../../questions_wildlife_ecology.json";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 
 interface Question {
@@ -67,9 +67,9 @@ export default function BookmarksPage() {
     } else if (qid.startsWith("c_")) {
       const allConservationQuestions = Object.values(conservationData as QuestionsByWeek).flat();
       return allConservationQuestions.find((q) => q.qid === qid);
-    } else if (qid.startsWith("s_")) {
-      const allSustainableDevQuestions = Object.values(sustainableDevData as QuestionsByWeek).flat();
-      return allSustainableDevQuestions.find((q) => q.qid === qid);
+    } else if (qid.startsWith("w_")) {
+      const allwildlifeEcologyQuestions = Object.values(wildlifeEcologyData as QuestionsByWeek).flat();
+      return allwildlifeEcologyQuestions.find((q) => q.qid === qid);
     }
     return undefined;
   };

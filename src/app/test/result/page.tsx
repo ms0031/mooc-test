@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { Fireworks } from "@fireworks-js/react";
 import questionsByWeekData from "@/../questions_psychology_of_learning.json";
 import conservationEconomicsData from "@/../questions_conservation_economics.json";
-import sustainableDevData from "@/../questions_sustainable_development.json";
+import wildlifeEcologyData from "@/../questions_wildlife_ecology.json";
 import { useTransitionRouter } from "next-view-transitions";
 import { pageAnimation } from "@/utils/animations";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
@@ -90,11 +90,11 @@ export default function TestResultPage() {
         conservationEconomicsData as QuestionsByWeek
       ).flat();
       return allConservationQuestions.find((q: Question) => q.qid === qid);
-    } else if (qid.startsWith("s_")) {
-      const allSustainableDevQuestions = Object.values(
-        sustainableDevData as QuestionsByWeek
+    } else if (qid.startsWith("w_")) {
+      const allwildlifeEcologyQuestions = Object.values(
+        wildlifeEcologyData as QuestionsByWeek
       ).flat();
-      return allSustainableDevQuestions.find((q: Question) => q.qid === qid);
+      return allwildlifeEcologyQuestions.find((q: Question) => q.qid === qid);
     }
     return undefined;
   };

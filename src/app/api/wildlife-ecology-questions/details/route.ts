@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import questionsByWeekData from "../../../../../questions_sustainable_development.json";
+import questionsByWeekData from "../../../../../questions_wildlife_ecology.json";
 
 interface Question {
   qid: string;
@@ -46,9 +46,9 @@ export async function GET(request: Request) {
 
     return NextResponse.json({ questions: mappedQuestions });
   } catch (error) {
-    console.error("Error fetching Sustainable Development question details:", error);
+    console.error("Error fetching Wildlife Ecology question details:", error);
     return NextResponse.json(
-      { message: "Error fetching Sustainable Development question details" },
+      { message: "Error fetching Wildlife Ecology question details" },
       { status: 500 }
     );
   }

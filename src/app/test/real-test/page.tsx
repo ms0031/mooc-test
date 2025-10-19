@@ -9,7 +9,7 @@ import ErrorMessage from "@/components/ui/ErrorMessage";
 import { Button } from "@/components/ui/Button";
 import questionsByWeekData from "@/../questions_psychology_of_learning.json";
 import conservationEconomicsData from "@/../questions_conservation_economics.json";
-import sustainableDevData from "@/../questions_sustainable_development.json";
+import wildlifeEcologyData from "@/../questions_wildlife_ecology.json";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import TestNavbar from "@/components/ui/TestNavbar";
 
@@ -34,12 +34,12 @@ export default function RealTestPage() {
   const [submitted, setSubmitted] = useState(false);
   const [testStartTime] = useState<Date>(new Date());
   const [timeRemaining, setTimeRemaining] = useState(3600); // 60 minutes for real test
-  const [selectedCategory, setSelectedCategory] = useState<string>("sustainable_development");
+  const [selectedCategory, setSelectedCategory] = useState<string>("wildlife_ecology");
   const [isCategorySelectorOpen, setIsCategorySelectorOpen] = useState(false);
   const categories = [
     { id: 'psychology_of_learning', label: 'Psychology of Learning' },
     { id: 'conservation_economics', label: 'Conservation Economics' },
-    { id: 'sustainable_development', label: 'Sustainable Development' },
+    { id: 'wildlife_ecology', label: 'Wildlife Ecology' },
   ];
   useEffect(() => {
     if (status === "unauthenticated") {
@@ -60,7 +60,7 @@ export default function RealTestPage() {
       } else if (selectedCategory === 'conservation_economics') {
         categoryQuestions = Object.values(conservationEconomicsData as QuestionsByWeek).flat();
       } else {
-        categoryQuestions = Object.values(sustainableDevData as QuestionsByWeek).flat();
+        categoryQuestions = Object.values(wildlifeEcologyData as QuestionsByWeek).flat();
       }
 
       // Shuffle and select 50 questions from selected category

@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import questionsByWeekData from "@/../questions_psychology_of_learning.json";
 import conservationEconomicsData from "@/../questions_conservation_economics.json";
-import sustainableDevData from "@/../questions_sustainable_development.json";
+import wildlifeEcologyData from "@/../questions_wildlife_ecology.json";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import BookmarkButton from "@/components/ui/BookmarkButton";
 interface Question {
@@ -21,7 +21,7 @@ interface QuestionsByWeek {
 }
 
 const categories = [
-    { id: "sustainable_development", label: "Sustainable Development" },
+    { id: "wildlife_ecology", label: "Wildlife Ecology" },
     { id: "psychology_of_learning", label: "Psychology of Learning" },
     { id: "conservation_economics", label: "Conservation Economics" },
 ];
@@ -29,7 +29,7 @@ const categories = [
 export default function StudyPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
-  const [selectedCategory, setSelectedCategory] = useState<string>("sustainable_development");
+  const [selectedCategory, setSelectedCategory] = useState<string>("wildlife_ecology");
   const [expandedWeeks, setExpandedWeeks] = useState<Record<string, boolean>>({});
   const [weekQuestions, setWeekQuestions] = useState<Record<string, Question[]>>({});
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -52,7 +52,7 @@ export default function StudyPage() {
       } else if (selectedCategory === "conservation_economics") {
         data = conservationEconomicsData as QuestionsByWeek;
       } else {
-        data = sustainableDevData as QuestionsByWeek;
+        data = wildlifeEcologyData as QuestionsByWeek;
       }
       
       const availableWeeks = Object.keys(data).sort((a, b) => {
@@ -77,7 +77,7 @@ export default function StudyPage() {
     } else if (selectedCategory === "conservation_economics") {
       data = conservationEconomicsData as QuestionsByWeek;
     } else {
-      data = sustainableDevData as QuestionsByWeek;
+      data = wildlifeEcologyData as QuestionsByWeek;
     }
     
     setWeekQuestions(data);

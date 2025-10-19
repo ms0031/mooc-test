@@ -64,8 +64,8 @@ export default function TestPage() {
         apiUrl = "/api/conservation-economics-questions";
       } else if (category === "psychology_of_learning") {
         apiUrl = "/api/psychology-questions";
-      } else if (category === "sustainable_development") {
-        apiUrl = "/api/sustainable-development-questions";
+      } else if (category === "wildlife_ecology") {
+        apiUrl = "/api/wildlife-ecology-questions";
       }
       const queryParams = new URLSearchParams();
 

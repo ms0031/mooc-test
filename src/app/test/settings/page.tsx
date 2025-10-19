@@ -13,7 +13,7 @@ export default function TestSettingsPage() {
   const router = useTransitionRouter();
   const { data: session } = useSession();
 
-  const [category, setCategory] = useState("sustainable_development");
+  const [category, setCategory] = useState("wildlife_ecology");
   const [enableTimer, setEnableTimer] = useState(true);
   const [randomizeAnswers, setRandomizeAnswers] = useState(true);
   const [shuffleWeeks, setShuffleWeeks] = useState(false);
@@ -21,7 +21,7 @@ export default function TestSettingsPage() {
   const [categories, setCategories] = useState([
     { id: "conservation_economics", name: "Conservation Economics" },
     { id: "psychology_of_learning", name: "Psychology of Learning" },
-    { id: "sustainable_development", name: "Sustainable Development" },
+    { id: "wildlife_ecology", name: "Wildlife Ecology" },
   ]);
   const [selectedWeeks, setSelectedWeeks] = useState<string[]>([]);
   // Dynamic weeks state – will be fetched from the API.
@@ -37,8 +37,8 @@ export default function TestSettingsPage() {
           apiUrl = "/api/conservation-economics-questions?getWeeks=true";
         } else if (category === "psychology_of_learning") {
           apiUrl = "/api/psychology-questions?getWeeks=true";
-        } else if (category === "sustainable_development") {
-          apiUrl = "/api/sustainable-development-questions?getWeeks=true";
+        } else if (category === "wildlife_ecology") {
+          apiUrl = "/api/wildlife-ecology-questions?getWeeks=true";
         }
         const res = await fetch(apiUrl);
         const data = await res.json();
