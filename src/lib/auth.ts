@@ -4,6 +4,7 @@ import GoogleProvider from "next-auth/providers/google";
 import bcrypt from "bcrypt";
 import connectDB from "@/lib/mongodb";
 import User from "@/models/User";
+import GoogleUser from "@/models/GoogleUser";
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -57,10 +58,39 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
   },
   callbacks: {
-    async jwt({ token, user }) {
+    async signIn({ user, account }) {
+      if (account?.provider === "google") {
+        try {
+          await connectDB();
+
+          await GoogleUser.findOneAndUpdate(
+            { email: user.email },
+            { 
+              name: user.name,
+              image: user.image,
+              lastLogin: new Date(),
+            },
+            { 
+              upsert: true,
+              new: true,
+            }
+          );
+
+        } catch (error) {
+          console.error("Error during Google sign-in user logging:", error);
+          return false; 
+        }
+      }
+      return true; 
+    },
+
+    async jwt({ token, user, account }) {
       if (user) {
         token.id = user.id;
-        token.role = user.role;
+        token.role = (user as any).role;
+      }
+      if (account) {
+        token.provider = account.provider;
       }
       return token;
     },
@@ -68,6 +98,8 @@ export const authOptions: NextAuthOptions = {
       if (session.user) {
         session.user.id = token.id as string;
         session.user.role = token.role as string;
+        // ADDED: Make the provider available in the session
+        session.user.provider = token.provider as string;
       }
       return session;
     },
