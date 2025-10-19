@@ -12,6 +12,7 @@ import conservationEconomicsData from "@/../questions_conservation_economics.jso
 import wildlifeEcologyData from "@/../questions_wildlife_ecology.json";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import TestNavbar from "@/components/ui/TestNavbar";
+import { triggerHapticFeedback, HapticFeedbackType } from "@/utils/haptics";
 
 interface Question {
   qid: string;
@@ -91,10 +92,12 @@ export default function RealTestPage() {
 
   const handleAnswerSelect = (questionId: string, option: string) => {
     if (submitted) return;
+    triggerHapticFeedback(HapticFeedbackType.Selection);
     setUserAnswers(prev => ({ ...prev, [questionId]: option }));
   };
 
   const handleSubmit = () => {
+    triggerHapticFeedback(HapticFeedbackType.Medium);
     if (Object.keys(userAnswers).length !== questions.length) {
       const unansweredCount = questions.length - Object.keys(userAnswers).length;
       if (!confirm(`You have ${unansweredCount} unanswered questions. Are you sure you want to submit?`)) {

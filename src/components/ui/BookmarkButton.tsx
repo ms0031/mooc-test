@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import { useBookmarkStore } from "@/lib/stores/bookmarkStore";
+import { triggerHapticFeedback, HapticFeedbackType } from "@/utils/haptics";
 
 interface BookmarkButtonProps {
   qid: string;
@@ -14,6 +15,7 @@ export default function BookmarkButton({ qid }: BookmarkButtonProps) {
   const isBookmarked = bookmarkedQids.includes(qid);
 
   const handleToggleBookmark = async () => {
+    triggerHapticFeedback(HapticFeedbackType.Heavy);
     setIsAnimating(true);
     const wasBookmarked = isBookmarked;
 
