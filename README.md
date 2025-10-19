@@ -1,4 +1,3 @@
-          
 # MOOC Test Platform
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue)
@@ -6,7 +5,7 @@
 ![React](https://img.shields.io/badge/React-19.0.0-blue)
 ![MongoDB](https://img.shields.io/badge/MongoDB-6.15.0-green)
 
-A comprehensive online testing platform for MOOCs (Massive Open Online Courses) built with Next.js, React, and MongoDB. This application allows users to test their knowledge in various subjects including Conservation Economics, Psychology of Learning, and Sustainable Development.
+A comprehensive online testing platform for MOOCs (Massive Open Online Courses) built with Next.js, React, and MongoDB. This application allows users to test their knowledge in various subjects including Conservation Economics, Psychology of Learning, and Wildlife Ecology.
 
 ## 📊 Usage Statistics
 
@@ -19,6 +18,7 @@ A comprehensive online testing platform for MOOCs (Massive Open Online Courses) 
 ## 🚀 Technologies Used
 
 ### Frontend
+
 - **Next.js 15.3.0** - React framework with App Router
 - **React 19.0.0** - UI library
 - **TailwindCSS 4.1.3** - Utility-first CSS framework
@@ -29,6 +29,7 @@ A comprehensive online testing platform for MOOCs (Massive Open Online Courses) 
 - **Next View Transitions** - Page transition animations
 
 ### Backend
+
 - **Next.js API Routes** - Serverless functions
 - **MongoDB 6.15.0** - NoSQL database
 - **Mongoose 8.13.2** - MongoDB object modeling
@@ -36,6 +37,7 @@ A comprehensive online testing platform for MOOCs (Massive Open Online Courses) 
 - **bcrypt** - Password hashing
 
 ### DevOps & Analytics
+
 - **Google Analytics** - Usage tracking
 - **Turbopack** - Fast development builds
 
@@ -67,11 +69,15 @@ A comprehensive online testing platform for MOOCs (Massive Open Online Courses) 
 │   └── utils/              # Utility functions
 └── tailwind.config.js      # TailwindCSS configuration
 ```
+
 ## Changelog
+
 ### v-[0.2.0] - 2025-10-14
+
 This is a major release focused on a complete visual and user experience overhaul. The entire application has been redesigned with a modern, consistent "glassmorphism" aesthetic, and numerous components have been rebuilt to be more interactive and beautiful.
 
 ### ✨ Features
+
 - **New "Real Test" Mode**: Introduced a simulated exam environment (/test/real-test) that pulls 50 random questions from a selected category under a 60-minute time limit.
 
 - **Sticky Test Header**: Implemented a new sticky navigation bar on the test-taking pages that displays a live countdown timer and a real-time counter for answered questions.
@@ -85,6 +91,7 @@ This is a major release focused on a complete visual and user experience overhau
 - New reusable, themed ToggleSwitch component for all boolean settings.
 
 ### 🎨 UI/UX Improvements
+
 - **Complete Redesign**: Overhauled the entire application with a modern "glassmorphism" design, featuring semi-transparent cards, backdrop-blur effects, and consistent borders for a cohesive user experience.
 
 - **Dynamic Animated Backgrounds**: Integrated the BackgroundGradientAnimation component across all pages, creating a beautiful and immersive aurora-like visual theme.
@@ -100,20 +107,24 @@ This is a major release focused on a complete visual and user experience overhau
 ## 🔄 Application Flow
 
 1. **User Authentication**
+
    - Users can register, login, or use the platform as guests
    - Authentication handled by NextAuth.js with MongoDB storage
 
 2. **Test Configuration**
-   - Users select a subject category (Conservation Economics, Psychology of Learning, Sustainable Development)
+
+   - Users select a subject category (Conservation Economics, Psychology of Learning, Wildlife Ecology)
    - Configure test settings (timer, randomization, specific weeks/topics)
    - Choose between regular test mode or study mode
 
 3. **Test Taking**
+
    - Questions are presented with multiple-choice options
    - Timer tracks time spent (optional)
    - Study mode provides immediate feedback and explanations
 
 4. **Results & Analytics**
+
    - Detailed score breakdown after test completion
    - Performance tracking over time for registered users
    - Bookmarking difficult questions for later review
@@ -126,6 +137,7 @@ This is a major release focused on a complete visual and user experience overhau
 ## 📊 Schema Design
 
 ### Question Schema
+
 - **qid**: Unique identifier
 - **category**: Subject category
 - **question**: Question text
@@ -136,6 +148,7 @@ This is a major release focused on a complete visual and user experience overhau
 - **tags**: Array of topic tags
 
 ### TestResult Schema
+
 - **userId**: User identifier (optional for guests)
 - **isGuest**: Boolean flag for guest users
 - **category**: Subject category
@@ -183,5 +196,3 @@ npm run seed
 ## 📝 License
 
 This project is proprietary and confidential.
-
-        
