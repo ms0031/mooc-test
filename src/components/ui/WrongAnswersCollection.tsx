@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 import { TestResultResponse } from "@/types";
 import questionsByWeekData from "../../../questions_psychology_of_learning.json";
 import conservationEconomicsData from "../../../questions_conservation_economics.json";
-import sustainableDevData from "../../../questions_sustainable_development.json";
+import wildlifeEcologyData from "../../../questions_wildlife_ecology.json";
 import Loading from "@/components/ui/Loading";
 
 interface WrongAnswer {
@@ -30,7 +30,7 @@ interface ConservationEconomicsQuestion {
   answer: string;
 }
 
-interface SustainableDevelopmentQuestion {
+interface WildlifeEcologyQuestion {
   qid: string;
   question: string;
   options: string[];
@@ -68,7 +68,7 @@ export default function WrongAnswersCollection({
       const questionIds = new Set<string>();
       const psychologyQuestions = new Set<string>();
       const conservationQuestions = new Set<string>();
-      const sustainableDevQuestions = new Set<string>();
+      const wildlifeEcologyQuestions = new Set<string>();
       const mongoQuestions = new Set<string>();
 
       // Sort questions by type
@@ -81,7 +81,7 @@ export default function WrongAnswersCollection({
             } else if (answer.qid.startsWith("c_")) {
               conservationQuestions.add(answer.qid);
             } else if (answer.qid.startsWith("s_")) {
-              sustainableDevQuestions.add(answer.qid);
+              wildlifeEcologyQuestions.add(answer.qid);
             } else {
               mongoQuestions.add(answer.qid);
             }
@@ -95,9 +95,9 @@ export default function WrongAnswersCollection({
         string,
         ConservationEconomicsQuestion
       >();
-      const sustainableDevQuestionsMap = new Map<
+      const WildlifeEcologyQuestionMap = new Map<
         string,
-        SustainableDevelopmentQuestion
+        WildlifeEcologyQuestion
       >();
 
       if (psychologyQuestions.size > 0) {
@@ -120,13 +120,13 @@ export default function WrongAnswersCollection({
         });
       }
 
-      if (sustainableDevQuestions.size > 0) {
-        const allSustainableDevQuestions = Object.values(
-          sustainableDevData as Record<string, SustainableDevelopmentQuestion[]>
+      if (wildlifeEcologyQuestions.size > 0) {
+        const allWildlifeEcologyQuestions = Object.values(
+          wildlifeEcologyData as Record<string, WildlifeEcologyQuestion[]>
         ).flat();
-        allSustainableDevQuestions.forEach((q) => {
-          if (sustainableDevQuestions.has(q.qid)) {
-            sustainableDevQuestionsMap.set(q.qid, q);
+        allWildlifeEcologyQuestions.forEach((q) => {
+          if (wildlifeEcologyQuestions.has(q.qid)) {
+            WildlifeEcologyQuestionMap.set(q.qid, q);
           }
         });
       }
@@ -142,8 +142,8 @@ export default function WrongAnswersCollection({
               question = psychologyQuestionsMap.get(answer.qid);
             } else if (answer.qid.startsWith("c_")) {
               question = conservationQuestionsMap.get(answer.qid);
-            } else if (answer.qid.startsWith("s_")) {
-              question = sustainableDevQuestionsMap.get(answer.qid);
+            } else if (answer.qid.startsWith("w_")) {
+              question = WildlifeEcologyQuestionMap.get(answer.qid);
             }
 
             if (question) {
