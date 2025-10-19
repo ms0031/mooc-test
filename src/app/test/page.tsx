@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/Button";
 import { BackgroundGradientAnimation } from "@/components/ui/background-gradient-animation";
 import TestNavbar from "@/components/ui/TestNavbar";
 import BookmarkButton from "@/components/ui/BookmarkButton";
+import { triggerHapticFeedback, HapticFeedbackType } from "@/utils/haptics";
 
 interface Question {
   _id: string;
@@ -127,6 +128,22 @@ export default function TestPage() {
 
   const handleAnswerSelect = (questionId: string, option: string) => {
     if (submitted) return;
+    // --- HAPTIC FEEDBACK LOGIC ---
+    if (!isStudyMode) {
+      triggerHapticFeedback(HapticFeedbackType.Selection);
+    }
+    if (isStudyMode) {
+      const question = questions.find((q) => q._id === questionId);
+      if (question) {
+        if (option === question.correctAnswer) {
+          //trigger success feedback
+          triggerHapticFeedback(HapticFeedbackType.Success);
+        } else {
+          //trigger error feedback
+          triggerHapticFeedback(HapticFeedbackType.Error);
+        }
+      }
+    }
     // Accumulate attempts in an array for each question.
     setAnswerAttempts((prev) => {
       const prevAttempts = prev[questionId] || [];
@@ -140,15 +157,18 @@ export default function TestPage() {
   };
 
   const handleSubmit = () => {
+    triggerHapticFeedback(HapticFeedbackType.Medium);
     // Basic check: each question should have at least one attempt.
     if (Object.keys(answerAttempts).length !== questions.length) {
       alert("Please answer all questions before submitting.");
+      triggerHapticFeedback(HapticFeedbackType.Light);
       return;
     }
     setSubmitted(true);
   };
 
   const handleFinishTest = async () => {
+    triggerHapticFeedback(HapticFeedbackType.Medium);
     // Calculate total time taken
     const totalTime = testStartTime
       ? Math.round((new Date().getTime() - testStartTime.getTime()) / 1000)
