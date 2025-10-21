@@ -341,7 +341,7 @@ export default function TestPage() {
                 <h3 className="text-lg font-medium text-white mb-2">
                   {index + 1}. {question.question}
                 </h3>
-                {(submitted) && <BookmarkButton qid={question._id} />}
+                {(submitted || isStudyMode) && <BookmarkButton qid={question.qid} />}
               </div>
               <div className="space-y-2 text-gray-100">
                 {question.options.map((option, idx) => {
