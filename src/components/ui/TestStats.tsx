@@ -184,7 +184,7 @@ export default function TestStats({ results, statsDisplay }: TestStatsProps) {
               </tr>
             </thead>
             <tbody className="bg-white/0 divide-y divide-gray-500/50">
-              {results.map((result, index) => (
+              {results.slice(0, 5).map((result, index) => (
                 <tr key={result._id}>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-300">
                     {formatCategoryWithSpaces(result.category)}
