@@ -78,8 +78,22 @@ export default function TestPage() {
       } else if (weeksParam) {
         queryParams.append("weeks", weeksParam);
       } else {
-        const week = searchParams.get("week") || "week1";
-        queryParams.append("week", week);
+        const allWeeks = [
+          "week0",
+          "week1",
+          "week2",
+          "week3",
+          "week4",
+          "week5",
+          "week6",
+          "week7",
+          "week8",
+          "week9",
+          "week10",
+          "week11",
+          "week12"
+        ];
+        queryParams.append("weeks", allWeeks.join(","));
       }
 
       const response = await fetch(`${apiUrl}?${queryParams.toString()}`);
