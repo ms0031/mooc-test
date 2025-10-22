@@ -141,7 +141,7 @@
     },
     {
       "qid": "p_week1_4",
-      "question": "'Psychology as the Behaviorist Views It' is the famous work of",
+      "question": "'Psychology as the Behaviorist Views It' is the famous work of ______.",
       "options": [
         "Sigmund Freud",
         "John Watson",
@@ -249,7 +249,7 @@
     },
     {
       "qid": "p_week2_5",
-      "question": "In ___ conditioning, presentation of unconditioned stimulus precedes the presentation of the conditioned stimulus.",
+      "question": "In ______ conditioning, presentation of unconditioned stimulus precedes the presentation of the conditioned stimulus.",
       "options": ["backward", "delay", "trace", "simultaneous"],
       "answer": "backward"
     },
@@ -302,19 +302,19 @@
     },
     {
       "qid": "p_week3_1",
-      "question": "___ refers to connections between the nerve cells",
+      "question": "______ refers to connections between the nerve cells",
       "options": ["Storage", "Synapses", "Neuron", "Blood"],
       "answer": "Synapses"
     },
     {
       "qid": "p_week3_2",
-      "question": "In order to create a new memory, information must be changed into",
+      "question": "In order to create a new memory, information must be changed into ______.",
       "options": ["a usable form", "a long form", "a short form", "a visual form"],
       "answer": "a usable form"
     },
     {
       "qid": "p_week3_3",
-      "question": "The memory ___ process allows us to bring stored memories into conscious awareness.",
+      "question": "The memory ______ process allows us to bring stored memories into conscious awareness.",
       "options": ["storage", "retrieval", "encoding", "forgetting"],
       "answer": "retrieval"
     },
@@ -337,7 +337,7 @@
     },
     {
       "qid": "p_week3_6",
-      "question": "___ refers to rote rehearsal of repetition",
+      "question": "______ refers to rote rehearsal of repetition",
       "options": [
         "elaborative rehearsal",
         "maintenance rehearsal",
@@ -348,19 +348,19 @@
     },
     {
       "qid": "p_week3_7",
-      "question": "___ presentations can enhance working memory capacity",
+      "question": "______ presentations can enhance working memory capacity",
       "options": ["multimodal", "unimodal", "one by one", "antimodal"],
       "answer": "multimodal"
     },
     {
       "qid": "p_week3_8",
-      "question": "Episodic and semantic memories are categorized under ___ memory",
+      "question": "Episodic and semantic memories are categorized under ______ memory",
       "options": ["procedural", "structural", "phonemic", "declarative"],
       "answer": "declarative"
     },
     {
       "qid": "p_week3_9",
-      "question": "According to the neural network model, memory capacity depends on",
+      "question": "According to the neural network model, memory capacity depends on ______.",
       "options": [
         "complexity of the synapses",
         "sparseness of representations",
@@ -373,19 +373,19 @@
   "week4": [
     {
       "qid": "p_week4_0",
-      "question": "Creative thinking is the ability to generate ___ ideas.",
+      "question": "Creative thinking is the ability to generate ______ ideas.",
       "options": ["innovative", "unconventional", "useful", "all of the above"],
       "answer": "all of the above"
     },
     {
       "qid": "p_week4_1",
-      "question": "___ are representative items within each concept.",
+      "question": "______ are representative items within each concept.",
       "options": ["Constructs", "Symbols", "Prototypes", "Categories"],
       "answer": "Prototypes"
     },
     {
       "qid": "p_week4_2",
-      "question": "A mental representation can take the form of a",
+      "question": "A mental representation can take the form of a ______.",
       "options": ["word", "image", "sound", "all of the given"],
       "answer": "all of the given"
     },
@@ -402,13 +402,13 @@
     },
     {
       "qid": "p_week4_4",
-      "question": "Cognitive architecture is a theory about the ___ that create a mind in natural or artificial systems.",
+      "question": "Cognitive architecture is a theory about the ______ that create a mind in natural or artificial systems.",
       "options": ["structures", "facts", "images", "sounds"],
       "answer": "structures"
     },
     {
       "qid": "p_week4_5",
-      "question": "Bloom's Taxonomy is a system of hierarchical models (arranged in a hierarchical rank,) used to categorize ___ into varying levels of complexity.",
+      "question": "Bloom's Taxonomy is a system of hierarchical models (arranged in a hierarchical rank,) used to categorize ______ into varying levels of complexity.",
       "options": [
         "learning objectives",
         "attention goals",
@@ -419,38 +419,39 @@
     },
     {
       "qid": "p_week4_6",
-      "question": "___ knowledge refers to knowledge of terminology and specific details.",
+      "question": "______ knowledge refers to knowledge of terminology and specific details.",
       "options": ["Metacognitive", "Conceptual", "Kinesthetic", "Factual"],
       "answer": "Factual"
     },
     {
       "qid": "p_week4_7",
-      "question": "Choosing to skim subheadings of unimportant information to get to the information we need as a metacognitive skill is called",
+      "question": "Choosing to skim subheadings of unimportant information to get to the information we need as a metacognitive skill is called ______.",
       "options": ["Skimming", "Rehearsing", "Self-monitoring", "Modifying"],
       "answer": "Skimming"
     },
     {
       "qid": "p_week4_8",
-      "question": "___ refers to the ability to regulate your thoughts and set aside any personal biases to come to the best conclusion.",
+      "question": "______ refers to the ability to regulate your thoughts and set aside any personal biases to come to the best conclusion.",
       "options": [
         "Self-regulation",
         "Openmindedness",
         "Observation",
-        "Interpretation"
+        "Interpretation",
+        "elaboration"
       ],
       "answer": "Self-regulation"
     },
     {
       "qid": "p_week4_9",
-      "question": "___ method of solving problems refers to a rule that guarantees the solution to a problem",
-      "options": ["trial and error", "analogy", "algorithm"],
+      "question": "______ method of solving problems refers to a rule that guarantees the solution to a problem",
+      "options": ["imagination","trial and error", "analogy", "algorithm"],
       "answer": "algorithm"
     }
   ],
   "week5": [
     {
       "qid": "p_week5_0",
-      "question": "Motivation is seen as a ___ that drives and directs human behavior.",
+      "question": "Motivation is seen as a ______ that drives and directs human behavior.",
       "options": [
         "hormonal impulse",
         "mental impulse",
@@ -478,7 +479,7 @@
     },
     {
       "qid": "p_week5_3",
-      "question": "Doing something/behaving well because one feels pressure from within is called",
+      "question": "Doing something/behaving well because one feels pressure from within is called ______.",
       "options": [
         "introjected regulation",
         "amotivation",
@@ -495,19 +496,19 @@
     },
     {
       "qid": "p_week5_5",
-      "question": "___ theory suggests that people are motivated to take action in order to receive a reward.",
+      "question": "______ theory suggests that people are motivated to take action in order to receive a reward.",
       "options": ["incentive", "biological", "arousal", "goal setting"],
       "answer": "incentive"
     },
     {
       "qid": "p_week5_6",
-      "question": "The Arousal Theory of Motivation was first proposed by",
+      "question": "The Arousal Theory of Motivation was first proposed by ______.",
       "options": ["Hall", "Watson", "Bandura", "Murray"],
       "answer": "Murray"
     },
     {
       "qid": "p_week5_7",
-      "question": "___ theory is based on the assumption that our behavior is based on making a conscious choice from a set of possible alternative behaviors.",
+      "question": "______ theory is based on the assumption that our behavior is based on making a conscious choice from a set of possible alternative behaviors.",
       "options": ["arousal", "expectancy", "drive", "goal setting"],
       "answer": "expectancy"
     },
@@ -524,7 +525,7 @@
     },
     {
       "qid": "p_week5_9",
-      "question": "Maslow's hierarchy of needs consists of ___ tiers.",
+      "question": "Maslow's hierarchy of needs consists of ______ tiers.",
       "options": ["four", "three", "six", "five"],
       "answer": "five"
     }
@@ -532,7 +533,7 @@
   "week6": [
     {
       "qid": "p_week6_0",
-      "question": "___ is mainly responsible for popularizing emotional intelligence.",
+      "question": "______ is mainly responsible for popularizing emotional intelligence.",
       "options": [
         "John Watson",
         "Daniel Goleman",
@@ -543,7 +544,7 @@
     },
     {
       "qid": "p_week6_1",
-      "question": "EQ is used to measure",
+      "question": "EQ is used to measure ______.",
       "options": [
         "cognitive intelligence",
         "memory",
@@ -560,7 +561,7 @@
     },
     {
       "qid": "p_week6_3",
-      "question": "Being able to put words to feelings refers to",
+      "question": "Being able to put words to feelings refers to ______.",
       "options": [
         "emotional responsibility",
         "emotional cognition",
@@ -571,7 +572,7 @@
     },
     {
       "qid": "p_week6_4",
-      "question": "The first step in emotional intelligence is",
+      "question": "The first step in emotional intelligence is ______.",
       "options": [
         "perceiving emotions accurately",
         "reasoning with emotions",
@@ -582,7 +583,7 @@
     },
     {
       "qid": "p_week6_5",
-      "question": "According to nine-layer model pyramid, ___ lies at the bottom of the pyramid.",
+      "question": "According to nine-layer model pyramid, ______ lies at the bottom of the pyramid.",
       "options": [
         "Emotional stimuli",
         "Self awareness",
@@ -593,13 +594,13 @@
     },
     {
       "qid": "p_week6_6",
-      "question": "The mixed model by ___ claims that EQ is a combination of competencies, skills, and \"facilitators\" that contribute to how people express themselves, respond to challenges in their environment, and connect with others.",
+      "question": "The mixed model by ______ claims that EQ is a combination of competencies, skills, and \"facilitators\" that contribute to how people express themselves, respond to challenges in their environment, and connect with others.",
       "options": ["Watson", "Goleman", "Salovey and Mayer", "Bar-On"],
       "answer": "Bar-On"
     },
     {
       "qid": "p_week6_7",
-      "question": "The transfer of emotions from one person to another is called",
+      "question": "The transfer of emotions from one person to another is called ______.",
       "options": [
         "social effect",
         "emotional effect",
@@ -610,7 +611,7 @@
     },
     {
       "qid": "p_week6_8",
-      "question": "Hochschild has given the concept of ___ using the example of flight attendants.",
+      "question": "Hochschild has given the concept of ______ using the example of flight attendants.",
       "options": [
         "emotional indifference",
         "emotional difficulty",
@@ -621,7 +622,7 @@
     },
     {
       "qid": "p_week6_9",
-      "question": "Review of literature shows that ___ is associated with increasing levels of burnout.",
+      "question": "Review of literature shows that ______ is associated with increasing levels of burnout.",
       "options": [
         "emotional intelligence",
         "deep acting",
@@ -645,13 +646,13 @@
     },
     {
       "qid": "p_week7_1",
-      "question": "Manual or physical skills come under ___ component of Bloom's taxonomy.",
+      "question": "Manual or physical skills come under ______ component of Bloom's taxonomy.",
       "options": ["Cognitive", "Affective", "Psychomotor", "Physical"],
       "answer": "Psychomotor"
     },
     {
       "qid": "p_week7_2",
-      "question": "Reflection, learning and education was explored by",
+      "question": "Reflection, learning and education was explored by ______.",
       "options": [
         "Carl Rogers",
         "John Watson",
@@ -662,13 +663,13 @@
     },
     {
       "qid": "p_week7_3",
-      "question": "The principles of ___ refer to how close in time two events must be for a bond to be formed.",
+      "question": "The principles of ______ refer to how close in time two events must be for a bond to be formed.",
       "options": ["behavior", "reinforcement", "repetition", "contiguity"],
       "answer": "contiguity"
     },
     {
       "qid": "p_week7_4",
-      "question": "___ gives information to learners about their success or failure concerning the task at hand.",
+      "question": "______ gives information to learners about their success or failure concerning the task at hand.",
       "options": [
         "Cognitive feedback",
         "Emotional feedback",
@@ -679,19 +680,19 @@
     },
     {
       "qid": "p_week7_5",
-      "question": "The ___ orientation to learning has a quality of personal involvement-the whole person in both feeling and cognitive aspects being in the learning event.",
+      "question": "The ______ orientation to learning has a quality of personal involvement-the whole person in both feeling and cognitive aspects being in the learning event.",
       "options": ["behavioral", "cognitive", "humanistic", "social"],
       "answer": "humanistic"
     },
     {
       "qid": "p_week7_6",
-      "question": "Learning through play is ___ learning.",
+      "question": "Learning through play is ______ learning.",
       "options": ["primary", "secondary", "passive", "active"],
       "answer": "active"
     },
     {
       "qid": "p_week7_7",
-      "question": "People with ___ learning style are prone to sorting their ideas after speaking, rather than thinking ideas through before.",
+      "question": "People with ______ learning style are prone to sorting their ideas after speaking, rather than thinking ideas through before.",
       "options": ["logical", "solitary", "visual", "auditory"],
       "answer": "auditory"
     },
@@ -708,7 +709,7 @@
     },
     {
       "qid": "p_week7_9",
-      "question": "In ADDIE model, I stand for",
+      "question": "In ADDIE model, I stand for ______.",
       "options": ["instruction", "implementation", "integration", "induction"],
       "answer": "implementation"
     }
@@ -716,13 +717,13 @@
   "week8": [
     {
       "qid": "p_week8_0",
-      "question": "Pedagogy can be defined as a way of ___ any theoretical topic or academic subject.",
+      "question": "Pedagogy can be defined as a way of ______ any theoretical topic or academic subject.",
       "options": ["forgetting", "teaching", "remembering", "memorizing"],
       "answer": "teaching"
     },
     {
       "qid": "p_week8_1",
-      "question": "Good pedagogy is about",
+      "question": "Good pedagogy is about ______.",
       "options": [
         "enabling self to be good at rote memorization",
         "eliciting responses that demonstrate understanding",
@@ -739,7 +740,7 @@
     },
     {
       "qid": "p_week8_3",
-      "question": "According to the ___ approach, learners are the makers of meaning and knowledge.",
+      "question": "According to the ______ approach, learners are the makers of meaning and knowledge.",
       "options": [
         "solitary learning",
         "passive learning",
@@ -761,13 +762,13 @@
     },
     {
       "qid": "p_week8_5",
-      "question": "The ___ model describes what effective teachers do in their classrooms to engage students in intellectually challenging work.",
+      "question": "The ______ model describes what effective teachers do in their classrooms to engage students in intellectually challenging work.",
       "options": ["pedagogical", "systematic", "engagement", "intellectual"],
       "answer": "pedagogical"
     },
     {
       "qid": "p_week8_6",
-      "question": "In experiential learning, experiences are structured to require the student to",
+      "question": "In experiential learning, experiences are structured to require the student to ______.",
       "options": [
         "take initiative",
         "make decisions",
@@ -778,7 +779,7 @@
     },
     {
       "qid": "p_week8_7",
-      "question": "The following are the roles of an instructor in experiential learning, except",
+      "question": "The following are the roles of an instructor in experiential learning, except ______.",
       "options": [
         "setting suitable experiences",
         "posing problems",
@@ -789,13 +790,13 @@
     },
     {
       "qid": "p_week8_8",
-      "question": "Kolb's experiential learning style theory is typically represented by a ___-stage learning cycle",
+      "question": "Kolb's experiential learning style theory is typically represented by a ______-stage learning cycle",
       "options": ["three", "five", "four", "seven"],
       "answer": "four"
     },
     {
       "qid": "p_week8_9",
-      "question": "People with ___ learning style are hands-on learners, and rely on intuition over logic.",
+      "question": "People with ______ learning style are hands-on learners, and rely on intuition over logic.",
       "options": ["converging", "accommodating", "integrating", "emotional"],
       "answer": "accommodating"
     }
@@ -803,7 +804,7 @@
   "week9": [
     {
       "qid": "p_week9_0",
-      "question": "A ___ classroom is the changing face of learning.",
+      "question": "A ______ classroom is the changing face of learning.",
       "options": ["digital", "closed", "passive", "none of the above"],
       "answer": "digital"
     },
@@ -831,7 +832,7 @@
     },
     {
       "qid": "p_week9_3",
-      "question": "In ___ e-learning course, the content is simple and comprises text, images, audio, power-point presentation and text questions.",
+      "question": "In ______ e-learning course, the content is simple and comprises text, images, audio, power-point presentation and text questions.",
       "options": [
         "simulation-based",
         "interactive",
@@ -842,7 +843,7 @@
     },
     {
       "qid": "p_week9_4",
-      "question": "Recent thinking in cognitive psychology places the ___ firmly at the center of the learning experience.",
+      "question": "Recent thinking in cognitive psychology places the ______ firmly at the center of the learning experience.",
       "options": ["computer", "parent", "teacher", "individual"],
       "answer": "individual"
     },
@@ -859,7 +860,7 @@
     },
     {
       "qid": "p_week9_6",
-      "question": "Learners may multitask when engaging in an online course, which could be resulting in",
+      "question": "Learners may multitask when engaging in an online course, which could be resulting in ______.",
       "options": [
         "hyperfocus",
         "better retrieval",
@@ -870,21 +871,297 @@
     },
     {
       "qid": "p_week9_7",
-      "question": "The brain can process ___ visual cues per hour!",
+      "question": "The brain can process ______ visual cues per hour!",
       "options": ["36", "360", "3600", "36,000"],
       "answer": "36,000"
     },
     {
       "qid": "p_week9_8",
-      "question": "Our brain has approximately ___ neurons that send information to one another.",
+      "question": "Our brain has approximately ______ neurons that send information to one another.",
       "options": ["85 billion", "85 million", "85 lakhs", "85,000"],
       "answer": "85 billion"
     },
     {
       "qid": "p_week9_9",
-      "question": "___ is referring to learners' automatic performance on specific procedures with predetermined steps to be followed.",
+      "question": "______ is referring to learners' automatic performance on specific procedures with predetermined steps to be followed.",
       "options": ["chaining", "automatization", "framing", "none of the above"],
       "answer": "chaining"
+    }
+  ],
+  "week10": [
+    {
+      "qid": "p_week10_0",
+      "question": "The ______ Model for New Normal in Education has been designed by many educational institutions.",
+      "options": ["Pedagogical", "Readiness", "Instructional", "Systematic"],
+      "answer": "Readiness"
+    },
+    {
+      "qid": "p_week10_1",
+      "question": "The most critical factor that plays a significant role in the success of any remote learning program is the ______.",
+      "options": [
+        "software used by teacher",
+        "readiness of the participants",
+        "personality of the teacher",
+        "the quality of schooling"
+      ],
+      "answer": "readiness of the participants"
+    },
+    {
+      "qid": "p_week10_2",
+      "question": "The typical picture of a teacher being a ______ of knowledge to the students has been replaced.",
+      "options": ["absorber", "collector", "exploiter", "dispenser"],
+      "answer": "dispenser"
+    },
+    {
+      "qid": "p_week10_3",
+      "question": "What does today's teacher need to be successful in the classroom?",
+      "options": [
+        "digital skills",
+        "life skills",
+        "communication skills",
+        "all of the above"
+      ],
+      "answer": "all of the above"
+    },
+    {
+      "qid": "p_week10_4",
+      "question": "Students who consider intelligence as a ______ entity tend to focus on their goals despite obstacles.",
+      "options": ["malleable", "rigid", "God-given", "unreliable"],
+      "answer": "malleable"
+    },
+    {
+      "qid": "p_week10_5",
+      "question": "______ feedback to students is important for learning.",
+      "options": ["clear", "explanatory", "timely", "all of the above"],
+      "answer": "all of the above"
+    },
+    {
+      "qid": "p_week10_6",
+      "question": "Students tend to enjoy learning and have better outcomes when their motivation is more intrinsic than extrinsic.",
+      "options": ["False", "True"],
+      "answer": "True"
+    },
+    {
+      "qid": "p_week10_7",
+      "question": "Long term goals are also called ______ goals.",
+      "options": ["non urgent", "principal", "proximal", "distal"],
+      "answer": "distal"
+    },
+    {
+      "qid": "p_week10_8",
+      "question": "Which of the following is an example of a reward?",
+      "options": [
+        "clapping",
+        "giving money",
+        "giving a compliment",
+        "all of the above"
+      ],
+      "answer": "all of the above"
+    },
+    {
+      "qid": "p_week10_9",
+      "question": "______ is a teaching approach that generates feedback students can use to improve their performance.",
+      "options": [
+        "Assessment for performance",
+        "Assessment for marks",
+        "Assessment for rewards",
+        "Assessment for learning"
+      ],
+      "answer": "Assessment for learning"
+    }
+  ],
+  "week11": [
+    {
+      "qid": "p_week11_0",
+      "question": "Social cognition is the cognitive processes that influence ______.",
+      "options": [
+        "social schema",
+        "social behavior",
+        "social media",
+        "none of the above"
+      ],
+      "answer": "social behavior"
+    },
+    {
+      "qid": "p_week11_1",
+      "question": "Smooth and adaptive social interactions depend on the recruitment of ______.",
+      "options": ["perception", "attention", "language", "all of the above"],
+      "answer": "all of the above"
+    },
+    {
+      "qid": "p_week11_2",
+      "question": "Which of the following abilities does not come under social cognition?",
+      "options": [
+        "rote memory",
+        "face processing",
+        "joint attention",
+        "moral reasoning"
+      ],
+      "answer": "rote memory"
+    },
+    {
+      "qid": "p_week11_3",
+      "question": "Social cognition develops primarily in old age.",
+      "options": ["True", "False"],
+      "answer": "False"
+    },
+    {
+      "qid": "p_week11_4",
+      "question": "A theory of mind refers to a person's ability to understand and think about the ______ of other people.",
+      "options": [
+        "biological states",
+        "mental states",
+        "physical traits",
+        "none of the above"
+      ],
+      "answer": "mental states"
+    },
+    {
+      "qid": "p_week11_5",
+      "question": "The ______ theory details the processes of observational learning and modeling, and the influence of self-efficacy on the production of behavior.",
+      "options": [
+        "behavioral",
+        "socio-emotional",
+        "social-cognitive",
+        "cognitive-emotional"
+      ],
+      "answer": "social-cognitive"
+    },
+    {
+      "qid": "p_week11_6",
+      "question": "______ processes account for the information that is selected for observation in the environment.",
+      "options": ["motivational", "production", "retention", "attentional"],
+      "answer": "attentional"
+    },
+    {
+      "qid": "p_week11_7",
+      "question": "Children become more aggressive when they observe aggressive or violent models.",
+      "options": ["True", "False"],
+      "answer": "True"
+    },
+    {
+      "qid": "p_week11_8",
+      "question": "The ______ model of observational learning involves real or fictional characters displaying behaviors in books, films, television programs, or online media.",
+      "options": [
+        "symbolic",
+        "live",
+        "verbal instructional",
+        "contextual"
+      ],
+      "answer": "symbolic"
+    },
+    {
+      "qid": "p_week11_9",
+      "question": "______ refers to the anticipated consequences of a person's behavior.",
+      "options": [
+        "self-efficacy",
+        "expectations",
+        "intrinsic reinforcement",
+        "extrinsic reinforcement"
+      ],
+      "answer": "expectations"
+    }
+  ],
+  "week12": [
+    {
+      "qid": "p_week12_0",
+      "question": "Sustainability in the context of environmental sustainability is ______.",
+      "options": [
+        "multidimensional",
+        "bidimensional",
+        "unidimensional",
+        "none of the given"
+      ],
+      "answer": "unidimensional"
+    },
+    {
+      "qid": "p_week12_1",
+      "question": "As discussed by the Brundtland commission, sustainable development was the solution to the problems of ______.",
+      "options": [
+        "poor health",
+        "recession",
+        "poverty",
+        "environmental degradation"
+      ],
+      "answer": "environmental degradation"
+    },
+    {
+      "qid": "p_week12_2",
+      "question": "Environmental sustainability focuses on the impacts of processes, products and services on ______.",
+      "options": [
+        "biodiversity",
+        "ocean environment",
+        "air",
+        "all of the above"
+      ],
+      "answer": "all of the above"
+    },
+    {
+      "qid": "p_week12_3",
+      "question": "Social entrepreneurship is defined as solving social problems using ______.",
+      "options": [
+        "generational wealth",
+        "market-based methods",
+        "bank loans",
+        "magical methods"
+      ],
+      "answer": "market-based methods"
+    },
+    {
+      "qid": "p_week12_4",
+      "question": "HESI stands for.",
+      "options": [
+        "Health and Education Sustainability Initiative",
+        "Higher Education Systematic Initiative",
+        "Higher Education Sustainability Initiative",
+        "none of the above"
+      ],
+      "answer": "Higher Education Sustainability Initiative"
+    },
+    {
+      "qid": "p_week12_5",
+      "question": "Universal primary and secondary education is an outcome target of ______.",
+      "options": ["SDG 1", "SDG 2", "SDG 3", "SDG 4"],
+      "answer": "SDG 4"
+    },
+    {
+      "qid": "p_week12_6",
+      "question": "______ is a target group for ESD for 2030 framework.",
+      "options": [
+        "policymakers",
+        "parents",
+        "institutional leaders",
+        "all of the above"
+      ],
+      "answer": "all of the above"
+    },
+    {
+      "qid": "p_week12_7",
+      "question": "Successful implementation of ESD requires a shift in focus to ______.",
+      "options": ["learning", "teaching", "exploiting", "reading"],
+      "answer": "learning"
+    },
+    {
+      "qid": "p_week12_8",
+      "question": "______ competency refers to the ability to reflect on one's own role in community and society.",
+      "options": [
+        "self-awareness",
+        "emotional",
+        "normative",
+        "anticipatory"
+      ],
+      "answer": "self-awareness"
+    },
+    {
+      "qid": "p_week12_9",
+      "question": "In 2021, the European Centre for the Development of Vocational Training published a skills forecast scenario on the likely employment and skills implications of the ______.",
+      "options": [
+        "European Greenhouse Initiative",
+        "European Green Deal",
+        "European Green Agreement",
+        "none of the above"
+      ],
+      "answer": "European Green Deal"
     }
   ]
 }
