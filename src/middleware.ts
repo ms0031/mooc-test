@@ -1,64 +1,60 @@
+import { withAuth, NextRequestWithAuth } from "next-auth/middleware";
 import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { getToken } from "next-auth/jwt";
 
-// Define paths that don't require authentication
-const publicPaths = [
-  "/",
-  "/login",
-  "/register",
-  "/api/auth/signin",
-  "/api/auth/signup",
-  "/api/auth/callback",
-];
+export default withAuth(
+  // `withAuth` augments `req` with `req.nextauth.token`
+  function middleware(req: NextRequestWithAuth) {
+    const { token } = req.nextauth;
+    const { pathname } = req.nextUrl;
 
-export async function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
-  // Check if the path is public
-  if (publicPaths.some((path) => pathname.startsWith(path))) {
-    return NextResponse.next();
-  }
-
-  // Check for API routes that allow study mode
-  if (
-    pathname.startsWith("/api/questions") &&
-    request.nextUrl.searchParams.get("mode") === "study"
-  ) {
-    return NextResponse.next();
-  }
-
-  // Verify authentication for protected routes
-  const token = await getToken({ req: request });
-
-  if (!token) {
-    // Redirect to login for page requests
-    if (!pathname.startsWith("/api/")) {
-      return NextResponse.redirect(new URL("/login", request.url));
+    // --- Admin Route Protection ---
+    if (pathname.startsWith("/admin")) {
+      // If the user is authenticated BUT not an admin, redirect them away
+      // (e.g., to the dashboard, assuming it's safe for non-admins)
+      if (token && token.role !== "admin") {
+        console.log("Middleware: Non-admin accessing /admin. Redirecting to /dashboard.");
+        return NextResponse.redirect(new URL("/dashboard", req.url));
+      }
+      // If the token is null/undefined here, the `authorized` callback below
+      // should have already handled the redirect to login.
+      // If they ARE an admin, allow the request by returning nothing (implicit next()).
+      console.log("Middleware: Admin accessing /admin. Allowing.");
+      return NextResponse.next(); // Explicitly allow if checks pass
     }
 
-    // Return unauthorized for API requests
-    return new NextResponse(
-      JSON.stringify({ error: "Authentication required" }),
-      {
-        status: 401,
-        headers: { "content-type": "application/json" },
+    // --- Other Protected Routes (like /dashboard) ---
+    // If accessing dashboard or other protected routes (add more checks if needed)
+    // and the user is authenticated (token exists), allow them.
+    if (pathname.startsWith("/dashboard") && token) {
+      console.log("Middleware: Authenticated user accessing /dashboard. Allowing.");
+      return NextResponse.next();
+    }
+  },
+  {
+    callbacks: {
+      // This runs FIRST. If it returns false, the user is redirected
+      // to the login page BEFORE the main middleware function runs.
+      authorized: ({ token }) => {
+          const isAuthorized = !!token; // Is the user logged in at all?
+          console.log(`Middleware (authorized callback): Token exists? ${isAuthorized}`);
+          return isAuthorized;
       }
-    );
+    },
+    // IMPORTANT: Define the login page URL.
+    // withAuth will redirect here if `authorized` returns false.
+    pages: {
+      signIn: "/login",
+    },
   }
+);
 
-  return NextResponse.next();
-}
-
+// Matcher: Explicitly include the base /admin route
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - public folder
-     */
-    "/((?!_next/static|_next/image|favicon.ico|public/).*)",
-  ],
+    "/admin",          // Match the base admin route explicitly
+    "/admin/:path*",   // Match all sub-routes under /admin
+    "/dashboard",      // Match the base dashboard route
+    "/dashboard/:path*", // Match all sub-routes under /dashboard
+    "/test/real-test"
+ ],
 };
