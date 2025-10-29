@@ -57,6 +57,20 @@ export default function Navbar() {
                     Dashboard
                   </Button>
                 )}
+                {session.user.role === 'admin' && (
+                    <Button
+                        variant="glass"
+                        onClick={(e) => {
+                            e.preventDefault()
+                            router.push('/admin/dashboard', {
+                                onTransitionReady: () => pageAnimation('down'),
+                            })
+                        }}
+                        className="text-sm"
+                    >
+                        Admin
+                    </Button>
+                )}
                 {isOnDashboard && (
                   <Button
                   variant="glass"
