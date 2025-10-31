@@ -64,6 +64,7 @@ interface AdminStatsData {
     loginsLast5Min: number;
     loginsLast30Min: number;
     loginsLast1Hour: number;
+    loginsLast24Hours: number;
     all: GoogleUser[];
     mostBookmarked: BookmarkedUser[];
   };
@@ -73,6 +74,10 @@ interface AdminStatsData {
   };
   tests: {
     perCategory: CategoryCount[];
+    completedLast1Min: number;
+    completedLast5Min: number;
+    completedLast1Hour: number;
+    completedLast24Hours: number;
   };
   // New fields to match the updated API response
   topBookmarkedQuestions: TopQuestionStat[];
@@ -89,7 +94,7 @@ const StatCard = ({
   value: string | number;
   unit?: string;
 }) => (
-  <div className="bg-black/20 border border-white/15 rounded-2xl p-5 backdrop-blur-xl text-center shadow-lg">
+  <div className="bg-black/20 border border-white/15 rounded-3xl p-5 backdrop-blur-xl text-center shadow-lg">
     <h3 className="text-sm font-medium text-gray-400 mb-1">{title}</h3>
     <p className="text-3xl font-semibold text-white">
       {value}
@@ -290,7 +295,6 @@ export default function AdminDashboard() {
         <h1 className="text-4xl font-bold text-white mb-8">Admin Dashboard</h1>
 
         {/* KPIs Section */}
-        <h2 className="text-2xl font-semibold text-gray-300 mb-4">Overview</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 mb-10">
           <StatCard
             title="Registered Users"
@@ -314,7 +318,7 @@ export default function AdminDashboard() {
 
         {/* Recent Logins, Tests, and Top Questions */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
-          <div className="bg-black/20 border border-white/15 rounded-2xl p-6 backdrop-blur-xl shadow-lg">
+          <div className="bg-black/20 border border-white/15 rounded-3xl p-6 backdrop-blur-xl shadow-lg">
             <h2 className="text-xl font-semibold text-gray-200 mb-4">
               Recent Google Logins
             </h2>
@@ -337,13 +341,46 @@ export default function AdminDashboard() {
                   {data.googleUsers.loginsLast1Hour}
                 </span>
               </p>
+              <p>
+                Last 24 hours:{" "}
+                <span className="font-semibold text-white">
+                  {data.googleUsers.loginsLast24Hours}
+                </span>
+              </p>
             </div>
           </div>
-          <div className="bg-black/20 border border-white/15 rounded-2xl p-6 backdrop-blur-xl shadow-lg">
+
+          <div className="bg-black/20 border border-white/15 rounded-3xl p-6 backdrop-blur-xl shadow-lg">
             <h2 className="text-xl font-semibold text-gray-200 mb-4">
-              Tests per Category
+              Recent Test Completions
             </h2>
-            <ul className="space-y-2 text-gray-300 max-h-48 overflow-y-auto">
+            <div className="space-y-2 mb-4 text-gray-300">
+              <p>
+                Last 1 min:{" "}
+                <span className="font-semibold text-white">
+                  {data.tests.completedLast1Min}
+                </span>
+              </p>
+              <p>
+                Last 5 mins:{" "}
+                <span className="font-semibold text-white">
+                  {data.tests.completedLast5Min}
+                </span>
+              </p>
+              <p>
+                Last 1 hour:{" "}
+                <span className="font-semibold text-white">
+                  {data.tests.completedLast1Hour}
+                </span>
+              </p>
+              <p>
+                Last 24 hours:{" "}
+                <span className="font-semibold text-white">
+                  {data.tests.completedLast24Hours}
+                </span>
+              </p>
+            </div>
+            <ul className="space-y-2 bg-white/10 p-3 px-4 rounded-2xl text-gray-300 max-h-48 overflow-y-auto">
               {data.tests.perCategory.map((category) => (
                 <li
                   key={category._id || "unknown"}
@@ -359,8 +396,9 @@ export default function AdminDashboard() {
               ))}
             </ul>
           </div>
+
           {/* Top Bookmarked Questions List --- */}
-          <div className="bg-black/20 border border-white/15 rounded-2xl p-6 backdrop-blur-xl shadow-lg">
+          <div className="bg-black/20 border border-white/15 rounded-3xl p-6 backdrop-blur-xl shadow-lg">
             <h2 className="text-xl font-semibold text-gray-200 mb-4">
               Top 10 Bookmarked Questions
             </h2>
@@ -382,8 +420,8 @@ export default function AdminDashboard() {
                         <span className="text-wrap">
                           {index + 1}.{" "}
                           <code className="bg-white/10 px-1.5 py-0.5 rounded text-xs mr-1">
-                          {q._id}
-                        </code>
+                            {q._id}
+                          </code>
                           {question?.question ??
                             `Unknown Question (ID: ${q._id})`}
                         </span>
@@ -402,7 +440,7 @@ export default function AdminDashboard() {
             </ul>
           </div>
           {/* --- Top Wrongly Answered List --- */}
-          <div className="bg-black/20 border border-white/15 rounded-2xl p-6 backdrop-blur-xl shadow-lg">
+          <div className="bg-black/20 border border-white/15 rounded-3xl p-6 backdrop-blur-xl shadow-lg">
             <h2 className="text-xl font-semibold text-gray-200 mb-4">
               Top 10 Wrongly Answered
             </h2>
@@ -424,8 +462,8 @@ export default function AdminDashboard() {
                         <span className="text-wrap">
                           {index + 1}.{" "}
                           <code className="bg-white/10 px-1.5 py-0.5 rounded text-xs mr-1">
-                          {q._id}
-                        </code>
+                            {q._id}
+                          </code>
                           {question?.question ??
                             `Unknown Question (ID: ${q._id})`}
                         </span>
@@ -450,7 +488,7 @@ export default function AdminDashboard() {
         {/* User Tables */}
         <div className="space-y-10">
           {/* All Google Users Table */}
-          <div className="bg-black/20 border border-white/15 rounded-2xl backdrop-blur-xl shadow-lg overflow-hidden">
+          <div className="bg-black/20 border border-white/15 rounded-3xl backdrop-blur-xl shadow-lg overflow-hidden">
             <h2 className="text-2xl font-semibold text-gray-200 p-6 border-b border-white/10">
               All Google Users
             </h2>
@@ -532,7 +570,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* All Regular Users Table */}
-          <div className="bg-black/20 border border-white/15 rounded-2xl backdrop-blur-xl shadow-lg overflow-hidden">
+          <div className="bg-black/20 border border-white/15 rounded-3xl backdrop-blur-xl shadow-lg overflow-hidden">
             <h2 className="text-2xl font-semibold text-gray-200 p-6 border-b border-white/10">
               All Registered Users
             </h2>

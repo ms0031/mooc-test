@@ -71,6 +71,7 @@ export async function GET(request: Request) {
     const fiveMinutesAgo = new Date(now.getTime() - 5 * 60 * 1000);
     const thirtyMinutesAgo = new Date(now.getTime() - 30 * 60 * 1000);
     const oneHourAgo = new Date(now.getTime() - 60 * 60 * 1000);
+    const twentyFourHoursAgo = new Date(now.getTime() - 24 * 60 * 60 * 1000);
 
     const [
         totalRegisteredUsers,
@@ -82,6 +83,7 @@ export async function GET(request: Request) {
         googleUsersLoginsLast5Min,
         googleUsersLoginsLast30Min,
         googleUsersLoginsLast1Hour,
+        googleUsersLoginsLast24Hours,
         allGoogleUsersLean,
         googleUsersMostBookmarked,
         allUsersLean,
@@ -90,7 +92,11 @@ export async function GET(request: Request) {
         // --- NEW: Run aggregations in parallel ---
         topBookmarkedGoogle,
         topBookmarkedUsers,
-        topWrongAnsweredQuestionsAgg
+        topWrongAnsweredQuestionsAgg,
+        testsCompletedLast1Min,
+        testsCompletedLast5Min,
+        testsCompletedLast1Hour,
+        testsCompletedLast24Hours
     ] = await Promise.all([
         User.countDocuments(),
         GoogleUser.countDocuments(),
@@ -101,6 +107,7 @@ export async function GET(request: Request) {
         GoogleUser.countDocuments({ lastLogin: { $gte: fiveMinutesAgo } }),
         GoogleUser.countDocuments({ lastLogin: { $gte: thirtyMinutesAgo } }),
         GoogleUser.countDocuments({ lastLogin: { $gte: oneHourAgo } }),
+        GoogleUser.countDocuments({ lastLogin: { $gte: twentyFourHoursAgo } }),
         GoogleUser.find({}, "name email image _id").lean<LeanGoogleUser[]>(),
         GoogleUser.aggregate<AggregatedBookmarkedUser>([ { $match: { bookmarkedQids: { $exists: true, $ne: [] } } }, { $addFields: { bookmarkCount: { $size: "$bookmarkedQids" } } }, { $sort: { bookmarkCount: -1 } }, { $limit: 10 }, { $project: { name: 1, email: 1, bookmarkCount: 1, _id: 1 } }, ]),
         User.find({}, "name email role _id").lean<LeanUser[]>(),
@@ -109,7 +116,11 @@ export async function GET(request: Request) {
         // --- NEW Aggregations ---
         GoogleUser.aggregate<TopQuestionStat>([ { $unwind: "$bookmarkedQids" }, { $group: { _id: "$bookmarkedQids", count: { $sum: 1 } } } ]),
         User.aggregate<TopQuestionStat>([ { $unwind: "$bookmarkedQids" }, { $group: { _id: "$bookmarkedQids", count: { $sum: 1 } } } ]),
-        TestResult.aggregate<TopQuestionStat>([ { $unwind: "$answers" }, { $match: { "answers.isCorrect": false } }, { $group: { _id: "$answers.qid", count: { $sum: 1 } } }, { $sort: { count: -1 } }, { $limit: 10 } ])
+        TestResult.aggregate<TopQuestionStat>([{ $unwind: "$answers" }, { $match: { "answers.isCorrect": false } }, { $group: { _id: "$answers.qid", count: { $sum: 1 } } }, { $sort: { count: -1 } }, { $limit: 10 }]),
+        TestResult.countDocuments({ createdAt: { $gte: oneMinuteAgo } }),
+        TestResult.countDocuments({ createdAt: { $gte: fiveMinutesAgo } }),
+        TestResult.countDocuments({ createdAt: { $gte: oneHourAgo } }),
+        TestResult.countDocuments({ createdAt: { $gte: twentyFourHoursAgo } }),
     ]);
 
     const overallAverageScore = avgStats[0]?.avgScore ?? 0;
@@ -140,6 +151,7 @@ export async function GET(request: Request) {
         loginsLast5Min: googleUsersLoginsLast5Min,
         loginsLast30Min: googleUsersLoginsLast30Min,
         loginsLast1Hour: googleUsersLoginsLast1Hour,
+        loginsLast24Hours: googleUsersLoginsLast24Hours,
         all: allGoogleUsersLean.map((u: LeanGoogleUser) => ({
             ...u,
             _id: u._id.toString(),
@@ -154,6 +166,10 @@ export async function GET(request: Request) {
       },
       tests: {
         perCategory: testsPerCategory,
+        completedLast1Min: testsCompletedLast1Min,
+        completedLast5Min: testsCompletedLast5Min,
+        completedLast1Hour: testsCompletedLast1Hour,
+        completedLast24Hours: testsCompletedLast24Hours,
       },
       // --- NEW: Add top questions to response ---
       topBookmarkedQuestions: topBookmarkedQuestions,
