@@ -101,9 +101,9 @@ export async function GET(request: Request) {
         GoogleUser.countDocuments({ lastLogin: { $gte: fiveMinutesAgo } }),
         GoogleUser.countDocuments({ lastLogin: { $gte: thirtyMinutesAgo } }),
         GoogleUser.countDocuments({ lastLogin: { $gte: oneHourAgo } }),
-        GoogleUser.find({}, "name email image _id").limit(50).lean<LeanGoogleUser[]>(),
+        GoogleUser.find({}, "name email image _id").lean<LeanGoogleUser[]>(),
         GoogleUser.aggregate<AggregatedBookmarkedUser>([ { $match: { bookmarkedQids: { $exists: true, $ne: [] } } }, { $addFields: { bookmarkCount: { $size: "$bookmarkedQids" } } }, { $sort: { bookmarkCount: -1 } }, { $limit: 10 }, { $project: { name: 1, email: 1, bookmarkCount: 1, _id: 1 } }, ]),
-        User.find({}, "name email role _id").limit(50).lean<LeanUser[]>(),
+        User.find({}, "name email role _id").lean<LeanUser[]>(),
         User.aggregate<AggregatedBookmarkedUser>([ { $match: { bookmarkedQids: { $exists: true, $ne: [] } } }, { $addFields: { bookmarkCount: { $size: "$bookmarkedQids" } } }, { $sort: { bookmarkCount: -1 } }, { $limit: 10 }, { $project: { name: 1, email: 1, bookmarkCount: 1, _id: 1 } }, ]),
         TestResult.aggregate([ { $group: { _id: "$category", count: { $sum: 1 } } }, { $sort: { count: -1 } }, ]),
         // --- NEW Aggregations ---
